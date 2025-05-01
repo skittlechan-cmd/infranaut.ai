@@ -1,0 +1,482 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us | Infranaut.ai{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero is-medium contact-hero">
+    <div class="hero-body">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 text-center md:text-left slide-in-up">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 ">
+                        Get In <span class="text-gradient">Touch</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        We'd love to hear from you! Whether you have questions about our platform, need support, or want to discuss a custom solution, our team is ready to help.
+                    </p>
+                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#contact-form" class="button is-primary infra-primary-btn glow-effect">
+                            Send Us a Message
+                        </a>
+                        <a href="#contact-info" class="button is-outlined infra-outlined-btn glass-effect">
+                            Other Ways to Connect
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 slide-in-up mt-10 md:mt-0" data-delay="0.1s">
+                    <div class="relative group contact-hero-svg-wrapper">
+                         {# Embedded Hero SVG: Abstract Communication/Connection #}
+                         <svg class="w-full h-auto rounded-2xl shadow-xl relative z-10 transition-transform duration-500 group-hover:scale-105" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                             <style>
+                                 .bubble { fill: var(--primary-color); opacity: 0.8; transition: all 0.3s ease; }
+                                 .bubble:hover { opacity: 1; fill: var(--primary-dark); transform: scale(1.1); }
+                                 .line { stroke: var(--secondary-color); stroke-width: 6; opacity: 0.4; stroke-linecap: round; transition: stroke 0.3s ease; }
+                                 .icon-fill { fill: var(--white); opacity: 0.9; }
+                                   @keyframes bob {
+                                     0%, 100% { transform: translateY(0); }
+                                     50% { transform: translateY(-8px); }
+                                 }
+                                  .bubble-center { animation: bob 2.5s infinite ease-in-out; }
+                                   @media (prefers-reduced-motion: reduce) {
+                                       .bubble-center { animation: none; }
+                                   }
+                             </style>
+                             <defs>
+                                <linearGradient id="contact-hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgba(255,107,53,0.1); stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgba(79,70,229,0.05); stop-opacity:0.8" />
+                                </linearGradient>
+                            </defs>
+                             <rect width="100%" height="100%" fill="url(#contact-hero-gradient)" rx="16"/>
+
+                             {# Communication Lines #}
+                             <line class="line" x1="200" y1="250" x2="400" y2="300" />
+                             <line class="line" x1="600" y1="250" x2="400" y2="300" />
+                             <line class="line" x1="400" y1="300" x2="400" y2="450" />
+                             <line class="line" x1="400" y1="300" x2="200" y2="350" />
+                             <line class="line" x1="400" y1="300" x2="600" y2="350" />
+
+
+                             {# Message Bubbles/Nodes #}
+                            <circle class="bubble" cx="200" cy="250" r="40" />
+                            <circle class="bubble" cx="600" cy="250" r="40" />
+                            <circle class="bubble" cx="400" cy="450" r="40" />
+                            <circle class="bubble" cx="200" cy="350" r="35" />
+                            <circle class="bubble" cx="600" cy="350" r="35" />
+
+                            {# Central Node with Icon Placeholder #}
+                             <circle class="bubble bubble-center" cx="400" cy="300" r="50" />
+                             {# Example Icon (Envelope) - You might need to adjust paths or use an icon font layer #}
+                             <path class="icon-fill" d="M434 299.97l-33.3 24.97a12 12 0 01-13.4 0L366 299.97c-6.13-4.6-13.58-7.04-21.19-7.04a32 32 0 00-23.54 9.42L300 318.88a12 12 0 01-16 0L260.73 289c-6.13-4.6-13.58-7.04-21.19-7.04a32 32 0 00-23.54 9.42L180 318.88a12 12 0 01-16 0L140.73 289c-6.13-4.6-13.58-7.04-21.19-7.04a32 32 0 00-23.54 9.42L100 318.88a12 12 0 01-16 0l-33.3-24.97A32 32 0 000 278.81V92a32 32 0 0032-32h416a32 32 0 0032 32v186.81a32 32 0 00-14.6 21.16z" transform="translate(160, 150) scale(0.2)"/> {# Placeholder Icon #}
+
+
+                         </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information Section -->
+<section id="contact-info" class="section py-16 md:py-20 bg-white">
+     <div class="container mx-auto px-4">
+        <div class="text-center mb-16 slide-in-up">
+            <span class="text-sm font-semibold uppercase tracking-wider text-primary-dark mb-2 block">Get in Touch</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Contact Details</h2>
+             <div class="gradient-line mx-auto"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+               Find the best way to reach us based on your needs.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 contact-info-grid">
+             {# Contact Method Cards #}
+             <div class="contact-info-card slide-in-up" data-delay="0s">
+                 <div class="contact-icon-wrapper"><svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+                 <h3 class="text-xl font-semibold mb-2">General Inquiries</h3>
+                 <p class="text-gray-600 mb-4">Have questions about our platform or services?</p>
+                 <a href="mailto:info@infranaut.ai" class="contact-link">info@infranaut.ai →</a>
+             </div>
+             <div class="contact-info-card slide-in-up" data-delay="0.1s">
+                 <div class="contact-icon-wrapper"><svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div>
+                 <h3 class="text-xl font-semibold mb-2">Sales</h3>
+                 <p class="text-gray-600 mb-4">Interested in a demo or pricing?</p>
+                 <a href="mailto:sales@infranaut.ai" class="contact-link">sales@infranaut.ai →</a>
+             </div>
+             <div class="contact-info-card slide-in-up" data-delay="0.2s">
+                 <div class="contact-icon-wrapper"><svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 0A9.967 9.967 0 0112 21c-5.523 0-10-4.477-10-10S6.477 1 12 1s10 4.477 10 10c0 1.032-.159 2.036-.453 2.989m-2.24 4.218l-3.535-3.536m0 0A9.953 9.953 0 0112 15c-1.574 0-3.134-.356-4.512-1.042M9 15v2m3-2v2m3-2v2M9 10H7M5.636 5.636l1.414 1.414m0 0a2.5 2.5 0 10-.002-.002l.002.002zm9.192 9.192l1.414 1.414m0 0a2.5 2.5 0 10-.002-.002l.002.002z"></path></svg></div>
+                 <h3 class="text-xl font-semibold mb-2">Partnerships</h3>
+                 <p class="text-gray-600 mb-4">Explore partnership opportunities.</p>
+                 <a href="mailto:partners@infranaut.ai" class="contact-link">partners@infranaut.ai →</a>
+             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section id="contact-form" class="section py-16 md:py-20 bg-light">
+    <div class="container mx-auto px-4">
+         <div class="text-center mb-16 slide-in-up">
+            <span class="text-sm font-semibold uppercase tracking-wider text-primary-dark mb-2 block">Send a Message</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Talk</h2>
+             <div class="gradient-line mx-auto"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+               Fill out the form below and we'll get back to you as soon as possible.
+            </p>
+        </div>
+
+        {# Contact Form Structure (HTML only - requires backend for processing) #}
+        <div class="contact-form-wrapper slide-in-up">
+             <form action="#" method="POST" class="contact-form"> {# Add actual form action if needed #}
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" required class="form-input">
+                </div>
+                 <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" required class="form-input">
+                </div>
+                 <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input">
+                </div>
+                 <div class="form-group full-width">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" rows="6" required class="form-input"></textarea>
+                </div>
+                 <div class="form-group full-width text-center">
+                     <button type="submit" class="button is-primary infra-primary-btn">
+                        Send Message
+                     </button>
+                 </div>
+             </form>
+        </div>
+    </div>
+</section>
+
+<!-- Location/Map Section (Optional) -->
+{# Uncomment and replace iframe src if you have a physical location #}
+{#
+<section class="section py-16 md:py-20 bg-white">
+    <div class="container mx-auto px-4">
+         <div class="text-center mb-16 slide-in-up">
+            <span class="text-sm font-semibold uppercase tracking-wider text-primary-dark mb-2 block">Our Location</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Find Us on the Map</h2>
+             <div class="gradient-line mx-auto"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+               [Your brief address or headquarters note here]
+            </p>
+        </div>
+        <div class="map-container slide-in-up">
+             Replace with your actual Google Maps embed iframe
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1dYOUR_LAT_LONG_ZOOM!2dYOUR_LONG!3dYOUR_LAT!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xYOUR_LOCATION_ID!2sYOUR_COMPANY_NAME!5e0!3m2!1sen!2sus!4vYOUR_TIMESTAMP"
+                    width="100%"
+                    height="450"
+                    style="border:0; border-radius: 12px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+#}
+
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Reusing variables from other pages */
+    :root {
+        --primary-color: #ff6b35;
+        --primary-light: #ff8c61;
+        --primary-dark: #e85d2f;
+        --secondary-color: #4F46E5; /* Indigo */
+        --accent-color: #ffe0d6; /* Light orange */
+        --border-color: #e5e7eb; /* Neutral gray */
+        --white: #ffffff;
+        --bg-light: #f9fafb; /* Light background */
+        --text-dark: #1f2937;
+        --text-light: #f9fafb;
+        --text-muted: #6b7280;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+         /* Orange Tinted Shadows */
+        --shadow-orange-md: 0 4px 6px -1px rgba(255, 107, 53, 0.1), 0 2px 4px -1px rgba(255, 107, 53, 0.06);
+        --shadow-orange-lg: 0 10px 15px -3px rgba(255, 107, 53, 0.1), 0 4px 6px -2px rgba(255, 107, 53, 0.05);
+
+
+         /* Animation Vars */
+        --animation-duration: 0.7s;
+        --animation-timing: ease-out;
+        --slide-delay: 0s;
+    }
+
+     /* Base Body */
+    body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+
+    /* Slide-In Animation */
+    .slide-in-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity var(--animation-duration) var(--animation-timing),
+                    transform var(--animation-duration) var(--animation-timing);
+        transition-delay: var(--slide-delay);
+    }
+    .slide-in-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    /* Reusing/Adapting Common Styles */
+     .hero-body { padding: 5rem 1rem; } /* Simplified for mobile */
+     .section { padding-top: 4rem; padding-bottom: 4rem; } /* Simplified for mobile */
+     .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+     .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+     .mb-16 { margin-bottom: 4rem; }
+     .mb-12 { margin-bottom: 3rem; }
+
+
+    .text-gradient {
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline;
+    }
+
+    .gradient-line { height: 3px; width: 80px; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); border-radius: 3px; margin-top: 1rem; margin-bottom: 1rem; }
+    .gradient-line.mx-auto { margin-left: auto; margin-right: auto; }
+    @media (min-width: 768px) {
+        .gradient-line.md\:ml-0 { margin-left: 0; margin-right: initial; }
+        .hero-body { padding: 6rem 1.5rem; }
+        .section { padding-top: 5rem; padding-bottom: 5rem; }
+    }
+
+
+    /* Contact Hero Section */
+    .contact-hero {
+         background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+         overflow: hidden;
+    }
+     .contact-hero-svg-wrapper {
+        /* Wrapper for the SVG, can add margin/padding if needed */
+    }
+
+    /* Contact Information Section */
+    .contact-info-grid {
+        /* Uses grid from Tailwind classes */
+    }
+    .contact-info-card {
+         background-color: var(--white);
+         border-radius: 12px;
+         padding: 2rem; /* Default padding */
+         border: 1px solid var(--border-color);
+         box-shadow: var(--shadow-md);
+         text-align: center;
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+     .contact-icon-wrapper {
+        background-color: var(--accent-color);
+        width: 56px; height: 56px;
+        border-radius: 50%; /* Circular icons */
+        display: inline-flex;
+        align-items: center; justify-content: center;
+        margin-bottom: 1.5rem;
+        color: var(--primary-dark);
+        box-shadow: var(--shadow-sm);
+    }
+     .contact-icon { width: 2rem; height: 2rem; }
+     .contact-link {
+         display: inline-block;
+         margin-top: 1rem;
+         font-size: 0.95rem;
+         font-weight: 600;
+         color: var(--primary-color);
+         text-decoration: none;
+         transition: color 0.2s ease, transform 0.2s ease;
+     }
+     .contact-link:hover {
+         color: var(--primary-dark);
+         transform: translateX(3px);
+     }
+
+
+    /* Contact Form Section */
+    .bg-light { background-color: var(--bg-light); }
+
+    .contact-form-wrapper {
+        max-width: 700px; /* Limit form width */
+        margin-left: auto;
+        margin-right: auto;
+        background-color: var(--white);
+        border-radius: 12px;
+        padding: 2rem; /* Default padding */
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-color);
+    }
+     .contact-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+        gap: 1.5rem; /* Gap between fields */
+    }
+    .form-group.full-width {
+        grid-column: 1 / -1; /* Span full width */
+    }
+    .form-label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+    }
+    .form-input {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: var(--text-dark);
+        background-color: var(--bg-light); /* Light background for input */
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+     .form-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+     }
+     textarea.form-input {
+         resize: vertical; /* Allow vertical resizing */
+     }
+
+    /* Map Section */
+    .map-container {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+    }
+     .map-container iframe {
+        display: block; /* Remove extra space below iframe */
+     }
+
+    /* Reusing CTA Button Styles */
+    .infra-primary-btn {
+        background-color: var(--primary-color); color: var(--white); border: none;
+        padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+        display: inline-flex; align-items: center; justify-content: center;
+        transition: all 0.25s ease; box-shadow: var(--shadow-orange-md); letter-spacing: 0.025em;
+    }
+     .infra-primary-btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-orange-lg); }
+
+     .infra-outlined-btn {
+        background: rgba(255, 255, 255, 0.1); color: var(--white);
+        border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+        padding: calc(0.75rem - 1px) calc(1.5rem - 1px); border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+        display: inline-flex; align-items: center; justify-content: center;
+        transition: all 0.25s ease;
+     }
+     .infra-outlined-btn:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--white); color: var(--white); transform: translateY(-2px); }
+
+     .glow-effect { position: relative; overflow: hidden; z-index: 1; }
+    .glow-effect::after { /* Keep glow */
+        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+        transform: rotate(45deg); animation: glow 3s linear infinite; opacity: 0.6; pointer-events: none;
+    }
+    @keyframes glow { 0% { transform: rotate(45deg) translateX(-150%) translateY(50%); } 100% { transform: rotate(45deg) translateX(50%) translateY(-150%); } }
+
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) { /* Tablet */
+        /* Stack Hero */
+        .contact-hero .flex-col.md\:flex-row { flex-direction: column; }
+        .contact-hero .md\:w-1\/2 { width: 100%; }
+         .contact-hero .md\:mt-0 { margin-top: 2.5rem; }
+        .contact-hero .text-center.md\:text-left { text-align: center; }
+         .contact-hero .justify-center.md\:justify-start { justify-content: center; }
+
+        /* Stack Contact Info */
+         .contact-info-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+         .contact-info-card { padding: 1.5rem; } /* Reduce padding */
+
+        /* Contact Form Wrapper */
+         .contact-form-wrapper {
+             padding: 1.5rem;
+         }
+
+         /* Stack Hero Buttons */
+        .contact-hero .flex.gap-4 { flex-direction: column; align-items: center;}
+        .contact-hero .infra-primary-btn, .contact-hero .infra-outlined-btn { width: 100%; max-width: 280px; justify-content: center;}
+        .contact-hero .infra-outlined-btn { margin-top: 0.75rem; }
+    }
+
+    @media (max-width: 768px) { /* Mobile */
+         /* Font sizes, padding, margins are generally reduced in the initial styles now */
+
+         /* Contact Info Card */
+         .contact-info-card { padding: 1.5rem; } /* Already set for <1024 */
+         .contact-icon-wrapper { width: 48px; height: 48px; margin-bottom: 1rem;} /* Smaller icon wrapper */
+         .contact-icon { width: 1.75rem; height: 1.75rem; } /* Smaller icon */
+
+         /* Contact Form */
+         .contact-form { gap: 1rem; } /* Smaller gap */
+         .contact-form-wrapper { padding: 1rem; } /* Reduce wrapper padding */
+         .form-input { padding: 0.6rem 0.8rem; } /* Reduce input padding */
+    }
+
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Intersection Observer for slide-in animations
+        const observerOptions = {
+            root: null, // Use viewport
+            rootMargin: '0px 0px -50px 0px', // Trigger slightly before element bottom hits viewport bottom
+            threshold: 0 // Trigger as soon as any part enters the margin
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Apply delay from data-delay attribute or inline style
+                    const delay = entry.target.dataset.delay || entry.target.style.transitionDelay || '0s';
+                    entry.target.style.setProperty('--slide-delay', delay); // Use CSS variable for delay
+
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        };
+
+        const slideObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Observe elements with the 'slide-in-up' class
+        document.querySelectorAll(".slide-in-up").forEach((el) => {
+            slideObserver.observe(el);
+        });
+    });
+</script>
+{% endblock %}

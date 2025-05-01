@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/devops.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/devops.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero is-fullheight-with-navbar devops-hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6">
+                    <div class="devops-hero-content fade-in">
+                        <h1 class="devops-hero-title">DevOps Productivity</h1>
+                        <p class="devops-hero-subtitle">Transform your DevOps workflow with AI-driven insights and automated optimizations that accelerate your development lifecycle.</p>
+                        <div class="buttons mt-6">
+                            <a href="#features" class="infra-primary-btn">
+                                <span class="icon">
+                                    <i class="fas fa-rocket"></i>
+                                </span>
+                                <span>Explore Features</span>
+                            </a>
+                            <a href="#demo" class="infra-outlined-btn">
+                                <span class="icon">
+                                    <i class="fas fa-play"></i>
+                                </span>
+                                <span>See Demo</span>
+                            </a>
+                        </div>
+                        <div class="mt-8 is-hidden-mobile">
+                            <div class="tags has-addons">
+                                <span class="tag is-dark">
+                                    <i class="fas fa-check-circle mr-2"></i>
+                                    Trusted by
+                                </span>
+                                <span class="tag is-primary">500+ DevOps teams</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="devops-hero-dashboard fade-in">
+                        <div class="devops-dashboard-frame">
+                            <div class="browser-controls">
+                                <div class="browser-dots">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                </div>
+                            </div>
+                            <div class="dashboard-content">
+                                <img src="{{ url_for('static', filename='css/images/devops_hero.jpeg') }}" alt="DevOps Pipeline Dashboard" class="dashboard-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-foot">
+        <div class="container has-text-centered is-hidden-tablet">
+            <div class="tags has-addons is-centered mb-4">
+                <span class="tag is-dark">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Trusted by
+                </span>
+                <span class="tag is-primary">500+ DevOps teams</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="section bg-gradient">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered mb-6 fade-in">Key Features</h2>
+        <div class="columns is-multiline">
+            <!-- Automation Recommendations -->
+            <div class="column is-4 fade-in">
+                <div class="devops-feature-card">
+                    <div class="devops-feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="title is-4">Automation Recommendations</h3>
+                    <p class="subtitle is-6">Identify redundant tasks and get AI-powered suggestions for CI/CD optimizations.</p>
+                    <div class="infra-feature-list">
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Smart pipeline optimization</span>
+                        </div>
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Automated workflow suggestions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottleneck Detection -->
+            <div class="column is-4 fade-in">
+                <div class="devops-feature-card">
+                    <div class="devops-feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="title is-4">Bottleneck Detection</h3>
+                    <p class="subtitle is-6">Real-time identification of pipeline bottlenecks and performance issues.</p>
+                    <div class="infra-feature-list">
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Performance monitoring</span>
+                        </div>
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Intelligent alerts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Insights -->
+            <div class="column is-4 fade-in">
+                <div class="devops-feature-card">
+                    <div class="devops-feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="title is-4">Team Insights</h3>
+                    <p class="subtitle is-6">Comprehensive metrics on deployment frequency and MTTR.</p>
+                    <div class="infra-feature-list">
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Team performance analytics</span>
+                        </div>
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Recovery time tracking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tools Integration Section -->
+<section class="section tools-section">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered mb-6 fade-in">Integrated Tools</h2>
+        <div class="devops-tools-grid">
+            <div class="devops-tool-item fade-in">
+                <i class="fab fa-jenkins"></i>
+                <span>Jenkins</span>
+            </div>
+            <div class="devops-tool-item fade-in">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </div>
+            <div class="devops-tool-item fade-in">
+                <i class="fab fa-docker"></i>
+                <span>Docker</span>
+            </div>
+            <div class="devops-tool-item fade-in">
+                <i class="fab fa-kubernetes"></i>
+                <span>Kubernetes</span>
+            </div>
+            <div class="devops-tool-item fade-in">
+                <i class="fab fa-gitlab"></i>
+                <span>GitLab</span>
+            </div>
+            <div class="devops-tool-item fade-in">
+                <i class="fas fa-code-branch"></i>
+                <span>Azure DevOps</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Section -->
+<section id="demo" class="section bg-gradient">
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column is-6 fade-in">
+                <h2 class="title is-2">Interactive Demo</h2>
+                <p class="subtitle is-5 mb-5">Ask our AI about your DevOps pipeline performance</p>
+                <div class="devops-chat-container">
+                    <div class="devops-message">
+                        <strong>You:</strong> What slowed down last deployment?
+                    </div>
+                    <div class="devops-response">
+                        <strong>InfraGuardian AI:</strong> Analysis shows the test suite execution took 2.5x longer than usual. Recommendations:
+                        <ul>
+                            <li>Implement parallel test execution</li>
+                            <li>Cache dependencies</li>
+                            <li>Optimize test coverage</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#" class="infra-primary-btn mt-5">Try Live Demo</a>
+            </div>
+            <div class="column is-6 fade-in">
+                <div class="devops-dashboard-frame float-animation">
+                    <div class="browser-controls">
+                        <div class="browser-dots">
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                            <span class="browser-dot"></span>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <img src="{{ url_for('static', filename='css/images/performance_devops.jpeg') }}" alt="Performance Dashboard" class="dashboard-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+{% include 'components/cta.html' %}
+{% endblock %}

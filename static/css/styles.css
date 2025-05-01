@@ -1,0 +1,540 @@
+/* Base Variables */
+:root {
+    /* Primary Colors */
+    --primary-color: #FF6C37;
+    --primary-dark: #e75c28;
+    
+    /* New Complementary Colors */
+    --secondary-color: #3B82F6;
+    --secondary-dark: #2563eb;
+    --accent-purple: #8B5CF6;
+    --accent-teal: #14B8A6;
+    
+    /* Background Colors */
+    --bg-light: #F5F6F7;
+    --bg-gradient-start: #FFFFFF;
+    --bg-gradient-end: #F8FAFC;
+    
+    /* Text Colors */
+    --text-dark: #111827;
+    --text-light: #6B7280;
+    --text-muted: #9CA3AF;
+    
+    /* UI Colors */
+    --card-border: #E5E7EB;
+    --soft-blue: #3B82F6;
+    --soft-green: #10B981;
+    --light-orange: #FFF4EF;
+    --success-green: #34D399;
+    --warning-yellow: #FBBF24;
+    --error-red: #EF4444;
+    
+    /* Glass Effect Colors */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: rgba(17, 24, 39, 0.05);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Global Typography */
+body {
+    font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    padding-top: 4.5rem;
+    color: var(--text-dark);
+}
+
+.hero.is-fullheight-with-navbar {
+    min-height: calc(100vh - 4.5rem);
+}
+
+/* Utility Classes */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-light {
+    background-color: var(--bg-light) !important;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand, .navbar-tabs {
+    align-items: stretch;
+    display: flex;
+    flex-shrink: 0;
+    min-height: 4.25rem;
+    font-size: 2rem;
+}
+.brand-text
+
+.infra-nav-item {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.infra-nav-item:hover {
+    color: var(--primary-color);
+}
+
+.infra-signup-btn {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.infra-signup-btn:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.infra-login-btn {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.infra-login-btn:hover {
+    background-color: #f9fafb;
+}
+
+/* Button Styles */
+.infra-primary-btn {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.infra-primary-btn:hover {
+    background-color: var(--primary-dark) !important;
+}
+
+.infra-outlined-btn {
+    color: var(--text-dark) !important;
+    border-color: var(--card-border) !important;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    transition: border-color 0.2s ease;
+}
+
+.infra-outlined-btn:hover {
+    border-color: var(--text-light) !important;
+    background-color: transparent !important;
+}
+
+/* Feature Cards */
+.infra-feature-card {
+    height: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.infra-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+}
+
+.infra-feature-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(255, 108, 55, 0.1);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Feature List Styles */
+.infra-feature-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.infra-feature-item {
+    display: flex;
+    align-items: flex-start;
+}
+
+.infra-check-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+}
+
+.infra-feature-text {
+    flex: 1;
+}
+
+/* Hero Image */
+.hero-image-container {
+    max-width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    width: auto;
+    max-width: 95%;
+    height: auto;
+    max-height: 450px;
+    object-fit: contain;
+}
+
+/* Monitoring Dashboard */
+.monitoring-dashboard-container {
+    position: relative;
+}
+
+.dashboard-browser-frame {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.browser-controls {
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.browser-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.browser-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+}
+
+.browser-dot:nth-child(1) {
+    background-color: #ef4444;
+}
+
+.browser-dot:nth-child(2) {
+    background-color: #f59e0b;
+}
+
+.browser-dot:nth-child(3) {
+    background-color: #10b981;
+}
+
+.dashboard-content {
+    padding: 0;
+    overflow: hidden;
+}
+
+.dashboard-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Link with arrow */
+.infra-link-arrow {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.infra-link-arrow:hover {
+    color: var(--primary-dark);
+}
+
+.infra-link-arrow svg {
+    transition: transform 0.2s ease;
+}
+
+.infra-link-arrow:hover svg {
+    transform: translateX(4px);
+}
+
+/* Testimonial Section */
+.infra-testimonial-section {
+    background-color: #1F2937;
+    color: white;
+}
+
+.infra-testimonial-card {
+    height: 100%;
+    background-color: #374151;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.infra-testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.infra-avatar {
+    width: 3rem;
+    height: 3rem;
+    background-color: #4B5563;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+/* CTA Box */
+.infra-cta-box {
+    background: linear-gradient(to right, #f9fafb, #f3f4f6);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.infra-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Footer Styles */
+.infra-footer {
+    background-color: #1F2937;
+    color: white;
+    padding-bottom: 2rem;
+}
+
+.infra-footer-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.infra-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.infra-footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.infra-footer-links a {
+    color: #9CA3AF;
+    transition: color 0.2s ease;
+}
+
+.infra-footer-links a:hover {
+    color: white;
+}
+
+.infra-social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.infra-social-icon {
+    color: #9CA3AF;
+    transition: color 0.2s ease;
+}
+
+.infra-social-icon:hover {
+    color: white;
+}
+
+.infra-footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+    color: #9CA3AF;
+    font-size: 0.875rem;
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.6s ease-in;
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1280px) {
+    .hero-image {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .hero-image-container {
+        max-width: 85%;
+    }
+    
+    .hero-image {
+        max-height: 350px;
+    }
+    
+    .monitoring-content {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-image-container {
+        max-width: 80%;
+    }
+    
+    .hero-image {
+        max-height: 300px;
+    }
+    
+    .infra-cta-buttons {
+        flex-direction: column;
+    }
+    
+    .infra-cta-box {
+        padding: 2rem 1.5rem;
+    }
+
+    .devops-tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .tool-item {
+        padding: 1rem;
+    }
+
+    .tool-item i {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .devops-tools-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* DevOps Tools Grid */
+.devops-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tool-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.tool-item:hover {
+    transform: translateY(-5px);
+}
+
+.tool-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.tool-item span {
+    display: block;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* Demo Chat Container */
+.demo-chat-container {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.demo-message,
+.demo-response {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+
+.demo-message {
+    background: var(--bg-light);
+}
+
+.demo-response {
+    background: var(--light-orange);
+}
+
+.demo-response ul {
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+    list-style-type: disc;
+}
+
+.demo-response li {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}

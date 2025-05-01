@@ -1,0 +1,681 @@
+{% extends 'base.html' %}
+
+{% block title %}Infrastructure Intelligence | Infranaut.ai{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero is-medium">
+        <div class="hero-body pt-12 pb-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                    <div class="lg:col-span-6">
+                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                            AI-Powered <span class="text-primary">Infrastructure Intelligence</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8">
+                            Gain unprecedented visibility into your cloud infrastructure with AI-driven monitoring, diagnostics, and automated root cause analysis.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#try-free" class="button is-primary infra-primary-btn">
+                                Try For Free
+                            </a>
+                            <a href="#schedule-demo" class="button is-outlined infra-outlined-btn">
+                                Schedule a Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-12 lg:mt-0 lg:col-span-6">
+                        <div class="hero-image-container">
+                            <img src="{{ url_for('static', filename='css/images/infrastructure.jpeg') }}" 
+                                 alt="Infrastructure Intelligence Dashboard" 
+                                 class="hero-image"
+                                 loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section id="key-features" class="section bg-light py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="has-text-centered mb-16">
+                <h2 class="text-3xl font-bold mb-4">Complete Infrastructure Visibility</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive monitoring and diagnostics for your entire infrastructure stack.
+                </p>
+            </div>
+            
+            <div class="columns is-multiline">
+                <!-- Feature 1 -->
+                <div class="column is-6-tablet is-4-desktop">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Docker & Kubernetes Monitoring</h3>
+                            <p class="text-gray-600">
+                                Comprehensive online and offline monitoring for containers, pods, and nodes with automatic resource tracking.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="column is-6-tablet is-4-desktop">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Prometheus Metrics Integration</h3>
+                            <p class="text-gray-600">
+                                Seamless ingestion of Prometheus metrics with AI-powered anomaly detection to identify issues before they impact users.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="column is-6-tablet is-4-desktop">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Grafana Dashboard Optimization</h3>
+                            <p class="text-gray-600">
+                                Automatic analysis of Grafana dashboards to identify unused panels, misconfigured alerts, and optimization opportunities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="column is-6-tablet is-4-desktop">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Intelligent Log Management</h3>
+                            <p class="text-gray-600">
+                                Advanced log collection and contextualization for Loki, Fluentd, and other logging systems with correlation across services.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="column is-6-tablet is-4-desktop">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Pod Health Diagnostics</h3>
+                            <p class="text-gray-600">
+                                Real-time diagnostics for common pod failures like CrashLoopBackOff and OOMKilled with actionable remediation steps.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="column is-6-tablet is-4-desktop">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">AI Root Cause Analysis</h3>
+                            <p class="text-gray-600">
+                                Automated root cause identification with NLP-powered summaries that explain complex issues in plain language.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Demo Section -->
+    <section id="dashboard-demo" class="section py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="columns is-vcentered">
+                <div class="column is-5-desktop">
+                    <div class="dashboard-content">
+                        <h2 class="text-3xl font-bold mb-6">Proactive Infrastructure Management</h2>
+                        <p class="text-lg text-gray-600 mb-8">
+                            Stop firefighting and start preventing problems before they impact your services. Our AI continually learns from your infrastructure's behavior patterns.
+                        </p>
+                        
+                        <div class="infra-feature-list">
+                            <div class="infra-feature-item">
+                                <div class="infra-check-icon">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="infra-feature-text">
+                                    <h4 class="text-lg font-medium">Predictive Resource Planning</h4>
+                                    <p class="text-gray-600 mt-1">Forecast resource needs based on historical usage patterns and growth trends.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="infra-feature-item">
+                                <div class="infra-check-icon">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="infra-feature-text">
+                                    <h4 class="text-lg font-medium">Service Correlation</h4>
+                                    <p class="text-gray-600 mt-1">Automatically map dependencies between services to identify cascade failures.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="infra-feature-item">
+                                <div class="infra-check-icon">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="infra-feature-text">
+                                    <h4 class="text-lg font-medium">Automated Remediation</h4>
+                                    <p class="text-gray-600 mt-1">Configure automated responses to common issues based on learned patterns.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column is-7-desktop">
+                    <div class="monitoring-dashboard-container">
+                        <div class="dashboard-browser-frame">
+                            <div class="browser-controls">
+                                <div class="browser-dots">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                </div>
+                            </div>
+                            <div class="dashboard-content">
+                                <img src="{{ url_for('static', filename='css/images/k8_infra.png') }}" 
+                                     alt="Kubernetes Monitoring Dashboard" 
+                                     class="dashboard-img"
+                                     loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="section bg-light py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="has-text-centered mb-16">
+                <h2 class="text-3xl font-bold mb-4">Real-World Use Cases</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    See how companies are transforming their infrastructure monitoring with Infranaut.
+                </p>
+            </div>
+            
+            <div class="columns is-multiline">
+                <!-- Use Case 1 -->
+                <div class="column is-12-tablet is-4-desktop">
+                    <div class="card h-100">
+                        <div class="card-content">
+                            <h3 class="title is-4 mb-4">E-Commerce Platform</h3>
+                            <p class="mb-4">An e-commerce platform reduced downtime by 93% during peak sales periods by using our predictive monitoring.</p>
+                            <div class="content">
+                                <ul class="mt-4">
+                                    <li>Detected memory leaks 3 hours before impact</li>
+                                    <li>Automated scaling based on traffic patterns</li>
+                                    <li>Reduced alert noise by 78%</li>
+                                </ul>
+                            </div>
+                            <p class="has-text-weight-semibold mt-4">
+                                "Infranaut's AI predictions saved our Black Friday sale."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Use Case 2 -->
+                <div class="column is-12-tablet is-4-desktop">
+                    <div class="card h-100">
+                        <div class="card-content">
+                            <h3 class="title is-4 mb-4">SaaS Provider</h3>
+                            <p class="mb-4">A B2B SaaS company improved MTTR by 68% using our root cause analysis and automated diagnostics.</p>
+                            <div class="content">
+                                <ul class="mt-4">
+                                    <li>Identified DB query bottlenecks automatically</li>
+                                    <li>Correlated logs across 200+ microservices</li>
+                                    <li>Generated plain-language incident reports</li>
+                                </ul>
+                            </div>
+                            <p class="has-text-weight-semibold mt-4">
+                                "Like having an expert SRE team that never sleeps."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Use Case 3 -->
+                <div class="column is-12-tablet is-4-desktop">
+                    <div class="card h-100">
+                        <div class="card-content">
+                            <h3 class="title is-4 mb-4">Financial Services</h3>
+                            <p class="mb-4">A fintech startup reduced cloud costs by 42% while improving performance using our resource optimization.</p>
+                            <div class="content">
+                                <ul class="mt-4">
+                                    <li>Right-sized Kubernetes deployments</li>
+                                    <li>Optimized pod scheduling across nodes</li>
+                                    <li>Identified and eliminated zombie resources</li>
+                                </ul>
+                            </div>
+                            <p class="has-text-weight-semibold mt-4">
+                                "The ROI was immediate and substantial."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section id="integrations" class="section bg-light py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="has-text-centered mb-16">
+                <h2 class="text-3xl font-bold mb-4">Seamless Integrations</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Works with your existing infrastructure tools and platforms.
+                </p>
+            </div>
+            
+            <div class="devops-tools-grid">
+                <div class="devops-tool-item">
+                    <i class="fa-solid fa-dharmachakra fa-3x" aria-hidden="true"></i>
+                    <span>Kubernetes</span>
+                </div>
+                <div class="devops-tool-item">
+                    <i class="fab fa-docker fa-3x" aria-hidden="true"></i>
+                    <span>Docker</span>
+                </div>
+                <div class="devops-tool-item">
+                    <i class="fas fa-chart-line fa-3x" aria-hidden="true"></i>
+                    <span>Prometheus</span>
+                </div>
+                <div class="devops-tool-item">
+                    <i class="fas fa-tachometer-alt fa-3x" aria-hidden="true"></i>
+                    <span>Grafana</span>
+                </div>
+                <div class="devops-tool-item">
+                    <i class="fas fa-stream fa-3x" aria-hidden="true"></i>
+                    <span>Loki</span>
+                </div>
+                <div class="devops-tool-item">
+                    <i class="fas fa-water fa-3x" aria-hidden="true"></i>
+                    <span>Fluentd</span>
+                </div>
+                
+                
+            
+            <div class="has-text-centered mt-12">
+                <a href="#all-integrations" class="infra-link-arrow">
+                    View all integrations
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section (Specific to Infrastructure) -->
+    <section class="section infra-testimonial-section py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="columns">
+                <div class="column is-10-tablet is-8-desktop is-offset-1-tablet is-offset-2-desktop">
+                    <div class="testimonial-quote">
+                        <div class="quote-icon mb-6">
+                            <svg class="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                            </svg>
+                        </div>
+                        <blockquote class="text-2xl font-medium text-white mb-8">
+                            "Before Infranaut, our team spent hours digging through logs and metrics to diagnose production issues. Now, the AI identifies root causes within minutes and even suggests fixes. It's like having an expert SRE team that works 24/7."
+                        </blockquote>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-600 mr-4"></div>
+                            <div>
+                                <p class="font-semibold text-white">Michael Chen</p>
+                                <p class="text-gray-400">VP of Engineering, TechCloud Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="infra-cta-box">
+                <h2 class="text-3xl font-bold mb-6">Start Monitoring Smarter Today</h2>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Deploy in minutes, not days. No agents required.
+                </p>
+                <div class="infra-cta-buttons">
+                    <a href="#try-free" class="button is-primary infra-primary-btn">
+                        Start Free 14-Day Trial
+                    </a>
+                    <a href="#schedule-demo" class="button is-outlined infra-outlined-btn">
+                        Request Live Demo
+                    </a>
+                </div>
+                <p class="mt-6 text-sm text-gray-500">No credit card required. Full featured trial.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block extra_css %}
+<style>
+/* DevOps Tools Grid */
+.devops-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.devops-tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out both;
+    animation-play-state: paused;
+}
+
+.devops-tool-item.animate {
+    animation-play-state: running;
+}
+
+.devops-tool-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.devops-tool-item i {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.devops-tool-item span {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* Staggered animation for tools grid */
+.devops-tool-item:nth-child(1) { animation-delay: 0.1s; }
+.devops-tool-item:nth-child(2) { animation-delay: 0.2s; }
+.devops-tool-item:nth-child(3) { animation-delay: 0.3s; }
+.devops-tool-item:nth-child(4) { animation-delay: 0.4s; }
+.devops-tool-item:nth-child(5) { animation-delay: 0.5s; }
+.devops-tool-item:nth-child(6) { animation-delay: 0.6s; }
+.devops-tool-item:nth-child(7) { animation-delay: 0.7s; }
+.devops-tool-item:nth-child(8) { animation-delay: 0.8s; }
+.devops-tool-item:nth-child(9) { animation-delay: 0.9s; }
+.devops-tool-item:nth-child(10) { animation-delay: 1.0s; }
+.devops-tool-item:nth-child(11) { animation-delay: 1.1s; }
+.devops-tool-item:nth-child(12) { animation-delay: 1.2s; }
+
+/* Use cases */
+.card.h-100 {
+    height: 100%;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+
+.card.h-100.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Feature cards animation */
+.infra-feature-card {
+    transform: translateY(40px);
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.infra-feature-card.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Staggered animations for feature cards */
+.column:nth-child(1) .infra-feature-card { transition-delay: 0.1s; }
+.column:nth-child(2) .infra-feature-card { transition-delay: 0.2s; }
+.column:nth-child(3) .infra-feature-card { transition-delay: 0.3s; }
+.column:nth-child(4) .infra-feature-card { transition-delay: 0.4s; }
+.column:nth-child(5) .infra-feature-card { transition-delay: 0.5s; }
+.column:nth-child(6) .infra-feature-card { transition-delay: 0.6s; }
+
+/* Hero image animation */
+.hero-image-container img {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hero-image-container.animate img {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Dashboard animation */
+.dashboard-browser-frame {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.8s ease-out;
+}
+
+.dashboard-browser-frame.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Feature list animation */
+.infra-feature-item {
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: all 0.5s ease-out;
+}
+
+.infra-feature-item.animate {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.infra-feature-item:nth-child(1) { transition-delay: 0.2s; }
+.infra-feature-item:nth-child(2) { transition-delay: 0.4s; }
+.infra-feature-item:nth-child(3) { transition-delay: 0.6s; }
+
+/* Testimonial animation */
+.testimonial-quote {
+    position: relative;
+    padding: 2rem;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease-out;
+}
+
+.testimonial-quote.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Section title animations */
+.section h2 {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.6s ease-out;
+}
+
+.section h2.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.section p.max-w-3xl {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.6s ease-out;
+    transition-delay: 0.2s;
+}
+
+.section p.max-w-3xl.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* CTA box animation */
+.infra-cta-box {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+
+.infra-cta-box.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .devops-tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+    
+    .devops-tool-item {
+        padding: 1rem;
+    }
+    
+    .devops-tool-item i {
+        font-size: 2rem;
+    }
+}
+
+/* Make sure code examples look good */
+pre {
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+</style>
+
+<!-- Add JavaScript for scroll animation triggers -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer to trigger animations when elements come into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                // Once the animation has played, we can unobserve the element
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1, // Trigger when at least 10% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger a bit before the element comes into view
+    });
+    
+    // Elements to animate
+    const elements = document.querySelectorAll(
+        '.hero-image-container, .infra-feature-card, .devops-tool-item, ' +
+        '.card.h-100, .dashboard-browser-frame, .infra-feature-item, ' +
+        '.testimonial-quote, .section h2, .section p.max-w-3xl, .infra-cta-box'
+    );
+    
+    // Observe each element
+    elements.forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Trigger hero section animation immediately
+    setTimeout(() => {
+        document.querySelector('.hero-image-container').classList.add('animate');
+    }, 300);
+});
+</script>
+{% endblock %}

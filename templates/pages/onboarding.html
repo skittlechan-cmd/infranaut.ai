@@ -1,0 +1,417 @@
+{% extends 'base.html' %}
+
+{% block title %}AI-Powered Onboarding & Knowledge Sharing | Infranaut.ai{% endblock %}
+
+{% block content %}
+    <!-- Hero Section with Knowledge Graph Background -->
+    <section class="hero is-medium onboarding-hero">
+        <div class="knowledge-graph-bg"></div>
+        <div class="hero-body pt-12 pb-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center"> {# Increased gap slightly #}
+                    <div class="lg:col-span-6 slide-in-up">
+                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                            Smart <span class="text-gradient">Onboarding</span> & Knowledge Sharing
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-6"> {# Reduced bottom margin #}
+                            Get new team members productive faster with AI-curated documentation, interactive tutorials, and an intelligent knowledge base.
+                        </p>
+                        {# NEW: Benefit Bullets #}
+                        <ul class="space-y-2 mb-8 text-gray-600">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                <span>Accelerate time-to-productivity for new hires.</span>
+                            </li>
+                            <li class="flex items-start">
+                               <svg class="w-5 h-5 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                <span>Reduce repetitive questions and support load on senior staff.</span>
+                            </li>
+                             <li class="flex items-start">
+                                <svg class="w-5 h-5 text-primary mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                <span>Ensure consistent knowledge access across your entire team.</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#try-free" class="button is-primary infra-primary-btn glow-effect">
+                                Try For Free
+                            </a>
+                            <a href="#schedule-demo" class="button is-outlined infra-outlined-btn glass-effect">
+                                Schedule a Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-6 slide-in-up" data-delay="0.1s"> {# Use data-delay #}
+                        <div class="hero-image-container mt-8 lg:mt-0"> {# Add margin top on mobile #}
+                            <img src="{{ url_for('static', filename='css/images/onboard.jpeg') }}"
+                                 alt="AI Knowledge Assistant visualizing connections"
+                                 class="hero-image rounded-lg shadow-xl" {# Added styling #}
+                                 loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features Section -->
+    <section id="features" class="section py-16 md:py-20 glass-section">
+        <div class="glass-blur-bg"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="has-text-centered mb-16 slide-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Intelligent Knowledge Management</h2>
+                <div class="gradient-line"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+                    Turn scattered information into an accessible, intelligent knowledge hub that empowers your team.
+                </p>
+            </div>
+
+            <div class="knowledge-grid">
+                <!-- Smart FAQ/Chat -->
+                <div class="knowledge-card slide-in-up" data-delay="0s">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="feature-icon-wrapper">
+                            <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">AI Knowledge Assistant</h3>
+                        <p class="text-gray-600">
+                            Instant, context-aware answers. Ask questions in natural language about code, processes, and documentation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Doc Generation -->
+                <div class="knowledge-card slide-in-up" data-delay="0.1s">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="feature-icon-wrapper">
+                             <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Smart Documentation</h3>
+                        <p class="text-gray-600">
+                           Keep documentation alive. AI automatically suggests updates and generates summaries from code and conversations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Progress Tracking -->
+                <div class="knowledge-card slide-in-up" data-delay="0.2s">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="feature-icon-wrapper">
+                           <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Personalized Onboarding</h3>
+                        <p class="text-gray-600">
+                            Guide new hires with tailored learning paths, interactive checklists, and progress monitoring powered by AI insights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- NEW: How It Works Section -->
+    <section id="how-it-works" class="section py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <span class="text-sm font-semibold uppercase tracking-wider text-primary mb-2 block">HOW IT WORKS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple Steps to Intelligent Knowledge</h2>
+                <div class="gradient-line"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+                    Connect your data sources, let our AI engine work its magic, and empower your team.
+                </p>
+            </div>
+
+            <div class="how-it-works-grid">
+                <!-- Step 1 -->
+                <div class="step-card slide-in-up" data-delay="0s">
+                    <div class="step-icon-wrapper">
+                       <svg class="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">1. Ingest Data</h3>
+                    <p class="text-gray-600">Connect code repositories (GitHub, GitLab), documentation (Confluence, Google Docs), Slack channels, and more.</p>
+                </div>
+                <!-- Step 2 -->
+                 <div class="step-card slide-in-up" data-delay="0.1s">
+                    <div class="step-icon-wrapper">
+                       <svg class="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">2. AI Analyzes</h3>
+                    <p class="text-gray-600">Our AI builds a knowledge graph, understands context, identifies experts, and structures information.</p>
+                </div>
+                <!-- Step 3 -->
+                 <div class="step-card slide-in-up" data-delay="0.2s">
+                    <div class="step-icon-wrapper">
+                        <svg class="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">3. Team Interacts</h3>
+                    <p class="text-gray-600">Users ask questions, get curated docs, follow onboarding paths, and discover relevant knowledge instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="section py-16 md:py-20 interactive-demo-section bg-light"> {# Added bg-light #}
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="columns is-vcentered">
+                <div class="column is-5 slide-in-up" data-delay="0s">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Interactive Knowledge Portal</h2>
+                    <div class="gradient-line mb-6"></div>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Experience how our AI assistant helps team members get up to speed quickly by providing contextual answers and guidance, right within their workflow.
+                    </p>
+                    <div class="chat-demo glass-effect">
+                        <div class="chat-message user-message">
+                            "How do I set up project X for local development?"
+                        </div>
+                        <div class="chat-message ai-message">
+                            {# REMOVED Typing Indicator Div #}
+                            <div class="ai-response"> {# Response shows directly now #}
+                                Here's a step-by-step guide based on our latest `README.md` and setup scripts:
+                                <ol class="mt-2 list-decimal list-inside text-sm space-y-1"> {# More specific list style #}
+                                    <li>Clone the repository: `git clone ...`</li>
+                                    <li>Install dependencies: `npm install`</li>
+                                    <li>Configure environment variables (see `.env.example`)</li>
+                                    <li>Run database migrations: `npm run db:migrate`</li>
+                                    <li>Start the dev server: `npm run dev`</li>
+                                </ol>
+                                <p class="mt-2 text-sm">Would you like me to show you the relevant section in the documentation?</p> {# Refined follow-up #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-7 slide-in-up" data-delay="0.1s">
+                    <div class="knowledge-portal-frame">
+                        <div class="frame-header">
+                            <div class="frame-dots"><span></span><span></span><span></span></div>
+                            <span class="frame-title">Infranaut Knowledge Hub</span> {# Optional title #}
+                        </div>
+                        <div class="frame-content">
+                            {# UPDATED: Dashboard Placeholder #}
+                            <div class="content-placeholder dashboard-placeholder">
+                                <div class="placeholder-wave"></div>
+                                <div class="dashboard-grid">
+                                    <div class="dashboard-module slide-in-up" data-delay="0.2s">
+                                        <h4 class="module-title">🚀 My Onboarding Tasks</h4>
+                                        <ul class="module-list">
+                                            <li><span class="task-icon done">✅</span> Setup Dev Environment</li>
+                                            <li><span class="task-icon pending">⏳</span> Review Architecture Docs</li>
+                                            <li><span class="task-icon pending">⚪</span> Complete Security Training</li>
+                                        </ul>
+                                    </div>
+                                    <div class="dashboard-module slide-in-up" data-delay="0.3s">
+                                        <h4 class="module-title">📚 Key Documents</h4>
+                                        <ul class="module-list">
+                                            <li>📄 Project X README.md</li>
+                                            <li>📄 API Style Guide</li>
+                                            <li>📄 Deployment Process</li>
+                                        </ul>
+                                    </div>
+                                     <div class="dashboard-module full-width slide-in-up" data-delay="0.4s">
+                                        <h4 class="module-title">🤖 Ask AI Assistant</h4>
+                                        <div class="ai-ask-box">
+                                            <span>e.g., "What's the process for a hotfix?"</span>
+                                            <button class="ask-button">Ask</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Base variables (Assuming these are defined in base.html or imported) */
+:root {
+    --primary-color: #FF6633; /* Example Primary */
+    --secondary-color: #3B82F6; /* Example Secondary */
+     --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --bg-light: #f9fafb; /* Added light background */
+    --white: #ffffff;
+     /* Animation Vars */
+    --animation-duration: 0.6s;
+    --animation-timing: ease-out;
+    --slide-delay: 0s; /* Default delay for slide-in */
+}
+
+/* Hero Section */
+.onboarding-hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); }
+.knowledge-graph-bg { position: absolute; inset: 0; background: radial-gradient(circle at 10% 20%, rgba(255,108,55,0.08) 0%, transparent 25%), radial-gradient(circle at 90% 80%, rgba(59,130,246,0.08) 0%, transparent 25%), radial-gradient(circle at 50% 50%, rgba(139,92,246,0.04) 0%, transparent 40%); opacity: 0.8; z-index: 0; }
+.hero-image { border-radius: 0.75rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+/* Text Gradient */
+.text-gradient { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Gradient Line */
+.gradient-line { height: 3px; width: 80px; margin: 1rem auto; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); border-radius: 3px; }
+.columns .gradient-line { margin: 0 0 1.5rem 0; width: 60px;} /* Adjusted for non-centered */
+
+/* Glass Effect Styles */
+.glass-section { position: relative; background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.75)); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); overflow: hidden; }
+.glass-blur-bg { position: absolute; inset: 0; background: radial-gradient(circle at 0% 0%, rgba(255,108,55,0.07) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(59,130,246,0.07) 0%, transparent 50%); z-index: -1; }
+.glass-effect { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 1rem; }
+
+/* Knowledge Grid & Cards */
+.knowledge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.knowledge-card { position: relative; background: rgba(255, 255, 255, 0.95); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.knowledge-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+.card-glow { position: absolute; inset: 0; background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,108,55,0.1) 0%, transparent 60%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+.knowledge-card:hover .card-glow { opacity: 1; }
+.card-content { position: relative; padding: 2rem; z-index: 1; }
+.feature-icon-wrapper { width: 3.5rem; height: 3.5rem; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 1rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.feature-icon { width: 1.75rem; height: 1.75rem; }
+
+/* How It Works Section */
+.how-it-works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.step-card { background-color: var(--white); border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.07); border: 1px solid var(--border-color); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.step-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.step-icon-wrapper { width: 4rem; height: 4rem; background: var(--accent-color, #FFF0EB); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto; color: var(--primary-color); }
+.step-icon { width: 2rem; height: 2rem; }
+
+/* Interactive Demo Section */
+.interactive-demo-section { position: relative; overflow: hidden; background-color: var(--bg-light); }
+.knowledge-portal-frame { background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
+.frame-header { background: #f1f5f9; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+.frame-dots { display: flex; gap: 0.5rem; }
+.frame-dots span { width: 12px; height: 12px; border-radius: 50%; }
+.frame-dots span:nth-child(1) { background: #ff5f57; } .frame-dots span:nth-child(2) { background: #ffbd2e; } .frame-dots span:nth-child(3) { background: #28c941; }
+.frame-title { font-size: 0.8rem; color: #64748b; font-weight: 500; }
+.frame-content { padding: 1.5rem; }
+
+/* UPDATED Content Placeholder Styles */
+.content-placeholder.dashboard-placeholder { position: relative; overflow: hidden; min-height: 350px; background: rgba(241, 245, 249, 0.6); /* Lighter bg */ border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(226, 232, 240, 0.8); box-shadow: inset 0 2px 4px rgba(0,0,0,0.03); }
+.placeholder-wave { /* Keep wave */ position: absolute; top: 0; left: 0; right: 0; height: 100px; background: linear-gradient(135deg, rgba(255,108,55,0.06) 0%, rgba(59,130,246,0.06) 100% ); border-radius: 0 0 50% 50% / 0 0 30% 30%; transform: scaleX(1.5); animation: waveAnimation 10s ease-in-out infinite alternate; }
+.dashboard-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; /* Space from top */ }
+.dashboard-module { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); border-radius: 0.75rem; padding: 1rem 1.25rem; border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.dashboard-module.full-width { grid-column: 1 / -1; } /* Make AI ask span full width */
+.module-title { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.75rem; }
+.module-list { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: var(--text-muted); space-y: 0.5rem; }
+.module-list li { display: flex; align-items: center; }
+.module-list .task-icon { margin-right: 0.5em; font-size: 0.8em; }
+.task-icon.done { color: #10b981; }
+.task-icon.pending { color: #f59e0b; }
+.ai-ask-box { background-color: #f8fafc; border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.5rem 0.75rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: #94a3b8; }
+.ask-button { background-color: var(--primary-color); color: white; border: none; border-radius: 0.375rem; padding: 0.3rem 0.8rem; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease; }
+.ask-button:hover { background-color: #E85D2F; } /* Darker primary */
+
+@keyframes waveAnimation { from { transform: scaleX(1.5) translateY(-10px); } to { transform: scaleX(1.5) translateY(0px); } }
+
+/* REMOVED Placeholder Line/Item styles */
+
+/* Chat Demo */
+.chat-demo { padding: 1.5rem; margin-top: 2rem; }
+.chat-message { margin-bottom: 1.5rem; padding: 1rem 1.5rem; border-radius: 0.75rem; max-width: 90%; line-height: 1.5; }
+.user-message { background: rgba(255, 255, 255, 0.7); margin-left: auto; border: 1px solid rgba(255, 255, 255, 0.4); color: #374151; }
+.ai-message { background: linear-gradient(135deg, rgba(255,108,55,0.08), rgba(59,130,246,0.08)); margin-right: auto; border: 1px solid rgba(220, 220, 240, 0.5); color: #4b5563; }
+.ai-response { opacity: 1; transition: opacity 0.5s ease-in; } /* Ensure response is visible */
+.ai-response ol li::marker { color: var(--primary-color); font-weight: 500; }
+
+/* REMOVED Typing Indicator */
+/* .ai-typing-indicator {...} */
+/* @keyframes typing {...} */
+
+/* Slide-In Animation */
+.slide-in-up { opacity: 0; transform: translateY(30px); transition: opacity var(--animation-duration) var(--animation-timing), transform var(--animation-duration) var(--animation-timing); transition-delay: var(--slide-delay); }
+.slide-in-up.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Glow Effect */
+.glow-effect { position: relative; overflow: hidden; }
+.glow-effect::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%); transform: rotate(45deg); animation: glow 3s linear infinite; opacity: 0.6; pointer-events: none; }
+@keyframes glow { 0% { transform: rotate(45deg) translateX(-150%) translateY(50%); } 100% { transform: rotate(45deg) translateX(50%) translateY(-150%); } }
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) { /* Tablet */
+    .lg\:grid-cols-12 { grid-template-columns: 1fr; }
+    .lg\:col-span-6:last-child { margin-top: 2.5rem; }
+    .how-it-works-grid { grid-template-columns: 1fr; gap: 1.5rem;} /* Stack steps earlier */
+}
+
+@media (max-width: 768px) { /* Mobile */
+    .hero-body { padding-top: 3rem; padding-bottom: 4rem;}
+    .text-4xl { font-size: 2.25rem; line-height: 1.3; } /* Slightly smaller H1 */
+    .text-5xl { font-size: 2.75rem; line-height: 1.3; }
+    .text-xl { font-size: 1.1rem; }
+    .text-lg { font-size: 1rem; }
+    .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+    .py-20 { padding-top: 4rem; padding-bottom: 4rem; }
+    .mb-16 { margin-bottom: 3rem; }
+
+    .knowledge-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .how-it-works-grid { grid-template-columns: 1fr; gap: 1.5rem; } /* Already stacked */
+    .step-card { padding: 1.5rem; }
+
+    .columns.is-vcentered { flex-direction: column-reverse; } /* Stack demo */
+    .column.is-5, .column.is-7 { width: 100%; }
+    .column.is-7 { margin-top: 2.5rem; margin-bottom: 0;} /* Adjust spacing */
+    .chat-demo { margin-top: 1.5rem; padding: 1rem;}
+    .chat-message { padding: 0.75rem 1rem; }
+
+    .dashboard-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; } /* Stack dashboard modules */
+    .dashboard-module { padding: 0.75rem 1rem; }
+    .module-title { font-size: 0.85rem; margin-bottom: 0.5rem;}
+    .module-list { font-size: 0.8rem; }
+    .ai-ask-box { font-size: 0.8rem; padding: 0.4rem 0.6rem;}
+    .ask-button { font-size: 0.75rem; padding: 0.25rem 0.6rem;}
+
+     /* Ensure hero buttons stack nicely */
+    .hero .flex-col { gap: 0.75rem; }
+}
+</style>
+{% endblock %}
+
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mouse move effect for knowledge cards
+    const cards = document.querySelectorAll('.knowledge-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // REMOVED Simulate typing animation function (typeMessage)
+
+    // Intersection Observer for slide-in animations
+    const slideUpElements = document.querySelectorAll('.slide-in-up');
+
+    const observerOptions = {
+        root: null, // Viewport
+        rootMargin: '0px 0px -50px 0px', // Trigger slightly before element bottom hits viewport bottom
+        threshold: 0 // Trigger as soon as any part enters the margin
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Apply delay from data-delay attribute or inline style
+                const delay = entry.target.dataset.delay || entry.target.style.transitionDelay || '0s';
+                entry.target.style.setProperty('--slide-delay', delay);
+
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Stop observing once visible
+            }
+        });
+    };
+
+    const slideObserver = new IntersectionObserver(observerCallback, observerOptions);
+    slideUpElements.forEach(el => slideObserver.observe(el));
+
+});
+</script>
+{% endblock %}

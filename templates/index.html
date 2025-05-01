@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero is-fullheight-with-navbar">
+        <div class="hero-body">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                    <div class="lg:col-span-6 flex flex-col justify-center">
+                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                            Your AI Copilot for <span class="text-primary">Cloud Infrastructure</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8">
+                            Infranaut.ai intelligently manages, monitors, and optimizes your cloud infrastructure with AI-driven insights and automated deployments.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#start" class="button is-primary infra-primary-btn">
+                                Start Free Trial
+                            </a>
+                            <a href="#demo" class="button is-outlined infra-outlined-btn">
+                                Watch Demo
+                            </a>
+                        </div>
+                        <div class="mt-8 flex items-center">
+                            <p class="text-sm text-gray-500">Trusted by engineering teams at</p>
+                            <div class="ml-4 flex space-x-4 opacity-70">
+                                <span class="text-gray-500 font-medium">Acme</span>
+                                <span class="text-gray-500 font-medium">TechCorp</span>
+                                <span class="text-gray-500 font-medium">DevLabs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-12 lg:mt-0 lg:col-span-6">
+                        <div class="hero-image-container">
+                            <img src="{{ url_for('static', filename='css/images/robotman.png') }}" 
+                                 alt="Infranaut Dashboard" 
+                                 class="hero-image"
+                                 loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section bg-light py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="has-text-centered mb-16">
+                <h2 class="text-3xl font-bold mb-4">AI-Powered Infrastructure Management</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Infranaut combines machine learning with infrastructure expertise to optimize your cloud operations.
+                </p>
+            </div>
+            
+            <div class="columns is-desktop">
+                <!-- Feature 1 -->
+                <div class="column">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Intelligent Deployments</h3>
+                            <p class="text-gray-600">
+                                Our AI analyzes deployment patterns and recommends optimal configurations to minimize downtime and maximize performance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="column">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Predictive Monitoring</h3>
+                            <p class="text-gray-600">
+                                Detect potential issues before they become problems with machine learning models trained on millions of infrastructure incidents.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="column">
+                    <div class="card infra-feature-card">
+                        <div class="card-content">
+                            <div class="infra-feature-icon">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3">Automated Cost Optimization</h3>
+                            <p class="text-gray-600">
+                                Automatically identify cost-saving opportunities and implement right-sizing recommendations for your cloud resources.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monitoring Section -->
+    <section id="monitoring" class="section infra-monitoring-section py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="columns is-vcentered">
+                <div class="column is-5-desktop">
+                    <div class="monitoring-content">
+                        <h2 class="text-3xl font-bold mb-6">Advanced Logging & Monitoring</h2>
+                        <p class="text-lg text-gray-600 mb-8">
+                            Get comprehensive visibility into your infrastructure with real-time monitoring, intelligent alerting, and AI-powered log analysis.
+                        </p>
+                        
+                        <div class="infra-feature-list">
+                            <div class="infra-feature-item">
+                                <div class="infra-check-icon">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="infra-feature-text">
+                                    <h4 class="text-lg font-medium">Anomaly Detection</h4>
+                                    <p class="text-gray-600 mt-1">Automatically identify unusual patterns in system behavior and resource utilization.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="infra-feature-item">
+                                <div class="infra-check-icon">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="infra-feature-text">
+                                    <h4 class="text-lg font-medium">Context-Aware Alerts</h4>
+                                    <p class="text-gray-600 mt-1">Receive intelligent alerts with actionable insights, not just raw notifications.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="infra-feature-item">
+                                <div class="infra-check-icon">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="infra-feature-text">
+                                    <h4 class="text-lg font-medium">Log Intelligence</h4>
+                                    <p class="text-gray-600 mt-1">AI-powered log analysis identifies root causes and suggests remediation steps.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="monitoring-cta mt-8">
+                            <a href="#learn-more" class="infra-link-arrow">
+                                Learn more about our monitoring capabilities
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column is-7-desktop">
+                    <div class="monitoring-dashboard-container">
+                        <div class="dashboard-browser-frame">
+                            <div class="browser-controls">
+                                <div class="browser-dots">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                </div>
+                            </div>
+                            <div class="dashboard-content">
+                                <img src="{{ url_for('static', filename='css/images/dashbord.png') }}" 
+                                     alt="Infranaut Dashboard" 
+                                     class="dashboard-img"
+                                     loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    {% include 'components/testimonial.html' %}
+
+    <!-- CTA Section -->
+    {% include 'components/cta.html' %}
+{% endblock %}
