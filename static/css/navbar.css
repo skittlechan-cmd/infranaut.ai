@@ -132,7 +132,7 @@ body {
 }
 
 /* Container Styling */
-.navbar > .container {
+.navbar>.container {
     display: flex;
     align-items: center;
     height: 100%;
@@ -145,7 +145,7 @@ body {
         box-shadow: none;
         padding: 0;
     }
-    
+
     .navbar-menu.is-active {
         display: block;
         position: absolute;
@@ -160,7 +160,7 @@ body {
         max-height: calc(100vh - var(--navbar-height));
         overflow-y: auto;
     }
-    
+
     .navbar-dropdown {
         display: none;
         padding: 0;
@@ -169,60 +169,62 @@ body {
         box-shadow: none;
         border-left: 3px solid var(--primary-color);
     }
-    
+
     .navbar-item.has-dropdown {
         padding: 0;
     }
-    
+
     .navbar-item.has-dropdown.is-active .navbar-dropdown {
         display: block;
         animation: fadeIn 0.2s ease-out;
     }
-    
+
     .navbar-dropdown .navbar-item {
         padding-left: 2rem;
         font-size: 0.95rem;
     }
-    
+
     .navbar-link:not(.is-arrowless)::after {
         border-color: var(--text-dark);
         transition: transform 0.2s ease;
     }
-    
+
     .navbar-item.has-dropdown.is-active .navbar-link:not(.is-arrowless)::after {
         transform: rotate(135deg);
     }
-    
+
     @keyframes slideDown {
         from {
             opacity: 0;
             transform: translateY(-10px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
         }
     }
-    
+
     @keyframes fadeIn {
         from {
             opacity: 0;
         }
+
         to {
             opacity: 1;
         }
     }
-    
+
     .navbar-menu.is-active .navbar-end {
         padding: 0.5rem 0;
         border-top: 1px solid #edf2f7;
     }
-    
+
     .navbar-menu.is-active .navbar-item {
         padding: 0.75rem 1.5rem;
         border-bottom: 1px solid #edf2f7;
     }
-    
+
     .navbar-menu.is-active .buttons {
         padding: 1rem 1.5rem;
         gap: 0.5rem;
@@ -234,14 +236,14 @@ body {
     .brand-text {
         font-size: 1.4rem;
     }
-    
+
     .navbar-menu.is-active .buttons {
         flex-direction: column;
         margin-top: 0.5rem;
         width: 100%;
         padding: 0 1.5rem;
     }
-    
+
     .navbar-menu.is-active .button {
         width: 100%;
         margin: 0.25rem 0 !important;

@@ -1,199 +1,642 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!-- Hero Section -->
-    <section class="hero is-fullheight-with-navbar">
-        <div class="hero-body">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-                    <div class="lg:col-span-6 flex flex-col justify-center">
-                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                            Your AI Copilot for <span class="text-primary">Cloud Infrastructure</span>
-                        </h1>
-                        <p class="text-xl text-gray-600 mb-8">
-                            Infranaut.ai intelligently manages, monitors, and optimizes your cloud infrastructure with AI-driven insights and automated deployments.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="#start" class="button is-primary infra-primary-btn">
-                                Start Free Trial
-                            </a>
-                            <a href="#demo" class="button is-outlined infra-outlined-btn">
-                                Watch Demo
-                            </a>
-                        </div>
-                        <div class="mt-8 flex items-center">
-                            <p class="text-sm text-gray-500">Trusted by engineering teams at</p>
-                            <div class="ml-4 flex space-x-4 opacity-70">
-                                <span class="text-gray-500 font-medium">Acme</span>
-                                <span class="text-gray-500 font-medium">TechCorp</span>
-                                <span class="text-gray-500 font-medium">DevLabs</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-12 lg:mt-0 lg:col-span-6">
-                        <div class="hero-image-container">
-                            <img src="{{ url_for('static', filename='css/images/robotman.png') }}" 
-                                 alt="Infranaut Dashboard" 
-                                 class="hero-image"
-                                 loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="section bg-light py-16">
+<!-- Hero Section -->
+<section class="hero is-fullheight-with-navbar">
+    <div class="hero-body">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="has-text-centered mb-16">
-                <h2 class="text-3xl font-bold mb-4">AI-Powered Infrastructure Management</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Infranaut combines machine learning with infrastructure expertise to optimize your cloud operations.
-                </p>
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="lg:col-span-6 flex flex-col justify-center">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        Your AI Copilot for <span class="text-gradient">Managing Infrastructure</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Infranaut.ai intelligently manages, monitors, and optimizes your cloud infrastructure with
+                        AI-driven insights and automated deployments.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#start" class="button is-primary infra-primary-btn">
+                            Start Free Trial
+                        </a>
+                        <a href="#demo" class="button is-outlined infra-outlined-btn">
+                            Watch Demo
+                        </a>
+                    </div>
+                    <div class="trusted-by">
+                        <p>Trusted by leading engineering teams worldwide</p>
+                        <div class="trusted-logos">
+                            <span class="trusted-logo">Amazon</span>
+                            <span class="trusted-logo">Microsoft</span>
+                            <span class="trusted-logo">Google Cloud</span>
+                            <span class="trusted-logo">IBM</span>
+                            <span class="trusted-logo">Oracle</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 lg:col-span-6">
+                    <div class="hero-image-container">
+                        <img src="{{ url_for('static', filename='css/images/robotman.png') }}" alt="Infranaut Dashboard"
+                            class="hero-image" loading="lazy">
+                    </div>
+                </div>
             </div>
-            
-            <div class="columns is-desktop">
-                <!-- Feature 1 -->
-                <div class="column">
-                    <div class="card infra-feature-card">
-                        <div class="card-content">
-                            <div class="infra-feature-icon">
-                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3">Intelligent Deployments</h3>
-                            <p class="text-gray-600">
-                                Our AI analyzes deployment patterns and recommends optimal configurations to minimize downtime and maximize performance.
-                            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="section bg-light py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="has-text-centered mb-16">
+            <h2 class="text-3xl font-bold mb-4">AI-Powered Infrastructure Management</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Infranaut combines machine learning with infrastructure expertise to optimize your cloud operations.
+            </p>
+        </div>
+
+        <div class="module-tabs">
+            <div class="tabs is-centered is-boxed">
+                <ul id="module-tabs-list">
+                    <li class="is-active" data-tab="infrastructure-intelligence"><a>Infrastructure Intelligence</a></li>
+                    <li data-tab="code-intelligence"><a>Code Intelligence</a></li>
+                    <li data-tab="devops-productivity"><a>DevOps Productivity</a></li>
+                    <li data-tab="cloud-migration"><a>Cloud Migration</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-content-container">
+            <!-- Infrastructure Intelligence Tab -->
+            <div id="infrastructure-intelligence" class="module-content active">
+                <div class="gradient-card">
+                    <div class="columns is-multiline">
+                        <div class="column is-12 mb-4">
+                            <h3 class="text-2xl font-semibold mb-2">Infrastructure Intelligence</h3>
+                            <p class="text-gray-600">Comprehensive monitoring and intelligent analysis of your
+                                infrastructure</p>
+                        </div>
+                        <div class="column is-6">
+                            <ul class="feature-list">
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Offline monitoring of Docker & Kubernetes (pods, nodes)</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Prometheus metrics ingestion & anomaly detection</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Grafana dashboard auto-analysis</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column is-6">
+                            <ul class="feature-list">
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Log collection & contextualization (Loki/Fluentd)</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Real-time pod health diagnostics</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Automated root-cause analysis with NLP summaries</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Feature 2 -->
-                <div class="column">
-                    <div class="card infra-feature-card">
-                        <div class="card-content">
-                            <div class="infra-feature-icon">
-                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3">Predictive Monitoring</h3>
-                            <p class="text-gray-600">
-                                Detect potential issues before they become problems with machine learning models trained on millions of infrastructure incidents.
-                            </p>
+            </div>
+
+            <!-- Code Intelligence Tab -->
+            <div id="code-intelligence" class="module-content">
+                <div class="gradient-card">
+                    <div class="columns is-multiline">
+                        <div class="column is-12 mb-4">
+                            <h3 class="text-2xl font-semibold mb-2">Code Intelligence</h3>
+                            <p class="text-gray-600">AI-powered code understanding and optimization</p>
+                        </div>
+                        <div class="column is-6">
+                            <ul class="feature-list">
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Local AI code understanding & explainability</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Auto-generation of docstrings, READMEs, usage examples</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Legacy code refactoring suggestions & modularization</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column is-6">
+                            <ul class="feature-list">
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Architecture-pattern recommendations for microservices</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Version-history tracking & "explain this diff" feature</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Feature 3 -->
-                <div class="column">
-                    <div class="card infra-feature-card">
-                        <div class="card-content">
-                            <div class="infra-feature-icon">
-                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-3">Automated Cost Optimization</h3>
-                            <p class="text-gray-600">
-                                Automatically identify cost-saving opportunities and implement right-sizing recommendations for your cloud resources.
-                            </p>
+            </div>
+
+            <!-- DevOps Productivity Tab -->
+            <div id="devops-productivity" class="module-content">
+                <div class="gradient-card">
+                    <div class="columns is-multiline">
+                        <div class="column is-12 mb-4">
+                            <h3 class="text-2xl font-semibold mb-2">DevOps Productivity</h3>
+                            <p class="text-gray-600">Streamlined CI/CD operations and deployment optimization</p>
+                        </div>
+                        <div class="column is-6">
+                            <ul class="feature-list">
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Continuous testing strategies (test-generation, flaky-test detection)</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>CI/CD pipeline optimization & linting suggestions</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Deployment-strategy guidance (blue/green, canary, rolling)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column is-6">
+                            <ul class="feature-list">
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Alert suppression & noise reduction via pattern matching</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Single dashboard for logs, metrics, events, tests</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Migration Tab -->
+            <div id="cloud-migration" class="module-content">
+                <div class="gradient-card">
+                    <div class="columns is-multiline">
+                        <div class="column is-12 mb-4">
+                            <h3 class="text-2xl font-semibold mb-2">Cloud Migration & Management</h3>
+                            <p class="text-gray-600">Seamless cloud transition and optimized multi-cloud operations</p>
+                        </div>
+                        <div class="column is-6">
+                            <ul class="feature-list">
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Cloud-readiness assessment of on-prem services</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Automated cost estimation & TCO analysis</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Generation of IaC templates (Terraform/CloudFormation)</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Multi-cloud resource provisioning & orchestration</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column is-6">
+                            <ul class="feature-list">
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Cost-optimization recommendations (rightsizing, reserved instances)</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Automated scaling and scheduling for spot/preemptible instances</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Centralized view of on-prem + cloud workloads</span>
+                                </li>
+                                <li>
+                                    <div class="infra-check-icon">
+                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span>Policy-driven governance (compliance, tagging, quotas)</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Monitoring Section -->
-    <section id="monitoring" class="section infra-monitoring-section py-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="columns is-vcentered">
-                <div class="column is-5-desktop">
-                    <div class="monitoring-content">
-                        <h2 class="text-3xl font-bold mb-6">Advanced Logging & Monitoring</h2>
-                        <p class="text-lg text-gray-600 mb-8">
-                            Get comprehensive visibility into your infrastructure with real-time monitoring, intelligent alerting, and AI-powered log analysis.
-                        </p>
-                        
-                        <div class="infra-feature-list">
-                            <div class="infra-feature-item">
-                                <div class="infra-check-icon">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="infra-feature-text">
-                                    <h4 class="text-lg font-medium">Anomaly Detection</h4>
-                                    <p class="text-gray-600 mt-1">Automatically identify unusual patterns in system behavior and resource utilization.</p>
-                                </div>
+<!-- Monitoring Section -->
+<section id="monitoring" class="section infra-monitoring-section py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="columns is-vcentered">
+            <div class="column is-5-desktop">
+                <div class="monitoring-content">
+                    <h2 class="text-3xl font-bold mb-6">Advanced Logging & Monitoring</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Get comprehensive visibility into your infrastructure with real-time monitoring, intelligent
+                        alerting, and AI-powered log analysis.
+                    </p>
+
+                    <div class="infra-feature-list">
+                        <div class="infra-feature-item">
+                            <div class="infra-check-icon">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
                             </div>
-                            
-                            <div class="infra-feature-item">
-                                <div class="infra-check-icon">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="infra-feature-text">
-                                    <h4 class="text-lg font-medium">Context-Aware Alerts</h4>
-                                    <p class="text-gray-600 mt-1">Receive intelligent alerts with actionable insights, not just raw notifications.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="infra-feature-item">
-                                <div class="infra-check-icon">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="infra-feature-text">
-                                    <h4 class="text-lg font-medium">Log Intelligence</h4>
-                                    <p class="text-gray-600 mt-1">AI-powered log analysis identifies root causes and suggests remediation steps.</p>
-                                </div>
+                            <div class="infra-feature-text">
+                                <h4 class="text-lg font-medium">Anomaly Detection</h4>
+                                <p class="text-gray-600 mt-1">Automatically identify unusual patterns in system behavior
+                                    and resource utilization.</p>
                             </div>
                         </div>
-                        
-                        <div class="monitoring-cta mt-8">
-                            <a href="#learn-more" class="infra-link-arrow">
-                                Learn more about our monitoring capabilities
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+
+                        <div class="infra-feature-item">
+                            <div class="infra-check-icon">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
                                 </svg>
-                            </a>
+                            </div>
+                            <div class="infra-feature-text">
+                                <h4 class="text-lg font-medium">Context-Aware Alerts</h4>
+                                <p class="text-gray-600 mt-1">Receive intelligent alerts with actionable insights, not
+                                    just raw notifications.</p>
+                            </div>
+                        </div>
+
+                        <div class="infra-feature-item">
+                            <div class="infra-check-icon">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <div class="infra-feature-text">
+                                <h4 class="text-lg font-medium">Log Intelligence</h4>
+                                <p class="text-gray-600 mt-1">AI-powered log analysis identifies root causes and
+                                    suggests remediation steps.</p>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="monitoring-cta mt-8">
+                        <a href="#learn-more" class="infra-link-arrow">
+                            Learn more about our monitoring capabilities
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="column is-7-desktop">
-                    <div class="monitoring-dashboard-container">
-                        <div class="dashboard-browser-frame">
-                            <div class="browser-controls">
-                                <div class="browser-dots">
-                                    <span class="browser-dot"></span>
-                                    <span class="browser-dot"></span>
-                                    <span class="browser-dot"></span>
-                                </div>
+            </div>
+
+            <div class="column is-7-desktop">
+                <div class="monitoring-dashboard-container">
+                    <div class="dashboard-browser-frame">
+                        <div class="browser-controls">
+                            <div class="browser-dots">
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
+                                <span class="browser-dot"></span>
                             </div>
-                            <div class="dashboard-content">
-                                <img src="{{ url_for('static', filename='css/images/dashbord.png') }}" 
-                                     alt="Infranaut Dashboard" 
-                                     class="dashboard-img"
-                                     loading="lazy">
-                            </div>
+                        </div>
+                        <div class="dashboard-content">
+                            <img src="{{ url_for('static', filename='css/images/dashbord.png') }}"
+                                alt="Infranaut Dashboard" class="dashboard-img" loading="lazy">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Testimonials Section -->
-    {% include 'components/testimonial.html' %}
 
-    <!-- CTA Section -->
-    {% include 'components/cta.html' %}
-{% endblock %}
+
+<!-- Additional Modules Section -->
+<section id="additional-modules" class="section bg-light py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="has-text-centered mb-16">
+            <h2 class="text-3xl font-bold mb-4">Specialized Modules</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Enhance your development workflow with our specialized AI-powered modules
+            </p>
+        </div>
+
+        <div class="columns is-multiline">
+            <!-- Module 1 -->
+            <div class="column is-6 is-4-widescreen">
+                <div class="module-card">
+                    <div class="module-icon">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="module-title">Onboarding & Knowledge Sharing</h3>
+                    <ul class="module-features">
+                        <li>Natural-language Q&A on your codebase</li>
+                        <li>Knowledge graph of services & configs</li>
+                        <li>Interactive "service map" of dependencies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="column is-6 is-4-widescreen">
+                <div class="module-card">
+                    <div class="module-icon">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="module-title">Workflow Optimization</h3>
+                    <ul class="module-features">
+                        <li>Bottleneck detection in build cycles</li>
+                        <li>Task-to-owner mapping suggestions</li>
+                        <li>Service-to-service call graph visualization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="column is-6 is-4-widescreen">
+                <div class="module-card">
+                    <div class="module-icon">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110 4m12 0a2 2 0 100-4m0 4a2 2 0 110 4">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="module-title">Cloud Migration Helper</h3>
+                    <ul class="module-features">
+                        <li>Cloud-readiness assessment of on-prem services</li>
+                        <li>Automated cost estimation & TCO analysis</li>
+                        <li>"Lift-and-shift" script generation for containers & VMs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="column is-6 is-4-widescreen">
+                <div class="module-card">
+                    <div class="module-icon">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="module-title">Cloud Management & Optimization</h3>
+                    <ul class="module-features">
+                        <li>Multi-cloud resource provisioning & orchestration</li>
+                        <li>Policy-driven governance (compliance, tagging, quotas)</li>
+                        <li>Cost-optimization recommendations (rightsizing, reserved instances)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--Module 5 DevOps Productivity Module -->
+            <div class="column is-6 is-4-widescreen">
+                <div class="module-card">
+                    <div class="module-icon">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="module-title">DevOps Productivity</h3>
+                    <ul class="module-features">
+                        <li>Automation recommendations for CI/CD optimization</li>
+                        <li>Pipeline bottleneck detection and analysis</li>
+                        <li>Team performance metrics tracking (deployment frequency, MTTR)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="column is-6 is-4-widescreen">
+                <div class="module-card">
+                    <div class="module-icon">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="module-title">Code Intelligence</h3>
+                    <ul class="module-features">
+                        <li>Automated detection of bugs, security flaws, and code smells</li>
+                        <li>Generate API docs or comments from code</li>
+                        <li>Link code changes to bug tickets automatically</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="column is-6 is-4-widescreen">
+                <div class="module-card">
+                    <div class="module-icon">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="module-title">Support Services & Add-Ons</h3>
+                    <ul class="module-features">
+                        <li>Bug-fix prioritization & triage assistance</li>
+                        <li>Code-base optimization engagements</li>
+                        <li>Custom documentation generation & sync</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            {% include 'components/testimonial.html' %}
+
+            <!-- CTA Section -->
+            {% include 'components/cta.html' %}
+            {% endblock %}

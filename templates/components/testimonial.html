@@ -1,65 +1,272 @@
-<section class="section infra-testimonial-section py-16">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="has-text-centered mb-12">
-            <h2 class="text-3xl font-bold mb-4">Trusted by DevOps Teams</h2>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                See how engineering teams are transforming their infrastructure management with Infranaut.ai
-            </p>
+<!-- Redesigned Testimonial Section with Website Color Palette -->
+<style>
+    /* Section Title Styles */
+    .testimonial-heading {
+        text-align: center;
+        margin-bottom: 3.5rem;
+        position: relative;
+    }
+
+    .testimonial-subtitle {
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        position: relative;
+        padding: 0 1rem;
+    }
+
+    .testimonial-subtitle::before,
+    .testimonial-subtitle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 30px;
+        height: 1px;
+        background-color: var(--primary-color);
+        opacity: 0.6;
+    }
+
+    .testimonial-subtitle::before {
+        left: -20px;
+    }
+
+    .testimonial-subtitle::after {
+        right: -20px;
+    }
+
+    .testimonial-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin: 0 0 0.75rem 0;
+        line-height: 1.2;
+    }
+
+    .testimonial-description {
+        font-size: 1rem;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 767px) {
+        .testimonial-heading {
+            margin-bottom: 2.5rem;
+        }
+
+        .testimonial-title {
+            font-size: 1.5rem;
+        }
+
+        .testimonial-description {
+            font-size: 0.875rem;
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+    }
+
+    /* Inline styles using website color palette */
+    .testimonial-wrapper {
+        background: linear-gradient(125deg, var(--bg-gradient-start), var(--bg-gradient-end));
+        width: 100%;
+        padding: 6rem 0;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        box-sizing: border-box;
+        border-radius: 24px;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .testimonial-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+            radial-gradient(circle at 15% 15%, rgba(255, 108, 55, 0.08) 0%, transparent 45%),
+            radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 45%);
+        pointer-events: none;
+        border-radius: 24px;
+    }
+
+    .testimonial-container {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        box-sizing: border-box;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+        .testimonial-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .testimonial-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .testimonial-card {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-color);
+    }
+
+    .testimonial-header {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .testimonial-avatar {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 12px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-name {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin: 0;
+    }
+
+    .testimonial-title {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        margin-top: 0.25rem;
+        margin-bottom: 0;
+    }
+
+    .testimonial-quote {
+        color: var(--text-dark);
+        font-size: 1rem;
+        line-height: 1.6;
+        position: relative;
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+        padding-left: 1.5rem;
+        border-left: 3px solid var(--primary-color);
+    }
+
+    .testimonial-quote::before {
+        content: '"';
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        opacity: 0.2;
+        position: absolute;
+        top: -1.5rem;
+        left: 0;
+        font-family: serif;
+        line-height: 1;
+    }
+
+    @media (max-width: 767px) {
+        .testimonial-wrapper {
+            padding: 3rem 1rem;
+            border-radius: 16px;
+        }
+
+        .testimonial-wrapper::before {
+            border-radius: 16px;
+        }
+    }
+</style>
+
+<section class="testimonial-wrapper">
+    <div class="testimonial-container">
+        <!-- Added Section Heading -->
+        <div class="testimonial-heading">
+            <span class="testimonial-subtitle">Success Stories</span>
+            <h2 class="testimonial-title">What Tech Leaders Are Saying</h2>
+            <p class="testimonial-description">Hear from DevOps experts, CTOs, and infrastructure leaders who have
+                transformed their operations.</p>
         </div>
-        
-        <div class="columns is-multiline">
+        <div class="testimonial-grid">
             <!-- Testimonial 1 -->
-            <div class="column is-4-desktop is-6-tablet">
-                <div class="card infra-testimonial-card">
-                    <div class="card-content">
-                        <div class="infra-testimonial-header">
-                            <div class="infra-avatar"></div>
-                            <div>
-                                <h4 class="font-medium">Sarah Chen</h4>
-                                <p class="text-sm text-gray-400">DevOps Lead, TechCorp</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300">
-                            "Infranaut.ai reduced our mean time to resolution by 68%. The AI's ability to predict potential failures before they happen has transformed our operations."
-                        </p>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar"
+                        style="background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));"></div>
+                    <div>
+                        <h4 class="testimonial-name">Sarah Chen</h4>
+                        <p class="testimonial-title">DevOps Lead at TechCorp</p>
                     </div>
                 </div>
+                <p class="testimonial-quote">
+                    "The intelligent automation has transformed our deployment workflow. We've seen a 70% reduction
+                    in debugging time and near-zero downtime in our production environments."
+                </p>
             </div>
-            
+
             <!-- Testimonial 2 -->
-            <div class="column is-4-desktop is-6-tablet">
-                <div class="card infra-testimonial-card">
-                    <div class="card-content">
-                        <div class="infra-testimonial-header">
-                            <div class="infra-avatar"></div>
-                            <div>
-                                <h4 class="font-medium">James Wilson</h4>
-                                <p class="text-sm text-gray-400">CTO, Acme Cloud</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300">
-                            "The cost optimization algorithms alone paid for our subscription in the first month. We've seen a 32% reduction in our cloud spend with zero performance impact."
-                        </p>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar"
+                        style="background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));"></div>
+                    <div>
+                        <h4 class="testimonial-name">Michael Rodriguez</h4>
+                        <p class="testimonial-title">CTO at CloudScale Solutions</p>
                     </div>
                 </div>
+                <p class="testimonial-quote">
+                    "We migrated 200+ services seamlessly with Infranaut's AI assistance. The cost predictions were
+                    spot-on, and the automated optimization saved us 45% on cloud spending."
+                </p>
             </div>
-            
+
             <!-- Testimonial 3 -->
-            <div class="column is-4-desktop is-6-tablet">
-                <div class="card infra-testimonial-card">
-                    <div class="card-content">
-                        <div class="infra-testimonial-header">
-                            <div class="infra-avatar"></div>
-                            <div>
-                                <h4 class="font-medium">Maria Rodriguez</h4>
-                                <p class="text-sm text-gray-400">SRE Manager, DevLabs</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300">
-                            "What impresses me most is how Infranaut learns our deployment patterns and improves over time. It feels like having an expert SRE who never sleeps."
-                        </p>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar"
+                        style="background: linear-gradient(135deg, var(--secondary-color), var(--accent-teal));"></div>
+                    <div>
+                        <h4 class="testimonial-name">Emily Watson</h4>
+                        <p class="testimonial-title">Infrastructure Lead at DataFlex</p>
                     </div>
                 </div>
+                <p class="testimonial-quote">
+                    "The predictive scaling has been a game-changer. Our infrastructure now adapts in real-time, and
+                    we've eliminated all performance bottlenecks while reducing costs."
+                </p>
             </div>
         </div>
     </div>
