@@ -1,33 +1,33 @@
 /* Base Variables */
 :root {
     /* Primary Colors */
-    --primary-color: #FF6C37;
+    --primary-color: #ff6c37;
     --primary-dark: #e75c28;
 
     /* New Complementary Colors */
-    --secondary-color: #3B82F6;
+    --secondary-color: #3b82f6;
     --secondary-dark: #2563eb;
-    --accent-purple: #8B5CF6;
-    --accent-teal: #14B8A6;
+    --accent-purple: #8b5cf6;
+    --accent-teal: #14b8a6;
 
     /* Background Colors */
-    --bg-light: #F5F6F7;
-    --bg-gradient-start: #FFFFFF;
-    --bg-gradient-end: #F8FAFC;
+    --bg-light: #f5f6f7;
+    --bg-gradient-start: #ffffff;
+    --bg-gradient-end: #f8fafc;
 
     /* Text Colors */
     --text-dark: #111827;
-    --text-light: #6B7280;
-    --text-muted: #9CA3AF;
+    --text-light: #6b7280;
+    --text-muted: #9ca3af;
 
     /* UI Colors */
-    --card-border: #E5E7EB;
-    --soft-blue: #3B82F6;
-    --soft-green: #10B981;
-    --light-orange: #FFF4EF;
-    --success-green: #34D399;
-    --warning-yellow: #FBBF24;
-    --error-red: #EF4444;
+    --card-border: #e5e7eb;
+    --soft-blue: #3b82f6;
+    --soft-green: #10b981;
+    --light-orange: #fff4ef;
+    --success-green: #34d399;
+    --warning-yellow: #fbbf24;
+    --error-red: #ef4444;
 
     /* Glass Effect Colors */
     --glass-bg: rgba(255, 255, 255, 0.7);
@@ -43,7 +43,7 @@
 
 /* Global Typography */
 body {
-    font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
     padding-top: 4.5rem;
     color: var(--text-dark);
 }
@@ -157,12 +157,13 @@ body {
     transform: translateX(4px);
 }
 
-
 /* CTA Box Styles - Improved with enhanced mobile focus */
 .infra-cta-box {
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.95),
-            rgba(249, 250, 251, 0.95));
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95),
+        rgba(249, 250, 251, 0.95)
+    );
     border-radius: 1rem;
     /* Slightly smaller radius on mobile */
     padding: 1.5rem 1rem;
@@ -177,16 +178,18 @@ body {
 }
 
 .infra-cta-box::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg,
-            rgba(255, 108, 55, 0.05),
-            rgba(139, 92, 246, 0.05));
+    background: linear-gradient(
+        135deg,
+        rgba(255, 108, 55, 0.05),
+        rgba(139, 92, 246, 0.05)
+    );
     z-index: 0;
 }
 
-.infra-cta-box>* {
+.infra-cta-box > * {
     position: relative;
     z-index: 1;
 }
@@ -296,7 +299,6 @@ body {
 }
 
 @media (max-width: 768px) {
-
     /* Reset container positioning */
     .module-tabs {
         width: 100%;
@@ -404,13 +406,17 @@ body {
 
     /* Visual indicator for scrollable tabs */
     .module-tabs:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         right: 0;
         height: 100%;
         width: 20px;
-        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8));
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(255, 255, 255, 0.8)
+        );
         pointer-events: none;
         opacity: 0.8;
         z-index: 1;
@@ -558,4 +564,313 @@ body {
     border-radius: 1.5rem;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Service Carousel Styles */
+.service-carousel {
+    position: relative;
+    padding: 2rem 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    overflow: hidden; /* Prevent horizontal overflow */
+}
+
+/* Improved Service Cards Container */
+.service-cards-container {
+    display: flex;
+    gap: 24px; /* Fixed gap instead of using rem */
+    padding: 1rem 60px; /* Increased padding to accommodate arrows */
+    margin: 0;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    -webkit-overflow-scrolling: touch; /* Smooth on iOS */
+    position: relative;
+    scroll-padding: 24px;
+}
+
+.service-cards-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on Chrome/Safari */
+}
+
+/* Refined Service Card */
+.service-card {
+    flex: 0 0 auto;
+    width: 380px;
+    background: var(--glass-bg, #ffffff);
+    border: 1px solid var(--card-border, rgba(0, 0, 0, 0.1));
+    border-radius: 1rem;
+    padding: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    min-height: 300px;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.service-card:not(.active) {
+    max-height: 300px;
+}
+
+.service-card.active {
+    max-height: 800px; /* Reasonable maximum for expanded state */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+}
+
+/* Additional class for fully expanded state with visible collapse button */
+.service-card.fully-expanded::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card:hover:not(.active) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Content */
+.service-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.service-title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-dark, #333333);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.service-title .icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    color: var(--primary-color, #3182ce);
+}
+
+.service-card.active .service-title .icon {
+    transform: rotate(180deg);
+}
+
+.service-description {
+    color: var(--text-light, #4a5568);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Feature List Styles */
+.service-feature-list {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 40px; /* Add space for the "tap to collapse" text */
+}
+
+.service-card.active .service-feature-list {
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--card-border, rgba(0, 0, 0, 0.1));
+}
+
+.service-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.service-card.active .service-feature-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-feature-item:last-child {
+    margin-bottom: 0;
+}
+
+.feature-check {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-color, #3182ce);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+/* Gradient overlay for unexpanded cards */
+.service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), var(--glass-bg, #ffffff) 60%);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.service-card.active::before {
+    opacity: 0;
+}
+
+/* "Tap to reveal/collapse" text */
+.service-card::after {
+    content: 'Tap to reveal more';
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: var(--primary-color, #3182ce);
+    font-weight: 500;
+    font-size: 0.875rem;
+    z-index: 3;
+    padding: 8px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.service-card.active::after {
+    content: 'Tap to collapse';
+    bottom: 0; /* Position at the very bottom when expanded */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 40%);
+    padding-top: 24px; /* Add top padding for gradient */
+}
+
+/* Improved Scroll Indicators */
+.scroll-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 1px solid var(--card-border, rgba(0, 0, 0, 0.1));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-indicator:hover:not(.disabled) {
+    background: var(--primary-color, #3182ce);
+    border-color: var(--primary-color, #3182ce);
+    color: white;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.scroll-indicator.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.scroll-prev {
+    left: 10px;
+}
+
+.scroll-next {
+    right: 10px;
+}
+
+/* Animation delays for staggered feature items */
+.service-card.active .service-feature-item:nth-child(1) { transition-delay: 0.1s; }
+.service-card.active .service-feature-item:nth-child(2) { transition-delay: 0.2s; }
+.service-card.active .service-feature-item:nth-child(3) { transition-delay: 0.3s; }
+.service-card.active .service-feature-item:nth-child(4) { transition-delay: 0.4s; }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .service-carousel {
+        padding: 1.5rem 0;
+    }
+    
+    .service-cards-container {
+        padding: 1rem 48px;
+        gap: 16px;
+    }
+    
+    .service-card {
+        width: 280px;
+        min-width: 280px;
+        padding: 20px;
+        min-height: 260px;
+        max-height: 260px;
+    }
+    
+    .service-card.active {
+        max-height: 600px;
+    }
+    
+    .service-title {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+    }
+    
+    .service-description {
+        font-size: 0.9375rem;
+        margin-bottom: 16px;
+    }
+    
+    .service-feature-list {
+        margin-top: 16px;
+        padding-top: 16px;
+    }
+    
+    .service-feature-item {
+        margin-bottom: 12px;
+        gap: 10px;
+    }
+    
+    .feature-check {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .scroll-indicator {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .scroll-prev {
+        left: 6px;
+    }
+    
+    .scroll-next {
+        right: 6px;
+    }
+    
+    .service-card::before {
+        height: 80px;
+    }
+    
+    .service-card::after {
+        font-size: 0.8125rem;
+        bottom: 12px;
+    }
 }
