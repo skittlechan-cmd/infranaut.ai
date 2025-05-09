@@ -1,273 +1,575 @@
-<!-- Redesigned Testimonial Section with Website Color Palette -->
+<!-- Compact Card-Based Testimonial Section with Smooth Scrolling -->
 <style>
+    /* Base Styles & Variables */
+    :root {
+        --primary-color: #FF6C37;
+        --secondary-color: #0EA5E9;
+        --accent-purple: #8B5CF6;
+        --accent-teal: #14B8A6;
+        --text-dark: #1E293B;
+        --text-light: #64748B;
+        --bg-gradient-start: #FFFFFF;
+        --bg-gradient-end: #F8FAFC;
+        --card-bg: #FFFFFF;
+        --card-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+        --card-border: #F1F5F9;
+    }
+
+    /* Reset */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
     /* Section Title Styles */
     .testimonial-heading {
         text-align: center;
-        margin-bottom: 3.5rem;
-        position: relative;
-    }
-
-    .testimonial-subtitle {
-        font-size: 0.875rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-        display: inline-block;
+        margin-bottom: 2rem;
         position: relative;
         padding: 0 1rem;
     }
 
-    .testimonial-subtitle::before,
-    .testimonial-subtitle::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        width: 30px;
-        height: 1px;
-        background-color: var(--primary-color);
-        opacity: 0.6;
-    }
-
-    .testimonial-subtitle::before {
-        left: -20px;
-    }
-
-    .testimonial-subtitle::after {
-        right: -20px;
-    }
-
-    .testimonial-title {
-        font-size: 2rem;
+    .testimonial-heading-title {
+        font-size: 1.5rem;
         font-weight: 700;
         color: var(--text-dark);
-        margin: 0 0 0.75rem 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 1.5rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         line-height: 1.2;
     }
 
-    .testimonial-description {
-        font-size: 1rem;
-        color: var(--text-light);
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
+    .testimonial-heading-title::before,
+    .testimonial-heading-title::after {
+        content: '';
+        height: 1px;
+        background-color: #E2E8F0;
+        width: 50px;
+        margin: 0 0.75rem;
     }
 
-    @media (max-width: 767px) {
-        .testimonial-heading {
-            margin-bottom: 2.5rem;
-        }
-
-        .testimonial-title {
-            font-size: 1.5rem;
-        }
-
-        .testimonial-description {
-            font-size: 0.875rem;
-            max-width: 100%;
-            padding: 0 1rem;
-        }
-    }
-
-    /* Inline styles using website color palette */
+    /* Testimonial Wrapper Styles */
     .testimonial-wrapper {
-        background: linear-gradient(125deg, var(--bg-gradient-start), var(--bg-gradient-end));
+        background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
         width: 100%;
-        padding: 6rem 0;
+        padding: 3rem 0;
         margin: 0;
         position: relative;
         overflow: hidden;
         box-sizing: border-box;
-        border-radius: 24px;
-        border: 1px solid var(--card-border);
-        box-shadow: var(--shadow-lg);
-    }
-
-    .testimonial-wrapper::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-            radial-gradient(circle at 15% 15%, rgba(255, 108, 55, 0.08) 0%, transparent 45%),
-            radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 45%);
-        pointer-events: none;
-        border-radius: 24px;
     }
 
     .testimonial-container {
         width: 100%;
-        max-width: 1280px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 0 1.5rem;
         box-sizing: border-box;
     }
 
-    .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 2rem;
-    }
-
-    @media (min-width: 768px) {
-        .testimonial-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .testimonial-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    .testimonial-card {
-        background: var(--glass-bg);
-        border: 1px solid var(--glass-border);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: var(--shadow-md);
-        height: 100%;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Scrollable Testimonial Track */
+    .testimonial-track-container {
+        position: relative;
+        padding: 0.5rem 0;
         overflow: hidden;
+    }
+
+    .testimonial-track {
+        display: flex;
+        gap: 1rem;
+        transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-track::after {
+        content: "";
+        flex: 0 0 1px;
+    }
+
+    /* Navigation Controls */
+    .testimonial-controls {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .control-btn {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 50%;
+        width: 2.25rem;
+        height: 2.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        color: var(--text-dark);
+    }
+
+    .control-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .control-btn svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    /* Pagination Dots */
+    .pagination-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: #CBD5E1;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        background-color: var(--primary-color);
+        transform: scale(1.2);
+    }
+
+    /* Testimonial Card Styles */
+    .testimonial-card {
+        flex: 0 0 calc(100% - 1rem);
+        background: var(--card-bg);
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--card-border);
+        height: auto;
+        transition: all 0.3s ease;
         display: flex;
         flex-direction: column;
-        backdrop-filter: blur(10px);
+        position: relative;
+        max-height: 250px;
     }
 
     .testimonial-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-xl);
-        border-color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
     }
 
-    .testimonial-header {
+    .testimonial-quote-icon {
+        color: #E2E8F0;
+        font-size: 2.5rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-family: serif;
+        line-height: 1;
+        opacity: 0.2;
+    }
+
+    .testimonial-quote {
+        color: var(--text-dark);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 5.4rem;
+    }
+
+    .testimonial-footer {
         display: flex;
         align-items: center;
-        gap: 1.25rem;
-        margin-bottom: 0.5rem;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #F1F5F9;
     }
 
     .testimonial-avatar {
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: 12px;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
         background-size: cover;
         background-position: center;
-        position: relative;
         overflow: hidden;
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-info {
+        display: flex;
+        flex-direction: column;
     }
 
     .testimonial-name {
-        font-size: 1.125rem;
+        font-size: 0.9rem;
         font-weight: 600;
         color: var(--text-dark);
         margin: 0;
     }
 
     .testimonial-title {
-        font-size: 0.875rem;
+        font-size: 0.8rem;
         color: var(--text-light);
-        margin-top: 0.25rem;
-        margin-bottom: 0;
+        margin-top: 0.15rem;
     }
 
-    .testimonial-quote {
-        color: var(--text-dark);
-        font-size: 1rem;
-        line-height: 1.6;
-        position: relative;
-        margin-top: 1.5rem;
-        margin-bottom: 0;
-        padding-left: 1.5rem;
-        border-left: 3px solid var(--primary-color);
-    }
-
-    .testimonial-quote::before {
-        content: '"';
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        opacity: 0.2;
+    .testimonial-card::before {
+        content: '';
         position: absolute;
-        top: -1.5rem;
+        top: 0;
         left: 0;
-        font-family: serif;
-        line-height: 1;
+        width: 4px;
+        height: 100%;
+        background: var(--primary-color);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
-    @media (max-width: 767px) {
-        .testimonial-wrapper {
-            padding: 3rem 1rem;
-            border-radius: 16px;
+    /* Responsive Styles */
+    @media (min-width: 640px) {
+        .testimonial-card {
+            flex: 0 0 calc(85% - 1rem);
+        }
+    }
+
+    @media (min-width: 768px) {
+        .testimonial-card {
+            flex: 0 0 calc(50% - 1rem);
         }
 
-        .testimonial-wrapper::before {
-            border-radius: 16px;
+        .testimonial-heading-title {
+            font-size: 1.75rem;
         }
+
+        .testimonial-heading-title::before,
+        .testimonial-heading-title::after {
+            width: 80px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .testimonial-card {
+            flex: 0 0 calc(33.333% - 1rem);
+        }
+
+        .testimonial-controls {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            justify-content: space-between;
+            padding: 0 1rem;
+            pointer-events: none;
+            z-index: 10;
+            margin-top: 0;
+        }
+
+        .control-btn {
+            pointer-events: auto;
+            opacity: 0.7;
+        }
+
+        .control-btn:hover {
+            opacity: 1;
+        }
+    }
+
+    /* Animation Styles */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .testimonial-card {
+        animation: fadeIn 0.3s ease forwards;
     }
 </style>
 
 <section class="testimonial-wrapper">
     <div class="testimonial-container">
-        <!-- Added Section Heading -->
+        <!-- Section Heading -->
         <div class="testimonial-heading">
-            <span class="testimonial-subtitle">Success Stories</span>
-            <h2 class="testimonial-title">What Tech Leaders Are Saying</h2>
-            <p class="testimonial-description">Hear from DevOps experts, CTOs, and infrastructure leaders who have
-                transformed their operations.</p>
+            <h2 class="testimonial-heading-title">THEY USE OUR SERVICE</h2>
         </div>
-        <div class="testimonial-grid">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar"
-                        style="background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));"></div>
-                    <div>
-                        <h4 class="testimonial-name">Sarah Chen</h4>
-                        <p class="testimonial-title">DevOps Lead at TechCorp</p>
+
+        <!-- Scrollable Testimonials -->
+        <div class="testimonial-track-container">
+            <div class="testimonial-track" id="testimonial-track">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon">"</div>
+                    <p class="testimonial-quote">
+                        "The intelligent automation has transformed our workflow. We've seen a 70% reduction in
+                        debugging time."
+                    </p>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-avatar"
+                            style="background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Sarah Chen</h4>
+                            <p class="testimonial-title">DevOps Lead</p>
+                        </div>
                     </div>
                 </div>
-                <p class="testimonial-quote">
-                    "The intelligent automation has transformed our deployment workflow. We've seen a 70% reduction
-                    in debugging time and near-zero downtime in our production environments."
-                </p>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon">"</div>
+                    <p class="testimonial-quote">
+                        "Great product with professional support. Can't wait to see future features."
+                    </p>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-avatar"
+                            style="background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Emily Peterson</h4>
+                            <p class="testimonial-title">CEO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon">"</div>
+                    <p class="testimonial-quote">
+                        "This platform has exceeded our expectations in every way since day one."
+                    </p>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-avatar"
+                            style="background: linear-gradient(135deg, var(--secondary-color), var(--accent-teal));">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Adrien Jacob</h4>
+                            <p class="testimonial-title">Head of Sales</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon">"</div>
+                    <p class="testimonial-quote">
+                        "The best for exporting and getting the right results. And for free!"
+                    </p>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-avatar"
+                            style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Franciska V.</h4>
+                            <p class="testimonial-title">Designer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon">"</div>
+                    <p class="testimonial-quote">
+                        "Seamless migration of 200+ services with AI assistance. Saved us 45% on cloud spending."
+                    </p>
+                    <div class="testimonial-footer">
+                        <div class="testimonial-avatar"
+                            style="background: linear-gradient(135deg, var(--accent-purple), var(--secondary-color));">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4 class="testimonial-name">Michael R.</h4>
+                            <p class="testimonial-title">CTO</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar"
-                        style="background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));"></div>
-                    <div>
-                        <h4 class="testimonial-name">Michael Rodriguez</h4>
-                        <p class="testimonial-title">CTO at CloudScale Solutions</p>
-                    </div>
-                </div>
-                <p class="testimonial-quote">
-                    "We migrated 200+ services seamlessly with Infranaut's AI assistance. The cost predictions were
-                    spot-on, and the automated optimization saved us 45% on cloud spending."
-                </p>
+            <!-- Pagination Dots -->
+            <div class="pagination-dots" id="pagination-dots">
+                <!-- Dots will be added by JavaScript -->
             </div>
+        </div>
 
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar"
-                        style="background: linear-gradient(135deg, var(--secondary-color), var(--accent-teal));"></div>
-                    <div>
-                        <h4 class="testimonial-name">Emily Watson</h4>
-                        <p class="testimonial-title">Infrastructure Lead at DataFlex</p>
-                    </div>
-                </div>
-                <p class="testimonial-quote">
-                    "The predictive scaling has been a game-changer. Our infrastructure now adapts in real-time, and
-                    we've eliminated all performance bottlenecks while reducing costs."
-                </p>
-            </div>
+        <!-- Navigation Controls -->
+        <div class="testimonial-controls">
+            <button class="control-btn" id="prev-btn" aria-label="Previous testimonials">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <button class="control-btn" id="next-btn" aria-label="Next testimonials">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const track = document.getElementById('testimonial-track');
+        const cards = track.querySelectorAll('.testimonial-card');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const dotsContainer = document.getElementById('pagination-dots');
+
+        let currentIndex = 0;
+        let cardWidth = cards[0].offsetWidth;
+        let gap = 16; // 1rem gap
+        let viewportWidth = track.parentElement.offsetWidth;
+        let cardsPerView = 1;
+
+        function updateCardsPerView() {
+            viewportWidth = track.parentElement.offsetWidth;
+            if (window.innerWidth >= 1024) {
+                cardsPerView = 3;
+            } else if (window.innerWidth >= 768) {
+                cardsPerView = 2;
+            } else {
+                cardsPerView = 1;
+            }
+
+            cardWidth = (viewportWidth - (gap * (cardsPerView - 1)) - 32) / cardsPerView; // 32px for padding
+            cards.forEach(card => {
+                card.style.flex = `0 0 ${cardWidth}px`;
+            });
+
+            return cardsPerView;
+        }
+
+        // Calculate maxIndex based on current view
+        function calculateMaxIndex() {
+            const cardsPerView = updateCardsPerView();
+            return Math.max(0, cards.length - cardsPerView);
+        }
+
+        // Create pagination dots
+        function createPaginationDots() {
+            dotsContainer.innerHTML = '';
+            const maxIndex = calculateMaxIndex();
+            const numDots = maxIndex + 1;
+
+            for (let i = 0; i < numDots; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+
+                dot.addEventListener('click', () => {
+                    scrollToIndex(i);
+                });
+
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Scroll to specified index
+        function scrollToIndex(index) {
+            const maxIndex = calculateMaxIndex();
+
+            if (index < 0) index = 0;
+            if (index > maxIndex) index = maxIndex;
+
+            currentIndex = index;
+            const offset = -(currentIndex * (cardWidth + gap));
+            track.style.transform = `translateX(${offset}px)`;
+
+            // Update active dot
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        // Handle previous button click
+        prevBtn.addEventListener('click', () => {
+            scrollToIndex(currentIndex - 1);
+        });
+
+        // Handle next button click
+        nextBtn.addEventListener('click', () => {
+            scrollToIndex(currentIndex + 1);
+        });
+
+        // Handle window resize
+        function handleResize() {
+            updateCardsPerView();
+            createPaginationDots();
+
+            // Reset position
+            const maxIndex = calculateMaxIndex();
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            scrollToIndex(currentIndex);
+        }
+
+        // Add touch swipe functionality
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            const minSwipeDistance = 50;
+
+            if (swipeDistance > minSwipeDistance) {
+                // Swiped right - go to previous
+                scrollToIndex(currentIndex - 1);
+            } else if (swipeDistance < -minSwipeDistance) {
+                // Swiped left - go to next
+                scrollToIndex(currentIndex + 1);
+            }
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                scrollToIndex(currentIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+                scrollToIndex(currentIndex + 1);
+            }
+        });
+
+        // Initialize
+        window.addEventListener('resize', handleResize);
+        updateCardsPerView();
+        createPaginationDots();
+
+        // Initial animation delay for cards
+        cards.forEach((card, index) => {
+            card.style.opacity = 0;
+            setTimeout(() => {
+                card.style.opacity = 1;
+            }, 100 * (index + 1));
+        });
+    });
+</script>
