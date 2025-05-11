@@ -249,7 +249,7 @@ body {
 .service-cards-container {
     display: flex;
     gap: 12px;
-    padding: 1.25rem 0.5rem;
+    padding: 1.25rem 1.5rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: none;
@@ -392,29 +392,56 @@ body {
 .service-card::after {
     content: 'Tap to reveal';
     position: absolute;
-    bottom: 12px;
+    bottom: 0;
     left: 0;
     right: 0;
     text-align: center;
-    color: var(--primary-color);
-    font-weight: 500;
-    font-size: 0.85rem;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
     z-index: 3;
-    padding: 8px 0;
+    padding: 10px 0;
     transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--primary-color);
     width: 100%;
     box-sizing: border-box;
+    border-radius: 0 0 0.75rem 0.75rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .service-card.active::after {
     content: 'Tap to collapse';
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.9) 40%);
-    padding-top: 20px;
+    background: var(--primary-color);
+    color: white;
+    border-top: 1px solid var(--card-border);
+    padding: 10px 0;
 }
 
-/* Reduced Scroll Indicators for Small Screens */
+/* Improved scroll indicators for mobile */
+.scroll-prev {
+    left: 10px;
+    z-index: 30;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.scroll-next {
+    right: 10px;
+    z-index: 30;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Scroll indicator base style improvements */
 .scroll-indicator {
     position: absolute;
     top: 45%;
@@ -432,14 +459,41 @@ body {
     transition: all 0.25s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     color: var(--text-dark);
+    -webkit-tap-highlight-color: transparent; /* Removes the tap highlight on mobile */
 }
 
-.scroll-prev {
-    left: 0px;
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 108, 55, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 108, 55, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 108, 55, 0);
+    }
 }
 
-.scroll-next {
-    right: 0px;
+@media (max-width: 640px) {
+    .scroll-indicator {
+        animation: pulse-animation 2s infinite;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        width: 44px;
+        height: 44px;
+        display: flex !important;
+    }
+}
+
+.scroll-indicator:active {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.scroll-indicator.disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
 }
 
 /* Testimonial Section Improvements */
@@ -647,8 +701,7 @@ body {
 /* Enhanced Mobile Responsiveness - Nothing 2a specific */
 @media (max-width: 640px) {
     .service-cards-container {
-        padding: 1rem 0.25rem;
-        gap: 10px;
+        padding: 2rem 3rem !important;
         width: 100%;
         margin: 0;
     }
@@ -657,33 +710,57 @@ body {
         padding: 0;
         margin: 0;
         max-width: 100%;
-    }
-    
-    .scroll-indicator {
-        width: 28px;
-        height: 28px;
-        top: 45%;
+        position: relative;
     }
     
     .scroll-prev {
-        left: 0;
+        left: 8px;
+        z-index: 30;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        display: flex !important;
     }
     
     .scroll-next {
-        right: 0;
+        right: 8px;
+        z-index: 30;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        display: flex !important;
     }
     
     .service-card::after {
-        font-size: 0.8rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #fff;
+        background: var(--primary-color);
+        padding: 10px 0;
+        border-radius: 0 0 0.75rem 0.75rem;
+    }
+    
+    .service-card.active::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 10px 0;
+        border-top: 1px solid var(--card-border);
+        z-index: 5;
     }
     
     .service-card {
-        width: 85%;
-        min-width: 250px;
-        min-height: 235px;
-        max-height: 235px;
-        padding: 1.25rem;
-        border-radius: 0.75rem;
+        width: 90% !important;
+        min-width: 90% !important;
+        margin: 0 auto !important;
     }
     
     .service-title {
@@ -1032,6 +1109,85 @@ body {
         gap: 15px;
         padding: 0.75rem 0.5rem;
     }
+    
+    /* Service card active state improvements */
+    .service-card.active {
+        max-height: none !important; 
+        height: auto !important;
+        min-height: 480px !important;
+        overflow: visible !important;
+        padding-bottom: 50px !important;
+        transform: translateY(-8px) !important;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+        transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.0) !important;
+    }
+    
+    /* Feature list styles to ensure visibility */
+    .service-card.active .service-feature-list {
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding-bottom: 30px !important;
+    }
+    
+    /* Service feature items */
+    .service-feature-item {
+        display: flex !important;
+        margin-bottom: 14px !important;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease-out;
+    }
+    
+    .service-card.active .service-feature-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Service card reveal text - improved styling */
+    .service-card::after {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: white;
+        background: var(--primary-color);
+        padding: 12px 0;
+        border-radius: 0 0 0.75rem 0.75rem;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    .service-card.active::after {
+        background: var(--primary-color);
+        color: white;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    
+    /* Add a nice transition effect when expanding/collapsing */
+    .service-card {
+        transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1.0) !important;
+    }
+    
+    /* Scroll indicators - more visible on mobile */
+    .scroll-prev {
+        left: 10px;
+        width: 44px !important;
+        height: 44px !important;
+        display: flex !important;
+        animation: pulse-animation 2s infinite;
+        border: 2px solid var(--primary-color) !important;
+    }
+    
+    .scroll-next {
+        right: 10px;
+        width: 44px !important;
+        height: 44px !important;
+        display: flex !important;
+        animation: pulse-animation 2s infinite;
+        border: 2px solid var(--primary-color) !important;
+    }
 }
 
 @media (min-width: 641px) and (max-width: 1023px) {
@@ -1240,6 +1396,8 @@ body {
 .services-section .service-carousel {
     max-width: 100% !important;
     padding: 0;
+    position: relative;
+    overflow: visible;
 }
 
 @media (max-width: 640px) {
@@ -1253,18 +1411,32 @@ body {
     /* Service Cards Container - Taking more width */
     .service-cards-container {
         width: 100%;
-        padding: 0.5rem 1rem !important;
+        padding: 2rem 3rem !important;
     }
     
-    /* Put scroll indicators over the edge */
+    /* Put scroll indicators over the edge with improved visibility */
     .scroll-prev {
-        left: 0.125rem;
-        z-index: 20;
+        left: 8px;
+        z-index: 30;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        display: flex !important;
     }
     
     .scroll-next {
-        right: 0.125rem;
-        z-index: 20;
+        right: 8px;
+        z-index: 30;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        display: flex !important;
     }
     
     /* Mobile Optimized Full Width Container */
@@ -1282,5 +1454,75 @@ body {
         padding-left: 0 !important;
         padding-right: 0 !important;
         width: 100% !important;
+    }
+    
+    /* Service card active state improvements */
+    .service-card.active {
+        max-height: none !important; 
+        height: auto !important;
+        min-height: 480px !important;
+        overflow: visible !important;
+        padding-bottom: 50px !important;
+        transform: translateY(-8px) !important;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+        transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.0) !important;
+    }
+    
+    /* Feature list styles to ensure visibility */
+    .service-card.active .service-feature-list {
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding-bottom: 30px !important;
+    }
+    
+    /* Service feature items */
+    .service-feature-item {
+        display: flex !important;
+        margin-bottom: 14px !important;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease-out;
+    }
+    
+    .service-card.active .service-feature-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Service card reveal text - improved styling */
+    .service-card::after {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: white;
+        background: var(--primary-color);
+        padding: 12px 0;
+        border-radius: 0 0 0.75rem 0.75rem;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    .service-card.active::after {
+        background: var(--primary-color);
+        color: white;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    
+    /* Add a nice transition effect when expanding/collapsing */
+    .service-card {
+        transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1.0) !important;
+    }
+    
+    /* Scroll indicators - more visible on mobile */
+    .scroll-prev, 
+    .scroll-next {
+        width: 44px !important;
+        height: 44px !important;
+        display: flex !important;
+        animation: pulse-animation 2s infinite;
+        border: 2px solid var(--primary-color) !important;
     }
 }

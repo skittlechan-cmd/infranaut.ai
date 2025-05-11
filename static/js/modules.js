@@ -25,6 +25,16 @@ function adjustCardWidthsForMobile() {
       card.style.width = `${containerWidth * 0.85}px`;
       card.style.minWidth = '250px';
     });
+    
+    // Make scroll indicators visible on mobile
+    const prevBtn = document.querySelector('.scroll-prev');
+    const nextBtn = document.querySelector('.scroll-next');
+    
+    if (prevBtn && nextBtn) {
+      // Force display scroll indicators on mobile 
+      prevBtn.style.display = 'flex';
+      nextBtn.style.display = 'flex';
+    }
   } else if (viewportWidth <= 1023) {
     // On tablets, fixed width but still wider
     cards.forEach(card => {
@@ -112,29 +122,74 @@ function initializeServiceCarousel() {
     const featureList = card.querySelector('.service-feature-list');
     
     if (featureList) {
-      // Create staggered animation for feature items
-      const featureItems = featureList.querySelectorAll('.service-feature-item');
-      
-      // First display the container
-      featureList.style.display = 'block';
-      featureList.style.opacity = '0';
-      
-      // Animate in with slight delay
-      setTimeout(() => {
-        featureList.style.opacity = '1';
+        // Create staggered animation for feature items
+        const featureItems = featureList.querySelectorAll('.service-feature-item');
         
-        // Stagger each feature item
-        featureItems.forEach((item, index) => {
-          item.style.opacity = '0';
-          item.style.transform = 'translateY(10px)';
-          
-          setTimeout(() => {
-            item.style.transition = 'all 0.3s ease';
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-          }, 80 * (index + 1));
-        });
-      }, 50);
+        // First display the container
+        featureList.style.display = 'block';
+        featureList.style.opacity = '0';
+        
+        // Add haptic feedback for mobile devices if supported
+        if (window.navigator && window.navigator.vibrate) {
+            window.navigator.vibrate(50); // Short vibration for feedback
+        }
+        
+        // On mobile, ensure the card has enough height to show all content
+        if (window.innerWidth <= 640) {
+            // Make sure the card can expand to fit content
+            card.style.maxHeight = 'none';
+            card.style.height = 'auto';
+            card.style.overflow = 'visible';
+            
+            // Compute the height of all feature items to ensure they're visible
+            let featureListHeight = 0;
+            featureItems.forEach(item => {
+                // Add each item's height plus margin
+                featureListHeight += (item.offsetHeight + 12);
+            });
+            
+            // Set minimum height to accommodate all content
+            const baseHeight = 240; // Base height for title and description
+            const totalHeight = baseHeight + featureListHeight + 80; // Add padding, including space for the tap to collapse text
+            
+            // Set explicit height to ensure all content is visible
+            card.style.minHeight = `${Math.max(480, totalHeight)}px`;
+            
+            // Ensure feature list is displayed properly
+            featureList.style.display = 'block';
+            featureList.style.height = 'auto';
+            featureList.style.overflow = 'visible';
+            card.style.paddingBottom = '45px'; // Space for bottom tap bar
+        }
+        
+        // Animate in with slight delay
+        setTimeout(() => {
+            featureList.style.opacity = '1';
+            
+            // Stagger each feature item with improved animation
+            featureItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(15px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.0)';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 60 * (index + 1));
+            });
+            
+            // Final adjustment for mobile after all animations
+            if (window.innerWidth <= 640) {
+                setTimeout(() => {
+                    // Ensure all content is visible after animations
+                    card.style.height = 'auto';
+                    card.style.overflow = 'visible';
+                    
+                    // Scroll to ensure the expanded card is fully visible
+                    ensureCardVisible(card);
+                }, 300);
+            }
+        }, 50);
     }
     
     activeCard = card;
@@ -143,21 +198,37 @@ function initializeServiceCarousel() {
   function closeCard(card) {
     const featureList = card.querySelector('.service-feature-list');
     
+    // Add haptic feedback for mobile devices if supported
+    if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(30); // Shorter vibration for closing
+    }
+    
     if (featureList) {
-      // Fade out the feature list first
-      featureList.style.opacity = '0';
-      
-      // Then hide it after the transition
-      setTimeout(() => {
-        featureList.style.display = 'none';
-        card.classList.remove('active');
-      }, 200);
+        // Fade out the feature list first
+        featureList.style.opacity = '0';
+        
+        // Then hide it after the transition
+        setTimeout(() => {
+            featureList.style.display = 'none';
+            card.classList.remove('active');
+            
+            // Reset padding and height
+            card.style.paddingBottom = '';
+            
+            // Allow some time for the CSS transition to finish
+            setTimeout(() => {
+                if (!card.classList.contains('active')) {
+                    card.style.maxHeight = card.dataset.collapsedHeight;
+                    card.style.minHeight = '';
+                }
+            }, 50);
+        }, 200);
     } else {
-      card.classList.remove('active');
+        card.classList.remove('active');
     }
     
     if (activeCard === card) {
-      activeCard = null;
+        activeCard = null;
     }
   }
   
@@ -166,12 +237,23 @@ function initializeServiceCarousel() {
     const cardRect = card.getBoundingClientRect();
     const containerRect = cardsContainer.getBoundingClientRect();
     
+    // Improved scrolling to ensure card is visible
+    if (cardRect.bottom > window.innerHeight) {
+        // If bottom is cut off, scroll to make it visible
+        const scrollAmount = Math.min(
+            cardRect.bottom - window.innerHeight + 20,
+            cardRect.top - 100 // Don't scroll too far up
+        );
+        window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+    }
+    
+    // Horizontal scrolling if needed
     if (cardRect.right > containerRect.right) {
-      const scrollAmount = cardRect.right - containerRect.right + 20;
-      smoothScroll(cardsContainer, cardsContainer.scrollLeft + scrollAmount, 300);
+        const scrollAmount = cardRect.right - containerRect.right + 20;
+        smoothScroll(cardsContainer, cardsContainer.scrollLeft + scrollAmount, 300);
     } else if (cardRect.left < containerRect.left) {
-      const scrollAmount = cardRect.left - containerRect.left - 20;
-      smoothScroll(cardsContainer, cardsContainer.scrollLeft + scrollAmount, 300);
+        const scrollAmount = cardRect.left - containerRect.left - 20;
+        smoothScroll(cardsContainer, cardsContainer.scrollLeft + scrollAmount, 300);
     }
   }
   
@@ -206,9 +288,23 @@ function initializeServiceCarousel() {
     const scrollPosition = cardsContainer.scrollLeft;
     const maxScroll = cardsContainer.scrollWidth - cardsContainer.clientWidth;
     
+    // On mobile always show the buttons
+    if (window.innerWidth <= 640) {
+      prevBtn.style.display = 'flex';
+      nextBtn.style.display = 'flex';
+    } else {
+      // On larger screens, only show if scrollable
+      const isScrollable = maxScroll > 10;
+      prevBtn.style.display = isScrollable ? 'flex' : 'none';
+      nextBtn.style.display = isScrollable ? 'flex' : 'none';
+    }
+    
     // Update button states
     prevBtn.classList.toggle('disabled', scrollPosition <= 10);
-    nextBtn.classList.toggle('disabled', scrollPosition >= maxScroll - 10);
+    prevBtn.style.opacity = scrollPosition <= 10 ? '0.5' : '1';
+    
+    nextBtn.classList.toggle('disabled', scrollPosition >= maxScroll - 10);  
+    nextBtn.style.opacity = scrollPosition >= maxScroll - 10 ? '0.5' : '1';
   }
   
   // Initial update
