@@ -76,13 +76,13 @@ function initializeServiceCarousel() {
       // Pre-calculate expanded height for smooth transitions
       if (window.innerWidth <= 640) {
         card.dataset.collapsedHeight = '235px';
-        card.dataset.expandedHeight = '450px';
+        card.dataset.expandedHeight = '480px'; // Increased for better mobile view
       } else if (window.innerWidth <= 1023) {
         card.dataset.collapsedHeight = '250px';
         card.dataset.expandedHeight = '500px';
       } else {
         card.dataset.collapsedHeight = '260px';
-        card.dataset.expandedHeight = '500px';
+        card.dataset.expandedHeight = '550px'; // Increased for desktop view
       }
     }
   });
@@ -120,76 +120,87 @@ function initializeServiceCarousel() {
   function openCard(card) {
     card.classList.add('active');
     const featureList = card.querySelector('.service-feature-list');
+    const description = card.querySelector('.service-description');
     
     if (featureList) {
-        // Create staggered animation for feature items
-        const featureItems = featureList.querySelectorAll('.service-feature-item');
+      // Create staggered animation for feature items
+      const featureItems = featureList.querySelectorAll('.service-feature-item');
+      
+      // First display the container
+      featureList.style.display = 'block';
+      featureList.style.opacity = '0';
+      
+      // Add haptic feedback for mobile devices if supported
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(50); // Short vibration for feedback
+      }
+
+      const isMobile = window.innerWidth <= 640;
+      const isTablet = window.innerWidth > 640 && window.innerWidth <= 1023;
+      const isDesktop = window.innerWidth > 1023;
+      
+      // Allow description to expand
+      if (description) {
+        description.style.flexGrow = '0';
+        description.style.webkitLineClamp = 'initial';
+        description.style.overflow = 'visible';
+        description.style.marginBottom = '1.5rem';
+      }
+      
+      // Set content first, measure, then animate
+      card.style.maxHeight = 'none';
+      card.style.height = 'auto';
+      card.style.overflow = 'visible';
+      
+      // Display feature list to measure its height
+      featureList.style.display = 'block';
+      featureList.style.height = 'auto';
+      featureList.style.overflow = 'visible';
+      
+      // Apply spacing for the feature list
+      featureList.style.marginTop = isMobile ? '0.5rem' : '0.625rem';
+      featureList.style.paddingTop = isMobile ? '0.5rem' : '0.625rem';
+      featureList.style.paddingBottom = '1.75rem'; // Increased spacing
+      
+      // Apply spacing for feature items
+      featureItems.forEach((item, index) => {
+        const isLastItem = index === featureItems.length - 1;
+        item.style.marginBottom = isLastItem ? '0.75rem' : '0.5rem'; // More space after last item
+        item.style.gap = '8px';
+        item.style.padding = '0.125rem 0';
+      });
+      
+      // Wait a tiny bit for the DOM to update
+      setTimeout(() => {
+        // Calculate height based on actual content
+        const footerHeight = 40; // Height of the tap to collapse button area
         
-        // First display the container
-        featureList.style.display = 'block';
-        featureList.style.opacity = '0';
+        // Set card height to fit content exactly + footer padding
+        card.style.paddingBottom = `${footerHeight}px`;
         
-        // Add haptic feedback for mobile devices if supported
-        if (window.navigator && window.navigator.vibrate) {
-            window.navigator.vibrate(50); // Short vibration for feedback
-        }
-        
-        // On mobile, ensure the card has enough height to show all content
-        if (window.innerWidth <= 640) {
-            // Make sure the card can expand to fit content
-            card.style.maxHeight = 'none';
-            card.style.height = 'auto';
-            card.style.overflow = 'visible';
-            
-            // Compute the height of all feature items to ensure they're visible
-            let featureListHeight = 0;
-            featureItems.forEach(item => {
-                // Add each item's height plus margin
-                featureListHeight += (item.offsetHeight + 12);
-            });
-            
-            // Set minimum height to accommodate all content
-            const baseHeight = 240; // Base height for title and description
-            const totalHeight = baseHeight + featureListHeight + 80; // Add padding, including space for the tap to collapse text
-            
-            // Set explicit height to ensure all content is visible
-            card.style.minHeight = `${Math.max(480, totalHeight)}px`;
-            
-            // Ensure feature list is displayed properly
-            featureList.style.display = 'block';
-            featureList.style.height = 'auto';
-            featureList.style.overflow = 'visible';
-            card.style.paddingBottom = '45px'; // Space for bottom tap bar
-        }
+        // Remove any min-height constraints to let content determine size
+        card.style.minHeight = 'auto';
         
         // Animate in with slight delay
-        setTimeout(() => {
-            featureList.style.opacity = '1';
-            
-            // Stagger each feature item with improved animation
-            featureItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(15px)';
-                
-                setTimeout(() => {
-                    item.style.transition = 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.0)';
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, 60 * (index + 1));
-            });
-            
-            // Final adjustment for mobile after all animations
-            if (window.innerWidth <= 640) {
-                setTimeout(() => {
-                    // Ensure all content is visible after animations
-                    card.style.height = 'auto';
-                    card.style.overflow = 'visible';
-                    
-                    // Scroll to ensure the expanded card is fully visible
-                    ensureCardVisible(card);
-                }, 300);
-            }
-        }, 50);
+        featureList.style.opacity = '1';
+        
+        // Stagger each feature item with improved animation
+        featureItems.forEach((item, index) => {
+          // Start with items hidden
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(8px)'; // Smaller animation distance
+          
+          // Animate them in with staggered delay
+          setTimeout(() => {
+            item.style.transition = 'all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1.0)'; // Faster animation
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, 40 * (index + 1)); // Faster staggered animation
+        });
+        
+        // Ensure expanded card is visible in viewport
+        ensureCardVisible(card);
+      }, 50);
     }
     
     activeCard = card;
@@ -197,38 +208,66 @@ function initializeServiceCarousel() {
   
   function closeCard(card) {
     const featureList = card.querySelector('.service-feature-list');
+    const description = card.querySelector('.service-description');
+    
+    // Store current scroll position
+    const currentScrollPosition = window.scrollY;
+    const currentScrollX = cardsContainer.scrollLeft;
     
     // Add haptic feedback for mobile devices if supported
     if (window.navigator && window.navigator.vibrate) {
-        window.navigator.vibrate(30); // Shorter vibration for closing
+      window.navigator.vibrate(30); // Shorter vibration for closing
     }
     
     if (featureList) {
-        // Fade out the feature list first
-        featureList.style.opacity = '0';
-        
-        // Then hide it after the transition
-        setTimeout(() => {
-            featureList.style.display = 'none';
-            card.classList.remove('active');
-            
-            // Reset padding and height
-            card.style.paddingBottom = '';
-            
-            // Allow some time for the CSS transition to finish
-            setTimeout(() => {
-                if (!card.classList.contains('active')) {
-                    card.style.maxHeight = card.dataset.collapsedHeight;
-                    card.style.minHeight = '';
-                }
-            }, 50);
-        }, 200);
-    } else {
+      // Fade out the feature list first
+      featureList.style.opacity = '0';
+      
+      // Reset description to truncated state
+      if (description) {
+        // Different flex-grow values for desktop and mobile
+        description.style.flexGrow = window.innerWidth <= 640 ? '0.5' : '0.6';
+        description.style.webkitLineClamp = '3';
+        description.style.overflow = 'hidden';
+        description.style.marginBottom = window.innerWidth <= 640 ? '0.875rem' : '1rem';
+      }
+      
+      // Then hide it after the transition
+      setTimeout(() => {
+        featureList.style.display = 'none';
         card.classList.remove('active');
+        
+        // Reset padding and height
+        card.style.paddingBottom = '';
+        
+        // Allow some time for the CSS transition to finish
+        setTimeout(() => {
+          if (!card.classList.contains('active')) {
+            // Reset to original height based on device
+            if (window.innerWidth <= 640) {
+              card.style.maxHeight = '235px';
+              card.style.minHeight = '235px';
+            } else if (window.innerWidth <= 1023) {
+              card.style.maxHeight = '250px';
+              card.style.minHeight = '250px';
+            } else {
+              card.style.maxHeight = '260px';
+              card.style.minHeight = '260px';
+            }
+            card.style.overflow = 'hidden';
+            
+            // Restore scroll position to maintain the same view
+            window.scrollTo(0, currentScrollPosition);
+            cardsContainer.scrollLeft = currentScrollX;
+          }
+        }, 50);
+      }, 200);
+    } else {
+      card.classList.remove('active');
     }
     
     if (activeCard === card) {
-        activeCard = null;
+      activeCard = null;
     }
   }
   
@@ -382,13 +421,13 @@ function initializeServiceCarousel() {
     cards.forEach(card => {
       if (window.innerWidth <= 640) {
         card.dataset.collapsedHeight = '235px';
-        card.dataset.expandedHeight = '450px';
+        card.dataset.expandedHeight = '480px'; // Increased for better mobile view
       } else if (window.innerWidth <= 1023) {
         card.dataset.collapsedHeight = '250px';
         card.dataset.expandedHeight = '500px';
       } else {
         card.dataset.collapsedHeight = '260px';
-        card.dataset.expandedHeight = '500px';
+        card.dataset.expandedHeight = '550px'; // Increased for desktop view
       }
     });
   });
