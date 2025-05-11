@@ -44,7 +44,7 @@
                       </div>
                 </div>
                 <div class="mt-12 lg:mt-0 lg:col-span-6">
-                    <div class="hero-image-container">
+                    <div class="hero-image-container reveal-on-scroll">
                         <img
                             src="{{ url_for('static', filename='css/images/robotman.png') }}"
                             alt="Infranaut Dashboard"
@@ -72,14 +72,14 @@
         </div>
 
         <section class="services-section">
-            <div class="container">
-                <div class="service-carousel">
+            <div class="container full-width-mobile">
+                <div class="service-carousel reveal-on-scroll">
                     <button class="scroll-indicator scroll-prev" aria-label="Previous service" aria-disabled="true">
                         <i class="fas fa-chevron-left"></i>
                     </button>
                     
                     <div class="service-cards-container">
-                        <div class="service-card">
+                        <div class="service-card reveal-on-scroll delay-100">
                             <div class="service-card-content">
                                 <h3 class="service-title">
                                     Infrastructure Intelligence
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         
-                        <div class="service-card">
+                        <div class="service-card reveal-on-scroll delay-200">
                             <div class="service-card-content">
                                 <h3 class="service-title">
                                     Code Intelligence
@@ -127,7 +127,7 @@
                             </div>
                         </div>
                         
-                        <div class="service-card">
+                        <div class="service-card reveal-on-scroll delay-300">
                             <div class="service-card-content">
                                 <h3 class="service-title">
                                     DevOps Productivity
@@ -151,7 +151,7 @@
                             </div>
                         </div>
                         
-                        <div class="service-card">
+                        <div class="service-card reveal-on-scroll delay-400">
                             <div class="service-card-content">
                                 <h3 class="service-title">
                                     Cloud Migration
@@ -307,7 +307,7 @@
             </div>
 
             <div class="column is-7-desktop">
-                <div class="monitoring-dashboard-container">
+                <div class="monitoring-dashboard-container reveal-on-scroll">
                     <div class="dashboard-browser-frame">
                         <div class="browser-controls">
                             <div class="browser-dots">
@@ -568,3 +568,7 @@
         </div>
     </div>
 </section>
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
+{% endblock %}

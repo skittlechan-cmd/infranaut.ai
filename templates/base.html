@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{% block title %}Infranaut.ai | AI-Powered Cloud Infrastructure Management{% endblock %}</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
@@ -43,6 +43,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
     <script src="{{ url_for('static', filename='js/modules.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/testimonial.js') }}"></script>
 
     {% block extra_js %}{% endblock %}
 </body>

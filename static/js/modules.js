@@ -1,7 +1,44 @@
-// Enhanced Service Carousel Script
+// Enhanced Service Carousel Script with Improved Mobile Experience
 document.addEventListener("DOMContentLoaded", () => {
   initializeServiceCarousel();
+  initializeScrollAnimations();
+  adjustCardWidthsForMobile();
+
+  // Re-adjust card widths when window is resized
+  window.addEventListener('resize', adjustCardWidthsForMobile);
 });
+
+// Function to adjust card widths based on viewport
+function adjustCardWidthsForMobile() {
+  const cards = document.querySelectorAll('.service-card');
+  const container = document.querySelector('.service-cards-container');
+  
+  if (!cards.length || !container) return;
+  
+  // Calculate available width
+  const containerWidth = container.clientWidth;
+  const viewportWidth = window.innerWidth;
+  
+  if (viewportWidth <= 640) {
+    // On mobile, make cards take up most of the viewport width
+    cards.forEach(card => {
+      card.style.width = `${containerWidth * 0.85}px`;
+      card.style.minWidth = '250px';
+    });
+  } else if (viewportWidth <= 1023) {
+    // On tablets, fixed width but still wider
+    cards.forEach(card => {
+      card.style.width = '300px';
+      card.style.minWidth = '300px';
+    });
+  } else {
+    // On desktop, use larger fixed width
+    cards.forEach(card => {
+      card.style.width = '320px';
+      card.style.minWidth = '320px';
+    });
+  }
+}
 
 function initializeServiceCarousel() {
   const carousel = document.querySelector('.service-carousel');
@@ -15,279 +52,269 @@ function initializeServiceCarousel() {
   // Initialize state
   let activeCard = null;
   let isScrolling = false;
-  let startX;
+  let startX, startY;
   let scrollLeft;
+  let preventClick = false;
+  let touchStartTime = 0;
   
-  // Initial setup
-  updateScrollButtons();
-  setupResizeHandler();
-  
-  // Setup event listeners for cards
+  // Set initial heights for proper animation
   cards.forEach(card => {
-    setupCardInteraction(card);
+    const featureList = card.querySelector('.service-feature-list');
+    if (featureList) {
+      featureList.style.display = 'none';
+      
+      // Pre-calculate expanded height for smooth transitions
+      if (window.innerWidth <= 640) {
+        card.dataset.collapsedHeight = '235px';
+        card.dataset.expandedHeight = '450px';
+      } else if (window.innerWidth <= 1023) {
+        card.dataset.collapsedHeight = '250px';
+        card.dataset.expandedHeight = '500px';
+      } else {
+        card.dataset.collapsedHeight = '260px';
+        card.dataset.expandedHeight = '500px';
+      }
+    }
   });
   
-  // Setup scroll functionality
-  setupScrolling();
-  
-  // Setup navigation buttons
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', scrollToPrev);
-    nextBtn.addEventListener('click', scrollToNext);
-  }
-  
-  // Card interaction setup
-  function setupCardInteraction(card) {
-    card.addEventListener('click', (e) => {
-      // Don't handle clicks on links or buttons
-      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+  // Handle card click/tap with improved transitions
+  cards.forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (preventClick) return;
       
-      const wasActive = card === activeCard;
+      // Calculate the time between touchstart and click (for better mobile detection)
+      const clickDuration = Date.now() - touchStartTime;
+      if (clickDuration > 300) preventClick = false; // Reset if it was a long press
       
-      // Check if clicking near the bottom (collapse area)
-      const cardRect = card.getBoundingClientRect();
-      const clickedCollapseArea = wasActive && (e.clientY > (cardRect.bottom - 60));
-      
-      // Close any previously opened card
+      // If we already have an active card and it's not this one, close it first
       if (activeCard && activeCard !== card) {
-        collapseCard(activeCard);
+        closeCard(activeCard);
       }
       
-      // Toggle current card
-      if (!wasActive) {
-        expandCard(card);
-      } else if (clickedCollapseArea) {
-        collapseCard(card);
+      // Toggle active state on clicked card
+      if (card.classList.contains('active')) {
+        closeCard(card);
+      } else {
+        openCard(card);
       }
       
-      // Ensure expanded card is visible
-      if (!wasActive && isCardPartiallyOffscreen(card)) {
-        smoothScrollCardIntoView(card);
+      // Ensure the card is fully visible
+      if (card.classList.contains('active')) {
+        setTimeout(() => {
+          ensureCardVisible(card);
+        }, 100);
       }
     });
-  }
+  });
   
-  // Expand card with animation
-  function expandCard(card) {
-    // Update active card reference
-    activeCard = card;
-    
-    // Add active class
+  function openCard(card) {
     card.classList.add('active');
-    
-    // Get feature list and animate it
     const featureList = card.querySelector('.service-feature-list');
-    const featureItems = featureList.querySelectorAll('.service-feature-item');
     
-    // Reset animations
-    featureList.style.maxHeight = '0px';
-    featureList.style.opacity = '0';
-    featureList.style.transform = 'translateY(20px)';
-    
-    // Measure the full height to animate to (add extra padding for the collapse button)
-    const fullHeight = featureList.scrollHeight + 40;
-    
-    // Force reflow
-    featureList.offsetHeight;
-    
-    // Animate to full height
-    requestAnimationFrame(() => {
-      featureList.style.maxHeight = fullHeight + 'px';
-      featureList.style.opacity = '1';
-      featureList.style.transform = 'translateY(0)';
+    if (featureList) {
+      // Create staggered animation for feature items
+      const featureItems = featureList.querySelectorAll('.service-feature-item');
       
-      // Animate feature items with staggered delay
-      featureItems.forEach((item, index) => {
-        item.style.transitionDelay = `${0.1 + (index * 0.1)}s`;
-        item.style.opacity = '1';
-        item.style.transform = 'translateY(0)';
-      });
-    });
+      // First display the container
+      featureList.style.display = 'block';
+      featureList.style.opacity = '0';
+      
+      // Animate in with slight delay
+      setTimeout(() => {
+        featureList.style.opacity = '1';
+        
+        // Stagger each feature item
+        featureItems.forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(10px)';
+          
+          setTimeout(() => {
+            item.style.transition = 'all 0.3s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, 80 * (index + 1));
+        });
+      }, 50);
+    }
     
-    // Wait for initial animation to complete before showing the "tap to collapse" text clearly
-    setTimeout(() => {
-      card.classList.add('fully-expanded');
-    }, 300);
+    activeCard = card;
   }
   
-  // Collapse card with animation
-  function collapseCard(card) {
-    // Remove fully expanded class immediately for better transition
-    card.classList.remove('fully-expanded');
-    
+  function closeCard(card) {
     const featureList = card.querySelector('.service-feature-list');
-    const featureItems = featureList.querySelectorAll('.service-feature-item');
     
-    // Reset feature items
-    featureItems.forEach(item => {
-      item.style.transitionDelay = '0s';
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(20px)';
-    });
-    
-    // Collapse the list
-    featureList.style.maxHeight = '0px';
-    featureList.style.opacity = '0';
-    featureList.style.transform = 'translateY(20px)';
-    
-    // Remove active class after animation
-    setTimeout(() => {
+    if (featureList) {
+      // Fade out the feature list first
+      featureList.style.opacity = '0';
+      
+      // Then hide it after the transition
+      setTimeout(() => {
+        featureList.style.display = 'none';
+        card.classList.remove('active');
+      }, 200);
+    } else {
       card.classList.remove('active');
-      if (activeCard === card) {
-        activeCard = null;
-      }
-    }, 300);
-  }
-  
-  // Setup scrolling functionality
-  function setupScrolling() {
-    // Touch events for mobile
-    cardsContainer.addEventListener('touchstart', handleScrollStart, { passive: false });
-    cardsContainer.addEventListener('touchmove', handleScroll, { passive: false });
-    cardsContainer.addEventListener('touchend', handleScrollEnd);
+    }
     
-    // Mouse events for desktop
-    cardsContainer.addEventListener('mousedown', handleScrollStart);
-    cardsContainer.addEventListener('mousemove', handleScroll);
-    cardsContainer.addEventListener('mouseup', handleScrollEnd);
-    cardsContainer.addEventListener('mouseleave', handleScrollEnd);
-    
-    // Prevent click during scroll
-    cardsContainer.addEventListener('click', preventClickDuringScroll, true);
-    
-    // Update buttons on scroll
-    cardsContainer.addEventListener('scroll', updateScrollButtons);
-  }
-  
-  function handleScrollStart(e) {
-    isScrolling = true;
-    startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-    scrollLeft = cardsContainer.scrollLeft;
-    
-    cardsContainer.style.scrollBehavior = 'auto';
-    cardsContainer.classList.add('scrolling');
-    
-    // Prevent default only for mouse events to avoid page scrolling issues
-    if (e.type.includes('mouse')) {
-      e.preventDefault();
+    if (activeCard === card) {
+      activeCard = null;
     }
   }
   
-  function handleScroll(e) {
-    if (!isScrolling) return;
-    
-    const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-    const distance = (startX - x) * 1.5;
-    
-    cardsContainer.scrollLeft = scrollLeft + distance;
-    updateScrollButtons();
-    
-    // Add data attribute to track scrolling
-    cardsContainer.dataset.scrolling = 'true';
-    
-    // Prevent default to stop page scrolling while swiping cards
-    e.preventDefault();
-  }
-  
-  function handleScrollEnd() {
-    if (!isScrolling) return;
-    
-    isScrolling = false;
-    cardsContainer.classList.remove('scrolling');
-    cardsContainer.style.scrollBehavior = 'smooth';
-    
-    // Keep track of scrolling for a short period to prevent clicks
-    setTimeout(() => {
-      delete cardsContainer.dataset.scrolling;
-    }, 100);
-    
-    updateScrollButtons();
-  }
-  
-  function preventClickDuringScroll(e) {
-    if (cardsContainer.dataset.scrolling) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  }
-  
-  // Navigation button functions
-  function updateScrollButtons() {
-    if (!prevBtn || !nextBtn) return;
-    
-    const scrollLeft = cardsContainer.scrollLeft;
-    const maxScroll = cardsContainer.scrollWidth - cardsContainer.clientWidth;
-    
-    // Add/remove disabled class and visual indicator
-    prevBtn.classList.toggle('disabled', scrollLeft <= 8); // Small buffer for rounding errors
-    nextBtn.classList.toggle('disabled', scrollLeft >= maxScroll - 8);
-    
-    // Update ARIA attributes
-    prevBtn.setAttribute('aria-disabled', scrollLeft <= 8);
-    nextBtn.setAttribute('aria-disabled', scrollLeft >= maxScroll - 8);
-  }
-  
-  function scrollToNext() {
-    const cardWidth = cards[0].offsetWidth + parseInt(window.getComputedStyle(cards[0]).marginRight);
-    const scrollAmount = Math.min(cardWidth, cardsContainer.clientWidth / 2);
-    
-    cardsContainer.scrollBy({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
-  }
-  
-  function scrollToPrev() {
-    const cardWidth = cards[0].offsetWidth + parseInt(window.getComputedStyle(cards[0]).marginRight);
-    const scrollAmount = Math.min(cardWidth, cardsContainer.clientWidth / 2);
-    
-    cardsContainer.scrollBy({
-      left: -scrollAmount,
-      behavior: 'smooth'
-    });
-  }
-  
-  // Utility functions
-  function isCardPartiallyOffscreen(card) {
-    const cardRect = card.getBoundingClientRect();
-    const containerRect = cardsContainer.getBoundingClientRect();
-    
-    return (cardRect.right > containerRect.right || cardRect.left < containerRect.left);
-  }
-  
-  function smoothScrollCardIntoView(card) {
+  // Make sure a card is fully visible when expanded
+  function ensureCardVisible(card) {
     const cardRect = card.getBoundingClientRect();
     const containerRect = cardsContainer.getBoundingClientRect();
     
     if (cardRect.right > containerRect.right) {
-      // Card is off to the right
-      cardsContainer.scrollBy({
-        left: cardRect.right - containerRect.right + 24, // Add padding
-        behavior: 'smooth'
-      });
+      const scrollAmount = cardRect.right - containerRect.right + 20;
+      smoothScroll(cardsContainer, cardsContainer.scrollLeft + scrollAmount, 300);
     } else if (cardRect.left < containerRect.left) {
-      // Card is off to the left
-      cardsContainer.scrollBy({
-        left: cardRect.left - containerRect.left - 24, // Subtract padding
-        behavior: 'smooth'
-      });
+      const scrollAmount = cardRect.left - containerRect.left - 20;
+      smoothScroll(cardsContainer, cardsContainer.scrollLeft + scrollAmount, 300);
     }
   }
   
-  // Handle window resize
-  function setupResizeHandler() {
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        updateScrollButtons();
-        
-        // Recalculate active card's feature list height if needed
-        if (activeCard) {
-          const featureList = activeCard.querySelector('.service-feature-list');
-          featureList.style.maxHeight = featureList.scrollHeight + 'px';
-        }
-      }, 100);
-    });
+  // Smooth scroll function
+  function smoothScroll(element, to, duration) {
+    const start = element.scrollLeft;
+    const change = to - start;
+    let currentTime = 0;
+    const increment = 20;
+    
+    function animateScroll() {
+      currentTime += increment;
+      const val = easeInOutQuad(currentTime, start, change, duration);
+      element.scrollLeft = val;
+      if (currentTime < duration) {
+        setTimeout(animateScroll, increment);
+      }
+    }
+    
+    function easeInOutQuad(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+    
+    animateScroll();
   }
+  
+  // Handle scroll indicators
+  function updateScrollButtons() {
+    const scrollPosition = cardsContainer.scrollLeft;
+    const maxScroll = cardsContainer.scrollWidth - cardsContainer.clientWidth;
+    
+    // Update button states
+    prevBtn.classList.toggle('disabled', scrollPosition <= 10);
+    nextBtn.classList.toggle('disabled', scrollPosition >= maxScroll - 10);
+  }
+  
+  // Initial update
+  updateScrollButtons();
+  
+  // Scroll event listeners
+  cardsContainer.addEventListener('scroll', () => {
+    updateScrollButtons();
+  });
+  
+  // Scroll buttons with smooth scrolling
+  prevBtn.addEventListener('click', () => {
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 12; // Reduced gap for better spacing
+    smoothScroll(cardsContainer, cardsContainer.scrollLeft - (cardWidth + gap), 300);
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 12; // Reduced gap for better spacing
+    smoothScroll(cardsContainer, cardsContainer.scrollLeft + (cardWidth + gap), 300);
+  });
+  
+  // Enhanced touch handling for mobile
+  cardsContainer.addEventListener('touchstart', (e) => {
+    isScrolling = false;
+    preventClick = false;
+    startX = e.touches[0].pageX;
+    startY = e.touches[0].pageY;
+    scrollLeft = cardsContainer.scrollLeft;
+    touchStartTime = Date.now();
+  }, { passive: true });
+  
+  cardsContainer.addEventListener('touchmove', (e) => {
+    const x = e.touches[0].pageX;
+    const y = e.touches[0].pageY;
+    const deltaX = startX - x;
+    const deltaY = startY - y;
+    
+    // Detect horizontal scrolling with improved threshold
+    if (!isScrolling && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 5) {
+      isScrolling = true;
+      preventClick = true;
+      e.preventDefault();
+    }
+    
+    if (isScrolling) {
+      cardsContainer.scrollLeft = scrollLeft + deltaX;
+    }
+  }, { passive: false });
+  
+  cardsContainer.addEventListener('touchend', (e) => {
+    // Calculate velocity for momentum scrolling
+    const touchDuration = Date.now() - touchStartTime;
+    
+    // Only keep 'preventClick' true if it was a quick swipe
+    if (touchDuration < 200 && isScrolling) {
+      preventClick = true;
+      setTimeout(() => {
+        preventClick = false;
+      }, 150);
+    } else {
+      preventClick = false;
+    }
+    
+    isScrolling = false;
+    updateScrollButtons();
+  }, { passive: true });
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    updateScrollButtons();
+    
+    // Update card heights on resize
+    cards.forEach(card => {
+      if (window.innerWidth <= 640) {
+        card.dataset.collapsedHeight = '235px';
+        card.dataset.expandedHeight = '450px';
+      } else if (window.innerWidth <= 1023) {
+        card.dataset.collapsedHeight = '250px';
+        card.dataset.expandedHeight = '500px';
+      } else {
+        card.dataset.collapsedHeight = '260px';
+        card.dataset.expandedHeight = '500px';
+      }
+    });
+  });
+}
+
+// Add smooth scroll animations for elements with reveal-on-scroll class
+function initializeScrollAnimations() {
+  const elements = document.querySelectorAll('.reveal-on-scroll');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  elements.forEach(element => {
+    observer.observe(element);
+  });
 }
