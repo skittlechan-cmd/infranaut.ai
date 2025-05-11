@@ -1,0 +1,204 @@
+/* Enhanced CTA Component for Mobile Devices */
+
+/* Base CTA styles */
+.infra-cta-box {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 250, 251, 0.95));
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid rgba(241, 245, 249, 0.6);
+}
+
+.infra-cta-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 108, 55, 0.05), rgba(139, 92, 246, 0.05));
+    z-index: 0;
+}
+
+.infra-cta-box > * {
+    position: relative;
+    z-index: 1;
+}
+
+.infra-cta-box h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.infra-cta-box p.text-xl {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+/* Button styling */
+.infra-cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+    align-items: center;
+}
+
+.infra-cta-buttons .button {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    min-height: 2.75rem;
+    font-weight: 500;
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile-specific enhancements */
+@media (max-width: 640px) {
+    /* Optimized for iPhone 12/14 dimensions */
+    .infra-cta-box {
+        padding: 2.75rem 1.5rem !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        border-radius: 0 !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+        border: none !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(249, 250, 251, 0.98)) !important;
+    }
+
+    .infra-cta-box h2 {
+        font-size: 1.85rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1.35rem !important;
+        padding: 0 0.5rem !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    .infra-cta-box p {
+        font-size: 1.125rem !important;
+        line-height: 1.5 !important;
+        padding: 0 0.75rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .infra-cta-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 1.35rem !important;
+        margin-top: 2.25rem !important;
+        padding: 0 0.5rem !important;
+    }
+    
+    .infra-cta-buttons .button {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.25rem 1.5rem !important;
+        margin: 0 !important;
+        display: block !important;
+        text-align: center !important;
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+        border-radius: 0.75rem !important;
+        min-height: 3.75rem !important;
+        letter-spacing: 0.01em !important;
+    }
+    
+    /* Add touch feedback for mobile */
+    .infra-cta-buttons .button:active {
+        transform: scale(0.98);
+    }
+    
+    /* Enhance the disclaimer text */
+    .infra-cta-box p.text-gray-500 {
+        margin-top: 1.75rem !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .infra-cta-box {
+        padding: 2rem 1.75rem;
+        max-width: 95%;
+        border-radius: 0.75rem;
+    }
+
+    .infra-cta-box h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .infra-cta-box p.text-xl {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .infra-cta-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.25rem;
+    }
+
+    .infra-cta-buttons .button {
+        min-width: 150px;
+        max-width: 200px;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+    .infra-cta-box {
+        padding: 3.5rem 3rem;
+        max-width: 80%;
+    }
+
+    .infra-cta-box h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .infra-cta-buttons .button {
+        min-width: 180px;
+    }
+}
+
+/* Special iPhone 12/14 specific adjustments */
+@media only screen 
+and (device-width: 390px) 
+and (device-height: 844px),
+only screen 
+and (device-width: 428px) 
+and (device-height: 926px) {
+    .infra-cta-box {
+        padding: 2.5rem 1.5rem 2.25rem !important;
+        width: 100vw !important;
+    }
+    
+    .infra-cta-buttons {
+        padding: 0 0.5rem !important;
+    }
+    
+    .infra-cta-buttons .button {
+        font-size: 1.25rem !important;
+        min-height: 3.5rem !important;
+        border-radius: 0.75rem !important;
+    }
+} 

@@ -60,6 +60,273 @@
     --gradient-card: linear-gradient(135deg, #ffffff, #f9fafb);
 }
 
+/* Desktop Only Elements */
+.desktop-only {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+    
+    /* Adjust spacing for modules section on mobile */
+    #additional-modules {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    
+    /* If the modules section is empty on mobile, provide some minimal padding */
+    #additional-modules:empty {
+        padding: 0;
+    }
+}
+
+/* Mobile-only card styles */
+.mobile-only-card {
+    display: block; /* Show by default on mobile */
+}
+
+@media (min-width: 768px) {
+    .mobile-only-card {
+        display: none; /* Hide on tablets and larger screens */
+    }
+}
+
+/* Smooth scrolling for services */
+.service-carousel {
+    scroll-behavior: smooth;
+    position: relative;
+    overflow: hidden;
+    padding: 0 4px; /* Add padding to avoid edge clipping */
+}
+
+.service-cards-container {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* For iOS devices */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); /* Faster transition for smoother scrolling */
+    display: flex;
+    gap: 16px; /* Reduced gap for better view */
+    overflow-x: auto;
+    padding: 8px 5px;
+    margin: 0 -5px 16px; /* Added bottom margin */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    will-change: transform; /* Optimize for animations */
+    align-items: stretch; /* Ensure cards are of equal height */
+    justify-content: flex-start; /* Align to start */
+}
+
+.service-cards-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome and Safari */
+}
+
+.scroll-indicator {
+    transition: opacity 0.2s ease, transform 0.2s ease; /* Faster transitions */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--card-border);
+    border-radius: 50%;
+    width: 36px; /* Smaller for mobile */
+    height: 36px; /* Smaller for mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.scroll-prev {
+    left: 2px;
+}
+
+.scroll-next {
+    right: 2px;
+}
+
+.scroll-indicator:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-indicator.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.service-card {
+    flex: 0 0 auto;
+    width: 270px; /* Base width for desktop */
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, height 0.25s ease; /* Added height transition */
+    overflow: hidden;
+    transform: translateZ(0); /* Force hardware acceleration */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For proper alignment of content */
+    height: 240px; /* Default collapsed height */
+}
+
+/* Active state for service cards */
+.service-card.active {
+    height: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.service-card-content {
+    padding: 18px; /* Increased padding */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Fill the container */
+}
+
+.service-title {
+    font-weight: 600;
+    font-size: 19px; /* Slightly larger */
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-title .icon {
+    transition: transform 0.25s ease;
+    color: var(--text-light);
+}
+
+.service-card.active .service-title .icon {
+    transform: rotate(180deg);
+    color: var(--primary-color);
+}
+
+.service-description {
+    color: var(--text-light);
+    font-size: 15px; /* Slightly larger */
+    margin-bottom: 14px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines when collapsed */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.service-card.active .service-description {
+    -webkit-line-clamp: unset; /* No limit when expanded */
+    margin-bottom: 16px;
+}
+
+.service-feature-list {
+    margin-top: 12px;
+    opacity: 0; /* Hidden by default */
+    display: none; /* Start hidden */
+    transition: opacity 0.25s ease;
+}
+
+.service-card.active .service-feature-list {
+    opacity: 1;
+    display: block;
+}
+
+.service-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px; /* More spacing */
+    font-size: 15px; /* Slightly larger */
+}
+
+.feature-check {
+    color: var(--primary-color);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Card Learn More Link Styles */
+.card-learn-more {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(229, 231, 235, 0.5);
+    display: none; /* Hidden by default */
+    opacity: 0; /* Start with zero opacity */
+    transition: opacity 0.25s ease;
+}
+
+.service-card.active .card-learn-more {
+    display: block; /* Show when card is active */
+    opacity: 1; /* Full opacity when visible */
+    margin-top: 14px; /* Normal spacing when expanded */
+}
+
+.card-learn-more a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 15px; /* Slightly larger */
+    transition: all 0.2s ease;
+    text-decoration: none;
+    padding: 8px 4px;
+}
+
+.card-learn-more a i {
+    transform: translateX(0);
+    transition: transform 0.2s ease;
+}
+
+.card-learn-more a:hover {
+    color: var(--primary-dark);
+}
+
+.card-learn-more a:hover i {
+    transform: translateX(4px);
+}
+
+/* Learn More Link */
+.features-learn-more {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0 8px; /* Adjusted margins */
+    padding: 8px 0; /* Added padding */
+    position: relative; /* Make sure it's above other elements */
+    z-index: 5;
+}
+
+.features-learn-more a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease; /* Faster transition */
+}
+
+.features-learn-more a:hover {
+    background: rgba(255, 108, 55, 0.1);
+    transform: translateY(-2px);
+}
+
+.features-learn-more a svg {
+    margin-left: 8px;
+    transition: transform 0.25s ease; /* Faster transition */
+}
+
+.features-learn-more a:hover svg {
+    transform: translateX(4px);
+}
+
 /* Hero Section */
 .hero.is-fullheight-with-navbar {
     min-height: calc(100vh - 4.5rem);
@@ -1016,5 +1283,51 @@
 @media (min-width: 768px) {
     .transform-image-container {
         margin: 0 0 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .service-card {
+        width: 300px; /* Wider for mobile */
+        margin-right: 5px;
+        margin-left: 5px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* Stronger shadow for better visibility */
+    }
+    
+    .service-cards-container {
+        padding: 12px 8px;
+        gap: 20px; /* Increased gap for better separation */
+    }
+    
+    .service-title {
+        font-size: 20px; /* Larger on mobile */
+    }
+    
+    .service-description {
+        font-size: 16px; /* Larger on mobile */
+        margin-bottom: 16px;
+    }
+    
+    .service-feature-item {
+        font-size: 16px; /* Larger on mobile */
+        margin-bottom: 12px;
+    }
+    
+    .card-learn-more a {
+        font-size: 16px; /* Larger on mobile */
+        padding: 10px 4px;
+    }
+    
+    /* Improve scroll indicators for mobile touch */
+    .scroll-indicator {
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid var(--primary-color);
+        width: 40px; /* Larger for mobile touch */
+        height: 40px; /* Larger for mobile touch */
+    }
+    
+    .scroll-indicator i {
+        color: var(--primary-color);
+        font-size: 16px; /* Larger icon */
     }
 }

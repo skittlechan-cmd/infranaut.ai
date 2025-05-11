@@ -71,7 +71,7 @@
             </p>
         </div>
 
-        <section class="services-section">
+        <section class="services-section mobile-only-card">
             <div class="container full-width-mobile">
                 <div class="service-carousel reveal-on-scroll">
                     <button class="scroll-indicator scroll-prev" aria-label="Previous service" aria-disabled="true">
@@ -100,6 +100,12 @@
                                         <span>AI-powered anomaly detection</span>
                                     </div>
                                 </div>
+                                <div class="card-learn-more">
+                                    <a href="{{ url_for('infrastructure') }}">
+                                        Learn More
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         
@@ -123,6 +129,12 @@
                                         <i class="fas fa-check feature-check"></i>
                                         <span>Code quality insights</span>
                                     </div>
+                                </div>
+                                <div class="card-learn-more">
+                                    <a href="{{ url_for('code') }}">
+                                        Learn More
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -148,6 +160,12 @@
                                         <span>Team performance metrics</span>
                                     </div>
                                 </div>
+                                <div class="card-learn-more">
+                                    <a href="{{ url_for('devops') }}">
+                                        Learn More
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         
@@ -172,10 +190,46 @@
                                         <span>Multi-cloud optimization</span>
                                     </div>
                                 </div>
+                                <div class="card-learn-more">
+                                    <a href="{{ url_for('cloud_migration') }}">
+                                        Learn More
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-card reveal-on-scroll delay-500">
+                            <div class="service-card-content">
+                                <h3 class="service-title">
+                                    Onboarding & Knowledge Sharing
+                                    <i class="fas fa-chevron-down icon"></i>
+                                </h3>
+                                <p class="service-description">Accelerate onboarding and empower teams with contextual, self-service insights</p>
+                                <div class="service-feature-list">
+                                    <div class="service-feature-item">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Natural-language Q&A on your codebase</span>
+                                    </div>
+                                    <div class="service-feature-item">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Knowledge graph of services & configs</span>
+                                    </div>
+                                    <div class="service-feature-item">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Interactive "service map" of dependencies</span>
+                                    </div>
+                                </div>
+                                <div class="card-learn-more">
+                                    <a href="{{ url_for('onboarding') }}">
+                                        Learn More
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-        
+                    
                     <button class="scroll-indicator scroll-next" aria-label="Next service">
                         <i class="fas fa-chevron-right"></i>
                     </button>
@@ -334,7 +388,7 @@
 <!-- Additional Modules Section -->
 <section id="additional-modules" class="section bg-light py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="has-text-centered mb-16">
+        <div class="has-text-centered mb-16 desktop-only">
             <h2 class="text-3xl font-bold mb-4">Specialized Modules</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Enhance your development workflow with our specialized
@@ -344,7 +398,7 @@
 
         <div class="columns is-multiline">
             <!-- Module 1 -->
-            <div class="column is-6 is-4-widescreen">
+            <div class="column is-6 is-4-widescreen desktop-only">
                 <div class="module-card">
                     <div class="module-icon">
                         <svg
@@ -372,7 +426,7 @@
             </div>
 
             <!-- Module 2 -->
-            <div class="column is-6 is-4-widescreen">
+            <div class="column is-6 is-4-widescreen desktop-only">
                 <div class="module-card">
                     <div class="module-icon">
                         <svg
@@ -400,7 +454,7 @@
             </div>
 
             <!-- Module 3 -->
-            <div class="column is-6 is-4-widescreen">
+            <div class="column is-6 is-4-widescreen desktop-only">
                 <div class="module-card">
                     <div class="module-icon">
                         <svg
@@ -431,7 +485,7 @@
             </div>
 
             <!-- Module 4 -->
-            <div class="column is-6 is-4-widescreen">
+            <div class="column is-6 is-4-widescreen desktop-only">
                 <div class="module-card">
                     <div class="module-icon">
                         <svg
@@ -469,7 +523,7 @@
             </div>
 
             <!--Module 5 DevOps Productivity Module -->
-            <div class="column is-6 is-4-widescreen">
+            <div class="column is-6 is-4-widescreen desktop-only">
                 <div class="module-card">
                     <div class="module-icon">
                         <svg
@@ -502,7 +556,7 @@
             </div>
 
             <!-- Module 6 -->
-            <div class="column is-6 is-4-widescreen">
+            <div class="column is-6 is-4-widescreen desktop-only">
                 <div class="module-card">
                     <div class="module-icon">
                         <svg
@@ -533,7 +587,7 @@
             </div>
 
             <!-- Module 7 -->
-            <div class="column is-6 is-4-widescreen">
+            <div class="column is-6 is-4-widescreen desktop-only">
                 <div class="module-card">
                     <div class="module-icon">
                         <svg
@@ -571,4 +625,7 @@
 
 {% block extra_js %}
 <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
+<script src="{{ url_for('static', filename='js/modules.js') }}"></script>
+<script src="{{ url_for('static', filename='js/testimonial.js') }}"></script>
+<script src="{{ url_for('static', filename='js/smooth-scroll.js') }}"></script>
 {% endblock %}

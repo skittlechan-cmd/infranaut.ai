@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let maxIndex = 0;
   let startX, startY;
   let isTouching = false;
+  let isHorizontalSwipe = false;
   let startScrollLeft;
   let touchStartTime = 0;
   let trackWidth;
@@ -78,16 +79,18 @@ document.addEventListener('DOMContentLoaded', function() {
       // Give each card an index for easier reference
       card.dataset.index = index;
       
-      // Add hover feedback and enhance testimonial quotes
-      card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-5px)';
-        card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.12)';
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        card.style.boxShadow = '';
-      });
+      // Only add hover effects on non-mobile devices
+      if (window.innerWidth > 768) {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-5px)';
+          card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.12)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+          card.style.boxShadow = '';
+        });
+      }
     });
   }
   
@@ -157,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     track.addEventListener('touchstart', (e) => {
       isTouching = true;
+      isHorizontalSwipe = false;
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
       startScrollLeft = getTrackPosition();
@@ -173,11 +177,31 @@ document.addEventListener('DOMContentLoaded', function() {
       const deltaX = startX - x;
       const deltaY = startY - y;
       
+      // Determine if this is a horizontal swipe
+      if (!isHorizontalSwipe) {
+        // Only handle as horizontal swipe if movement is primarily horizontal
+        // and after a minimum threshold to avoid interfering with page scrolling
+        if (Math.abs(deltaX) > Math.abs(deltaY) * 2 && Math.abs(deltaX) > 15) {
+          isHorizontalSwipe = true;
+          
+          // Prevent default to handle the horizontal scroll ourselves
+          e.preventDefault();
+        }
+      }
+      
       // Only handle horizontal swipes
-      if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        e.preventDefault();
-        const position = startScrollLeft - deltaX;
-        track.style.transform = `translateX(${position}px)`;
+      if (isHorizontalSwipe) {
+        // Apply drag with resistance at edges
+        let newPosition = startScrollLeft - deltaX;
+        
+        // Add resistance at edges
+        if (newPosition > 0 || currentIndex === 0) {
+          newPosition = startScrollLeft - deltaX * 0.3; // Add resistance
+        } else if (currentIndex >= maxIndex && deltaX > 0) {
+          newPosition = startScrollLeft - deltaX * 0.3; // Add resistance
+        }
+        
+        track.style.transform = `translateX(${newPosition}px)`;
       }
     }, { passive: false });
     
@@ -189,20 +213,28 @@ document.addEventListener('DOMContentLoaded', function() {
       const currentPosition = getTrackPosition();
       const movement = startScrollLeft - currentPosition;
       
-      // Determine direction and threshold for swiping
-      if (Math.abs(movement) > cardWidth * 0.2 || touchDuration < 200) {
-        if (movement > 0 && currentIndex < maxIndex) {
-          goToSlide(currentIndex + 1);
-        } else if (movement < 0 && currentIndex > 0) {
-          goToSlide(currentIndex - 1);
+      // Only process swipe if it was a horizontal swipe
+      if (isHorizontalSwipe) {
+        // Determine direction and threshold for swiping
+        if (Math.abs(movement) > cardWidth * 0.2 || (touchDuration < 300 && Math.abs(movement) > 30)) {
+          if (movement > 0 && currentIndex < maxIndex) {
+            goToSlide(currentIndex + 1);
+          } else if (movement < 0 && currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+          } else {
+            // Snap back to current slide
+            goToSlide(currentIndex);
+          }
         } else {
           // Snap back to current slide
           goToSlide(currentIndex);
         }
       } else {
-        // Snap back to current slide
-        goToSlide(currentIndex);
+        // It was a vertical scroll or tap, do nothing
+        goToSlide(currentIndex, false);
       }
+      
+      isHorizontalSwipe = false;
     }, { passive: true });
   }
   
@@ -213,17 +245,41 @@ document.addEventListener('DOMContentLoaded', function() {
     return matrix.m41; // translateX value
   }
   
-  // Add button event listeners
+  // Add button event listeners with improved touch experience for mobile
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
       if (currentIndex > 0) goToSlide(currentIndex - 1);
     });
+    
+    // Add touch-friendly handling for mobile
+    prevBtn.addEventListener('touchstart', (e) => {
+      // Add visual feedback
+      prevBtn.style.transform = 'scale(0.95)';
+    }, { passive: true });
+    
+    prevBtn.addEventListener('touchend', (e) => {
+      // Remove visual feedback
+      prevBtn.style.transform = '';
+      if (currentIndex > 0) goToSlide(currentIndex - 1);
+    }, { passive: true });
   }
   
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       if (currentIndex < maxIndex) goToSlide(currentIndex + 1);
     });
+    
+    // Add touch-friendly handling for mobile
+    nextBtn.addEventListener('touchstart', (e) => {
+      // Add visual feedback
+      nextBtn.style.transform = 'scale(0.95)';
+    }, { passive: true });
+    
+    nextBtn.addEventListener('touchend', (e) => {
+      // Remove visual feedback
+      nextBtn.style.transform = '';
+      if (currentIndex < maxIndex) goToSlide(currentIndex + 1);
+    }, { passive: true });
   }
   
   // Handle window resize
