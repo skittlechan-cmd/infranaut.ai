@@ -6,9 +6,12 @@
 }
 
 .infra-footer-title {
+    font-family: "Roboto", sans-serif;
     font-weight: 600;
     margin-bottom: 1rem;
     color: white;
+    font-size: 1.125rem;
+    letter-spacing: -0.01em;
 }
 
 .infra-footer-links {
@@ -19,11 +22,14 @@
 
 .infra-footer-links li {
     margin-bottom: 0.75rem;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 0.95rem;
 }
 
 .infra-footer-links a {
     color: #9CA3AF;
     transition: color 0.2s ease;
+    font-weight: 400;
 }
 
 .infra-footer-links a:hover {

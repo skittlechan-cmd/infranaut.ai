@@ -24,12 +24,16 @@
 .devops-hero-content {
     position: relative;
     z-index: 2;
+    max-width: 600px;
+    padding: 4rem 0;
 }
 
 .devops-hero-title {
+    font-family: "Roboto", sans-serif;
     font-size: 3.5rem;
     line-height: 1.2;
     font-weight: 700;
+    letter-spacing: -0.02em;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     background-clip: text;
@@ -38,10 +42,13 @@
 }
 
 .devops-hero-subtitle {
+    font-family: "Source Sans Pro", sans-serif;
     font-size: 1.25rem;
     line-height: 1.6;
-    color: var(--text-light);
+    color: var(--text-dark);
     max-width: 540px;
+    font-weight: 400;
+    margin-bottom: 2rem;
 }
 
 .devops-hero-dashboard {
@@ -71,6 +78,11 @@
 }
 
 @media screen and (max-width: 768px) {
+    .devops-hero-content {
+        text-align: center;
+        padding: 3rem 1.5rem;
+    }
+
     .devops-hero-title {
         font-size: 2rem;
         text-align: center;
@@ -83,11 +95,20 @@
 
     .devops-hero .buttons {
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
-    
+
     .devops-hero-dashboard {
         margin: 2rem auto 0;
         max-width: 90%;
+        padding: 0 1rem;
+    }
+
+    .button {
+        width: 100%;
+        max-width: 300px;
+        margin: 0.5rem 0;
     }
 }
 
@@ -146,8 +167,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
-    padding: 2rem;
+    margin: 3rem auto;
+    max-width: 1000px;
+    padding: 0 1.5rem;
 }
 
 .devops-tool-item {
@@ -190,11 +212,8 @@
 
 .devops-tool-item i {
     font-size: 2.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
     transition: transform 0.3s ease;
 }
 
@@ -212,8 +231,8 @@
 @media (max-width: 768px) {
     .devops-tools-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        padding: 1rem;
+        gap: 1.5rem;
+        padding: 0 1rem;
     }
 
     .devops-tool-item {
@@ -273,12 +292,12 @@
 
 /* Demo Chat Container */
 .devops-chat-container {
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 1rem;
-    padding: 2rem;
-    transition: all 0.3s ease;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
 }
 
 .devops-chat-container:hover {
@@ -326,12 +345,13 @@
 
 /* Feature Cards */
 .devops-feature-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 1rem;
     padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
 }
@@ -360,6 +380,9 @@
 }
 
 .devops-feature-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
     width: 3.5rem;
     height: 3.5rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -367,7 +390,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
 }
@@ -431,12 +453,21 @@
 @media (max-width: 768px) {
     .devops-tools-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .devops-feature-card,
     .devops-tool-item {
         padding: 1.5rem;
+    }
+
+    .devops-feature-card {
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .devops-chat-container {
+        margin: 1.5rem;
     }
 }
 

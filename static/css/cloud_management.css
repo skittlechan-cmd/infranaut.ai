@@ -22,13 +22,16 @@
 .cloud-hero-content {
     position: relative;
     z-index: 1;
+    padding: 4rem 0;
 }
 
 .cloud-hero-title {
+    font-family: "Roboto", sans-serif;
     font-size: 3.5rem;
     line-height: 1.2;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
 }
 
 .text-gradient {
@@ -39,11 +42,13 @@
 }
 
 .cloud-hero-subtitle {
+    font-family: "Source Sans Pro", sans-serif;
     font-size: 1.25rem;
     line-height: 1.6;
     color: var(--text-light);
-    max-width: 540px;
+    max-width: 600px;
     margin-bottom: 2rem;
+    font-weight: 400;
 }
 
 .cloud-dashboard-container {
@@ -370,36 +375,18 @@
 
 /* Feature Cards */
 .cloud-feature-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 1rem;
     padding: 2rem;
     height: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-md);
 }
 
 .cloud-feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon-wrapper {
-    width: 3.5rem;
-    height: 3.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-.feature-icon-wrapper i {
-    font-size: 1.5rem;
-    color: white;
+    box-shadow: var(--shadow-lg);
 }
 
 /* Cost Optimization Card */
@@ -475,13 +462,19 @@
 
 /* Performance Monitoring Card */
 .monitor-metrics {
-    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
 
 .metric-box {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--glass-border);
 }
 
 .metric-icon {
@@ -546,7 +539,9 @@
 
 /* Security & Governance Card */
 .compliance-status {
-    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
 
 .compliance-item {
@@ -554,6 +549,10 @@
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--glass-border);
 }
 
 .compliance-name {
@@ -829,6 +828,17 @@
     transform: translateY(0);
 }
 
+/* Container Alignment */
+.cloud-hero .container,
+.cloud-overview-content,
+.cloud-dashboard-tabs,
+.cloud-feature-card {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 1023px) {
     .cloud-hero-title {
@@ -851,8 +861,15 @@
         text-align: center;
     }
     
+    .cloud-hero-content {
+        text-align: center;
+        padding: 3rem 0;
+    }
+    
     .cloud-hero-subtitle {
         text-align: center;
+        margin-left: auto;
+        margin-right: auto;
         margin: 0 auto 2rem;
     }
     
@@ -883,6 +900,24 @@
     .cloud-info-cards {
         margin-top: 2rem;
     }
+    
+    .cloud-dashboard-container {
+        margin-top: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .cloud-feature-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .monitor-metrics,
+    .compliance-status {
+        grid-template-columns: 1fr;
+    }
+    
+    .cloud-prompt-box {
+        margin: 1.5rem;
+    }
 }
 
 @media (max-width: 640px) {
@@ -896,5 +931,25 @@
     
     .chart-container {
         min-height: 300px;
+    }
+}
+
+/* Consistent Button Styling */
+.cloud-hero .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+    .cloud-hero .buttons {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cloud-hero .button {
+        width: 100%;
+        max-width: 300px;
     }
 }
