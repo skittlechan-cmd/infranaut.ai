@@ -1,4 +1,74 @@
-<!-- Testimonial Section with Improved Mobile Layout -->
+<!-- Testimonial Section - Compact Version -->
+<section class="testimonial-section">
+    <div class="container mx-auto px-4">
+        <div class="testimonial-heading">
+            <h2 class="testimonial-heading-title">What Our Clients Say</h2>
+            <p class="testimonial-heading-subtitle">See how Infranaut.ai has transformed infrastructure management for teams worldwide.</p>
+        </div>
+
+        <div class="testimonial-wrapper">
+            <div class="testimonial-container">
+                <div class="testimonial-track-container">
+                    <div class="testimonial-track" id="testimonialTrack">
+                        <!-- Testimonial Card 1 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote-icon">"</div>
+                            <p class="testimonial-quote">Infranaut.ai helped us reduce our cloud costs by 35% while improving our infrastructure reliability. Their AI-powered monitoring detected issues before they became problems.</p>
+                            <div class="testimonial-footer">
+                                <div class="testimonial-avatar" style="background-image: url('{{ url_for('static', filename='css/images/avatar1.jpg') }}');"></div>
+                                <div class="testimonial-info">
+                                    <h4 class="testimonial-name">Sarah Johnson</h4>
+                                    <p class="testimonial-title">CTO, TechForward</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 2 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote-icon">"</div>
+                            <p class="testimonial-quote">The implementation was seamless, and we started seeing value within days. Infranaut's automated deployments have cut our release cycles in half.</p>
+                            <div class="testimonial-footer">
+                                <div class="testimonial-avatar" style="background-image: url('{{ url_for('static', filename='css/images/avatar2.jpg') }}');"></div>
+                                <div class="testimonial-info">
+                                    <h4 class="testimonial-name">Michael Chen</h4>
+                                    <p class="testimonial-title">DevOps Lead, CloudNative</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 3 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote-icon">"</div>
+                            <p class="testimonial-quote">Infranaut.ai gives us confidence in our infrastructure. Their AI insights helped us optimize our Kubernetes clusters and improve performance by 40%.</p>
+                            <div class="testimonial-footer">
+                                <div class="testimonial-avatar" style="background-image: url('{{ url_for('static', filename='css/images/avatar3.jpg') }}');"></div>
+                                <div class="testimonial-info">
+                                    <h4 class="testimonial-name">Emma Davis</h4>
+                                    <p class="testimonial-title">Engineering Director, DataFlow</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-controls">
+                    <button class="control-btn prev-btn" aria-label="Previous testimonial">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="pagination-dots" id="paginationDots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                    <button class="control-btn next-btn" aria-label="Next testimonial">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <style>
     /* Base Styles & Variables */
     :root {
@@ -15,40 +85,50 @@
         --card-border: #F1F5F9;
     }
 
-    /* Reset */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
     /* Section Layout */
     .testimonial-section {
-        padding: 3rem 0 4rem;
+        padding: 3rem 0;
         width: 100%;
         background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+        position: relative;
+        overflow: hidden;
     }
 
     /* Section Title Styles */
     .testimonial-heading {
         text-align: center;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
         position: relative;
         padding: 0 1rem;
+        z-index: 2;
     }
 
     .testimonial-heading-title {
         font-size: 2rem;
         font-weight: 700;
         color: var(--text-dark);
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .testimonial-heading-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--primary-color);
+        border-radius: 3px;
     }
 
     .testimonial-heading-subtitle {
         font-size: 1.125rem;
         color: var(--text-light);
         max-width: 600px;
-        margin: 0 auto;
+        margin: 0.75rem auto 0;
     }
 
     /* Testimonial Wrapper */
@@ -56,7 +136,7 @@
         width: 100%;
         position: relative;
         overflow: hidden;
-        padding-bottom: 3rem;
+        padding-bottom: 1rem;
     }
 
     .testimonial-container {
@@ -94,7 +174,7 @@
         position: relative;
         min-height: auto;
         border: 1px solid var(--card-border);
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         display: flex;
         flex-direction: column;
     }
@@ -171,12 +251,12 @@
         align-items: center;
         justify-content: center;
         gap: 1rem;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
     }
 
     .control-btn {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
         border-radius: 50%;
         background: white;
         border: 1px solid var(--card-border);
@@ -185,31 +265,25 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
     }
 
     .control-btn:hover:not(.disabled) {
         transform: translateY(-3px);
         color: var(--primary-color);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    }
-
-    .control-btn.disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
     }
 
     .pagination-dots {
         display: flex;
         gap: 0.5rem;
         justify-content: center;
-        margin-top: 1rem;
     }
 
     .dot {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background-color: #CBD5E1;
         transition: all 0.3s ease;
@@ -221,264 +295,88 @@
         transform: scale(1.2);
     }
 
+    /* Card accent border */
     .testimonial-card::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
-        width: 5px;
+        width: 4px;
         height: 100%;
         background: var(--primary-color);
         border-top-left-radius: 0.75rem;
         border-bottom-left-radius: 0.75rem;
     }
 
-    /* Responsive Styles */
-    @media (min-width: 640px) {
-        .testimonial-container {
-            padding: 0 1rem;
-        }
-        
-        .testimonial-card {
-            flex: 0 0 85%;
-        }
-        
-        .testimonial-track {
-            width: 90%;
-        }
-    }
-
-    @media (min-width: 768px) {
-        .testimonial-card {
-            flex: 0 0 calc(50% - 15px);
-        }
-        
-        .testimonial-track {
-            width: 100%;
-            padding: 10px 1rem;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .testimonial-card {
-            flex: 0 0 calc(33.333% - 15px);
-        }
-        
-        .testimonial-controls {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            justify-content: space-between;
-            padding: 0 1rem;
-            margin-top: 0;
-            pointer-events: none;
-        }
-        
-        .control-btn {
-            pointer-events: auto;
-            z-index: 10;
-        }
-    }
-
-    /* Enhanced Mobile-specific adjustments */
-    @media (max-width: 640px) {
-        .testimonial-section {
-            padding: 2rem 0 3rem;
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-            margin-right: calc(-50vw + 50%);
-        }
-        
-        .testimonial-heading {
-            padding: 0 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
+    /* Mobile-specific styles */
+    @media (max-width: 768px) {
         .testimonial-heading-title {
-            font-size: 2.25rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.75rem;
         }
         
         .testimonial-heading-subtitle {
-            font-size: 1.125rem;
-            max-width: 100%;
-            padding: 0 0.5rem;
-        }
-        
-        .testimonial-track-container {
-            padding: 0.5rem 0;
-            width: 100vw;
-        }
-        
-        .testimonial-track {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            gap: 1rem;
-        }
-        
-        .testimonial-card {
-            flex: 0 0 85vw;
-            min-width: 85vw;
-            padding: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-            border-radius: 1rem;
-            transform: none !important;
-        }
-        
-        .testimonial-quote-icon {
-            font-size: 4rem;
-            top: 1rem;
-            right: 1.5rem;
+            font-size: 1rem;
         }
         
         .testimonial-quote {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: 1.25rem;
-            padding-right: 1rem;
-        }
-        
-        .testimonial-footer {
-            padding-top: 1rem;
-            gap: 1rem;
-        }
-        
-        .testimonial-avatar {
-            width: 3rem;
-            height: 3rem;
-        }
-        
-        .testimonial-name {
-            font-size: 1.05rem;
-        }
-        
-        .testimonial-title {
-            font-size: 0.875rem;
-        }
-        
-        .control-btn {
-            width: 3rem;
-            height: 3rem;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid var(--primary-color);
-            z-index: 10;
-        }
-        
-        .control-btn svg {
-            width: 24px;
-            height: 24px;
-            color: var(--primary-color);
-        }
-        
-        .pagination-dots {
-            margin-top: 1.5rem;
-            gap: 0.75rem;
-        }
-        
-        .dot {
-            width: 10px;
-            height: 10px;
-        }
-        
-        .testimonial-wrapper {
-            padding-bottom: 2rem;
-            overflow-x: visible;
-            pointer-events: auto;
+            font-size: 0.95rem;
         }
         
         .testimonial-controls {
-            padding: 0 1rem;
-            margin-top: 1.5rem;
-            gap: 2rem;
+            margin-top: 0.75rem;
         }
     }
 </style>
 
-<section class="testimonial-section">
-    <!-- Testimonial Heading -->
-    <div class="testimonial-heading">
-        <h2 class="testimonial-heading-title">What Our Clients Say</h2>
-        <p class="testimonial-heading-subtitle">Join hundreds of companies transforming their infrastructure with Infranaut.ai</p>
-    </div>
-    
-    <div class="testimonial-wrapper">
-        <div class="testimonial-container">
-            <div class="testimonial-track-container">
-                <div id="testimonial-track" class="testimonial-track">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote-icon">"</div>
-                        <div class="testimonial-quote">Infranaut.ai has been a game-changer for our DevOps team. We've seen a 40% reduction in our infrastructure costs and significantly improved our deployment speed.</div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
-                            <div class="testimonial-info">
-                                <h4 class="testimonial-name">John Smith</h4>
-                                <p class="testimonial-title">CTO at TechNova</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote-icon">"</div>
-                        <div class="testimonial-quote">The AI-driven insights have helped us identify and resolve issues before they impact our customers. Our team is more proactive than ever.</div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
-                            <div class="testimonial-info">
-                                <h4 class="testimonial-name">Sarah Johnson</h4>
-                                <p class="testimonial-title">DevOps Lead at CloudFlex</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote-icon">"</div>
-                        <div class="testimonial-quote">Migrating to the cloud was a breeze with Infranaut. Their intelligent optimization suggestions saved us months of manual configuration.</div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/67.jpg');"></div>
-                            <div class="testimonial-info">
-                                <h4 class="testimonial-name">Michael Chen</h4>
-                                <p class="testimonial-title">Infrastructure Manager at DataFlow</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 4 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote-icon">"</div>
-                        <div class="testimonial-quote">The integration with our existing monitoring tools was seamless. Now we have a unified view of our entire infrastructure with actionable insights.</div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/28.jpg');"></div>
-                            <div class="testimonial-info">
-                                <h4 class="testimonial-name">Elena Rodriguez</h4>
-                                <p class="testimonial-title">SRE at Enterprise Solutions</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.getElementById('testimonialTrack');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
+        const cardCount = track.children.length;
+
+        // Set initial state
+        updateCarousel();
+
+        // Add event listeners for dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+
+        // Add event listeners for buttons
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % cardCount;
+            updateCarousel();
+        });
+
+        function updateCarousel() {
+            // Update track position
+            const cardWidth = track.children[0].offsetWidth;
+            const gap = 12; // gap between cards
+            track.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
             
-            <!-- Testimonial Controls -->
-            <div class="testimonial-controls">
-                <!-- Navigation Buttons -->
-                <button id="prev-btn" class="control-btn disabled" aria-label="Previous testimonial">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                
-                <button id="next-btn" class="control-btn" aria-label="Next testimonial">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
             
-            <!-- Pagination Dots -->
-            <div id="pagination-dots" class="pagination-dots"></div>
-        </div>
-    </div>
-</section>
+            // Update button states
+            prevBtn.classList.toggle('disabled', currentIndex === 0);
+            nextBtn.classList.toggle('disabled', currentIndex === cardCount - 1);
+        }
+    });
+</script>

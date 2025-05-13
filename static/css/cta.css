@@ -1,17 +1,17 @@
-/* Enhanced CTA Component for Mobile Devices */
+/* Enhanced CTA Component for All Devices */
 
 /* Base CTA styles */
 .infra-cta-box {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 250, 251, 0.95));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(249, 250, 251, 0.98));
     border-radius: 1rem;
-    padding: 2rem 1.5rem;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+    padding: 2.5rem 2rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.04);
     width: 100%;
-    max-width: 900px;
-    margin: 3rem auto;
-    border: 1px solid rgba(241, 245, 249, 0.6);
+    max-width: 850px;
+    margin: 2.5rem auto;
+    border: 1px solid rgba(241, 245, 249, 0.8);
     text-align: center;
 }
 
@@ -19,7 +19,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 108, 55, 0.05), rgba(139, 92, 246, 0.05));
+    background: linear-gradient(135deg, rgba(255, 108, 55, 0.05), rgba(37, 99, 235, 0.05));
     z-index: 0;
 }
 
@@ -30,21 +30,22 @@
 
 .infra-cta-box h2 {
     font-family: "Roboto", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     line-height: 1.3;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
     font-weight: 700;
-    color: var(--text-dark);
+    color: #1e3a8a;
 }
 
-.infra-cta-box p.text-xl {
+.infra-cta-box p.text-xl,
+.infra-cta-box p {
     font-family: "Source Sans Pro", sans-serif;
-    font-size: 1rem;
+    font-size: 1.125rem;
     line-height: 1.6;
     margin-bottom: 1.25rem;
     font-weight: 400;
-    color: var(--text-light);
+    color: #4b5563;
     margin-left: auto;
     margin-right: auto;
     max-width: 600px;
@@ -53,100 +54,60 @@
 /* Button styling */
 .infra-cta-buttons {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.75rem;
     width: 100%;
     align-items: center;
     justify-content: center;
 }
 
-.infra-cta-buttons .button {
-    padding: 0.75rem 1.25rem;
+.infra-cta-buttons .button,
+.infra-cta-buttons a {
+    padding: 0.75rem 1.5rem;
     font-size: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem;
     min-height: 2.75rem;
-    font-weight: 500;
-    width: 100%;
-    max-width: 300px;
+    font-weight: 600;
+    min-width: 160px;
+    max-width: 200px;
     transition: all 0.3s ease;
 }
 
-/* Typography Optimizations */
-body {
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--text-dark);
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-}
-
-/* Mobile-specific enhancements */
+/* Mobile styles */
 @media (max-width: 640px) {
-    /* Optimized for iPhone 12/14 dimensions */
-    body {
-        font-size: 15px;
-        line-height: 1.5;
-    }
-
     .infra-cta-box {
-        padding: 2.75rem 1.5rem !important;
-        width: 100vw !important;
-        max-width: 100vw !important;
-        margin-left: calc(-50vw + 50%) !important;
-        margin-right: calc(-50vw + 50%) !important;
-        border-radius: 0 !important;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
-        border: none !important;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(249, 250, 251, 0.98)) !important;
+        padding: 2rem 1.5rem;
+        max-width: 95%;
+        margin: 2rem auto;
+        border-radius: 0.75rem;
     }
 
     .infra-cta-box h2 {
-        font-size: 1.85rem !important;
-        line-height: 1.3 !important;
-        margin-bottom: 1.35rem !important;
-        padding: 0 0.5rem !important;
-        font-weight: 700 !important;
-        letter-spacing: -0.01em !important;
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
     }
 
+    .infra-cta-box p.text-xl,
     .infra-cta-box p {
-        font-size: 1.125rem !important;
-        line-height: 1.5 !important;
-        padding: 0 0.75rem !important;
-        margin-bottom: 0.5rem !important;
+        font-size: 1rem;
+        padding: 0 0.5rem;
+        margin-bottom: 0.5rem;
     }
     
     .infra-cta-buttons {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 1.35rem !important;
-        margin-top: 2.25rem !important;
-        padding: 0 0.5rem !important;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
     }
     
-    .infra-cta-buttons .button {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 1.25rem 1.5rem !important;
-        margin: 0 !important;
-        display: block !important;
-        text-align: center !important;
-        font-size: 1.25rem !important;
-        font-weight: 600 !important;
-        border-radius: 0.75rem !important;
-        min-height: 3.75rem !important;
-        letter-spacing: 0.01em !important;
+    .infra-cta-buttons .button,
+    .infra-cta-buttons a {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.75rem 1rem;
     }
     
     /* Add touch feedback for mobile */
@@ -156,40 +117,43 @@ h1, h2, h3, h4, h5, h6 {
     
     /* Enhance the disclaimer text */
     .infra-cta-box p.text-gray-500 {
-        margin-top: 1.75rem !important;
-        font-size: 0.9rem !important;
+        margin-top: 1.25rem;
+        font-size: 0.85rem;
     }
 }
 
 /* Tablet styles */
 @media (min-width: 641px) and (max-width: 1023px) {
     .infra-cta-box {
-        padding: 2rem 1.75rem;
-        max-width: 95%;
+        padding: 2.25rem 2rem;
+        max-width: 90%;
+        margin: 2.25rem auto;
         border-radius: 0.75rem;
     }
 
     .infra-cta-box h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        font-size: 1.6rem;
+        margin-bottom: 0.9rem;
     }
 
-    .infra-cta-box p.text-xl {
+    .infra-cta-box p.text-xl,
+    .infra-cta-box p {
         font-size: 1rem;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1rem;
     }
 
     .infra-cta-buttons {
         flex-direction: row;
         justify-content: center;
         gap: 1rem;
-        margin-top: 1.25rem;
+        margin-top: 1.5rem;
     }
 
-    .infra-cta-buttons .button {
-        min-width: 150px;
-        max-width: 200px;
-        padding: 0.75rem 1.25rem;
+    .infra-cta-buttons .button,
+    .infra-cta-buttons a {
+        min-width: 160px;
+        max-width: 180px;
+        padding: 0.7rem 1.2rem;
         font-size: 0.95rem;
     }
 }
@@ -197,49 +161,39 @@ h1, h2, h3, h4, h5, h6 {
 /* Desktop styles */
 @media (min-width: 1024px) {
     .infra-cta-box {
-        padding: 3.5rem 3rem;
+        padding: 3rem 2.5rem;
         max-width: 80%;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 3rem auto;
     }
 
     .infra-cta-box h2 {
-        font-size: 2.25rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
+        font-size: 1.9rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .infra-cta-box p.text-xl,
+    .infra-cta-box p {
+        font-size: 1.125rem;
+        margin-bottom: 1.25rem;
     }
 
     .infra-cta-buttons {
         justify-content: center;
         display: flex;
         gap: 1rem;
+        margin-top: 1.75rem;
     }
 
-    .infra-cta-buttons .button {
-        min-width: 180px;
-    }
-}
-
-/* Special iPhone 12/14 specific adjustments */
-@media only screen 
-and (device-width: 390px) 
-and (device-height: 844px),
-only screen 
-and (device-width: 428px) 
-and (device-height: 926px) {
-    .infra-cta-box {
-        padding: 2.5rem 1.5rem 2.25rem !important;
-        width: 100vw !important;
+    .infra-cta-buttons .button,
+    .infra-cta-buttons a {
+        min-width: 170px;
+        max-width: 190px;
     }
     
-    .infra-cta-buttons {
-        padding: 0 0.5rem !important;
-    }
-    
-    .infra-cta-buttons .button {
-        font-size: 1.25rem !important;
-        min-height: 3.5rem !important;
-        border-radius: 0.75rem !important;
+    /* Disclaimer text */
+    .infra-cta-box p.mt-4 {
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        color: #6b7280;
     }
 } 

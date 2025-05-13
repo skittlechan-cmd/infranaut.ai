@@ -1,478 +1,461 @@
 /* DevOps Page Specific Styles */
 
+/* DevOps-specific gradient */
+:root {
+    --devops-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+}
+
 /* Hero Section */
 .devops-hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(249,250,251,0.9) 100%);
+    padding: 6rem 0 4rem;
 }
 
-.devops-hero::before {
-    content: '';
+.devops-hero.standard-section {
+    position: relative;
+    z-index: 10;
+}
+
+.devops-gradient-bg {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, 
-        rgba(255, 108, 55, 0.1) 0%,
+        rgba(255, 108, 55, 0.05) 0%,
         transparent 50%,
-        rgba(59, 130, 246, 0.05) 100%);
+        rgba(139, 92, 246, 0.05) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    z-index: 0;
 }
 
 .devops-hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 600px;
-    padding: 4rem 0;
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .devops-hero-title {
-    font-family: "Roboto", sans-serif;
     font-size: 3.5rem;
-    line-height: 1.2;
     font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* DevOps text gradient */
+.devops-text-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 1.5rem;
+    color: var(--primary-color); /* Fallback */
+    font-weight: 700;
 }
 
 .devops-hero-subtitle {
-    font-family: "Source Sans Pro", sans-serif;
     font-size: 1.25rem;
     line-height: 1.6;
-    color: var(--text-dark);
-    max-width: 540px;
-    font-weight: 400;
+    color: var(--text-body);
     margin-bottom: 2rem;
+    max-width: 540px;
 }
 
-.devops-hero-dashboard {
-    position: relative;
-    transform: perspective(1000px) rotateY(-5deg);
-    transition: transform 0.5s ease;
-}
-
-.devops-hero-dashboard:hover {
-    transform: perspective(1000px) rotateY(0deg);
-}
-
-/* Responsive Hero Styles */
-@media screen and (max-width: 1023px) {
-    .devops-hero::before {
-        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-    }
-
-    .devops-hero-title {
-        font-size: 2.5rem;
-    }
-
-    .devops-hero-dashboard {
-        transform: none;
-        margin-top: 2rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .devops-hero-content {
-        text-align: center;
-        padding: 3rem 1.5rem;
-    }
-
-    .devops-hero-title {
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    .devops-hero-subtitle {
-        text-align: center;
-        margin: 0 auto 2rem;
-    }
-
-    .devops-hero .buttons {
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .devops-hero-dashboard {
-        margin: 2rem auto 0;
-        max-width: 90%;
-        padding: 0 1rem;
-    }
-
-    .button {
-        width: 100%;
-        max-width: 300px;
-        margin: 0.5rem 0;
-    }
-}
-
-/* Dashboard Browser Frame */
+/* Dashboard Frame */
 .devops-dashboard-frame {
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--glass-border);
-    border-radius: 1rem;
+    background: var(--bg-gray);
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    box-shadow: 
-        var(--shadow-xl),
-        0 0 0 1px rgba(255, 255, 255, 0.1),
-        0 0 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal) ease;
 }
 
 .devops-dashboard-frame:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: var(--shadow-xl), 0 0 20px rgba(255, 108, 55, 0.2);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: var(--shadow-xl);
 }
 
-/* Tools Grid Section */
-.tools-section {
+.browser-controls {
+    display: flex;
+    align-items: center;
+    background: var(--bg-gray);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.browser-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.browser-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: #f87171;
+}
+
+.browser-dots span:nth-child(2) {
+    background: #fbbf24;
+}
+
+.browser-dots span:nth-child(3) {
+    background: #34d399;
+}
+
+.dashboard-content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Pipeline Visualization */
+.pipeline-container {
     position: relative;
-    overflow: hidden;
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 2rem 0;
 }
 
-.tools-section::before,
-.tools-section::after {
-    content: '';
+.pipeline-line {
     position: absolute;
+    top: 50%;
     left: 0;
     right: 0;
-    height: 100px;
-    z-index: 2;
-    pointer-events: none;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    transform: translateY(-50%);
+    z-index: 0;
 }
 
-.tools-section::before {
-    top: 0;
-    background: linear-gradient(to bottom, 
-        var(--bg-gradient-start) 0%, 
-        rgba(255, 255, 255, 0) 100%);
-}
-
-.tools-section::after {
-    bottom: 0;
-    background: linear-gradient(to top, 
-        var(--bg-gradient-start) 0%, 
-        rgba(255, 255, 255, 0) 100%);
-}
-
-/* Tools Grid */
-.devops-tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 2rem;
-    margin: 3rem auto;
-    max-width: 1000px;
-    padding: 0 1.5rem;
-}
-
-.devops-tool-item {
-    text-align: center;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95), 
-        rgba(255, 255, 255, 0.8));
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.pipeline-stage {
     position: relative;
-    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
 }
 
-.devops-tool-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, 
-        transparent,
-        rgba(255, 108, 55, 0.1),
-        transparent
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.stage-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.devops-tool-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-.devops-tool-item:hover::before {
-    opacity: 1;
-}
-
-.devops-tool-item i {
-    font-size: 2.5rem;
-    color: var(--text-dark);
-    margin-bottom: 0.5rem;
-    transition: transform 0.3s ease;
-}
-
-.devops-tool-item:hover i {
-    transform: scale(1.1);
-}
-
-.devops-tool-item span {
-    display: block;
-    color: var(--text-dark);
-    font-weight: 500;
-}
-
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-    .devops-tools-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        padding: 0 1rem;
-    }
-
-    .devops-tool-item {
-        padding: 1.25rem;
-        height: 140px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .devops-tool-item i {
-        font-size: 2rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .devops-tool-item span {
-        font-size: 0.9rem;
-        line-height: 1.2;
-    }
-
-    .tools-section::before,
-    .tools-section::after {
-        height: 60px;
-    }
-}
-
-/* Touch Device Optimizations */
-@media (hover: none) {
-    .devops-tool-item {
-        transition: transform 0.2s ease;
-    }
-    
-    .devops-tool-item:active {
-        transform: scale(0.95);
-    }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-    .devops-tools-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-        padding: 0.75rem;
-    }
-
-    .devops-tool-item {
-        height: 120px;
-        padding: 1rem;
-    }
-
-    .devops-tool-item i {
-        font-size: 1.75rem;
-        margin-bottom: 0.5rem;
-    }
-}
-
-/* Demo Chat Container */
-.devops-chat-container {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border: 1px solid var(--glass-border);
+.stage-icon-wrapper {
+    width: 4rem;
+    height: 4rem;
+    border-radius: var(--border-radius-full);
+    background: var(--bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: var(--shadow-md);
+    margin-bottom: 1rem;
+    transition: all var(--transition-normal) ease;
 }
 
-.devops-chat-container:hover {
+.stage-item:hover .stage-icon-wrapper {
+    transform: scale(1.1);
     box-shadow: var(--shadow-lg);
 }
 
-.devops-message,
-.devops-response {
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 0.75rem;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.devops-message {
-    background: var(--bg-light);
-    border-top-left-radius: 0;
-    margin-right: 2rem;
-}
-
-.devops-response {
-    background: linear-gradient(135deg, var(--light-orange), rgba(255, 108, 55, 0.1));
-    border-top-right-radius: 0;
-    margin-left: 2rem;
-}
-
-.devops-response ul {
-    margin-top: 0.75rem;
-    list-style: none;
-}
-
-.devops-response li {
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.devops-response li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
+.stage-icon {
+    width: 2rem;
+    height: 2rem;
     color: var(--primary-color);
 }
 
-/* Feature Cards */
-.devops-feature-card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 1rem;
-    padding: 2rem;
-    height: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--glass-border);
+.stage-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+/* Benefits Cards */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.benefit-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
     box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal) ease;
+    position: relative;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-slow) ease;
+}
+
+.benefit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.benefit-content {
+    padding: 2rem;
+}
+
+.benefit-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-full);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    margin-bottom: 1.5rem;
+    transition: transform var(--transition-normal) ease;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: scale(1.1);
+}
+
+/* Gradient Line */
+.gradient-line {
+    height: 3px;
+    width: 5rem;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    margin-bottom: 1.5rem;
+}
+
+/* DevOps Feature Cards */
+.devops-feature-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal) ease;
+    height: 100%;
     position: relative;
     overflow: hidden;
+}
+
+.devops-feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
 }
 
 .devops-feature-card::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 108, 55, 0.1),
-        transparent
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-slow) ease;
 }
 
 .devops-feature-card:hover::before {
-    transform: translateX(100%);
+    transform: scaleX(1);
 }
 
-.devops-feature-card:hover {
+.devops-feature-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-full);
+    color: white;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    transition: transform var(--transition-normal) ease, box-shadow var(--transition-normal) ease;
+    box-shadow: 0 4px 10px rgba(255, 108, 55, 0.2);
+}
+
+.devops-feature-card:hover .devops-feature-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 15px rgba(255, 108, 55, 0.3);
+}
+
+/* DevOps Tools Grid */
+.devops-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.devops-tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal) ease;
+    text-align: center;
+}
+
+.devops-tool-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
-.devops-feature-icon {
-    font-size: 2rem;
+.devops-tool-item i {
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    width: 3.5rem;
-    height: 3.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transition: transform var(--transition-normal) ease, color var(--transition-normal) ease;
+}
+
+.devops-tool-item:hover i {
+    transform: scale(1.2);
+    color: var(--accent-color);
+}
+
+.devops-tool-item span {
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: color var(--transition-normal) ease;
+}
+
+/* Tools Section Background */
+.tools-section {
+    background-color: var(--bg-light);
     position: relative;
     overflow: hidden;
 }
 
-.devops-feature-icon i {
-    font-size: 1.75rem;
-    color: white;
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease;
-}
-
-.devops-feature-card:hover .devops-feature-icon i {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* Section Backgrounds */
-.section.bg-gradient {
-    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-    position: relative;
-    overflow: hidden;
-}
-
-.section.bg-gradient::before {
+.tools-section::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(20, 184, 166, 0.1) 0%, transparent 50%);
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+        rgba(255, 108, 55, 0.03) 0%,
+        transparent 50%,
+        rgba(139, 92, 246, 0.03) 100%);
+    z-index: 0;
 }
 
-/* Custom Animations */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+.tools-section .container {
+    position: relative;
+    z-index: 1;
 }
 
-.float-animation {
-    animation: float 3s ease-in-out infinite;
+/* Service Feature List */
+.service-feature-list {
+    margin-top: 1.5rem;
 }
 
-/* Scroll Animations */
-.fade-in {
+.service-feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.service-feature-item:last-child {
+    margin-bottom: 0;
+}
+
+.feature-check {
+    margin-right: 0.75rem;
+    color: var(--primary-color);
+}
+
+/* Animation classes for scroll reveal */
+.reveal-on-scroll {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.fade-in.visible {
+.reveal-on-scroll.delay-100 {
+    transition-delay: 100ms;
+}
+
+.reveal-on-scroll.delay-200 {
+    transition-delay: 200ms;
+}
+
+.reveal-on-scroll.delay-300 {
+    transition-delay: 300ms;
+}
+
+.reveal-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Responsive Adjustments */
+/* Responsive Styles */
 @media (max-width: 768px) {
-    .devops-tools-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+    .devops-hero.standard-section {
+        padding: 4rem 0 2rem;
     }
-
-    .devops-feature-card,
-    .devops-tool-item {
-        padding: 1.5rem;
+    
+    .devops-hero-title {
+        font-size: 2.25rem;
     }
-
+    
     .devops-feature-card {
         margin-bottom: 1.5rem;
-        text-align: center;
     }
-
-    .devops-chat-container {
-        margin: 1.5rem;
+    
+    .devops-tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .devops-tools-grid {
-        grid-template-columns: 1fr;
+    .devops-hero.standard-section {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .devops-hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .devops-tool-item {
+        padding: 1rem;
+    }
+    
+    .devops-feature-icon {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.25rem;
     }
 }

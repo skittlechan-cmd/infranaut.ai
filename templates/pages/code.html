@@ -2,23 +2,51 @@
 
 {% block title %}Code Intelligence | Infranaut.ai{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/code.css') }}">
+{% endblock %}
+
 {% block content %}
-    <!-- Hero Banner - More compact than other pages -->
-    <section class="hero is-medium">
-        <div class="hero-body pt-12 pb-10">
+    <!-- Hero Section -->
+    <section class="hero is-fullheight-with-navbar standard-section">
+        <div class="hero-body">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="columns is-vcentered">
-                    <div class="column is-7">
-                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
-                            AI-Powered <span class="text-primary">Code Intelligence</span>
+                <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                    <div class="lg:col-span-6 flex flex-col justify-center">
+                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                            AI-Powered <span class="text-gradient">Code Intelligence</span>
                         </h1>
-                        <p class="text-xl text-gray-600">
+                        <p class="text-xl text-gray-600 mb-8">
                             Understanding, explaining, and improving your codebase with machine learning.
                             The Pilot that knows your code inside out.
                         </p>
+                        <div class="flex flex-col sm:flex-row gap-4 buttons">
+                            <a href="#features" class="button is-primary infra-primary-btn">
+                                <span class="icon">
+                                    <i class="fas fa-code"></i>
+                                </span>
+                                <span>Explore Features</span>
+                            </a>
+                            <a href="#demo" class="button is-outlined infra-outlined-btn">
+                                <span class="icon">
+                                    <i class="fas fa-play"></i>
+                                </span>
+                                <span>See Demo</span>
+                            </a>
+                        </div>
+                        <div class="trusted-by mt-6">
+                            <p>Trusted by engineering teams across industries</p>
+                            <div class="trusted-logos">
+                                <span class="trusted-logo">GitHub</span>
+                                <span class="trusted-logo">GitLab</span>
+                                <span class="trusted-logo">BitBucket</span>
+                                <span class="trusted-logo">VS Code</span>
+                                <span class="trusted-logo">JetBrains</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="column is-5">
-                        <div class="code-sample">
+                    <div class="mt-12 lg:mt-0 lg:col-span-6">
+                        <div class="code-sample reveal-on-scroll">
                             <div class="code-header">
                                 <div class="code-dots">
                                     <span></span>
@@ -46,35 +74,49 @@ def process_data(data, config=None):
     </section>
 
     <!-- Main Features - Timeline Style -->
-    <section class="section bg-light py-12 features-timeline">
+    <section id="features" class="section bg-light py-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-12 has-text-centered" style="position: relative; z-index: 10;">
-                Understand Your Code Like Never Before
-            </h2>
+            <div class="has-text-centered mb-16">
+                <h2 class="text-3xl font-bold mb-4">
+                    Understand Your Code Like Never Before
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our AI analyzes your codebase at a deeper level than traditional tools, giving you insights that save hours of development time.
+                </p>
+            </div>
             
             <div class="timeline-container">
                 <!-- Feature 1 -->
-                <div class="timeline-item">
+                <div class="timeline-item reveal-on-scroll">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="card code-feature-card">
+                        <div class="code-feature-card">
                             <div class="card-content">
-                                <div class="columns is-vcentered">
-                                    <div class="column is-5">
+                                <div class="columns is-vcentered is-multiline">
+                                    <div class="column is-12-mobile is-5-tablet">
                                         <div class="code-feature-icon">
                                             <i class="fas fa-brain fa-2x"></i>
                                         </div>
-                                        <h3 class="text-xl font-semibold mb-1">Local AI Code Understanding</h3>
-                                        <p class="text-gray-600 mb-4">
+                                        <h3 class="title is-4 mb-4">Local AI Code Understanding</h3>
+                                        <p class="subtitle is-6 mb-4">
                                             AI that comprehends your code at a semantic level, explaining complex functions without relying on external services.
                                         </p>
-                                        <ul class="feature-list">
-                                            <li>Private, secure analysis</li>
-                                            <li>Multi-language support</li>
-                                            <li>Contextual explanations</li>
-                                        </ul>
+                                        <div class="service-feature-list">
+                                            <div class="service-feature-item">
+                                                <i class="fas fa-check feature-check"></i>
+                                                <span>Private, secure analysis</span>
+                                            </div>
+                                            <div class="service-feature-item">
+                                                <i class="fas fa-check feature-check"></i>
+                                                <span>Multi-language support</span>
+                                            </div>
+                                            <div class="service-feature-item">
+                                                <i class="fas fa-check feature-check"></i>
+                                                <span>Contextual explanations</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="column is-7">
+                                    <div class="column is-12-mobile is-7-tablet">
                                         <div class="code-sample">
                                             <div class="code-header">
                                                 <div class="code-dots">
@@ -107,13 +149,13 @@ const processItems = (items, opts = {}) => {
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="timeline-item">
+                <div class="timeline-item reveal-on-scroll delay-200">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="card code-feature-card">
+                        <div class="code-feature-card">
                             <div class="card-content">
-                                <div class="columns is-vcentered">
-                                    <div class="column is-7">
+                                <div class="columns is-vcentered is-multiline">
+                                    <div class="column is-12-mobile is-7-tablet">
                                         <div class="code-sample">
                                             <div class="code-header">
                                                 <div class="code-dots">
@@ -145,200 +187,27 @@ const processItems = (items, opts = {}) => {
 # Docstring auto-generated by Infranaut</code></pre>
                                         </div>
                                     </div>
-                                    <div class="column is-5">
+                                    <div class="column is-12-mobile is-5-tablet">
                                         <div class="code-feature-icon">
                                             <i class="fas fa-file-code fa-2x"></i>
                                         </div>
-                                        <h3 class="text-xl font-semibold mb-1">Auto-generation of Documentation</h3>
-                                        <p class="text-gray-600 mb-4">
+                                        <h3 class="title is-4 mb-4">Auto-generation of Documentation</h3>
+                                        <p class="subtitle is-6 mb-4">
                                             Automatically generate comprehensive docstrings, READMEs, and usage examples for your code.
                                         </p>
-                                        <ul class="feature-list">
-                                            <li>Follows language conventions</li>
-                                            <li>Includes type hints</li>
-                                            <li>Creates example usage</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="card code-feature-card">
-                            <div class="card-content">
-                                <div class="columns is-vcentered">
-                                    <div class="column is-5">
-                                        <div class="code-feature-icon">
-                                            <i class="fas fa-sync-alt fa-2x"></i>
-                                        </div>
-                                        <h3 class="text-xl font-semibold mb-1">Legacy Code Refactoring</h3>
-                                        <p class="text-gray-600 mb-4">
-                                            Transform complex legacy code into clean, modern implementations with AI-assisted refactoring suggestions.
-                                        </p>
-                                        <ul class="feature-list">
-                                            <li>Safe refactoring proposals</li>
-                                            <li>Technical debt reduction</li>
-                                            <li>Progressive modernization</li>
-                                        </ul>
-                                    </div>
-                                    <div class="column is-7">
-                                        <div class="code-sample">
-                                            <div class="code-header">
-                                                <div class="code-dots">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                </div>
-                                                <div class="code-title">refactor_suggestion.py</div>
-                                                <div class="code-tag">Refactoring</div>
+                                        <div class="service-feature-list">
+                                            <div class="service-feature-item">
+                                                <i class="fas fa-check feature-check"></i>
+                                                <span>Follows language conventions</span>
                                             </div>
-                                            <pre><code># Original legacy code
-def calculate_totals(orders):
-    sum = 0
-    taxes = 0
-    for i in range(len(orders)):
-        if orders[i]['status'] != 'cancelled':
-            sum = sum + orders[i]['amount']
-            taxes = taxes + (orders[i]['amount'] * 0.07)
-    return {'total': sum, 'tax': taxes}
-
-# Infranaut suggested refactoring:
-def calculate_totals(orders):
-    """Calculate order totals and taxes for active orders."""
-    valid_orders = [order for order in orders 
-                    if order['status'] != 'cancelled']
-    
-    total = sum(order['amount'] for order in valid_orders)
-    tax = sum(order['amount'] * 0.07 for order in valid_orders)
-    
-    return {'total': total, 'tax': tax}</code></pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="card code-feature-card">
-                            <div class="card-content">
-                                <div class="columns is-vcentered">
-                                    <div class="column is-7">
-                                        <div class="code-sample">
-                                            <div class="code-header">
-                                                <div class="code-dots">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                </div>
-                                                <div class="code-title">architecture_recommendation.md</div>
-                                                <div class="code-tag">Architecture</div>
+                                            <div class="service-feature-item">
+                                                <i class="fas fa-check feature-check"></i>
+                                                <span>Includes type hints</span>
                                             </div>
-                                            <pre><code># Service Architecture Recommendation
-
-## Current Analysis
-Your payment processing is tightly coupled with 
-the order management system.
-
-## Recommended Pattern
-Consider adopting the following microservice pattern:
-
-```
-┌─────────────┐     ┌─────────────┐
-│ Order API   │─────▶ Payment API │
-└─────────────┘     └─────────────┘
-       │                   │
-       ▼                   ▼
-┌─────────────┐     ┌─────────────┐
-│ Order DB    │     │ Payment DB  │
-└─────────────┘     └─────────────┘
-```
-
-## Benefits
-1. Independent scaling
-2. Isolation of critical payment logic
-3. Better failure isolation</code></pre>
-                                        </div>
-                                    </div>
-                                    <div class="column is-5">
-                                        <div class="code-feature-icon">
-                                            <i class="fas fa-sitemap fa-2x"></i>
-                                        </div>
-                                        <h3 class="text-xl font-semibold mb-1">Architecture Recommendations</h3>
-                                        <p class="text-gray-600 mb-4">
-                                            Get tailored architecture pattern recommendations for microservices and complex systems.
-                                        </p>
-                                        <ul class="feature-list">
-                                            <li>Identify architectural smells</li>
-                                            <li>Suggest proven patterns</li>
-                                            <li>Migration path planning</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="card code-feature-card">
-                            <div class="card-content">
-                                <div class="columns is-vcentered">
-                                    <div class="column is-5">
-                                        <div class="code-feature-icon">
-                                            <i class="fas fa-code-branch fa-2x"></i>
-                                        </div>
-                                        <h3 class="text-xl font-semibold mb-1">Version History Tracking</h3>
-                                        <p class="text-gray-600 mb-4">
-                                            Track code evolution and understand changes with the "explain this diff" feature for Git commits.
-                                        </p>
-                                        <ul class="feature-list">
-                                            <li>Natural language diff summaries</li>
-                                            <li>Change impact assessment</li>
-                                            <li>Integration with Git workflows</li>
-                                        </ul>
-                                    </div>
-                                    <div class="column is-7">
-                                        <div class="code-sample diff-sample">
-                                            <div class="code-header">
-                                                <div class="code-dots">
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
-                                                </div>
-                                                <div class="code-title">commit: 8d7f3e → api_auth_fix</div>
-                                                <div class="code-tag">Diff Explanation</div>
+                                            <div class="service-feature-item">
+                                                <i class="fas fa-check feature-check"></i>
+                                                <span>Creates example usage</span>
                                             </div>
-                                            <pre><code class="diff"><span class="diff-removed">- const apiClient = new ApiClient(config);</span>
-<span class="diff-added">+ const apiClient = new ApiClient({
-+   ...config,
-+   timeout: 30000,
-+   retries: 3,
-+   auth: {
-+     type: 'bearer',
-+     token: process.env.API_TOKEN
-+   }
-+ });</span>
-
-// Infranaut explains:
-// "This change adds a timeout of 30 seconds, 
-// enables automatic retries (3 attempts), and 
-// configures bearer token authentication using
-// an environment variable instead of hardcoded
-// credentials. This improves security and
-// resilience against API timeouts."</code></pre>
                                         </div>
                                     </div>
                                 </div>
@@ -350,859 +219,105 @@ Consider adopting the following microservice pattern:
         </div>
     </section>
 
-    <!-- Code Languages Support -->
-    <section class="section py-12">
+    <!-- Tools Integration Section -->
+    <section class="section py-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-8 has-text-centered">Supported Languages</h2>
-            
-            <div class="language-container">
-                <div class="columns is-multiline is-mobile">
-                    <div class="column is-6-mobile is-3-tablet is-2-desktop">
-                        <div class="language-item">
-                            <i class="fab fa-python fa-2x"></i>
-                            <span>Python</span>
-                        </div>
-                    </div>
-                    <div class="column is-6-mobile is-3-tablet is-2-desktop">
-                        <div class="language-item">
-                            <i class="fab fa-js fa-2x"></i>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="column is-6-mobile is-3-tablet is-2-desktop">
-                        <div class="language-item">
-                            <i class="fab fa-java fa-2x"></i>
-                            <span>Java</span>
-                        </div>
-                    </div>
-                    <div class="column is-6-mobile is-3-tablet is-2-desktop">
-                        <div class="language-item">
-                            <i class="fab fa-golang fa-2x"></i>
-                            <span>Go</span>
-                        </div>
-                    </div>
-                    <div class="column is-6-mobile is-3-tablet is-2-desktop">
-                        <div class="language-item">
-                            <i class="fab fa-node-js fa-2x"></i>
-                            <span>TypeScript</span>
-                        </div>
-                    </div>
-                    <div class="column is-6-mobile is-3-tablet is-2-desktop">
-                        <div class="language-item">
-                            <i class="fab fa-php fa-2x"></i>
-                            <span>PHP</span>
-                        </div>
-                    </div>
-                    
-                    <div class="column is-6-mobile is-3-tablet is-2-desktop">
-                        <div class="language-item">
-                            <i class="fab fa-rust fa-2x"></i>
-                            <span>Rust</span>
-                        </div>
-                    </div>
-                    <div class="column is-6-mobile is-3-tablet is-2-desktop">
-                        <div class="language-item">
-                            <i class="fab fa-swift fa-2x"></i>
-                            <span>Swift</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="has-text-centered mb-16 reveal-on-scroll">
+                <h2 class="text-3xl font-bold mb-4">
+                    Integrated Development Environments
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Seamlessly work with your favorite development tools for maximum productivity
+                </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Integration with Dev Tools - Compact Section -->
-    <section class="section bg-light pt-12 pb-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-8 has-text-centered">Works With Your Tools</h2>
-            
-            <div class="dev-tools-container has-text-centered">
-                <div class="columns is-multiline is-mobile is-centered">
-                    <div class="column is-narrow">
-                        <div class="dev-tool-badge">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </div>
-                    </div>
-                    <div class="column is-narrow">
-                        <div class="dev-tool-badge">
-                            <i class="fab fa-gitlab"></i>
-                            <span>GitLab</span>
-                        </div>
-                    </div>
-                    <div class="column is-narrow">
-                        <div class="dev-tool-badge">
-                            <i class="fab fa-bitbucket"></i>
-                            <span>Bitbucket</span>
-                        </div>
-                    </div>
-                    <div class="column is-narrow">
-                        <div class="dev-tool-badge">
+            <div class="columns is-multiline is-centered">
+                <div class="column is-6-tablet is-3-desktop">
+                    <div class="feature-card reveal-on-scroll delay-100">
+                        <div class="feature-icon">
                             <i class="fas fa-code"></i>
-                            <span>VS Code</span>
                         </div>
+                        <h3 class="title is-4 mb-4 has-text-centered">VS Code</h3>
+                        <p class="has-text-centered">Native integration with VS Code for seamless code analysis without switching contexts.</p>
                     </div>
-                    <div class="column is-narrow">
-                        <div class="dev-tool-badge">
-                            <i class="fas fa-file-code"></i>
-                            <span>JetBrains</span>
+                </div>
+                <div class="column is-6-tablet is-3-desktop">
+                    <div class="feature-card reveal-on-scroll delay-200">
+                        <div class="feature-icon">
+                            <i class="fab fa-github"></i>
                         </div>
+                        <h3 class="title is-4 mb-4 has-text-centered">GitHub</h3>
+                        <p class="has-text-centered">Direct integration with GitHub for pull request analysis and code reviews.</p>
                     </div>
-                    <div class="column is-narrow">
-                        <div class="dev-tool-badge">
+                </div>
+                <div class="column is-6-tablet is-3-desktop">
+                    <div class="feature-card reveal-on-scroll delay-300">
+                        <div class="feature-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3 class="title is-4 mb-4 has-text-centered">JetBrains IDEs</h3>
+                        <p class="has-text-centered">Full support for PyCharm, IntelliJ, WebStorm and other JetBrains products.</p>
+                    </div>
+                </div>
+                <div class="column is-6-tablet is-3-desktop">
+                    <div class="feature-card reveal-on-scroll delay-400">
+                        <div class="feature-icon">
                             <i class="fas fa-terminal"></i>
-                            <span>CLI</span>
                         </div>
+                        <h3 class="title is-4 mb-4 has-text-centered">CLI Tools</h3>
+                        <p class="has-text-centered">Powerful command-line interface for batch processing and CI/CD pipeline integration.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-{% endblock %}
 
-
-{% block extra_css %}
-<style>
-/* Base animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes pulseGlow {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 108, 55, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 108, 55, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 108, 55, 0);
-    }
-}
-
-/* Section backgrounds with subtle gradients */
-.hero {
-    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 108, 55, 0.03) 0%, rgba(255, 255, 255, 0) 70%);
-    z-index: 0;
-}
-
-.bg-light {
-    background: linear-gradient(to bottom, #f5f7fa 0%, #f1f4f9 100%);
-}
-
-section:not(.bg-light) {
-    background: linear-gradient(to bottom, #ffffff 0%, #f9fbfd 100%);
-}
-
-/* Code Sample Styling with enhanced visuals */
-.code-sample {
-    background-color: #1e1e1e;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translateY(0);
-    opacity: 0;
-    position: relative;
-}
-
-.code-sample.animate {
-    animation: fadeInUp 0.6s forwards;
-}
-
-/* Add subtle border glow on hover */
-.code-sample:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 108, 55, 0.15);
-}
-
-/* Add subtle code line indicator */
-.code-sample::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--primary-color), rgba(255, 108, 55, 0.3));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.code-sample:hover::after {
-    opacity: 1;
-}
-
-.code-header {
-    background: linear-gradient(to right, #2a2a2a, #2c2c2c);
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #3c3c3c;
-}
-
-.code-dots {
-    display: flex;
-    gap: 6px;
-    margin-right: 12px;
-}
-
-.code-dots span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
-}
-
-.code-dots span:nth-child(1) {
-    background: linear-gradient(to bottom right, #ff5f57, #ff4b4b);
-}
-
-.code-dots span:nth-child(2) {
-    background: linear-gradient(to bottom right, #ffbd2e, #ffac38);
-}
-
-.code-dots span:nth-child(3) {
-    background: linear-gradient(to bottom right, #28c941, #23aa36);
-}
-
-.code-title {
-    color: #d8d8d8;
-    font-family: "SFMono-Regular", Consolas, monospace;
-    font-size: 0.9rem;
-    flex-grow: 1;
-    letter-spacing: 0.5px;
-}
-
-.code-tag {
-    background: linear-gradient(to right, var(--primary-color), #ff8e63);
-    color: white;
-    padding: 0.25rem 0.6rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-.code-sample pre {
-    margin: 0;
-    padding: 1.25rem;
-    background-color: #1e1e1e;
-    max-height: 350px;
-    overflow-y: auto;
-    position: relative;
-}
-
-/* Styled scrollbar for code samples */
-.code-sample pre::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-.code-sample pre::-webkit-scrollbar-track {
-    background: #2a2a2a;
-    border-radius: 4px;
-}
-
-.code-sample pre::-webkit-scrollbar-thumb {
-    background: #555;
-    border-radius: 4px;
-}
-
-.code-sample pre::-webkit-scrollbar-thumb:hover {
-    background: #666;
-}
-
-.code-sample code {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    color: #e8e8e8;
-    line-height: 1.6;
-    font-size: 0.9rem;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-/* Line numbers effect (pseudo) */
-.code-sample pre::before {
-    content: "1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9\A 10\A 11\A 12\A 13\A 14\A 15";
-    position: absolute;
-    left: 0;
-    top: 1.25rem;
-    width: 1.5rem;
-    white-space: pre;
-    text-align: right;
-    color: #555;
-    font-family: monospace;
-    line-height: 1.6;
-    font-size: 0.9rem;
-    user-select: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.code-sample:hover pre::before {
-    opacity: 0.5;
-}
-
-/* Diff styling with enhanced visuals */
-.diff-sample .diff-removed {
-    background: linear-gradient(to right, rgba(255, 82, 82, 0.15), rgba(255, 82, 82, 0.05));
-    color: #ff5f5f;
-    display: block;
-    width: 100%;
-    position: relative;
-    padding-left: 0.5rem;
-}
-
-.diff-sample .diff-added {
-    background: linear-gradient(to right, rgba(80, 250, 123, 0.15), rgba(80, 250, 123, 0.05));
-    color: #5cffa7;
-    display: block;
-    width: 100%;
-    position: relative;
-    padding-left: 0.5rem;
-}
-
-.diff-sample .diff-removed::before {
-    content: "-";
-    position: absolute;
-    left: 0;
-    color: #ff5f5f;
-}
-
-.diff-sample .diff-added::before {
-    content: "+";
-    position: absolute;
-    left: 0;
-    color: #5cffa7;
-}
-
-/* Timeline styling with animations and visual enhancements */
-.features-timeline {
-    position: relative;
-}
-
-.timeline-container {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--primary-color), rgba(255, 108, 55, 0.2));
-    border-radius: 3px;
-    opacity: 0.5;
-    box-shadow: 0 2px 10px rgba(255, 108, 55, 0.2);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 4.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.timeline-item.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Staggered animation for timeline items */
-.timeline-item:nth-child(1).animate { transition-delay: 0.1s; }
-.timeline-item:nth-child(2).animate { transition-delay: 0.2s; }
-.timeline-item:nth-child(3).animate { transition-delay: 0.3s; }
-.timeline-item:nth-child(4).animate { transition-delay: 0.4s; }
-.timeline-item:nth-child(5).animate { transition-delay: 0.5s; }
-
-.timeline-marker {
-    position: absolute;
-    left: -2.25rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: linear-gradient(45deg, var(--primary-color), #ff8e63);
-    top: 2rem;
-    transform: translateY(-50%);
-    box-shadow: 0 0 0 5px rgba(255, 108, 55, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-    animation: pulseGlow 2s infinite;
-}
-
-.timeline-content {
-    padding-bottom: 1rem;
-    position: relative;
-}
-
-/* Alternating slide directions for timeline content */
-.timeline-item:nth-child(odd) .code-feature-card {
-    transform: translateX(-30px);
-    opacity: 0;
-}
-
-.timeline-item:nth-child(even) .code-feature-card {
-    transform: translateX(30px);
-    opacity: 0;
-}
-
-.timeline-item.animate:nth-child(odd) .code-feature-card {
-    animation: slideInRight 0.6s forwards;
-    animation-delay: 0.3s;
-}
-
-.timeline-item.animate:nth-child(even) .code-feature-card {
-    animation: slideInLeft 0.6s forwards;
-    animation-delay: 0.3s;
-}
-
-/* Code feature cards with enhanced visuals */
-.code-feature-card {
-    border-radius: 0.75rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
-    overflow: hidden;
-    transition: all 0.4s ease;
-    border: none;
-    background: linear-gradient(to bottom right, #ffffff, #f9fafb);
-}
-
-.code-feature-card:hover {
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.04);
-    transform: translateY(-5px);
-}
-
-.code-feature-card .card-content {
-    padding: 1.5rem;
-}
-
-.code-feature-icon {
-    width: 4rem;
-    height: 4rem;
-    background: linear-gradient(135deg, rgba(255, 108, 55, 0.1), rgba(255, 108, 55, 0.15));
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 10px rgba(255, 108, 55, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.code-feature-icon::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
-    top: -50%;
-    left: -50%;
-    transform: rotate(45deg);
-    transition: all 0.6s ease;
-}
-
-.code-feature-icon:hover::after {
-    top: 100%;
-    left: 100%;
-}
-
-.code-feature-icon i {
-    color: var(--primary-color);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-/* Feature list with enhanced visuals */
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 1.25rem;
-}
-
-.feature-list li {
-    position: relative;
-    padding-left: 1.75rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
-    transform: translateX(-10px);
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.timeline-item.animate .feature-list li {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.feature-list li:nth-child(1) { transition-delay: 0.5s; }
-.feature-list li:nth-child(2) { transition-delay: 0.7s; }
-.feature-list li:nth-child(3) { transition-delay: 0.9s; }
-
-.feature-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.5rem;
-    width: 0.85rem;
-    height: 0.85rem;
-    background: linear-gradient(135deg, var(--primary-color), #ff8e63);
-    opacity: 0.8;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(255, 108, 55, 0.3);
-}
-
-/* Language support with enhanced visuals */
-.language-container {
-    margin: 2.5rem 0;
-}
-
-.language-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1.25rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    border-radius: 0.75rem;
-    background-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-    transform: translateY(20px);
-    opacity: 0;
-}
-
-.language-item.animate {
-    animation: fadeInUp 0.5s forwards;
-}
-
-/* Staggered animation for language items */
-.language-item:nth-child(1) { animation-delay: 0.1s; }
-.language-item:nth-child(2) { animation-delay: 0.15s; }
-.language-item:nth-child(3) { animation-delay: 0.2s; }
-.language-item:nth-child(4) { animation-delay: 0.25s; }
-.language-item:nth-child(5) { animation-delay: 0.3s; }
-.language-item:nth-child(6) { animation-delay: 0.35s; }
-.language-item:nth-child(7) { animation-delay: 0.4s; }
-.language-item:nth-child(8) { animation-delay: 0.45s; }
-.language-item:nth-child(9) { animation-delay: 0.5s; }
-.language-item:nth-child(10) { animation-delay: 0.55s; }
-
-.language-item:hover {
-    background: linear-gradient(135deg, rgba(255, 108, 55, 0.05), rgba(255, 108, 55, 0.1));
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-}
-
-.language-item i {
-    color: var(--primary-color);
-    margin-bottom: 0.75rem;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-    transition: transform 0.3s ease;
-}
-
-.language-item:hover i {
-    transform: scale(1.2);
-}
-
-.language-item span {
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-/* Dev tools badges with enhanced visuals */
-.dev-tools-container {
-    margin: 2.5rem 0;
-}
-
-.dev-tool-badge {
-    display: inline-flex;
-    align-items: center;
-    background: linear-gradient(135deg, #ffffff, #f8f9fa);
-    border-radius: 9999px;
-    padding: 0.6rem 1.2rem;
-    margin: 0.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    transform: scale(0.95);
-    opacity: 0;
-}
-
-.dev-tool-badge.animate {
-    animation: fadeInUp 0.5s forwards;
-}
-
-/* Staggered animations for badges */
-.dev-tool-badge:nth-child(1) { animation-delay: 0.1s; }
-.dev-tool-badge:nth-child(2) { animation-delay: 0.2s; }
-.dev-tool-badge:nth-child(3) { animation-delay: 0.3s; }
-.dev-tool-badge:nth-child(4) { animation-delay: 0.4s; }
-.dev-tool-badge:nth-child(5) { animation-delay: 0.5s; }
-.dev-tool-badge:nth-child(6) { animation-delay: 0.6s; }
-
-.dev-tool-badge:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #ffffff, #f0f4f8);
-}
-
-.dev-tool-badge i {
-    color: var(--primary-color);
-    margin-right: 0.6rem;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
-    transition: transform 0.3s ease;
-}
-
-.dev-tool-badge:hover i {
-    transform: rotate(10deg);
-}
-
-.dev-tool-badge span {
-    font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.01em;
-}
-
-/* Section titles with animations */
-.section h2 {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.section h2.animate {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.section h2::after {
-    content: "";
-    position: absolute;
-    bottom: -0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30%;
-    height: 3px;
-    background: linear-gradient(to right, var(--primary-color), rgba(255, 108, 55, 0.3));
-    border-radius: 3px;
-}
-
-/* Decorative elements */
-.hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: linear-gradient(to right top, #f5f7fa 49%, transparent 51%);
-}
-
-.bg-light::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: linear-gradient(to left top, #ffffff 49%, transparent 51%);
-}
-
-/* Code sparkles effect */
-.code-sparkle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: 10;
-    box-shadow: 0 0 10px 2px rgba(255, 108, 55, 0.4);
-    animation: sparkle 2s infinite;
-}
-
-@keyframes sparkle {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(0); opacity: 0; }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .timeline-container {
-        padding-left: 1.5rem;
-    }
-    
-    .timeline-marker {
-        left: -1.5rem;
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-    
-    .code-sample pre {
-        padding: 0.75rem;
-        max-height: 250px;
-    }
-    
-    .code-feature-card .columns {
-        flex-direction: column-reverse;
-    }
-    
-    .code-feature-card .column {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
-    
-    .code-feature-icon {
-        margin-bottom: 0.75rem;
-    }
-    
-    /* Adjust animations for mobile */
-    .timeline-item:nth-child(odd) .code-feature-card,
-    .timeline-item:nth-child(even) .code-feature-card {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    
-    .timeline-item.animate:nth-child(odd) .code-feature-card,
-    .timeline-item.animate:nth-child(even) .code-feature-card {
-        animation: fadeInUp 0.6s forwards;
-        animation-delay: 0.3s;
-    }
-}
-</style>
-
-<!-- Add enhanced JavaScript for animations, sparkles effect, and syntax highlighting -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Intersection Observer for animation triggers
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                
-                // If it's a section title, also animate the subtitle
-                if (entry.target.tagName === 'H2') {
-                    const subtitle = entry.target.nextElementSibling;
-                    if (subtitle && subtitle.tagName === 'P') {
-                        setTimeout(() => {
-                            subtitle.classList.add('animate');
-                        }, 200);
-                    }
-                }
-                
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    // Observe all animatable elements
-    const animatableElements = document.querySelectorAll(
-        '.timeline-item, .code-sample, .section h2, .language-item, .dev-tool-badge, .hero-image-container'
-    );
-    
-    animatableElements.forEach(el => {
-        observer.observe(el);
-    });
-    
-    // Create code sparkles effect
-    function createSparkle() {
-        const codeSamples = document.querySelectorAll('.code-sample');
-        
-        if (codeSamples.length === 0) return;
-        
-        // Choose a random code sample
-        const randomSample = codeSamples[Math.floor(Math.random() * codeSamples.length)];
-        
-        if (!randomSample.classList.contains('animate')) return;
-        
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('code-sparkle');
-        
-        // Position the sparkle randomly within the code sample
-        const rect = randomSample.getBoundingClientRect();
-        const x = Math.random() * rect.width;
-        const y = Math.random() * rect.height;
-        
-        sparkle.style.left = `${x}px`;
-        sparkle.style.top = `${y}px`;
-        
-        randomSample.appendChild(sparkle);
-        
-        // Remove the sparkle after animation completes
-        setTimeout(() => {
-            if (sparkle.parentNode) {
-                sparkle.parentNode.removeChild(sparkle);
-            }
-        }, 2000);
-    }
-    
-    // Create sparkles periodically
-    setInterval(createSparkle, 500);
-    
-    // Animate first timeline item and hero elements immediately
-    setTimeout(() => {
-        const firstItem = document.querySelector('.timeline-item');
-        const heroElements = document.querySelectorAll('.hero .code-sample, .hero-image-container');
-        
-        if (firstItem) firstItem.classList.add('animate');
-        
-        heroElements.forEach(el => {
-            el.classList.add('animate');
-        });
-    }, 300);
-});
-</script>
+    <!-- Demo Section -->
+    <section id="demo" class="section infra-monitoring-section py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="has-text-centered mb-16 reveal-on-scroll">
+                <h2 class="text-3xl font-bold mb-4">
+                    See It In Action
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experience the power of AI-driven code intelligence firsthand
+                </p>
+            </div>
+            <div class="columns is-vcentered">
+                <div class="column is-5-desktop reveal-on-scroll">
+                    <div class="monitoring-content">
+                        <h3 class="text-3xl font-bold mb-6">Ask About Your Codebase</h3>
+                        <p class="text-lg text-gray-600 mb-8">Infranaut.ai can answer complex questions about your code, helping you understand unfamiliar codebases quickly.</p>
+                    </div>
+                </div>
+                <div class="column is-7-desktop reveal-on-scroll delay-200">
+                    <div class="code-sample">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="code-title">Code Q&A Demo</div>
+                        </div>
+                        <pre><code class="language-markdown">Q: How is authentication handled in this codebase?
+
+A: Authentication is implemented using JWT tokens in the 
+`auth_service.py` module. The flow works as follows:
+
+1. Users log in via `/api/auth/login` endpoint
+2. Credentials are verified against the database
+3. A JWT token is generated with user permissions
+4. Token is returned to the client for future requests
+5. Protected endpoints verify the token in middleware
+
+The token expires after 24 hours, and there's also refresh 
+token functionality in the `refresh_token()` function.</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    {% include 'components/cta.html' %}
 {% endblock %}

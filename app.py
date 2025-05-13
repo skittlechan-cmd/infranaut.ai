@@ -33,56 +33,41 @@ def serve_static(filename):
 def index():
     return render_template('index.html')
 
-@app.route('/placeholder')
-@cache_control()
-def placeholder():
-    return render_template('pages/placeholder.html')
-    
 @app.route('/infrastructure')
 @cache_control()
 def infrastructure():
     return render_template('pages/infrastructure.html')
-
-@app.route('/code')
-@cache_control()
-def code():
-    return render_template('pages/code.html')
 
 @app.route('/devops')
 @cache_control()
 def devops():
     return render_template('pages/devops.html')
 
-@app.route('/workflow')
-@cache_control()
-def workflow():
-    return render_template('pages/workflow.html')
-    
 @app.route('/cloud-migration')
 @cache_control()
 def cloud_migration():
     return render_template('pages/cloud_migration.html')
-
-@app.route('/onboarding')
-@cache_control()
-def onboarding():
-    return render_template('pages/onboarding.html')
 
 @app.route('/cloud-management')
 @cache_control()
 def cloud_management():
     return render_template('pages/cloud_management.html')
 
-@app.route('/add-on')
+@app.route('/code')
 @cache_control()
-def add_on():
-    return render_template('pages/add-on.html')
+def code():
+    return render_template('pages/code.html')
+
+@app.route('/onboarding')
+@cache_control()
+def onboarding():
+    return render_template('pages/onboarding.html')
 
 @app.route('/about-us')
 @cache_control()
-def about_us():
+def about():
     return render_template('pages/about-us.html')
-    
+
 @app.route('/careers')
 @cache_control()
 def careers():
@@ -92,6 +77,16 @@ def careers():
 @cache_control()
 def contact():
     return render_template('pages/contact.html')
+
+@app.route('/workflow')
+@cache_control()
+def workflow():
+    return render_template('pages/workflow.html')
+
+@app.route('/addon')
+@cache_control()
+def addon():
+    return render_template('pages/add-on.html')
 
 if __name__ == '__main__':
     # Production configurations

@@ -2,80 +2,94 @@
 
 {% block title %}About Infranaut.ai: AI for Enterprise Infrastructure{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about-us.css') }}">
+{% endblock %}
+
 {% block content %}
 
 <!-- Hero Section -->
-<section class="hero is-medium about-hero">
+<section class="hero is-fullheight-with-navbar standard-section">
     <div class="hero-body">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2 text-center md:text-left slide-in-up">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 ">
-                        <span class="gradient-text gradient-text-about gradient-text-hover">infranaut.ai: Your AI Co-Pilot for Enterprise Ops</span>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="lg:col-span-6 flex flex-col justify-center">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        <span class="text-gradient">infranaut.ai:</span> Your AI Co-Pilot for Enterprise Ops
                     </h1>
-                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                    <p class="text-xl text-gray-600 mb-8">
                         Welcome to infranaut.ai. We empower enterprises to navigate the ever-increasing complexity of modern software infrastructure and development pipelines using cutting-edge AI.
                     </p>
-                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="#our-mission" class="button is-primary infra-primary-btn glow-effect">
+                    <div class="flex flex-col sm:flex-row gap-4 buttons">
+                        <a href="#our-mission" class="button is-primary infra-primary-btn">
                             Discover Our Story
                         </a>
-                        <a href="#contact" class="button is-outlined infra-outlined-btn glass-effect">
+                        <a href="#contact" class="button is-outlined infra-outlined-btn">
                             Get In Touch
                         </a>
                     </div>
+                    <div class="trusted-by mt-6">
+                        <p>Building better infrastructure for innovative companies</p>
+                        <div class="trusted-logos">
+                            <span class="trusted-logo">Acme Corp</span>
+                            <span class="trusted-logo">TechFirm</span>
+                            <span class="trusted-logo">InnovateCo</span>
+                            <span class="trusted-logo">DigitalX</span>
+                            <span class="trusted-logo">FutureTech</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:w-1/2 slide-in-up mt-10 md:mt-0" data-delay="0.1s">
-                    <div class="relative group about-hero-svg-wrapper"> {# Wrapper for SVG + Effects #}
-                         {# Embedded Hero SVG: Abstract AI + Infrastructure #}
-                         <svg class="w-full h-auto rounded-2xl shadow-xl relative z-10 transition-transform duration-500 group-hover:scale-105" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-                             <style>
-                                 .node { fill: var(--primary-color); opacity: 0.7; transition: all 0.3s ease; }
-                                 .link { stroke: var(--secondary-color); stroke-width: 2; opacity: 0.3; transition: stroke 0.3s ease; }
-                                 .node:hover { opacity: 1; fill: var(--primary-dark); transform: scale(1.2); }
-                                 .link:hover { stroke: var(--primary-light); opacity: 0.6; }
-                                 @keyframes pulse {
-                                     0% { transform: scale(1); opacity: 0.7; }
-                                     50% { transform: scale(1.05); opacity: 0.9; }
-                                     100% { transform: scale(1); opacity: 0.7; }
-                                 }
-                                  .main-node { animation: pulse 2s infinite ease-in-out; }
-                                   @media (prefers-reduced-motion: reduce) {
-                                       .main-node { animation: none; }
-                                   }
-                             </style>
-                            <defs>
-                                <radialGradient id="hero-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                                    <stop offset="0%" style="stop-color:rgba(255,107,53,0.2); stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:rgba(79,70,229,0.1); stop-opacity:0" />
-                                </radialGradient>
-                            </defs>
-                            <rect width="100%" height="100%" fill="url(#hero-gradient)" rx="16"/> {# Background Gradient #}
+                <div class="mt-12 lg:mt-0 lg:col-span-6">
+                    <div class="hero-image-container reveal-on-scroll">
+                        <div class="relative group about-hero-svg-wrapper">
+                            <svg class="w-full h-auto rounded-2xl shadow-xl relative z-10 transition-transform duration-500 group-hover:scale-105" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                                <style>
+                                    .node { fill: var(--primary-color); opacity: 0.7; transition: all 0.3s ease; }
+                                    .link { stroke: var(--secondary-color); stroke-width: 2; opacity: 0.3; transition: stroke 0.3s ease; }
+                                    .node:hover { opacity: 1; fill: var(--primary-dark); transform: scale(1.2); }
+                                    .link:hover { stroke: var(--primary-light); opacity: 0.6; }
+                                    @keyframes pulse {
+                                        0% { transform: scale(1); opacity: 0.7; }
+                                        50% { transform: scale(1.05); opacity: 0.9; }
+                                        100% { transform: scale(1); opacity: 0.7; }
+                                    }
+                                    .main-node { animation: pulse 2s infinite ease-in-out; }
+                                    @media (prefers-reduced-motion: reduce) {
+                                        .main-node { animation: none; }
+                                    }
+                                </style>
+                                <defs>
+                                    <radialGradient id="hero-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                                        <stop offset="0%" style="stop-color:rgba(255,107,53,0.2); stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:rgba(79,70,229,0.1); stop-opacity:0" />
+                                    </radialGradient>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#hero-gradient)" rx="16"/>
 
-                            {# Links (Background Layer) #}
-                            <line class="link" x1="400" y1="300" x2="200" y2="150" />
-                            <line class="link" x1="400" y1="300" x2="600" y2="150" />
-                            <line class="link" x1="400" y1="300" x2="200" y2="450" />
-                            <line class="link" x1="400" y1="300" x2="600" y2="450" />
-                            <line class="link" x1="400" y1="300" x2="100" y2="300" />
-                            <line class="link" x1="400" y1="300" x2="700" y2="300" />
+                                {# Links (Background Layer) #}
+                                <line class="link" x1="400" y1="300" x2="200" y2="150" />
+                                <line class="link" x1="400" y1="300" x2="600" y2="150" />
+                                <line class="link" x1="400" y1="300" x2="200" y2="450" />
+                                <line class="link" x1="400" y1="300" x2="600" y2="450" />
+                                <line class="link" x1="400" y1="300" x2="100" y2="300" />
+                                <line class="link" x1="400" y1="300" x2="700" y2="300" />
 
-                             {# Nodes (Interactive Layer) #}
-                            <circle class="node main-node" cx="400" cy="300" r="30" /> {# Main Node #}
-                            <circle class="node" cx="200" cy="150" r="20" />
-                            <circle class="node" cx="600" cy="150" r="20" />
-                            <circle class="node" cx="200" cy="450" r="20" />
-                            <circle class="node" cx="600" cy="450" r="20" />
-                            <circle class="node" cx="100" cy="300" r="25" />
-                            <circle class="node" cx="700" cy="300" r="25" />
+                                {# Nodes (Interactive Layer) #}
+                                <circle class="node main-node" cx="400" cy="300" r="30" />
+                                <circle class="node" cx="200" cy="150" r="20" />
+                                <circle class="node" cx="600" cy="150" r="20" />
+                                <circle class="node" cx="200" cy="450" r="20" />
+                                <circle class="node" cx="600" cy="450" r="20" />
+                                <circle class="node" cx="100" cy="300" r="25" />
+                                <circle class="node" cx="700" cy="300" r="25" />
 
-                            {# Smaller data/AI nodes #}
-                            <circle class="node" cx="350" cy="200" r="8" fill="#60a5fa" opacity="0.8"/>
-                            <circle class="node" cx="450" cy="200" r="8" fill="#60a5fa" opacity="0.8"/>
-                            <circle class="node" cx="350" cy="400" r="8" fill="#60a5fa" opacity="0.8"/>
-                            <circle class="node" cx="450" cy="400" r="8" fill="#60a5fa" opacity="0.8"/>
-
-                         </svg>
+                                {# Smaller data/AI nodes #}
+                                <circle class="node" cx="350" cy="200" r="8" fill="#60a5fa" opacity="0.8"/>
+                                <circle class="node" cx="450" cy="200" r="8" fill="#60a5fa" opacity="0.8"/>
+                                <circle class="node" cx="350" cy="400" r="8" fill="#60a5fa" opacity="0.8"/>
+                                <circle class="node" cx="450" cy="400" r="8" fill="#60a5fa" opacity="0.8"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,466 +98,245 @@
 </section>
 
 <!-- The Challenge Section -->
-<section class="section py-16 md:py-20 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16 slide-in-up">
-            <span class="text-sm font-semibold uppercase tracking-wider text-primary-dark mb-2 block">The Modern Infrastructure Challenge</span>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Navigating Increasing Complexity</h2>
-             <div class="gradient-line mx-auto"></div>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
+<section class="section bg-light py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="has-text-centered mb-16">
+            <h2 class="text-3xl font-bold mb-4">
+                Navigating Increasing Complexity
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 In today's dynamic environment, technical teams face immense pressure managing complex systems while maintaining speed and reliability.
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div class="challenge-point slide-in-up" data-delay="0s">
-                 <svg class="challenge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                <h3 class="text-xl font-semibold mb-2">Data Silos & Fragmented Tools</h3>
-                <p class="text-gray-600">Logs, metrics, traces, and configuration data scattered across disparate systems make root cause analysis slow and difficult.</p>
+            <div class="service-card reveal-on-scroll delay-100">
+                <div class="service-card-content">
+                    <h3 class="service-title">
+                        Data Silos & Fragmented Tools
+                        <i class="fas fa-chevron-down icon"></i>
+                    </h3>
+                    <p class="service-description">Logs, metrics, traces, and configuration data scattered across disparate systems make root cause analysis slow and difficult.</p>
+                    <div class="service-feature-list">
+                        <div class="service-feature-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Unified observability</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Centralized management</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-             <div class="challenge-point slide-in-up" data-delay="0.1s">
-                <svg class="challenge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <h3 class="text-xl font-semibold mb-2">Alert Fatigue & Noise</h3>
-                <p class="text-gray-600">Overwhelmed by high volumes of undifferentiated alerts, leading to missed critical issues.</p>
+            <div class="service-card reveal-on-scroll delay-200">
+                <div class="service-card-content">
+                    <h3 class="service-title">
+                        Alert Fatigue & Noise
+                        <i class="fas fa-chevron-down icon"></i>
+                    </h3>
+                    <p class="service-description">Overwhelmed by high volumes of undifferentiated alerts, leading to missed critical issues.</p>
+                    <div class="service-feature-list">
+                        <div class="service-feature-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Intelligent alerting</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Priority-based notification</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-             <div class="challenge-point slide-in-up" data-delay="0.2s">
-                 <svg class="challenge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.913 9.913 0 01-3.097-.356A6.028 6.028 0 006 20c-1.657 0-3-.895-3-2s1.343-2 3-2c1.357 0 2.503.59 3.269 1.47A5.98 5.98 0 0112 10a6.002 6.002 0 002.016 1.111A6.004 6.004 0 0118 10c2.21 0 4 1.343 4 3z"></path></svg>
-                <h3 class="text-xl font-semibold mb-2">Slow Onboarding & Knowledge Silos</h3>
-                <p class="text-gray-600">New team members struggle to find information and understand complex systems quickly.</p>
+            <div class="service-card reveal-on-scroll delay-300">
+                <div class="service-card-content">
+                    <h3 class="service-title">
+                        Slow Onboarding & Knowledge Silos
+                        <i class="fas fa-chevron-down icon"></i>
+                    </h3>
+                    <p class="service-description">New team members struggle to find information and understand complex systems quickly.</p>
+                    <div class="service-feature-list">
+                        <div class="service-feature-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Automated documentation</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Knowledge sharing tools</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-             <div class="challenge-point slide-in-up" data-delay="0.3s">
-                 <svg class="challenge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                <h3 class="text-xl font-semibold mb-2">Manual Tasks & Operational Toil</h3>
-                <p class="text-gray-600">Repetitive maintenance, debugging, and manual scaling drains valuable engineering time.</p>
+            <div class="service-card reveal-on-scroll delay-400">
+                <div class="service-card-content">
+                    <h3 class="service-title">
+                        Manual Tasks & Operational Toil
+                        <i class="fas fa-chevron-down icon"></i>
+                    </h3>
+                    <p class="service-description">Repetitive maintenance, debugging, and manual scaling drains valuable engineering time.</p>
+                    <div class="service-feature-list">
+                        <div class="service-feature-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Task automation</span>
+                        </div>
+                        <div class="service-feature-item">
+                            <i class="fas fa-check feature-check"></i>
+                            <span>Self-healing systems</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Our Mission / Vision Section -->
-<section id="our-mission" class="section py-16 md:py-20 bg-light">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            {# Embedded Mission SVG: Stylized Upward Arrow #}
-            <div class="md:w-1/2 slide-in-up about-mission-svg-wrapper"> {# Wrapper for SVG #}
-                 <svg class="w-full h-auto" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-                      <style>
-                          .arrow-path {
-                              fill: none;
-                              stroke: var(--primary-color);
-                              stroke-width: 40;
-                              stroke-linecap: round;
-                              stroke-linejoin: round;
-                              animation: draw-arrow 3s ease-in-out infinite alternate;
-                          }
-                          .arrowhead {
-                              fill: var(--primary-color);
-                               animation: draw-arrowhead 3s ease-in-out infinite alternate;
-                          }
-                          .star { fill: #ffeb3b; opacity: 0; animation: twinkle 2s ease-in-out infinite alternate forwards; }
-                           .star-1 { animation-delay: 0.5s; }
-                           .star-2 { animation-delay: 1s; }
-                           .star-3 { animation-delay: 1.5s; }
+<section id="our-mission" class="section infra-monitoring-section py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="columns is-vcentered">
+            <div class="column is-5-desktop reveal-on-scroll">
+                <div class="monitoring-content">
+                    <h2 class="text-3xl font-bold mb-6">
+                        Empowering Teams to Build the Future
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our mission is to provide technical teams with the intelligent co-pilot they need to navigate the complexities of modern infrastructure. We believe AI should augment human expertise, not replace it, freeing engineers to focus on innovation and high-value tasks.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        We are building a platform that unifies data, automates mundane tasks, and provides actionable insights, making complex systems manageable and reliable for organizations of all sizes.
+                    </p>
+                </div>
+            </div>
+            <div class="column is-7-desktop reveal-on-scroll delay-200">
+                <div class="about-mission-svg-wrapper">
+                    <svg class="w-full h-auto" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            .arrow-path {
+                                fill: none;
+                                stroke: var(--primary-color);
+                                stroke-width: 40;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                animation: draw-arrow 3s ease-in-out infinite alternate;
+                            }
+                            .arrowhead {
+                                fill: var(--primary-color);
+                                animation: draw-arrowhead 3s ease-in-out infinite alternate;
+                            }
+                            .star { fill: #ffeb3b; opacity: 0; animation: twinkle 2s ease-in-out infinite alternate forwards; }
+                            .star-1 { animation-delay: 0.5s; }
+                            .star-2 { animation-delay: 1s; }
+                            .star-3 { animation-delay: 1.5s; }
 
-                          @keyframes draw-arrow {
-                              0% { stroke-dashoffset: 1000; stroke-dasharray: 1000; }
-                              100% { stroke-dashoffset: 0; stroke-dasharray: 1000; }
-                          }
-                           @keyframes draw-arrowhead {
-                              0% { opacity: 0; }
-                              50% { opacity: 0; }
-                              100% { opacity: 1; }
-                          }
-                           @keyframes twinkle {
-                              0% { opacity: 0; transform: scale(0.5); }
-                              50% { opacity: 1; transform: scale(1); }
-                              100% { opacity: 0; transform: scale(0.5); }
-                          }
+                            @keyframes draw-arrow {
+                                0% { stroke-dashoffset: 1000; stroke-dasharray: 1000; }
+                                100% { stroke-dashoffset: 0; stroke-dasharray: 1000; }
+                            }
+                            @keyframes draw-arrowhead {
+                                0% { opacity: 0; }
+                                50% { opacity: 0; }
+                                100% { opacity: 1; }
+                            }
+                            @keyframes twinkle {
+                                0% { opacity: 0; transform: scale(0.5); }
+                                50% { opacity: 1; transform: scale(1); }
+                                100% { opacity: 0; transform: scale(0.5); }
+                            }
                             @media (prefers-reduced-motion: reduce) {
                                 .arrow-path, .arrowhead, .star { animation: none; opacity: 1; }
-                                 .arrow-path { stroke-dashoffset: 0; }
-                           }
-                      </style>
+                                .arrow-path { stroke-dashoffset: 0; }
+                            }
+                        </style>
 
-                      {# Path for the arrow shaft #}
-                     <path class="arrow-path" d="M300 550 L300 50 L450 200" />
-                     {# Arrowhead (Triangle) #}
-                     <polygon class="arrowhead" points="300,50 260,120 340,120" transform="rotate(180 300 85)"/>
+                        {# Path for the arrow shaft #}
+                        <path class="arrow-path" d="M300 550 L300 50 L450 200" />
+                        {# Arrowhead (Triangle) #}
+                        <polygon class="arrowhead" points="300,50 260,120 340,120" transform="rotate(180 300 85)"/>
 
-                     {# Stars/Sparkles #}
-                     <circle class="star star-1" cx="200" cy="150" r="5"/>
-                     <circle class="star star-2" cx="400" cy="100" r="7"/>
-                     <circle class="star star-3" cx="300" cy="250" r="6"/>
-
-                 </svg>
-            </div>
-            <div class="md:w-1/2 text-center md:text-left slide-in-up" data-delay="0.1s">
-                <span class="text-sm font-semibold uppercase tracking-wider text-primary-dark mb-2 block">Our Vision</span>
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Empowering Teams to Build the Future</h2>
-                 <div class="gradient-line md:ml-0 mx-auto"></div>
-                <p class="text-lg text-gray-600 mb-6">
-                    Our mission is to provide technical teams with the intelligent co-pilot they need to navigate the complexities of modern infrastructure. We believe AI should augment human expertise, not replace it, freeing engineers to focus on innovation and high-value tasks.
-                </p>
-                 <p class="text-lg text-gray-600">
-                    We are building a platform that unifies data, automates mundane tasks, and provides actionable insights, making complex systems manageable and reliable for organizations of all sizes.
-                 </p>
+                        {# Stars/Sparkles #}
+                        <circle class="star star-1" cx="200" cy="150" r="5"/>
+                        <circle class="star star-2" cx="400" cy="100" r="7"/>
+                        <circle class="star star-3" cx="300" cy="250" r="6"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- How We Help / Benefits Section -->
-<section class="section py-16 md:py-20 bg-white">
-    <div class="container mx-auto px-4">
-         <div class="text-center mb-16 slide-in-up">
-            <span class="text-sm font-semibold uppercase tracking-wider text-primary-dark mb-2 block">How We Help</span>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Transforming Operations with Unified Intelligence</h2>
-             <div class="gradient-line mx-auto"></div>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
-               infranaut.ai cuts through the noise, providing your technical teams with the clarity and automation needed to excel.
+<section class="section bg-light py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="has-text-centered mb-16">
+            <h2 class="text-3xl font-bold mb-4">
+                Transforming Operations with Unified Intelligence
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                infranaut.ai cuts through the noise, providing your technical teams with the clarity and automation needed to excel.
             </p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 benefit-grid">
-             {# Benefit blocks - convert list items to cards #}
-             <div class="benefit-card slide-in-up" data-delay="0s">
-                 <div class="benefit-icon-wrapper"><svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg></div>
-                 <h3 class="text-xl font-semibold mb-2">Deep Infrastructure Intelligence</h3>
-                 <p class="text-gray-600">AI-driven monitoring & diagnostics for health, performance, and root causes across your stack (Kubernetes, cloud, legacy).</p>
-             </div>
-             <div class="benefit-card slide-in-up" data-delay="0.1s">
-                 <div class="benefit-icon-wrapper"><svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></div>
-                 <h3 class="text-xl font-semibold mb-2">Accelerate DevOps Productivity</h3>
-                 <p class="text-gray-600">Streamline CI/CD, improve testing, and enhance collaboration with intelligent insights and automation.</p>
-             </div>
-              <div class="benefit-card slide-in-up" data-delay="0.2s">
-                 <div class="benefit-icon-wrapper"><svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10l2 2h10l2-2V9m-2 4L12 5m0 0L6 12m6-7v10"></path></svg></div>
-                 <h3 class="text-xl font-semibold mb-2">Simplify Cloud Migration & Management</h3>
-                 <p class="text-gray-600">Confidently plan migrations, generate IaC, manage multi-cloud, and optimize spend with AI-guided tools.</p>
-             </div>
-              <div class="benefit-card slide-in-up" data-delay="0s"> {# Reset delay for new row #}
-                 <div class="benefit-icon-wrapper"><svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg></div>
-                 <h3 class="text-xl font-semibold mb-2">Enhance Code & Reliability</h3>
-                 <p class="text-gray-600">Instant insights into codebase, generate docs, identify refactoring, and improve overall reliability.</p>
-             </div>
-              <div class="benefit-card slide-in-up" data-delay="0.1s">
-                 <div class="benefit-icon-wrapper"><svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg></div>
-                 <h3 class="text-xl font-semibold mb-2">Improve Operational Excellence</h3>
-                 <p class="text-gray-600">Smart alerting, bottleneck prediction, unified logs/metrics/events for faster incident response.</p>
-             </div>
+        <div class="columns is-multiline">
+            <div class="column is-4 mb-8">
+                <div class="feature-card reveal-on-scroll delay-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="title is-4 mb-4 has-text-centered">Deep Infrastructure Intelligence</h3>
+                    <p class="has-text-centered">AI-driven monitoring & diagnostics for health, performance, and root causes across your stack (Kubernetes, cloud, legacy).</p>
+                </div>
+            </div>
+            <div class="column is-4 mb-8">
+                <div class="feature-card reveal-on-scroll delay-200">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="title is-4 mb-4 has-text-centered">Accelerate DevOps Productivity</h3>
+                    <p class="has-text-centered">Streamline CI/CD, improve testing, and enhance collaboration with intelligent insights and automation.</p>
+                </div>
+            </div>
+            <div class="column is-4 mb-8">
+                <div class="feature-card reveal-on-scroll delay-300">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3 class="title is-4 mb-4 has-text-centered">Simplify Cloud Migration</h3>
+                    <p class="has-text-centered">Confidently plan migrations, generate IaC, manage multi-cloud, and optimize spend with AI-guided tools.</p>
+                </div>
+            </div>
+            <div class="column is-4 mb-8">
+                <div class="feature-card reveal-on-scroll delay-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="title is-4 mb-4 has-text-centered">Enhance Code & Reliability</h3>
+                    <p class="has-text-centered">Instant insights into codebase, generate docs, identify refactoring, and improve overall reliability.</p>
+                </div>
+            </div>
+            <div class="column is-4 mb-8">
+                <div class="feature-card reveal-on-scroll delay-200">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="title is-4 mb-4 has-text-centered">Improve Operational Excellence</h3>
+                    <p class="has-text-centered">Smart alerting, bottleneck prediction, unified logs/metrics/events for faster incident response.</p>
+                </div>
+            </div>
+            <div class="column is-4 mb-8">
+                <div class="feature-card reveal-on-scroll delay-300">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="title is-4 mb-4 has-text-centered">Team Collaboration</h3>
+                    <p class="has-text-centered">Foster knowledge sharing, reduce onboarding time, and improve cross-team visibility with integrated tooling.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Final CTA Section -->
-<section id="contact" class="section py-16 md:py-20 addon-cta relative"> {# Reusing addon-cta style for a vibrant feel #}
-    <div class="cta-bg-gradient"></div> {# Background Gradient Layer #}
-    <div class="container mx-auto px-4 text-center relative z-10 slide-in-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
-            Ready to Navigate Complexity with AI?
-        </h2>
-        <p class="text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto">
-            See how infranaut.ai can transform your infrastructure operations and empower your technical teams.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#demo" class="addon-cta-btn transition-transform hover:scale-105"> {# Reusing addon-cta-btn #}
-                Schedule a Demo
-                <span class="ml-2 inline-block">▶️</span>
-            </a>
-            <a href="#contact-form" class="addon-outline-btn transition-transform hover:scale-105"> {# Reusing addon-outline-btn #}
-                Contact Sales
-                <span class="ml-2 inline-block">✉️</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-{% endblock %}
-
-{% block extra_css %}
-<style>
-    /* Reusing variables from other pages */
-    :root {
-        --primary-color: #ff6b35;
-        --primary-light: #ff8c61;
-        --primary-dark: #e85d2f;
-        --secondary-color: #4F46E5; /* Indigo */
-        --accent-color: #ffe0d6; /* Light orange */
-        --border-color: #e5e7eb; /* Neutral gray */
-        --white: #ffffff;
-        --bg-light: #f9fafb; /* Light background */
-        --text-dark: #1f2937;
-        --text-light: #f9fafb;
-        --text-muted: #6b7280;
-
-        /* Shadows */
-        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-         /* Orange Tinted Shadows */
-        --shadow-orange-md: 0 4px 6px -1px rgba(255, 107, 53, 0.1), 0 2px 4px -1px rgba(255, 107, 53, 0.06);
-        --shadow-orange-lg: 0 10px 15px -3px rgba(255, 107, 53, 0.1), 0 4px 6px -2px rgba(255, 107, 53, 0.05);
-
-
-         /* Animation Vars */
-        --animation-duration: 0.7s; /* Slightly slower for About page */
-        --animation-timing: ease-out;
-        --slide-delay: 0s; /* Default delay for observer */
-    }
-
-     /* Base Body */
-    body {
-        font-family: "Inter", sans-serif;
-        color: var(--text-dark);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-
-    /* Slide-In Animation */
-    .slide-in-up {
-        opacity: 0;
-        transform: translateY(40px); /* Start lower */
-        transition: opacity var(--animation-duration) var(--animation-timing),
-                    transform var(--animation-duration) var(--animation-timing);
-        transition-delay: var(--slide-delay); /* Use CSS variable */
-    }
-    .slide-in-up.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-
-    /* Reusing/Adapting Common Styles */
-     .hero-body { padding: 5rem 1rem; } /* Simplified for mobile */
-     .section { padding-top: 4rem; padding-bottom: 4rem; } /* Simplified for mobile */
-     .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-     .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-     .mb-16 { margin-bottom: 4rem; }
-     .mb-12 { margin-bottom: 3rem; }
-
-
-    .text-gradient {
-        background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        display: inline;
-    }
-
-    .gradient-line { height: 3px; width: 80px; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); border-radius: 3px; margin-top: 1rem; margin-bottom: 1rem; }
-    .gradient-line.mx-auto { margin-left: auto; margin-right: auto; }
-    /* Adjusted for desktop layout */
-    @media (min-width: 768px) {
-        .gradient-line.md\:ml-0 { margin-left: 0; margin-right: initial; }
-        .hero-body { padding: 6rem 1.5rem; }
-        .section { padding-top: 5rem; padding-bottom: 5rem; }
-    }
-
-
-    /* About Hero Section */
-    .about-hero {
-         background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
-         overflow: hidden;
-    }
-    .about-hero-svg-wrapper {
-        /* Added specific wrapper class */
-    }
-
-    /* Challenge Section */
-    .challenge-point {
-         background-color: var(--white);
-         border-radius: 12px;
-         padding: 1.5rem; /* Default padding */
-         border: 1px solid var(--border-color);
-         box-shadow: var(--shadow-sm);
-         text-align: center;
-         transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .challenge-point:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-md);
-    }
-     .challenge-icon {
-        color: var(--primary-color);
-        width: 48px; height: 48px; /* Default size */
-        display: inline-block;
-        margin-bottom: 1rem;
-     }
-
-
-    /* Our Mission Section */
-    .bg-light { background-color: var(--bg-light); }
-     .about-mission-svg-wrapper {
-        /* Added specific wrapper class */
-     }
-
-
-    /* How We Help / Benefits Section */
-    .benefit-grid {
-        /* Uses grid from Tailwind classes */
-    }
-    .benefit-card {
-         background-color: var(--white);
-         border-radius: 12px;
-         padding: 2rem; /* Default padding */
-         border: 1px solid var(--border-color);
-         box-shadow: var(--shadow-md);
-         transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-     .benefit-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--primary-light);
-    }
-    .benefit-icon-wrapper {
-        background-color: var(--accent-color);
-        width: 56px; height: 56px; /* Default size */
-        border-radius: 10px; /* Square with rounded corners */
-        display: flex; align-items: center; justify-content: center;
-        margin-bottom: 1.5rem;
-        color: var(--primary-dark);
-        box-shadow: var(--shadow-sm);
-    }
-     .benefit-icon { width: 2rem; height: 2rem; } /* Default size */
-
-
-    /* CTA Section (Reusing Addon Styles) */
-    .addon-cta {
-        position: relative;
-        overflow: hidden;
-        background-color: var(--primary-color);
-    }
-    .cta-bg-gradient {
-        position: absolute; inset: 0;
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 70%, var(--secondary-color) 100%);
-        opacity: 0.95;
-        animation: pulse-gradient 8s infinite alternate ease-in-out;
-         z-index: 0;
-    }
-    @keyframes pulse-gradient {
-      from { opacity: 0.9; }
-      to { opacity: 1; }
-    }
-    .addon-cta::before { /* Shimmer */
-        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.08), transparent );
-        transform: rotate(30deg); animation: shimmer 6s infinite linear; pointer-events: none; z-index: 5;
-    }
-    @keyframes shimmer {
-        0% { transform: translateX(-75%) translateY(-75%) rotate(30deg); }
-        100% { transform: translateX(75%) translateY(75%) rotate(30deg); }
-    }
-
-    .addon-cta .container { position: relative; z-index: 10; }
-
-
-    .infra-primary-btn {
-        background-color: var(--primary-color); color: var(--white); border: none;
-        padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
-        display: inline-flex; align-items: center; justify-content: center;
-        transition: all 0.25s ease; box-shadow: var(--shadow-orange-md); letter-spacing: 0.025em;
-    }
-     .infra-primary-btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-orange-lg); }
-
-     .infra-outlined-btn {
-        background: rgba(255, 255, 255, 0.1); color: var(--white);
-        border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-        padding: calc(0.75rem - 1px) calc(1.5rem - 1px); border-radius: 8px; font-weight: 600; font-size: 0.95rem;
-        display: inline-flex; align-items: center; justify-content: center;
-        transition: all 0.25s ease;
-     }
-     .infra-outlined-btn:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--white); color: var(--white); transform: translateY(-2px); }
-
-
-    /* Reusing Addon CTA button styles */
-    .addon-cta-btn {
-        background: var(--white); color: var(--primary-dark);
-        padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600;
-        transition: all 0.3s ease; display: inline-flex; align-items: center;
-        box-shadow: 0 4px 15px rgba(0,0,0, 0.1); border: none;
-    }
-    .addon-cta-btn:hover {
-        background: var(--bg-light); color: var(--primary-dark);
-        transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0, 0.15);
-    }
-     .addon-outline-btn {
-        background: transparent; color: var(--white);
-        border: 2px solid rgba(255, 255, 255, 0.7);
-        padding: calc(0.75rem - 2px) calc(1.5rem - 2px); border-radius: 8px;
-        font-weight: 600; transition: all 0.3s ease;
-        display: inline-flex; align-items: center;
-    }
-    .addon-outline-btn:hover {
-        background: rgba(255, 255, 255, 0.1); border-color: var(--white);
-        transform: translateY(-2px);
-    }
-     .glow-effect { position: relative; overflow: hidden; z-index: 1; }
-    .glow-effect::after { /* Keep glow */
-        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-        transform: rotate(45deg); animation: glow 3s linear infinite; opacity: 0.6; pointer-events: none;
-    }
-    @keyframes glow { 0% { transform: rotate(45deg) translateX(-150%) translateY(50%); } 100% { transform: rotate(45deg) translateX(50%) translateY(-150%); } }
-
-
-    /* Responsive Adjustments */
-    @media (max-width: 1024px) { /* Tablet - Specific adjustments */
-        /* Stack Hero */
-        .about-hero .flex-col.md\:flex-row { flex-direction: column; }
-        .about-hero .md\:w-1\/2 { width: 100%; }
-         .about-hero .md\:mt-0 { margin-top: 2.5rem; }
-        .about-hero .text-center.md\:text-left { text-align: center; }
-         .about-hero .justify-center.md\:justify-start { justify-content: center; }
-
-        /* Stack Mission Section */
-         #our-mission .flex-col.md\:flex-row { flex-direction: column; }
-         #our-mission .md\:w-1\/2 { width: 100%; }
-         #our-mission .md\:mt-0 { margin-top: 2.5rem; }
-         #our-mission .text-center.md\:text-left { text-align: center; }
-         #our-mission .gradient-line.md\:ml-0 { margin-left: auto; margin-right: auto; } /* Center line */
-
-         /* Stack Challenge Points */
-         .challenge-point { padding: 1rem; } /* Reduce padding */
-         .challenge-icon { width: 40px; height: 40px; } /* Smaller icon */
-
-         /* Stack Benefits */
-         .benefit-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-         .benefit-card { padding: 1.5rem; }
-         .benefit-icon-wrapper { width: 48px; height: 48px; margin-bottom: 1rem;}
-         .benefit-icon { width: 1.75rem; height: 1.75rem; }
-
-         /* Stack CTA Buttons */
-        .addon-cta .flex.gap-4 { flex-direction: column; align-items: center;}
-        .addon-cta .addon-cta-btn, .addon-cta .addon-outline-btn {
-             width: 100%;
-             max-width: 300px;
-             justify-content: center;
-        }
-         .addon-cta .addon-outline-btn { margin-top: 0.75rem; }
-
-          /* Stack Hero Buttons */
-        .about-hero .flex.gap-4 { flex-direction: column; align-items: center;}
-        .about-hero .infra-primary-btn, .about-hero .infra-outlined-btn { width: 100%; max-width: 280px; justify-content: center;}
-        .about-hero .infra-outlined-btn { margin-top: 0.75rem; }
-    }
-
-    @media (max-width: 768px) { /* Mobile - Further Adjustments */
-         /* Font sizes, padding, margins are generally reduced in the initial styles now */
-
-         /* Challenge Points */
-         .challenge-point { padding: 1rem; } /* Already set for <1024, but ensures it's 1rem here */
-         .challenge-icon { width: 40px; height: 40px; } /* Already set for <1024 */
-
-         /* Benefit Cards */
-         .benefit-card { padding: 1.5rem; } /* Already set for <1024 */
-         .benefit-icon-wrapper { width: 48px; height: 48px; margin-bottom: 1rem;} /* Already set for <1024 */
-         .benefit-icon { width: 1.75rem; height: 1.75rem; } /* Already set for <1024 */
-    }
-
-</style>
+<!-- CTA Section -->
+{% include 'components/cta.html' %}
 {% endblock %}
 
 {% block extra_js %}

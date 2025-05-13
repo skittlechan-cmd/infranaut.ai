@@ -1,110 +1,155 @@
-// Scroll Animation Script
 document.addEventListener('DOMContentLoaded', function() {
-  initScrollAnimations();
-});
-
-function initScrollAnimations() {
-  // Animate elements that should be revealed on scroll
-  const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-on-scroll-left, .reveal-on-scroll-right, .infra-cta-box, .hero-image-container');
-  
-  // Initialize Intersection Observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      // When element is in viewport
-      if (entry.isIntersecting) {
-        // Add animation class
-        entry.target.classList.add('animated');
-        // Unobserve once animated to improve performance
-        observer.unobserve(entry.target);
-      }
+    window.addEventListener('scroll', function() {
+        const elements = document.querySelectorAll('.fade-in, .slide-in-up');
+        elements.forEach(element => {
+            if (isElementInViewport(element)) {
+                element.classList.add('visible');
+            }
+        });
     });
-  }, {
-    // Options
-    threshold: 0.1, // Trigger when at least 10% of the element is visible
-    rootMargin: '0px 0px -50px 0px' // Slightly earlier trigger before fully in view
-  });
-  
-  // Observe each element
-  revealElements.forEach(el => {
-    observer.observe(el);
-  });
-  
-  // Optional: Add animation to already visible elements on page load
-  setTimeout(() => {
-    const viewportHeight = window.innerHeight;
+
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
+        );
+    }
+
+    // Initial check for elements in viewport
+    const elements = document.querySelectorAll('.fade-in, .slide-in-up');
+    elements.forEach(element => {
+        if (isElementInViewport(element)) {
+            element.classList.add('visible');
+        }
+    });
+
+    // Reveal animations when elements enter viewport
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    const revealOnScrollHandler = function() {
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('animated');
+            }
+        });
+    };
     
-    revealElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < viewportHeight * 0.9) {
-        el.classList.add('animated');
-        observer.unobserve(el);
-      }
-    });
-  }, 100);
-  
-  // Handle cards animation with staggered effect
-  animateCards();
-}
-
-function animateCards() {
-  // Target all card types that should animate on scroll
-  const cardSelectors = [
-    '.infra-feature-card', 
-    '.service-card:not(.active)', 
-    '.module-card',
-    '.testimonial-card'
-  ];
-  
-  const allCards = document.querySelectorAll(cardSelectors.join(', '));
-  
-  // Initialize card observer with slightly different threshold
-  const cardObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Add staggered delay based on card position
-        setTimeout(() => {
-          entry.target.classList.add('animated');
-        }, index % 5 * 100); // Stagger in groups of 5
+    window.addEventListener('scroll', revealOnScrollHandler);
+    revealOnScrollHandler(); // Trigger on initial load
+    
+    // Service Card Interactions
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    // On mobile, add a pulsing effect to highlight cards are interactive
+    if (window.innerWidth <= 768) {
+        serviceCards.forEach(card => {
+            // Add a subtle animation to highlight cards are interactive
+            card.classList.add('mobile-card-highlight');
+            
+            // Better tap handling for mobile
+            card.addEventListener('touchstart', function() {
+                this.classList.add('touch-active');
+            }, {passive: true});
+            
+            card.addEventListener('touchend', function() {
+                this.classList.remove('touch-active');
+            }, {passive: true});
+        });
         
-        cardObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -30px 0px'
-  });
-  
-  // Observe each card
-  allCards.forEach(card => {
-    cardObserver.observe(card);
-  });
-}
-
-// Detect scroll direction for enhanced animation effects
-let lastScrollTop = 0;
-window.addEventListener('scroll', function() {
-  const st = window.pageYOffset || document.documentElement.scrollTop;
-  const scrollDirection = st > lastScrollTop ? 'down' : 'up';
-  
-  // Update the scroll direction attribute for potential CSS animations
-  document.documentElement.setAttribute('data-scroll-direction', scrollDirection);
-  lastScrollTop = st <= 0 ? 0 : st;
-}, false);
-
-// Handle resize events to recalculate animations if needed
-let resizeTimeout;
-window.addEventListener('resize', function() {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(function() {
-    // Refresh animations for newly visible elements after resize
-    const animatedElements = document.querySelectorAll('.reveal-on-scroll:not(.animated), .reveal-on-scroll-left:not(.animated), .reveal-on-scroll-right:not(.animated)');
+        // Show a tooltip indicating cards are expandable on first visit
+        const cardContainer = document.querySelector('.service-cards-container');
+        if (cardContainer && !localStorage.getItem('cardTipShown')) {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'mobile-card-tooltip';
+            tooltip.innerHTML = '<span>Swipe to see more and tap any card to expand</span>';
+            cardContainer.parentNode.insertBefore(tooltip, cardContainer);
+            
+            // Remove tooltip after 5 seconds or when a card is tapped
+            setTimeout(() => {
+                if (tooltip.parentNode) {
+                    tooltip.classList.add('fade-out');
+                    setTimeout(() => tooltip.remove(), 500);
+                }
+            }, 5000);
+            
+            serviceCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    if (tooltip.parentNode) {
+                        tooltip.classList.add('fade-out');
+                        setTimeout(() => tooltip.remove(), 500);
+                    }
+                    localStorage.setItem('cardTipShown', 'true');
+                }, {once: true});
+            });
+        }
+    }
     
-    const viewportHeight = window.innerHeight;
-    animatedElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < viewportHeight * 0.9) {
-        el.classList.add('animated');
-      }
+    // Toggle card expanded state
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // First close any open cards
+            if (!this.classList.contains('active')) {
+                serviceCards.forEach(openCard => {
+                    if (openCard !== this && openCard.classList.contains('active')) {
+                        openCard.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Toggle this card
+            this.classList.toggle('active');
+        });
     });
-  }, 200);
-}); 
+    
+    // Horizontal scrolling for service cards on mobile
+    const serviceCardContainer = document.querySelector('.service-cards-container');
+    const prevButton = document.querySelector('.scroll-prev');
+    const nextButton = document.querySelector('.scroll-next');
+    
+    if (serviceCardContainer && prevButton && nextButton) {
+        // Calculate the width to scroll (card width + gap)
+        const cardWidth = serviceCards.length > 0 ? serviceCards[0].offsetWidth + 16 : 286;
+        
+        // Update scroll buttons state
+        const updateScrollButtonsState = () => {
+            const scrollLeft = serviceCardContainer.scrollLeft;
+            const maxScrollLeft = serviceCardContainer.scrollWidth - serviceCardContainer.clientWidth;
+            
+            prevButton.classList.toggle('disabled', scrollLeft <= 0);
+            nextButton.classList.toggle('disabled', scrollLeft >= maxScrollLeft - 5);
+            
+            prevButton.setAttribute('aria-disabled', scrollLeft <= 0);
+            nextButton.setAttribute('aria-disabled', scrollLeft >= maxScrollLeft - 5);
+        };
+        
+        // Scroll to previous card
+        prevButton.addEventListener('click', () => {
+            serviceCardContainer.scrollBy({
+                left: -cardWidth,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Scroll to next card
+        nextButton.addEventListener('click', () => {
+            serviceCardContainer.scrollBy({
+                left: cardWidth,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Update button states on scroll
+        serviceCardContainer.addEventListener('scroll', updateScrollButtonsState);
+        
+        // Initialize button states
+        updateScrollButtonsState();
+        
+        // Add scroll indicator to show there's more content
+        if (window.innerWidth <= 768 && serviceCardContainer.scrollWidth > serviceCardContainer.clientWidth) {
+            serviceCardContainer.classList.add('has-more-content');
+        }
+    }
+});

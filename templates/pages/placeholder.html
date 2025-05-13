@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Page Coming Soon | Infranaut.ai{% endblock %}
+{% block title %}Coming Soon | Infranaut.ai{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/placeholder.css') }}">
+{% endblock %}
 
 {% block content %}
 <section class="section py-32">

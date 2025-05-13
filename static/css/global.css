@@ -1,0 +1,744 @@
+/* Global Unified Styles for All Pages */
+
+/* Color Palette & Variables */
+:root {
+    /* Primary Colors */
+    --primary-color: #ff6c37;       /* Primary orange */
+    --primary-light: #ff8c61;       /* Lighter orange */
+    --primary-dark: #e55a29;        /* Darker orange */
+    
+    /* Secondary Colors */
+    --secondary-color: #3b82f6;     /* Primary blue */
+    --secondary-light: #60a5fa;     /* Lighter blue */
+    --secondary-dark: #2563eb;      /* Darker blue */
+    
+    /* Accent Colors */
+    --accent-color: #8b5cf6;        /* Primary purple */
+    --accent-light: #a78bfa;        /* Lighter purple */
+    --accent-dark: #6d28d9;         /* Darker purple */
+    
+    /* Neutral Colors */
+    --text-dark: #1f2937;           /* For headings, important text */
+    --text-body: #4b5563;           /* For body text */
+    --text-light: #6b7280;          /* For secondary text */
+    --text-muted: #9ca3af;          /* For muted text */
+    
+    /* Background Colors */
+    --bg-white: #ffffff;
+    --bg-light: #f9fafb;
+    --bg-gray: #f3f4f6;
+    --bg-dark: #111827;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+    --gradient-primary-to-secondary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-dark) 100%);
+    
+    /* Card & Container Styles */
+    --card-border: rgba(229, 231, 235, 0.5);
+    --bg-card: #ffffff;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Background Gradient Section */
+    --bg-gradient-start: rgba(255, 255, 255, 0.8);
+    --bg-gradient-end: rgba(249, 250, 251, 0.8);
+    
+    /* Typography */
+    --h1-size: 3rem;
+    --h2-size: 2.25rem;
+    --h3-size: 1.5rem;
+    --h4-size: 1.25rem;
+    --body-size: 1rem;
+    --small-size: 0.875rem;
+    
+    /* Border Radius */
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    --border-radius-xl: 1rem;
+    --border-radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 150ms;
+    --transition-normal: 300ms;
+    --transition-slow: 500ms;
+}
+
+/* Standardized Heading Styles with Gradient Text */
+.page-title,
+h1.gradient-text,
+.title.is-1 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: var(--h1-size, 3rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.section-title,
+h2.gradient-text,
+.title.is-2 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: var(--h2-size, 2.25rem);
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+}
+
+h3.gradient-text,
+.title.is-3,
+.title.is-4 {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: var(--h3-size, 1.5rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+/* Special gradient classes */
+.gradient-text-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--primary-color); /* Fallback color */
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
+}
+
+.gradient-text-secondary {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--secondary-color); /* Fallback color */
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(59, 130, 246, 0.3);
+}
+
+.gradient-text-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--accent-color); /* Fallback color */
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(139, 92, 246, 0.3);
+}
+
+/* Text gradient general class */
+.text-gradient {
+    background: var(--gradient-primary-to-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--primary-color); /* Fallback color */
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
+}
+
+/* Automatically apply gradient to all titles with js-gradient-text class */
+.js-gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--primary-color); /* Fallback color */
+    transition: all 0.3s ease;
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
+}
+
+/* Hover animation for gradient text */
+.gradient-text-hover:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    text-shadow: 0 1px 5px rgba(255, 108, 55, 0.15);
+}
+
+/* Standardized Section Styles */
+.standard-section {
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.standard-section.bg-gradient {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+}
+
+.standard-section.bg-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 108, 55, 0.05) 0%,
+        transparent 50%,
+        rgba(37, 99, 235, 0.03) 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    z-index: 0;
+}
+
+.standard-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Standardized Feature Cards */
+.feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--card-border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, 
+        transparent,
+        rgba(255, 108, 55, 0.1),
+        transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+/* Consistent Feature Lists */
+.feature-list {
+    margin-top: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.check-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+/* Consistent Button Styling */
+.primary-btn {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 108, 55, 0.15);
+    background: var(--primary-dark);
+}
+
+.secondary-btn {
+    background: var(--secondary-color);
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+}
+
+.secondary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    background: var(--secondary-dark);
+}
+
+.outlined-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.outlined-btn:hover {
+    background: rgba(255, 108, 55, 0.05);
+    transform: translateY(-2px);
+    border-color: var(--primary-dark);
+    color: var(--primary-dark);
+}
+
+/* Global animation class improvements */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-element.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Enhanced animation on gradient text */
+.animate {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Global consistency for all pages */
+.gradient-text-workflow,
+.gradient-text-cloud,
+.gradient-text-devops,
+.gradient-text-migration,
+.gradient-text-careers,
+.gradient-text-contact,
+.gradient-text-infra,
+.gradient-text-about,
+.gradient-text {
+    background: linear-gradient(135deg, #ff6c37 0%, #ff5319 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #ff6c37; /* Fallback color */
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
+}
+
+.orange-underline,
+.cloud-divider,
+.gradient-line {
+    height: 3px;
+    width: 5rem;
+    background: var(--gradient-primary);
+    margin: 0 auto 1.5rem;
+}
+
+.infra-primary-btn {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+}
+
+.infra-primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 108, 55, 0.15);
+    background: var(--primary-dark);
+}
+
+.infra-outlined-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.infra-outlined-btn:hover {
+    background: rgba(255, 108, 55, 0.05);
+    transform: translateY(-2px);
+    border-color: var(--primary-dark);
+    color: var(--primary-dark);
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 1rem;
+}
+
+.glow-effect {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.glow-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    transform: rotate(45deg);
+    animation: glow 3s linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+@keyframes glow {
+    0% { transform: rotate(45deg) translateX(-150%) translateY(50%); }
+    100% { transform: rotate(45deg) translateX(50%) translateY(-150%); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1023px) {
+    .standard-section {
+        padding: 4rem 0;
+    }
+    
+    .standard-section.bg-gradient::before {
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+}
+
+@media (max-width: 768px) {
+    .standard-section {
+        padding: 3rem 0;
+    }
+    
+    .page-title,
+    h1.gradient-text {
+        font-size: calc(var(--h1-size) * 0.7);
+        text-align: center;
+    }
+    
+    .section-title,
+    h2.gradient-text {
+        font-size: calc(var(--h2-size) * 0.8);
+        text-align: center;
+    }
+    
+    h3.gradient-text {
+        font-size: calc(var(--h3-size) * 0.9);
+        text-align: center;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .primary-btn,
+    .outlined-btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        justify-content: center;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .standard-section {
+        padding: 2.5rem 0;
+    }
+    
+    .feature-icon {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Global Mobile Responsiveness Fixes */
+@media (max-width: 768px) {
+    /* Better container padding for mobile */
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Improved text size on mobile */
+    h1, .is-1, .text-5xl, .text-4xl {
+        font-size: 2.25rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    h2, .is-2, .text-3xl {
+        font-size: 1.875rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    h3, .is-3, .text-2xl {
+        font-size: 1.5rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .text-xl, p.text-xl {
+        font-size: 1.125rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Fix for columns on mobile */
+    .columns:not(.is-desktop) {
+        margin: 0 !important;
+    }
+    
+    .column {
+        padding: 0.75rem !important;
+    }
+    
+    /* Consistent section padding */
+    .section {
+        padding: 3rem 1rem !important;
+    }
+    
+    .py-16 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    /* Button alignment on mobile */
+    .buttons {
+        justify-content: center !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    .buttons .button {
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Centered content on mobile */
+    .has-text-centered-mobile {
+        text-align: center !important;
+    }
+    
+    /* Image containment */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Fix for card layouts */
+    .card {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    /* Testimonial grid fixes */
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Better max-width for text containers */
+    .max-w-3xl {
+        max-width: 100% !important;
+    }
+    
+    /* Fix for hero sections with negative margins */
+    .hero.is-medium.standard-section {
+        margin-top: -7rem !important;
+    }
+    
+    /* Improved alignment for flex items */
+    .flex {
+        flex-wrap: wrap !important;
+    }
+    
+    .flex-col-mobile {
+        flex-direction: column !important;
+    }
+    
+    /* Center align hero on mobile */
+    .hero-body {
+        text-align: center !important;
+    }
+    
+    /* Fix for dashboard browser frames */
+    .dashboard-browser-frame {
+        margin-top: 2rem !important;
+    }
+    
+    /* Testimonial fixes */
+    .testimonial-quote {
+        padding: 1.5rem !important;
+    }
+    
+    .testimonial-quote blockquote {
+        font-size: 1.125rem !important;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    /* Even smaller text for very small screens */
+    h1, .is-1, .text-5xl, .text-4xl {
+        font-size: 1.875rem !important;
+    }
+    
+    /* Tighter padding for very small screens */
+    .section {
+        padding: 2.5rem 0.75rem !important;
+    }
+    
+    /* Smaller hero margin for very small screens */
+    .hero.is-medium.standard-section {
+        margin-top: -5rem !important;
+    }
+    
+    /* Card content padding adjustment */
+    .card-content {
+        padding: 1rem !important;
+    }
+}
+
+/* Tablet devices */
+@media (min-width: 769px) and (max-width: 1023px) {
+    /* Text size adjustment for tablets */
+    h1, .is-1, .text-5xl, .text-4xl {
+        font-size: 2.75rem !important;
+    }
+    
+    /* Medium hero margin for tablets */
+    .hero.is-medium.standard-section {
+        margin-top: -9rem !important;
+    }
+    
+    /* Testimonial grid on tablets */
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Global Footer Overrides - Ensure consistent white text across all pages */
+.infra-footer,
+.infra-footer h3,
+.infra-footer .infra-footer-title,
+.infra-footer p,
+.infra-footer-links a,
+.infra-footer-bottom p {
+    color: white !important;
+}
+
+.infra-footer-links a {
+    color: white !important;
+}
+
+.infra-footer-links a:hover {
+    color: #ff6c37 !important;
+}
+
+.infra-footer-title {
+    color: white !important;
+    text-align: left !important;
+}
+
+.border-orange-underline::after {
+    background-color: #ff6c37 !important;
+    left: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure consistent text alignment */
+.infra-footer-links,
+.infra-footer-links li {
+    text-align: left !important;
+} 

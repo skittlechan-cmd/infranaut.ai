@@ -8,6 +8,11 @@
     --h6-size: 1.125rem;
     --body-size: 1rem;
     --small-size: 0.875rem;
+    
+    /* Text colors - should match styles.css */
+    --text-dark: #1a202c;
+    --text-light: #4a5568;
+    --text-muted: #718096;
 }
 
 /* Headings */
@@ -53,14 +58,20 @@ h6, .h6 {
     letter-spacing: -0.02em;
     line-height: 1.2;
     color: var(--text-dark);
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* When gradient text is not applied, ensure headings still use the right colors */
+h1:not([class*="gradient-text"]),
+h2:not([class*="gradient-text"]),
+h3:not([class*="gradient-text"]),
+.title:not([class*="gradient-text"]) {
+    color: var(--text-dark);
 }
 
 p, .body-text {
     font-family: "Source Sans Pro", sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    text-shadow: 0 0.5px 0.5px rgba(255, 255, 255, 0.3);
 }
 
 /* Body Text */
@@ -105,17 +116,31 @@ p {
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     font-size: 1.25rem;
+    color: var(--text-dark);
 }
 
 .service-description {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 1rem;
     line-height: 1.6;
+    color: var(--text-light);
 }
 
 .service-feature-item {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 0.9375rem;
+    color: var(--text-light);
+}
+
+/* Optimized Text Styles */
+.highlight-text {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.accent-text {
+    color: var(--secondary-color);
+    font-weight: 600;
 }
 
 /* Responsive Typography */
@@ -144,7 +169,7 @@ p {
         font-size: 1rem;
     }
 
-    .gradient-text {
+    [class*="gradient-text"] {
         display: inline-block;
         width: 100%;
         text-align: center;
@@ -167,7 +192,7 @@ p {
 @media (max-width: 480px) {
     :root {
         --h1-size: 2.25rem;
-        --h2-size: 2rem;
+        --h2-size: 1.75rem;
         --h3-size: 1.5rem;
         --h4-size: 1.25rem;
         --h5-size: 1.125rem;
@@ -184,127 +209,8 @@ p {
     overflow: hidden;
 }
 
-/* Gradient Text Base Styles */
-.gradient-text {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    display: inline-block;
-    position: relative;
-    background-size: 300% 100%;
-    animation: gradientFlow 6s ease-in-out infinite;
-    text-shadow: var(--text-shadow-dark);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Main Landing Page Style */
-.gradient-text-main {
-    background-image: linear-gradient(135deg,
-        var(--primary-color) 0%,
-        var(--secondary-color) 50%,
-        var(--accent-purple) 100%
-    );
-}
-
-/* Cloud Management Style */
-.gradient-text-cloud {
-    background-image: linear-gradient(135deg,
-        var(--secondary-color) 0%,
-        var(--accent-teal) 50%,
-        var(--secondary-dark) 100%
-    );
-}
-
-/* DevOps Style */
-.gradient-text-devops {
-    background-image: linear-gradient(135deg,
-        var(--accent-purple) 0%,
-        var(--primary-color) 50%,
-        var(--accent-teal) 100%
-    );
-}
-
-/* Infrastructure Style */
-.gradient-text-infra {
-    background-image: linear-gradient(90deg,
-        var(--primary-color) 0%,
-        var(--accent-purple) 33%,
-        var(--secondary-color) 66%,
-        var(--primary-color) 100%
-    );
-    background-size: 300% auto;
-}
-
-/* Workflow Style */
-.gradient-text-workflow {
-    background-image: linear-gradient(135deg,
-        var(--accent-teal) 0%,
-        var(--secondary-color) 50%,
-        var(--accent-purple) 100%
-    );
-}
-
-/* Migration Style */
-.gradient-text-migration {
-    background-image: linear-gradient(90deg,
-        var(--secondary-color) 0%,
-        var(--primary-color) 50%,
-        var(--accent-purple) 100%
-    );
-}
-
-/* About Us Style */
-.gradient-text-about {
-    background-image: radial-gradient(
-        circle at top right,
-        var(--primary-color) 0%,
-        var(--accent-purple) 50%,
-        var(--secondary-color) 100%
-    );
-}
-
-/* Careers Style */
-.gradient-text-careers {
-    background-image: linear-gradient(135deg,
-        var(--accent-teal) 0%,
-        var(--primary-color) 50%,
-        var(--secondary-dark) 100%
-    );
-}
-
-/* Contact Style */
-.gradient-text-contact {
-    background-image: conic-gradient(
-        from 45deg,
-        var(--primary-color) 0deg,
-        var(--secondary-color) 120deg,
-        var(--accent-purple) 240deg,
-        var(--primary-color) 360deg
-    );
-}
-
-/* Animations */
-@keyframes shimmer {
-    0% {
-        background-position: 200% center;
-    }
-    100% {
-        background-position: -200% center;
-    }
-}
-
-/* Hover Effects */
-.gradient-text-hover {
-    transition: all 0.3s ease;
-}
-
-.gradient-text-hover:hover {
-    filter: brightness(1.1) contrast(1.1);
-    transform: scale(1.02);
+/* Performance Optimizations */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

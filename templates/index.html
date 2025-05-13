@@ -1,4 +1,14 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% block title %}Infranaut.ai: AI-Powered Infrastructure Operations{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landing-page.css') }}">
+{% endblock %}
+
+{% block body_class %}use-standard-styling{% endblock %}
+
+{% block content %}
 <!-- Hero Section -->
 <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
@@ -18,7 +28,7 @@
                         optimizes your cloud infrastructure with AI-driven
                         insights and automated deployments.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 buttons">
                         <a
                             href="#start"
                             class="button is-primary infra-primary-btn"
@@ -32,7 +42,7 @@
                             Watch Demo
                         </a>
                     </div>
-                    <div class="trusted-by">
+                    <div class="trusted-by mt-6">
                         <p>Trusted by leading engineering teams worldwide</p>
                         <div class="trusted-logos">
                           <span class="trusted-logo">Amazon</span>
@@ -41,7 +51,7 @@
                           <span class="trusted-logo">IBM</span>
                           <span class="trusted-logo">Oracle</span>
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="mt-12 lg:mt-0 lg:col-span-6">
                     <div class="hero-image-container reveal-on-scroll">
