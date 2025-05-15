@@ -157,6 +157,7 @@ p {
         display: inline-block;
         width: 100%;
         text-align: center;
+        font-size: 3rem;
     }
 
     p, .body-text {

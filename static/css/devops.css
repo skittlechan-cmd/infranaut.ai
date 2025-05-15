@@ -45,7 +45,7 @@
     font-family: "Source Sans Pro", sans-serif;
     font-size: 1.25rem;
     line-height: 1.6;
-    color: var(--text-dark);
+    color: #585d65;
     max-width: 540px;
     font-weight: 400;
     margin-bottom: 2rem;
@@ -75,6 +75,7 @@
         transform: none;
         margin-top: 2rem;
     }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -101,8 +102,8 @@
 
     .devops-hero-dashboard {
         margin: 2rem auto 0;
-        max-width: 90%;
-        padding: 0 1rem;
+        max-width: 100%;
+        padding: 0rem;
     }
 
     .button {

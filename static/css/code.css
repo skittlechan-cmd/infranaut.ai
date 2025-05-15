@@ -4,8 +4,42 @@
 .code-hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-    padding: 5rem 0 3rem;
+    background: linear-gradient(145deg, #1a202c, #2d3748);
+    padding: 3rem 0 3rem;
+    margin-top: 0;
+}
+
+.code-intelligence-title {
+    font-family: 'Recoleta', serif;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.code-intelligence-title .text-primary {
+    font-family: 'Recoleta', serif;
+    background: linear-gradient(145deg, #1a202c, #2d3748);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    color: transparent !important; /* Fallback for older browsers */
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.text-primary {
+    background: linear-gradient(145deg, #1a202c, #2d3748);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent !important; /* Fallback for older browsers */
+}
+
+.code-hero .text-primary {
+    background: linear-gradient(145deg, #1a202c, #2d3748);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    color: transparent !important; /* Fallback for older browsers */
 }
 
 .code-gradient-bg {
@@ -20,6 +54,27 @@
         rgba(37, 99, 235, 0.03) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     z-index: 0;
+}
+
+.code-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 108, 55, 0.1) 0%,
+        rgba(0, 0, 0, 0.05) 50%,
+        rgba(59, 130, 246, 0.1) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.code-hero .hero-body {
+    position: relative;
+    z-index: 2;
 }
 
 .code-hero-content {
@@ -51,6 +106,10 @@
     max-width: 540px;
     font-weight: 400;
     margin-bottom: 2rem;
+}
+
+.code-hero .text-gray-300 {
+    color: #d1d5db;
 }
 
 /* Code Snippets */
@@ -290,13 +349,18 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .code-hero {
-        padding: 3rem 0 2rem;
+        padding: 2rem 0 2rem;
     }
     
     .code-hero-title {
         font-size: 2.5rem;
         line-height: 1.2;
         margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .code-intelligence-title {
+        font-size: 2.25rem;
         text-align: center;
     }
     
@@ -484,6 +548,7 @@
 }
 
 @media (min-width: 769px) and (max-width: 1023px) {
+    
     .code-hero.standard-section {
         margin-top: -9rem;
     }
@@ -597,3 +662,5 @@
     font-size: 0.9rem;
     line-height: 1.6;
 } 
+
+

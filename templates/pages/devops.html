@@ -3,7 +3,10 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/devops.css') }}">
 {% endblock %}
-
+<link
+    href="https://fonts.googleapis.com/css2?family=Recoleta:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+/>
 {% block extra_js %}
 <script src="{{ url_for('static', filename='js/devops.js') }}"></script>
 {% endblock %}
@@ -16,7 +19,7 @@
             <div class="columns is-vcentered">
                 <div class="column is-6">
                     <div class="devops-hero-content fade-in">
-                        <h1 class="devops-hero-title"><span class="gradient-text gradient-text-devops gradient-text-hover">DevOps Productivity</span></h1>
+                        <h1 class="devops-hero-title"><span class="gradient-text gradient-text-devops gradient-text-hover" style="font-family: 'Recoleta', serif;">DevOps Productivity</span></h1>
                         <p class="devops-hero-subtitle">Transform your DevOps workflow with AI-driven insights and automated optimizations that accelerate your development lifecycle.</p>
                         <div class="buttons mt-6">
                             <a href="#features" class="infra-primary-btn">
@@ -54,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="dashboard-content">
-                                <img src="{{ url_for('static', filename='css/images/devops_hero.jpeg') }}" alt="DevOps Pipeline Dashboard" class="dashboard-img">
+                                <img src="{{ url_for('static', filename='css/images/devops_hero.png') }}" alt="DevOps Pipeline Dashboard" class="dashboard-img">
                             </div>
                         </div>
                     </div>
@@ -78,7 +81,7 @@
 <!-- Features Section -->
 <section id="features" class="section bg-gradient">
     <div class="container">
-        <h2 class="title is-2 has-text-centered mb-6 fade-in">Key Features</h2>
+        <h2 class="title is-2 has-text-centered mb-6 fade-in" style="font-family: 'Recoleta', serif;">Key Features</h2>
         <div class="columns is-multiline">
             <!-- Automation Recommendations -->
             <div class="column is-4 fade-in">
@@ -86,7 +89,7 @@
                     <div class="devops-feature-icon">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <h3 class="title is-4">Automation Recommendations</h3>
+                    <h3 class="title is-4" style="font-family: 'Recoleta', serif;">Automation Recommendations</h3>
                     <p class="subtitle is-6">Identify redundant tasks and get AI-powered suggestions for CI/CD optimizations.</p>
                     <div class="infra-feature-list">
                         <div class="infra-feature-item">
@@ -107,7 +110,7 @@
                     <div class="devops-feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="title is-4">Bottleneck Detection</h3>
+                    <h3 class="title is-4"style="font-family: 'Recoleta', serif;">Bottleneck Detection</h3>
                     <p class="subtitle is-6">Real-time identification of pipeline bottlenecks and performance issues.</p>
                     <div class="infra-feature-list">
                         <div class="infra-feature-item">
@@ -128,7 +131,7 @@
                     <div class="devops-feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="title is-4">Team Insights</h3>
+                    <h3 class="title is-4" style="font-family: 'Recoleta', serif;">Team Insights</h3>
                     <p class="subtitle is-6">Comprehensive metrics on deployment frequency and MTTR.</p>
                     <div class="infra-feature-list">
                         <div class="infra-feature-item">
@@ -149,7 +152,7 @@
 <!-- Tools Integration Section -->
 <section class="section tools-section">
     <div class="container">
-        <h2 class="title is-2 has-text-centered mb-6 fade-in">Integrated Tools</h2>
+        <h2 class="title is-2 has-text-centered mb-6 fade-in" style="font-family: 'Recoleta', serif;">Integrated Tools</h2>
         <div class="devops-tools-grid">
             <div class="devops-tool-item fade-in">
                 <i class="fab fa-jenkins"></i>
@@ -184,7 +187,7 @@
     <div class="container">
         <div class="columns is-vcentered">
             <div class="column is-6 fade-in">
-                <h2 class="title is-2">Interactive Demo</h2>
+                <h2 class="title is-2" style="font-family: 'Recoleta', serif;">Interactive Demo</h2>
                 <p class="subtitle is-5 mb-5">Ask our AI about your DevOps pipeline performance</p>
                 <div class="devops-chat-container">
                     <div class="devops-message">
