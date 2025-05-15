@@ -8,11 +8,6 @@
     --h6-size: 1.125rem;
     --body-size: 1rem;
     --small-size: 0.875rem;
-    
-    /* Text colors - should match styles.css */
-    --text-dark: #1a202c;
-    --text-light: #4a5568;
-    --text-muted: #718096;
 }
 
 /* Headings */
@@ -57,14 +52,6 @@ h6, .h6 {
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.2;
-    color: var(--text-dark);
-}
-
-/* When gradient text is not applied, ensure headings still use the right colors */
-h1:not([class*="gradient-text"]),
-h2:not([class*="gradient-text"]),
-h3:not([class*="gradient-text"]),
-.title:not([class*="gradient-text"]) {
     color: var(--text-dark);
 }
 
@@ -116,20 +103,17 @@ p {
     font-family: "Roboto", sans-serif;
     font-weight: 600;
     font-size: 1.25rem;
-    color: var(--text-dark);
 }
 
 .service-description {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--text-light);
 }
 
 .service-feature-item {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 0.9375rem;
-    color: var(--text-light);
 }
 
 /* Optimized Text Styles */
@@ -169,7 +153,7 @@ p {
         font-size: 1rem;
     }
 
-    [class*="gradient-text"] {
+    .gradient-text {
         display: inline-block;
         width: 100%;
         text-align: center;
@@ -192,7 +176,7 @@ p {
 @media (max-width: 480px) {
     :root {
         --h1-size: 2.25rem;
-        --h2-size: 1.75rem;
+        --h2-size: 2rem;
         --h3-size: 1.5rem;
         --h4-size: 1.25rem;
         --h5-size: 1.125rem;

@@ -1,14 +1,4 @@
-{% extends 'base.html' %}
-
-{% block title %}Infranaut.ai: AI-Powered Infrastructure Operations{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/landing-page.css') }}">
-{% endblock %}
-
-{% block body_class %}use-standard-styling{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <!-- Hero Section -->
 <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
@@ -16,19 +6,17 @@
             <div class="lg:grid lg:grid-cols-12 lg:gap-8">
                 <div class="lg:col-span-6 flex flex-col justify-center">
                     <h1
-                        class="text-4xl md:text-5xl font-bold leading-tight mb-6"
-                    >
-                        Your AI Copilot for
-                        <span class="text-gradient"
-                            >Managing Infrastructure</span
-                        >
-                    </h1>
+                    class="text-4xl md:text-5xl font-bold leading-tight mb-6 hero-heading"
+                    style="font-family: 'Recoleta', serif;">
+                    Your AI Copilot for
+                    <span class="text-gradient">Managing Infrastructure</span>
+                </h1>
                     <p class="text-xl text-gray-600 mb-8">
                         Infranaut.ai intelligently manages, monitors, and
                         optimizes your cloud infrastructure with AI-driven
                         insights and automated deployments.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 buttons">
+                    <div class="flex flex-col sm:flex-row gap-4">
                         <a
                             href="#start"
                             class="button is-primary infra-primary-btn"
@@ -42,7 +30,7 @@
                             Watch Demo
                         </a>
                     </div>
-                    <div class="trusted-by mt-6">
+                    <div class="trusted-by">
                         <p>Trusted by leading engineering teams worldwide</p>
                         <div class="trusted-logos">
                           <span class="trusted-logo">Amazon</span>
@@ -51,7 +39,7 @@
                           <span class="trusted-logo">IBM</span>
                           <span class="trusted-logo">Oracle</span>
                         </div>
-                    </div>
+                      </div>
                 </div>
                 <div class="mt-12 lg:mt-0 lg:col-span-6">
                     <div class="hero-image-container reveal-on-scroll">
@@ -72,7 +60,8 @@
 <section id="features" class="section bg-light py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="has-text-centered mb-16">
-            <h2 class="text-3xl font-bold mb-4">
+        <h2 class="text-3xl font-bold mb-4" 
+            style="font-family: 'Recoleta', serif;">
                 AI-Powered Infrastructure Management
             </h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -91,11 +80,15 @@
                     <div class="service-cards-container">
                         <div class="service-card reveal-on-scroll delay-100">
                             <div class="service-card-content">
-                                <h3 class="service-title">
+                                <h3 class="service-title" style="font-family: 'Recoleta', serif;">
                                     Infrastructure Intelligence
                                     <i class="fas fa-chevron-down icon"></i>
                                 </h3>
                                 <p class="service-description">Comprehensive monitoring and intelligent analysis of your infrastructure</p>
+                                <div class="expand-collapse-button">
+                                    <span class="expand-text">Tap to expand</span>
+                                    <span class="collapse-text">Tap to collapse</span>
+                                </div>
                                 <div class="service-feature-list">
                                     <div class="service-feature-item">
                                         <i class="fas fa-check feature-check"></i>
@@ -121,11 +114,15 @@
                         
                         <div class="service-card reveal-on-scroll delay-200">
                             <div class="service-card-content">
-                                <h3 class="service-title">
+                                <h3 class="service-title" style="font-family: 'Recoleta', serif;">
                                     Code Intelligence
                                     <i class="fas fa-chevron-down icon"></i>
                                 </h3>
                                 <p class="service-description">AI-powered code understanding and optimization</p>
+                                <div class="expand-collapse-button">
+                                    <span class="expand-text">Tap to expand</span>
+                                    <span class="collapse-text">Tap to collapse</span>
+                                </div>
                                 <div class="service-feature-list">
                                     <div class="service-feature-item">
                                         <i class="fas fa-check feature-check"></i>
@@ -151,11 +148,15 @@
                         
                         <div class="service-card reveal-on-scroll delay-300">
                             <div class="service-card-content">
-                                <h3 class="service-title">
+                                <h3 class="service-title" style="font-family: 'Recoleta', serif;">
                                     DevOps Productivity
                                     <i class="fas fa-chevron-down icon"></i>
                                 </h3>
                                 <p class="service-description">Streamlined CI/CD operations and deployment optimization</p>
+                                <div class="expand-collapse-button">
+                                    <span class="expand-text">Tap to expand</span>
+                                    <span class="collapse-text">Tap to collapse</span>
+                                </div>
                                 <div class="service-feature-list">
                                     <div class="service-feature-item">
                                         <i class="fas fa-check feature-check"></i>
@@ -181,11 +182,15 @@
                         
                         <div class="service-card reveal-on-scroll delay-400">
                             <div class="service-card-content">
-                                <h3 class="service-title">
+                                <h3 class="service-title" style="font-family: 'Recoleta', serif;">
                                     Cloud Migration
                                     <i class="fas fa-chevron-down icon"></i>
                                 </h3>
                                 <p class="service-description">Seamless cloud transition and optimized multi-cloud operations</p>
+                                <div class="expand-collapse-button">
+                                    <span class="expand-text">Tap to expand</span>
+                                    <span class="collapse-text">Tap to collapse</span>
+                                </div>
                                 <div class="service-feature-list">
                                     <div class="service-feature-item">
                                         <i class="fas fa-check feature-check"></i>
@@ -211,11 +216,15 @@
 
                         <div class="service-card reveal-on-scroll delay-500">
                             <div class="service-card-content">
-                                <h3 class="service-title">
+                                <h3 class="service-title" style="font-family: 'Recoleta', serif;">
                                     Onboarding & Knowledge Sharing
                                     <i class="fas fa-chevron-down icon"></i>
                                 </h3>
                                 <p class="service-description">Accelerate onboarding and empower teams with contextual, self-service insights</p>
+                                <div class="expand-collapse-button">
+                                    <span class="expand-text">Tap to expand</span>
+                                    <span class="collapse-text">Tap to collapse</span>
+                                </div>
                                 <div class="service-feature-list">
                                     <div class="service-feature-item">
                                         <i class="fas fa-check feature-check"></i>
@@ -253,7 +262,8 @@
         <div class="columns is-vcentered">
             <div class="column is-5-desktop">
                 <div class="monitoring-content">
-                    <h2 class="text-3xl font-bold mb-6">
+                    <h2 class="text-3xl font-bold mb-6"
+                    style="font-family: 'Recoleta', serif;">
                         Advanced Logging & Monitoring
                     </h2>
                     <p class="text-lg text-gray-600 mb-8">
@@ -281,7 +291,8 @@
                                 </svg>
                             </div>
                             <div class="infra-feature-text">
-                                <h4 class="text-lg font-medium">
+                                <h4 class="text-lg font-medium"
+                                style="font-family: 'Recoleta', serif;">
                                     Anomaly Detection
                                 </h4>
                                 <p class="text-gray-600 mt-1">
@@ -309,7 +320,8 @@
                                 </svg>
                             </div>
                             <div class="infra-feature-text">
-                                <h4 class="text-lg font-medium">
+                                <h4 class="text-lg font-medium"
+                                style="font-family: 'Recoleta', serif;">
                                     Context-Aware Alerts
                                 </h4>
                                 <p class="text-gray-600 mt-1">
@@ -337,7 +349,8 @@
                                 </svg>
                             </div>
                             <div class="infra-feature-text">
-                                <h4 class="text-lg font-medium">
+                                <h4 class="text-lg font-medium"
+                                style="font-family: 'Recoleta', serif;">
                                     Log Intelligence
                                 </h4>
                                 <p class="text-gray-600 mt-1">
@@ -399,7 +412,7 @@
 <section id="additional-modules" class="section bg-light py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="has-text-centered mb-16 desktop-only">
-            <h2 class="text-3xl font-bold mb-4">Specialized Modules</h2>
+            <h2 class="text-3xl font-bold mb-4" style="font-family: 'Recoleta', serif;">Specialized Modules</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Enhance your development workflow with our specialized
                 AI-powered modules
@@ -426,12 +439,15 @@
                             ></path>
                         </svg>
                     </div>
-                    <h3 class="module-title">Onboarding & Knowledge Sharing</h3>
+                    <h3 class="module-title" style="font-family: 'Recoleta', serif;">Onboarding & Knowledge Sharing</h3>
                     <ul class="module-features">
                         <li>Natural-language Q&A on your codebase</li>
                         <li>Knowledge graph of services & configs</li>
                         <li>Interactive "service map" of dependencies</li>
                     </ul>
+                    <div class="mt-4 text-right">
+                        <a href="#" class="infra-link-arrow">Learn More</a>
+                    </div>
                 </div>
             </div>
 
@@ -454,12 +470,15 @@
                             ></path>
                         </svg>
                     </div>
-                    <h3 class="module-title">Workflow Optimization</h3>
+                    <h3 class="module-title" style="font-family: 'Recoleta', serif;">Workflow Optimization</h3>
                     <ul class="module-features">
                         <li>Bottleneck detection in build cycles</li>
                         <li>Task-to-owner mapping suggestions</li>
                         <li>Service-to-service call graph visualization</li>
                     </ul>
+                    <div class="mt-4 text-right">
+                        <a href="#" class="infra-link-arrow">Learn More</a>
+                    </div>
                 </div>
             </div>
 
@@ -482,7 +501,7 @@
                             ></path>
                         </svg>
                     </div>
-                    <h3 class="module-title">Cloud Migration Helper</h3>
+                    <h3 class="module-title" style="font-family: 'Recoleta', serif;">Cloud Migration Helper</h3>
                     <ul class="module-features">
                         <li>Cloud-readiness assessment of on-prem services</li>
                         <li>Automated cost estimation & TCO analysis</li>
@@ -491,6 +510,9 @@
                             VMs
                         </li>
                     </ul>
+                    <div class="mt-4 text-right">
+                        <a href="#" class="infra-link-arrow">Learn More</a>
+                    </div>
                 </div>
             </div>
 
@@ -513,7 +535,7 @@
                             ></path>
                         </svg>
                     </div>
-                    <h3 class="module-title">
+                    <h3 class="module-title" style="font-family: 'Recoleta', serif;">
                         Cloud Management & Optimization
                     </h3>
                     <ul class="module-features">
@@ -529,6 +551,9 @@
                             reserved instances)
                         </li>
                     </ul>
+                    <div class="mt-4 text-right">
+                        <a href="#" class="infra-link-arrow">Learn More</a>
+                    </div>
                 </div>
             </div>
 
@@ -551,7 +576,7 @@
                             ></path>
                         </svg>
                     </div>
-                    <h3 class="module-title">DevOps Productivity</h3>
+                    <h3 class="module-title" style="font-family: 'Recoleta', serif;">DevOps Productivity</h3>
                     <ul class="module-features">
                         <li>
                             Automation recommendations for CI/CD optimization
@@ -562,6 +587,9 @@
                             frequency, MTTR)
                         </li>
                     </ul>
+                    <div class="mt-4 text-right">
+                        <a href="#" class="infra-link-arrow">Learn More</a>
+                    </div>
                 </div>
             </div>
 
@@ -584,7 +612,7 @@
                             ></path>
                         </svg>
                     </div>
-                    <h3 class="module-title">Code Intelligence</h3>
+                    <h3 class="module-title" style="font-family: 'Recoleta', serif;">Code Intelligence</h3>
                     <ul class="module-features">
                         <li>
                             Automated detection of bugs, security flaws, and
@@ -593,6 +621,9 @@
                         <li>Generate API docs or comments from code</li>
                         <li>Link code changes to bug tickets automatically</li>
                     </ul>
+                    <div class="mt-4 text-right">
+                        <a href="#" class="infra-link-arrow">Learn More</a>
+                    </div>
                 </div>
             </div>
 
@@ -615,12 +646,15 @@
                             ></path>
                         </svg>
                     </div>
-                    <h3 class="module-title">Support Services & Add-Ons</h3>
+                    <h3 class="module-title" style="font-family: 'Recoleta', serif;">Support Services & Add-Ons</h3>
                     <ul class="module-features">
                         <li>Bug-fix prioritization & triage assistance</li>
                         <li>Code-base optimization engagements</li>
                         <li>Custom documentation generation & sync</li>
                     </ul>
+                    <div class="mt-4 text-right">
+                        <a href="#" class="infra-link-arrow">Learn More</a>
+                    </div>
                 </div>
             </div>
 

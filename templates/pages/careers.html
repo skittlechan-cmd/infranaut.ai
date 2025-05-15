@@ -2,10 +2,6 @@
 
 {% block title %}Careers at Infranaut.ai: Join Our Team{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/careers.css') }}">
-{% endblock %}
-
 {% block content %}
 
 <!-- Hero Section -->
@@ -205,6 +201,311 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Reusing variables from other pages */
+    :root {
+        --primary-color: #ff6b35;
+        --primary-light: #ff8c61;
+        --primary-dark: #e85d2f;
+        --secondary-color: #4F46E5; /* Indigo */
+        --accent-color: #ffe0d6; /* Light orange */
+        --border-color: #e5e7eb; /* Neutral gray */
+        --white: #ffffff;
+        --bg-light: #f9fafb; /* Light background */
+        --text-dark: #1f2937;
+        --text-light: #f9fafb;
+        --text-muted: #6b7280;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+         /* Orange Tinted Shadows */
+        --shadow-orange-md: 0 4px 6px -1px rgba(255, 107, 53, 0.1), 0 2px 4px -1px rgba(255, 107, 53, 0.06);
+        --shadow-orange-lg: 0 10px 15px -3px rgba(255, 107, 53, 0.1), 0 4px 6px -2px rgba(255, 107, 53, 0.05);
+
+
+         /* Animation Vars */
+        --animation-duration: 0.7s;
+        --animation-timing: ease-out;
+        --slide-delay: 0s;
+    }
+
+     /* Base Body */
+    body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+
+    /* Slide-In Animation */
+    .slide-in-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity var(--animation-duration) var(--animation-timing),
+                    transform var(--animation-duration) var(--animation-timing);
+        transition-delay: var(--slide-delay);
+    }
+    .slide-in-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    /* Reusing/Adapting Common Styles */
+     .hero-body { padding: 5rem 1rem; }
+     .section { padding-top: 4rem; padding-bottom: 4rem; }
+     .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+     .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+     .mb-16 { margin-bottom: 4rem; }
+     .mb-12 { margin-bottom: 3rem; }
+
+
+    .text-gradient {
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline;
+    }
+
+    .gradient-line { height: 3px; width: 80px; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); border-radius: 3px; margin-top: 1rem; margin-bottom: 1rem; }
+    .gradient-line.mx-auto { margin-left: auto; margin-right: auto; }
+    @media (min-width: 768px) {
+        .gradient-line.md\:ml-0 { margin-left: 0; margin-right: initial; }
+        .hero-body { padding: 6rem 1.5rem; }
+        .section { padding-top: 5rem; padding-bottom: 5rem; }
+    }
+
+
+    /* Careers Hero Section */
+    .careers-hero {
+         background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+         overflow: hidden;
+    }
+    .careers-hero-svg-wrapper {
+        /* Wrapper for the SVG, can add margin/padding if needed */
+    }
+
+
+    /* Our Culture Section */
+    .bg-light { background-color: var(--bg-light); }
+
+    .culture-grid .grid > * {
+         /* Inherits slide-in animation */
+    }
+
+    .culture-point {
+         background-color: var(--white);
+         border-radius: 12px;
+         padding: 2rem; /* Default padding */
+         border: 1px solid var(--border-color);
+         box-shadow: var(--shadow-md);
+         text-align: center;
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .culture-point:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+    .culture-icon-wrapper {
+        background-color: var(--accent-color);
+        width: 56px; height: 56px;
+        border-radius: 50%; /* Circular icons */
+        display: inline-flex;
+        align-items: center; justify-content: center;
+        margin-bottom: 1.5rem;
+        color: var(--primary-dark);
+        box-shadow: var(--shadow-sm);
+    }
+     .culture-icon { width: 2rem; height: 2rem; }
+
+
+    /* Open Positions Section */
+    .job-listings-grid {
+        /* Uses grid from Tailwind classes */
+    }
+    .job-listing-card {
+         background-color: var(--white);
+         border-radius: 12px;
+         padding: 1.5rem; /* Default padding */
+         border: 1px solid var(--border-color);
+         box-shadow: var(--shadow-sm);
+         transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+         display: flex; /* Use flex for internal layout */
+         flex-direction: column; /* Stack content */
+         justify-content: space-between; /* Push link to bottom */
+    }
+    .job-listing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary-light);
+    }
+     .job-title {
+        font-size: 1.125rem; /* text-lg */
+        font-weight: 700; /* bold */
+        margin-bottom: 0.5rem;
+        color: var(--text-dark);
+     }
+     .job-location {
+        font-size: 0.9rem; /* text-sm */
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+     }
+     .job-summary {
+         font-size: 1rem; /* text-base */
+         color: var(--text-muted);
+         margin-bottom: 1rem;
+         flex-grow: 1; /* Allow summary to take space */
+     }
+     .apply-link {
+        display: inline-block;
+        margin-top: auto; /* Push to bottom */
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s ease, transform 0.2s ease;
+     }
+     .apply-link:hover {
+         color: var(--primary-dark);
+         transform: translateX(3px);
+     }
+
+
+    /* CTA Section (Reusing Addon Styles) */
+    .addon-cta {
+        position: relative;
+        overflow: hidden;
+        background-color: var(--primary-color);
+    }
+    .cta-bg-gradient {
+        position: absolute; inset: 0;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 70%, var(--secondary-color) 100%);
+        opacity: 0.95;
+        animation: pulse-gradient 8s infinite alternate ease-in-out;
+         z-index: 0;
+    }
+    @keyframes pulse-gradient {
+      from { opacity: 0.9; }
+      to { opacity: 1; }
+    }
+    .addon-cta::before { /* Shimmer */
+        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.08), transparent );
+        transform: rotate(30deg); animation: shimmer 6s infinite linear; pointer-events: none; z-index: 5;
+    }
+    @keyframes shimmer {
+        0% { transform: translateX(-75%) translateY(-75%) rotate(30deg); }
+        100% { transform: translateX(75%) translateY(75%) rotate(30deg); }
+    }
+
+    .addon-cta .container { position: relative; z-index: 10; }
+
+
+    .infra-primary-btn {
+        background-color: var(--primary-color); color: var(--white); border: none;
+        padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+        display: inline-flex; align-items: center; justify-content: center;
+        transition: all 0.25s ease; box-shadow: var(--shadow-orange-md); letter-spacing: 0.025em;
+    }
+     .infra-primary-btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-orange-lg); }
+
+     .infra-outlined-btn {
+        background: rgba(255, 255, 255, 0.1); color: var(--white);
+        border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+        padding: calc(0.75rem - 1px) calc(1.5rem - 1px); border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+        display: inline-flex; align-items: center; justify-content: center;
+        transition: all 0.25s ease;
+     }
+     .infra-outlined-btn:hover { background: rgba(255, 255, 255, 0.2); border-color: var(--white); color: var(--white); transform: translateY(-2px); }
+
+
+    /* Reusing Addon CTA button styles */
+    .addon-cta-btn {
+        background: var(--white); color: var(--primary-dark);
+        padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600;
+        transition: all 0.3s ease; display: inline-flex; align-items: center;
+        box-shadow: 0 4px 15px rgba(0,0,0, 0.1); border: none;
+    }
+    .addon-cta-btn:hover {
+        background: var(--bg-light); color: var(--primary-dark);
+        transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0, 0.15);
+    }
+     .addon-outline-btn {
+        background: transparent; color: var(--white);
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        padding: calc(0.75rem - 2px) calc(1.5rem - 2px); border-radius: 8px;
+        font-weight: 600; transition: all 0.3s ease;
+        display: inline-flex; align-items: center;
+    }
+    .addon-outline-btn:hover {
+        background: rgba(255, 255, 255, 0.1); border-color: var(--white);
+        transform: translateY(-2px);
+    }
+     .glow-effect { position: relative; overflow: hidden; z-index: 1; }
+    .glow-effect::after { /* Keep glow */
+        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+        transform: rotate(45deg); animation: glow 3s linear infinite; opacity: 0.6; pointer-events: none;
+    }
+    @keyframes glow { 0% { transform: rotate(45deg) translateX(-150%) translateY(50%); } 100% { transform: rotate(45deg) translateX(50%) translateY(-150%); } }
+
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) { /* Tablet - Specific adjustments */
+        /* Stack Hero */
+        .careers-hero .flex-col.md\:flex-row { flex-direction: column; }
+        .careers-hero .md\:w-1\/2 { width: 100%; }
+         .careers-hero .md\:mt-0 { margin-top: 2.5rem; }
+        .careers-hero .text-center.md\:text-left { text-align: center; }
+         .careers-hero .justify-center.md\:justify-start { justify-content: center; }
+
+        /* Stack Culture Section */
+         #our-culture .grid.md\:grid-cols-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+         #our-culture .culture-point { padding: 1.5rem; } /* Reduce padding */
+         #our-culture .culture-icon-wrapper { width: 48px; height: 48px; margin-bottom: 1rem;} /* Smaller icon wrapper */
+         #our-culture .culture-icon { width: 1.75rem; height: 1.75rem; } /* Smaller icon */
+
+         /* Stack Job Listings */
+         .job-listings-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+         .job-listing-card { padding: 1rem; } /* Reduce padding */
+
+
+         /* Stack CTA Buttons */
+        .addon-cta .flex.gap-4 { flex-direction: column; align-items: center;}
+        .addon-cta .addon-cta-btn, .addon-cta .addon-outline-btn {
+             width: 100%;
+             max-width: 300px;
+             justify-content: center;
+        }
+         .addon-cta .addon-outline-btn { margin-top: 0.75rem; }
+
+          /* Stack Hero Buttons */
+        .careers-hero .flex.gap-4 { flex-direction: column; align-items: center;}
+        .careers-hero .infra-primary-btn, .careers-hero .infra-outlined-btn { width: 100%; max-width: 280px; justify-content: center;}
+        .careers-hero .infra-outlined-btn { margin-top: 0.75rem; }
+    }
+
+    @media (max-width: 768px) { /* Mobile - Further Adjustments */
+         /* Font sizes, padding, margins are generally reduced in the initial styles now */
+
+         /* Culture Points */
+         .culture-point { padding: 1.5rem; } /* Already set for <1024 */
+         .culture-icon-wrapper { width: 48px; height: 48px; margin-bottom: 1rem;} /* Already set for <1024 */
+         .culture-icon { width: 1.75rem; height: 1.75rem; } /* Already set for <1024 */
+
+         /* Job Listings */
+         .job-listing-card { padding: 1rem; } /* Already set for <1024 */
+    }
+</style>
 {% endblock %}
 
 {% block extra_js %}

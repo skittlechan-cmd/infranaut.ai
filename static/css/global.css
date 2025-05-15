@@ -70,6 +70,14 @@
     --transition-slow: 500ms;
 }
 
+/* recoleta font  */
+@font-face {
+    font-family: 'Recoleta';
+    src: url('../fonts/Recoleta-RegularDEMO.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Standardized Heading Styles with Gradient Text */
 .page-title,
 h1.gradient-text,
@@ -560,7 +568,7 @@ h3.gradient-text,
     }
     
     h2, .is-2, .text-3xl {
-        font-size: 1.875rem !important;
+        font-size: 2.1rem !important;
         line-height: 1.3 !important;
     }
     
@@ -707,6 +715,7 @@ h3.gradient-text,
         grid-template-columns: repeat(2, 1fr) !important;
     }
 }
+
 
 /* Global Footer Overrides - Ensure consistent white text across all pages */
 .infra-footer,

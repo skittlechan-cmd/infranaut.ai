@@ -1,63 +1,48 @@
 {% extends 'base.html' %}
 
-{% block title %}Cloud Migration Services | Infranaut.ai{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/cloud_migration.css') }}">
-<style>
-    /* Cloud Migration specific gradient */
-    .cloud-text-gradient {
-        background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: var(--secondary-color); /* Fallback */
-    }
-</style>
-{% endblock %}
+{% block title %}Cloud Migration Services | Infranaut.ai{% endblock %} {# Added a specific title #}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero is-fullheight-with-navbar standard-section">
+<section class="hero is-medium migration-hero">
     <div class="hero-body">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-                <div class="lg:col-span-6 flex flex-col justify-center">
-                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 reveal-on-scroll">
-                        Transform Your Infrastructure with 
-                        <span class="cloud-text-gradient">Cloud Migration</span>
+        <div class="container mx-auto px-4">
+            {# Adjusted gap for better mobile stacking #}
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="md:w-1/2 animate-fadeInLeft text-center md:text-left"> {# Centered text on mobile #}
+                    <h1
+                        class="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
+                    >
+                        <span class="gradient-text gradient-text-migration gradient-text-hover">Transform Your Infrastructure with Cloud Migration</span>
                     </h1>
-                    <p class="text-xl text-gray-600 mb-8 reveal-on-scroll delay-100">
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
                         Seamlessly move your on-premise infrastructure to the
                         cloud with our expert migration services. Efficient,
                         secure, and cost-effective solutions.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 buttons reveal-on-scroll delay-200">
-                        <a href="#get-started" class="button is-primary infra-primary-btn">
+                     {# Kept sm:flex-row for slightly larger small screens #}
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#get-started" class="migration-btn">
                             Start Migration
-                            <span class="ml-2 inline-block">→</span>
+                            <span class="ml-2 inline-block">→</span> {# Ensured arrow display #}
                         </a>
-                        <a href="#learn-more" class="button is-outlined infra-outlined-btn">
-                            Learn More <span class="ml-1 inline-block">→</span>
+                        <a
+                            href="#learn-more"
+                            class="text-primary-dark hover:text-primary font-semibold inline-flex items-center justify-center sm:justify-start" {# Centered on mobile #}
+                        >
+                            Learn More <span class="ml-1 inline-block">→</span> {# Ensured arrow display #}
                         </a>
-                    </div>
-                    <div class="trusted-by mt-6 reveal-on-scroll delay-300">
-                        <p>Trusted by leading enterprises for cloud transitions</p>
-                        <div class="trusted-logos">
-                            <span class="trusted-logo">Netflix</span>
-                            <span class="trusted-logo">Airbnb</span>
-                            <span class="trusted-logo">Shopify</span>
-                            <span class="trusted-logo">Spotify</span>
-                            <span class="trusted-logo">Dropbox</span>
-                        </div>
                     </div>
                 </div>
-                <div class="mt-12 lg:mt-0 lg:col-span-6">
-                    <div class="hero-image-container reveal-on-scroll delay-200">
-                        <img src="{{ url_for('static', filename='css/images/migration.jpeg') }}"
+                <div class="md:w-1/2 animate-fadeInRight mt-8 md:mt-0"> {# Added margin top on mobile #}
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-primary-light/20 to-transparent rounded-2xl -translate-x-2 -translate-y-2 md:-translate-x-4 md:-translate-y-4" {# Adjusted translate #}
+                        ></div>
+                        <img
+                            src="{{ url_for('static', filename='css/images/migration.jpeg') }}"
                             alt="Cloud Migration illustration"
-                            class="hero-image rounded-2xl shadow-2xl"
-                            loading="lazy"
+                            class="w-full rounded-2xl shadow-2xl relative z-10"
                         />
                     </div>
                 </div>
@@ -67,161 +52,102 @@
 </section>
 
 <!-- Features Section -->
-<section class="section bg-light py-16" id="learn-more">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="has-text-centered mb-16">
-            <h2 class="text-3xl font-bold mb-4 reveal-on-scroll">
+<section class="section py-16 md:py-20 bg-white" id="learn-more"> {# Adjusted padding #}
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12 md:mb-16"> {# Adjusted margin #}
+            <span
+                class="text-primary-dark font-semibold mb-3 md:mb-4 block text-sm uppercase tracking-wider"
+                >OUR PROCESS</span
+            >
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
                 Streamlined Migration Journey
             </h2>
-            <div class="gradient-line mx-auto reveal-on-scroll delay-100"></div>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6 reveal-on-scroll delay-200">
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                 We've simplified the complex process of cloud migration into
                 clear, manageable steps, ensuring a smooth transition with
                 predictable outcomes.
             </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"> {# Added lg:grid-cols-3 #}
             <!-- Feature 1 -->
-            <div class="service-card reveal-on-scroll delay-100">
-                <div class="service-card-content">
-                    <h3 class="service-title">
-                        Assessment & Discovery
-                        <i class="fas fa-chevron-down icon"></i>
-                    </h3>
-                    <p class="service-description">Comprehensive analysis of your current infrastructure, applications, and dependencies to determine the optimal migration strategy.</p>
-                    <div class="service-feature-list">
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Dependency mapping</span>
-                        </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Performance baselines</span>
-                        </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Risk assessment</span>
-                        </div>
-                    </div>
-                    <div class="card-learn-more">
-                        <a href="#">
-                            Learn More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+            <div class="feature-card relative overflow-hidden" data-delay="0s">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /> </svg>
                 </div>
+                <h3 class="text-xl md:text-2xl font-bold mb-3"> Assessment & Discovery </h3>
+                <p class="text-gray-600 mb-6 text-base"> Comprehensive analysis of your current infrastructure, applications, and dependencies to determine the optimal migration strategy. </p>
+                <a href="#" class="text-primary-dark hover:text-primary font-semibold inline-flex items-center text-sm group"> Details <svg class="w-4 h-4 ml-1 transform transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /> </svg> </a>
             </div>
 
             <!-- Feature 2 -->
-            <div class="service-card reveal-on-scroll delay-200">
-                <div class="service-card-content">
-                    <h3 class="service-title">
-                        Planning & Design
-                        <i class="fas fa-chevron-down icon"></i>
-                    </h3>
-                    <p class="service-description">Detailed migration roadmap, including cloud architecture design, cost estimation, security planning, and resource allocation.</p>
-                    <div class="service-feature-list">
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Architecture blueprints</span>
-                        </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>TCO modeling</span>
-                        </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Migration patterns</span>
-                        </div>
-                    </div>
-                    <div class="card-learn-more">
-                        <a href="#">
-                            Learn More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+            <div class="feature-card relative overflow-hidden" data-delay="0.1s"> {# Added data-delay for staggered animation #}
+                 <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /> </svg>
                 </div>
+                <h3 class="text-xl md:text-2xl font-bold mb-3"> Planning & Design </h3>
+                <p class="text-gray-600 mb-6 text-base"> Detailed migration roadmap, including cloud architecture design, cost estimation, security planning, and resource allocation. </p>
+                 <a href="#" class="text-primary-dark hover:text-primary font-semibold inline-flex items-center text-sm group"> Details <svg class="w-4 h-4 ml-1 transform transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /> </svg> </a>
             </div>
 
             <!-- Feature 3 -->
-            <div class="service-card reveal-on-scroll delay-300">
-                <div class="service-card-content">
-                    <h3 class="service-title">
-                        Migration & Execution
-                        <i class="fas fa-chevron-down icon"></i>
-                    </h3>
-                    <p class="service-description">Seamless implementation using proven methodologies and tools, focusing on minimal downtime and continuous monitoring.</p>
-                    <div class="service-feature-list">
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Automated deployments</span>
-                        </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Cutover management</span>
-                        </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Rollback strategies</span>
-                        </div>
-                    </div>
-                    <div class="card-learn-more">
-                        <a href="#">
-                            Learn More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+            <div class="feature-card relative overflow-hidden md:col-span-2 lg:col-span-1" data-delay="0.2s"> {# Adjusted span for grid #}
+                 <div class="feature-icon">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /> </svg>
                 </div>
+                <h3 class="text-xl md:text-2xl font-bold mb-3"> Migration & Execution </h3>
+                <p class="text-gray-600 mb-6 text-base"> Seamless implementation using proven methodologies and tools, focusing on minimal downtime and continuous monitoring. </p>
+                <a href="#" class="text-primary-dark hover:text-primary font-semibold inline-flex items-center text-sm group"> Details <svg class="w-4 h-4 ml-1 transform transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /> </svg> </a>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Tools Section -->
-<section class="section infra-monitoring-section py-16">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="columns is-vcentered">
-            <div class="column is-5-desktop">
-                <div class="monitoring-content reveal-on-scroll">
-                    <h2 class="text-3xl font-bold mb-6">
-                        Automate & Accelerate Migration
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-8">
-                        Our suite of proprietary and third-party tools helps
-                        automate assessment, planning, and execution, ensuring a
-                        faster, more reliable migration.
-                    </p>
+<section class="section py-16 md:py-20 bg-light">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-12 lg:gap-16">
+            <div class="md:w-1/2 lg:w-5/12 text-center md:text-left"> {# Centered text on mobile #}
+                <span
+                    class="text-primary-dark font-semibold mb-3 md:mb-4 block text-sm uppercase tracking-wider"
+                    >MIGRATION TOOLS</span
+                >
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Automate & Accelerate
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 mb-8">
+                    Our suite of proprietary and third-party tools helps
+                    automate assessment, planning, and execution, ensuring a
+                    faster, more reliable migration.
+                </p>
 
-                    <ul class="feature-list">
-                        <li class="infra-feature-item reveal-on-scroll">
-                            <span class="infra-check-icon">✓</span>
-                            <span class="infra-feature-text">Infrastructure & Application Discovery</span>
-                        </li>
-                        <li class="infra-feature-item reveal-on-scroll delay-100">
-                            <span class="infra-check-icon">✓</span>
-                            <span class="infra-feature-text">Cloud TCO & ROI Calculator</span>
-                        </li>
-                        <li class="infra-feature-item reveal-on-scroll delay-200">
-                            <span class="infra-check-icon">✓</span>
-                            <span class="infra-feature-text">Automated IaC Generation</span>
-                        </li>
-                        <li class="infra-feature-item reveal-on-scroll delay-300">
-                            <span class="infra-check-icon">✓</span>
-                            <span class="infra-feature-text">Migration Tracking Dashboard</span>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="feature-list space-y-3 text-left"> {# Ensured list text aligns left #}
+                    <li class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /> </svg>
+                        <span>Infrastructure & Application Discovery</span>
+                    </li>
+                     <li class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /> </svg>
+                        <span>Cloud TCO & ROI Calculator</span>
+                    </li>
+                     <li class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /> </svg>
+                        <span>Automated IaC Generation</span>
+                    </li>
+                    <li class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /> </svg>
+                        <span>Migration Tracking Dashboard</span>
+                    </li>
+                </ul>
             </div>
-            <div class="column is-7-desktop">
-                <div class="dashboard-browser-frame reveal-on-scroll delay-200">
+
+            <div class="md:w-1/2 lg:w-7/12 w-full mt-8 md:mt-0"> {# Added w-full for mobile control #}
+                <div class="code-snippet">
                     <div class="code-header">
-                        <div class="code-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="code-title"><i class="fab fa-terraform mr-2"></i>migration_plan.tf</div>
+                        <span><i class="fab fa-terraform mr-2"></i>migration_plan.tf</span> {# Assume Font Awesome is loaded #}
+                        <span class="copy-button" title="Copy code">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /> </svg>
+                        </span>
                     </div>
                     <pre><code class="language-terraform">provider "aws" {
   region = var.aws_region
@@ -259,24 +185,22 @@ resource "aws_subnet" "private_subnet_a" {
 </section>
 
 <!-- Service Mapping -->
-<section class="section py-16 bg-light">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="has-text-centered mb-16 reveal-on-scroll">
-            <h2 class="text-3xl font-bold mb-4">
-                Cloud Service Equivalents
-            </h2>
-            <div class="gradient-line mx-auto"></div>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">
-                Understand how your on-premise services translate to the leading cloud platforms. We support AWS, Azure, and GCP.
-            </p>
+<section class="section py-16 md:py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12 md:mb-16">
+            <span class="text-primary-dark font-semibold mb-3 md:mb-4 block text-sm uppercase tracking-wider">SERVICE MAPPING</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4"> Cloud Service Equivalents </h2>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"> Understand how your on-premise services translate to the leading cloud platforms. We support AWS, Azure, and GCP. </p>
         </div>
 
         {# --- Desktop Table --- #}
-        <div class="mapping-table hidden md:block reveal-on-scroll">
+        <div class="mapping-table hidden md:block"> {# Hide on mobile, show on medium+ #}
             <div class="mapping-row header">
                 <div class="mapping-cell font-semibold">On-Premise Service</div>
                 <div class="mapping-cell font-semibold">AWS Equivalent</div>
                 <div class="mapping-cell font-semibold">Azure Equivalent</div>
+                {# Add GCP if needed #}
+                {# <div class="mapping-cell font-semibold">GCP Equivalent</div> #}
             </div>
             <div class="mapping-row">
                 <div class="mapping-cell"> <i class="fas fa-server mr-2 text-gray-400"></i> VMware / Hyper-V VMs </div>
@@ -301,7 +225,7 @@ resource "aws_subnet" "private_subnet_a" {
         </div>
 
         {# --- Mobile Cards --- #}
-        <div class="mapping-mobile-cards md:hidden space-y-4 reveal-on-scroll">
+        <div class="mapping-mobile-cards md:hidden space-y-4"> {# Show only on mobile #}
             <!-- Card 1 -->
             <div class="mobile-mapping-card">
                  <div class="mobile-mapping-item">
@@ -317,14 +241,79 @@ resource "aws_subnet" "private_subnet_a" {
                      <span class="mobile-content"><i class="fab fa-microsoft mr-2 text-blue-500"></i> Azure Virtual Machines</span>
                  </div>
             </div>
-            
-            <!-- Continue with the rest of your mobile cards... -->
+             <!-- Card 2 -->
+            <div class="mobile-mapping-card">
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">On-Premise:</span>
+                     <span class="mobile-content"><i class="fas fa-database mr-2 text-gray-400"></i> Oracle / SQL Server DB</span>
+                 </div>
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">AWS:</span>
+                     <span class="mobile-content"><i class="fab fa-aws mr-2 text-yellow-500"></i> Amazon RDS / EC2+DB</span>
+                 </div>
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">Azure:</span>
+                     <span class="mobile-content"><i class="fab fa-microsoft mr-2 text-blue-500"></i> Azure SQL DB / Managed Instance</span>
+                 </div>
+            </div>
+             <!-- Card 3 -->
+            <div class="mobile-mapping-card">
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">On-Premise:</span>
+                     <span class="mobile-content"><i class="fas fa-network-wired mr-2 text-gray-400"></i> F5 / NetScaler Load Balancer</span>
+                 </div>
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">AWS:</span>
+                     <span class="mobile-content"><i class="fab fa-aws mr-2 text-yellow-500"></i> Elastic Load Balancing (ALB/NLB)</span>
+                 </div>
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">Azure:</span>
+                     <span class="mobile-content"><i class="fab fa-microsoft mr-2 text-blue-500"></i> Azure Load Balancer / App Gateway</span>
+                 </div>
+            </div>
+             <!-- Card 4 -->
+            <div class="mobile-mapping-card">
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">On-Premise:</span>
+                     <span class="mobile-content"><i class="fas fa-folder-open mr-2 text-gray-400"></i> SAN / NAS Storage</span>
+                 </div>
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">AWS:</span>
+                     <span class="mobile-content"><i class="fab fa-aws mr-2 text-yellow-500"></i> S3 / EFS / FSx / EBS</span>
+                 </div>
+                 <div class="mobile-mapping-item">
+                     <span class="mobile-label">Azure:</span>
+                     <span class="mobile-content"><i class="fab fa-microsoft mr-2 text-blue-500"></i> Blob Storage / Azure Files / Disks</span>
+                 </div>
+            </div>
         </div>
+
     </div>
 </section>
 
 <!-- CTA Section -->
-{% include 'components/cta.html' %}
+<section id="get-started" class="section py-16 md:py-20 migration-cta relative">
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+            Ready to Elevate Your Infrastructure?
+        </h2>
+        <p class="text-lg md:text-xl text-white/90 mb-10 max-w-3xl mx-auto">
+            Let our certified cloud experts guide you through a tailored,
+            efficient, and secure migration to the cloud platform that best
+            suits your needs.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" class="migration-cta-btn">
+                Request Free Assessment
+                <span class="ml-2 inline-block">📅</span> {# Emoji or Icon #}
+            </a>
+            <a href="#demo" class="migration-outline-btn">
+                Explore Case Studies
+                 <span class="ml-2 inline-block">📖</span> {# Emoji or Icon #}
+            </a>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block extra_js %}
@@ -349,10 +338,458 @@ resource "aws_subnet" "private_subnet_a" {
 
         // Observe elements designated for scroll animation
         document
-            .querySelectorAll(".reveal-on-scroll")
+            .querySelectorAll(
+                ".feature-card, .code-snippet, .mapping-table, .mapping-mobile-cards > *, .migration-cta, .animate-fadeInLeft, .animate-fadeInRight", // Observe mobile cards too
+            )
             .forEach((el) => {
+                // Apply animation delay if specified in data-delay attribute
+                const delay = el.dataset.delay;
+                if (delay) {
+                    el.style.transitionDelay = delay;
+                }
                 observer.observe(el);
             });
+
+        // --- Code Snippet Copy Button ---
+        const copyButton = document.querySelector(".copy-button");
+        if (copyButton) {
+            copyButton.addEventListener("click", () => {
+                const codeElement = document.querySelector(".code-snippet code");
+                const originalIcon = copyButton.innerHTML; // Store original icon
+                 const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /> </svg>`;
+
+                if (codeElement) {
+                    navigator.clipboard
+                        .writeText(codeElement.innerText.trim()) // Trim whitespace
+                        .then(() => {
+                            copyButton.title = "Copied!";
+                            copyButton.innerHTML = checkIcon; // Show checkmark
+                            setTimeout(() => {
+                                copyButton.title = "Copy code";
+                                copyButton.innerHTML = originalIcon; // Reset icon
+                            }, 2000); // Reset after 2 seconds
+                        })
+                        .catch((err) => {
+                            console.error("Failed to copy text: ", err);
+                            copyButton.title = "Copy failed";
+                        });
+                }
+            });
+        }
+
+        // --- Add syntax highlighting if using a library like Prism.js or highlight.js ---
+        // Example using Prism.js (ensure Prism.js and theme CSS are included)
+        // if (typeof Prism !== 'undefined') {
+        //    Prism.highlightAll();
+        // } else {
+        //    console.warn('Prism.js not found for syntax highlighting.');
+        // }
     });
 </script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Base variables (using your existing orange theme) */
+    :root {
+        /* --- Orange Theme --- */
+        --primary-color: #ff6b35; /* vibrant orange */
+        --primary-light: #ff8c61; /* lighter orange */
+        --primary-dark: #e85d2f; /* darker orange */
+        --secondary-color: #4a4a4a; /* dark gray for text */
+        --accent-color: #fff0eb; /* very light orange */
+        --code-bg: #1a202c; /* Dark background for code */
+        --code-header-bg: #2d3748; /* Slightly lighter header */
+        --code-text: #e2e8f0; /* Light text for code */
+        --code-border: #4a5568; /* Border for code */
+
+        /* --- Standard Colors --- */
+        --text-dark: #1f2937; /* gray-800 */
+        --text-light: #ffffff; /* pure white */
+        --text-muted: #6b7280; /* gray-500 */
+        --border-color: #e5e7eb; /* gray-200 */
+        --bg-light: #fff7f3; /* adjusted bg-light */
+        --white: #ffffff;
+
+        /* --- Shadows --- */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        /* Orange Tinted Shadows */
+        --shadow-orange-md: 0 4px 6px -1px rgba(255, 107, 53, 0.1), 0 2px 4px -2px rgba(255, 107, 53, 0.1);
+        --shadow-orange-lg: 0 10px 15px -3px rgba(255, 107, 53, 0.15), 0 4px 6px -4px rgba(255, 107, 53, 0.1);
+
+        /* --- Animation Timing --- */
+        --animation-duration: 0.6s;
+        --animation-timing: ease-out;
+        --animation-delay: 0s; /* Base delay for observer */
+    }
+
+    /* Base Styles */
+    body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        color: var(--text-dark);
+        line-height: 1.6; /* Improved readability */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Utility for scroll animations */
+    .feature-card, .code-snippet, .mapping-table, .mobile-mapping-card, .migration-cta {
+        opacity: 0;
+        transform: translateY(25px); /* Start slightly lower */
+        transition: opacity var(--animation-duration) var(--animation-timing),
+                    transform var(--animation-duration) var(--animation-timing);
+        transition-delay: var(--animation-delay); /* Use CSS variable for delay */
+    }
+    .is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Hero Section */
+    .migration-hero {
+        background-color: var(--bg-light);
+        overflow: hidden;
+    }
+    .hero-body {
+        padding: 5rem 1rem md:padding: 6rem 1.5rem; /* Responsive padding */
+    }
+
+    /* Text Gradient */
+    .text-gradient {
+        background: linear-gradient(95deg, var(--primary-color) 0%, var(--primary-light) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block; /* Needed for gradient */
+    }
+
+    /* Buttons */
+    .migration-btn, .migration-cta-btn {
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+        padding: 0.75rem 1.5rem; /* Adjusted padding */
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.25s ease;
+        box-shadow: var(--shadow-orange-md);
+        letter-spacing: 0.025em;
+        white-space: nowrap; /* Prevent button text wrap */
+    }
+    .migration-btn:hover, .migration-cta-btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-orange-lg);
+    }
+
+    .migration-outline-btn {
+        background: transparent;
+        color: var(--white);
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        padding: calc(0.75rem - 2px) calc(1.5rem - 2px);
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.25s ease;
+        letter-spacing: 0.025em;
+        white-space: nowrap;
+    }
+    .migration-outline-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: var(--white);
+        transform: translateY(-2px);
+        color: var(--white);
+    }
+
+    /* Features Section */
+    .bg-light { background-color: var(--bg-light); }
+    .bg-white { background-color: var(--white); }
+
+    .feature-card {
+        background-color: var(--white);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-color);
+        /* Inherits base transition from utility */
+    }
+    .feature-card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-light);
+    }
+    .is-visible.feature-card:hover { /* Ensure hover works after animation */
+         transform: translateY(-6px) scale(1.02);
+    }
+
+    .feature-icon {
+        background-color: var(--accent-color);
+        width: 52px; height: 52px;
+        border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 1.25rem;
+        color: var(--primary-color);
+        transition: all 0.3s var(--animation-timing);
+        flex-shrink: 0;
+    }
+    .feature-card:hover .feature-icon {
+        background-color: var(--primary-color);
+        color: var(--white);
+        transform: scale(1.1) rotate(-5deg);
+    }
+
+    /* Feature List (Tools Section) */
+    .feature-list { margin-top: 1.5rem; }
+    .feature-item {
+        display: flex; align-items: center;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+        color: var(--text-muted);
+        transition: transform 0.2s ease-out, color 0.2s ease-out;
+    }
+    .feature-item:hover {
+        transform: translateX(5px);
+        color: var(--primary-dark);
+    }
+    .feature-check {
+        width: 20px; height: 20px;
+        margin-right: 0.75rem;
+        color: var(--primary-color);
+        flex-shrink: 0;
+    }
+
+    /* Code Snippet */
+    .code-snippet {
+        background-color: var(--code-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--code-border);
+        position: relative;
+         /* Inherits base transition */
+    }
+    .code-snippet:hover {
+        transform: scale(1.015);
+        box-shadow: var(--shadow-xl);
+    }
+     .is-visible.code-snippet:hover { /* Ensure hover works after animation */
+        transform: scale(1.015);
+    }
+
+    .code-header {
+        background-color: var(--code-header-bg);
+        padding: 0.75rem 1.25rem;
+        color: #a0aec0;
+        font-size: 0.875rem;
+        font-family: "Fira Code", Consolas, monospace;
+        border-bottom: 1px solid var(--code-border);
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .code-header i { color: #f6ad55; }
+
+    .copy-button { cursor: pointer; color: #718096; transition: color 0.2s ease; }
+    .copy-button:hover { color: #a0aec0; }
+
+    .code-snippet pre {
+        margin: 0;
+        padding: 1.25rem;
+        overflow-x: auto; /* Enable horizontal scroll */
+        background-color: var(--code-bg);
+        max-height: 400px;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    .code-snippet code {
+        font-family: "Fira Code", Consolas, monospace;
+        color: var(--code-text);
+        font-size: 0.875rem;
+        line-height: 1.6;
+        background: none !important;
+        white-space: pre; /* Preserve whitespace and prevent wrapping */
+        display: block; /* Ensure block behavior */
+    }
+    /* Basic Syntax Highlighting (unchanged) */
+    .code-snippet .token.comment { color: #718096; }
+    .code-snippet .token.string { color: #9ae6b4; }
+    .code-snippet .token.keyword { color: #f6ad55; }
+    .code-snippet .token.function, .code-snippet .token.tag { color: #0bc5ea; }
+    .code-snippet .token.number, .code-snippet .token.boolean { color: #f56565; }
+    .code-snippet .token.punctuation, .code-snippet .token.operator { color: #a0aec0; }
+
+
+    /* Mapping Table - Desktop */
+    .mapping-table {
+        background-color: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-color);
+         /* Inherits base transition */
+    }
+    .mapping-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Adjust if GCP added */
+        border-bottom: 1px solid var(--border-color);
+        transition: background-color 0.2s ease;
+    }
+    .mapping-row:last-child { border-bottom: none; }
+    .mapping-row:not(.header):hover { background-color: var(--bg-light); }
+    .mapping-row.header {
+        background-color: var(--accent-color);
+        color: var(--primary-dark);
+        font-size: 0.85rem; /* Slightly smaller header */
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .mapping-cell {
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        display: flex; align-items: center;
+        min-width: 0; /* Prevent content overflow issues in grid */
+    }
+    .mapping-row.header .mapping-cell {
+        color: var(--primary-dark);
+        padding-top: 0.75rem; padding-bottom: 0.75rem;
+    }
+    .mapping-row:not(.header) .mapping-cell:first-child {
+        font-weight: 500; color: var(--text-dark);
+    }
+    .mapping-cell i { width: 1.2em; text-align: center; }
+
+    /* --- Mobile Mapping Cards --- */
+    .mobile-mapping-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+        /* Inherits base transition */
+    }
+    .mobile-mapping-item {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex; /* Align label and content side-by-side initially */
+        flex-direction: column; /* Stack label and content */
+    }
+    .mobile-mapping-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    .mobile-label {
+        display: block; /* Ensure label is on its own line */
+        font-weight: 600;
+        color: var(--primary-dark);
+        font-size: 0.75rem; /* Smaller label */
+        text-transform: uppercase;
+        margin-bottom: 0.25rem;
+        letter-spacing: 0.03em;
+    }
+     .mobile-mapping-item:first-child .mobile-label {
+         color: var(--text-dark); /* First label (On-Premise) less prominent */
+     }
+    .mobile-content {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+    }
+     .mobile-mapping-item:first-child .mobile-content {
+         color: var(--text-dark); /* Make On-Premise content darker */
+     }
+    .mobile-content i { width: 1.2em; text-align: center; margin-right: 0.5em; }
+
+
+    /* CTA Section */
+    .migration-cta {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        position: relative;
+        overflow: hidden;
+         /* Inherits base transition */
+    }
+    .migration-cta::before {
+        content: ""; position: absolute; top: -50%; right: -50%; bottom: -50%; left: -50%;
+        background: linear-gradient(transparent, rgba(255, 255, 255, 0.05), transparent);
+        transform: rotate(45deg);
+        animation: shimmer 5s infinite linear; pointer-events: none;
+    }
+    @keyframes shimmer {
+        0% { transform: rotate(45deg) translateY(-200%); }
+        100% { transform: rotate(45deg) translateY(200%); }
+    }
+
+    /* Initial Animations (Load) */
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    .animate-fadeInLeft { animation: fadeInLeft 0.8s 0.2s var(--animation-timing) forwards; opacity: 0; }
+    .animate-fadeInRight { animation: fadeInRight 0.8s 0.2s var(--animation-timing) forwards; opacity: 0; }
+
+    /* Font Awesome / Icon basic styles */
+    [class^="fa"], [class*=" fa"] { display: inline-block; line-height: 1; } /* Ensure consistent alignment */
+    .fa-aws { color: #FF9900; }
+    .fa-microsoft { color: #0078D4; }
+    /* Add other FA styles if needed */
+
+
+    /* Responsive Design */
+    @media (max-width: 1024px) { /* Tablet */
+        .code-snippet pre { max-height: 350px; }
+    }
+
+    @media (max-width: 768px) { /* Mobile */
+        .hero-body { padding: 4rem 1rem; }
+        .text-4xl { font-size: 1.875rem; line-height: 1.3; } /* Adjusted line height */
+        .text-5xl { font-size: 2.25rem; line-height: 1.3; }
+        .text-xl { font-size: 1.1rem; line-height: 1.6; } /* Slightly larger body */
+        .text-lg { font-size: 1rem; line-height: 1.6; }
+        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+        .py-20 { padding-top: 4rem; padding-bottom: 4rem; }
+        .mb-12 { margin-bottom: 2.5rem; }
+        .mb-16 { margin-bottom: 3rem; }
+
+        /* Stack hero buttons fully */
+        .hero .flex.gap-4 { flex-direction: column; }
+        .hero .migration-btn, .hero .sm\:flex-row a { width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; } /* Center buttons */
+        .hero .sm\:flex-row a { margin-top: 0.5rem; } /* Space between stacked buttons */
+
+        /* Stack tool section */
+         .tools-section .flex.gap-10 { flex-direction: column; }
+         .tools-section .md\:w-1\/2 { width: 100%; }
+         .tools-section .lg\:w-5\/12, .tools-section .lg\:w-7\/12 { width: 100%; }
+         .tools-section .text-center.md\:text-left { text-align: center; } /* Center text */
+         .tools-section .text-left { text-align: left; } /* Keep list left-aligned */
+         .tools-section .code-snippet { margin-top: 2rem; } /* Space above code */
+
+        /* Feature cards margin */
+        .grid.gap-6 > .feature-card { margin-bottom: 1rem; } /* Space between stacked cards */
+
+        .feature-card { padding: 1.5rem; }
+
+        /* Hide desktop table, show mobile cards (handled by Tailwind md:hidden/block) */
+
+        /* CTA buttons full width */
+        .migration-cta .flex.gap-4 { flex-direction: column; align-items: center;}
+        .migration-cta .migration-cta-btn, .migration-cta .migration-outline-btn {
+             width: 100%;
+             max-width: 320px; /* Limit max width */
+        }
+        .migration-cta .migration-outline-btn { margin-top: 0.75rem; } /* Space between stacked buttons */
+
+        .code-snippet pre { max-height: 300px; }
+    }
+
+</style>
 {% endblock %}

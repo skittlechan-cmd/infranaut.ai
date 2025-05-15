@@ -1,50 +1,33 @@
 /* Base Variables */
 :root {
-    /* Primary Colors - Refined for elegance and trust */
+    /* Primary Colors */
     --primary-color: #ff6c37;
-    --primary-dark: #e85d29;
-    --secondary-color: #2563eb;
-    --secondary-dark: #1e40af;
-    --accent-purple: #6d28d9;
-    --accent-teal: #0f766e;
+    --primary-dark: #e75c28;
+    --secondary-color: #3b82f6;
+    --secondary-dark: #2563eb;
+    --accent-purple: #8b5cf6;
+    --accent-teal: #14b8a6;
 
-    /* Gradient Colors - More subtle and professional */
-    --bg-gradient-start: #ffffff;
-    --bg-gradient-end: #f8fafc;
-    --gradient-text-start: var(--primary-color);
-    --gradient-text-end: var(--secondary-color);
-    --gradient-angle: 135deg;
-    
-    /* Text Gradients - Refined for elegance and improved visibility */
-    --gradient-primary: linear-gradient(var(--gradient-angle), #ff6c37, #e85d29);
-    --gradient-secondary: linear-gradient(var(--gradient-angle), #2563eb, #1e40af);
-    --gradient-accent: linear-gradient(var(--gradient-angle), #ff6c37, #2563eb);
-    
-    /* Background Colors */
+    /* Background Colors - Simplified */
     --bg-body: #ffffff;
-    --bg-section: #f8fafc;
+    --bg-section: #f8f9fa;
     --bg-card: #ffffff;
-    --bg-light: #f9fafb;
-    --glass-bg: rgba(255, 255, 255, 0.9);
-    --glass-border: rgba(255, 255, 255, 0.3);
 
-    /* Text Colors - Enhanced for readability */
-    --text-dark: #1a202c;
+    /* Text Colors */
+    --text-dark: #1a1f36;
     --text-light: #4a5568;
     --text-muted: #718096;
-    --text-white: #ffffff;
 
     /* UI Colors */
-    --card-border: #e2e8f0;
-    --success-green: #0d9488;
-    --warning-yellow: #d97706;
-    --error-red: #dc2626;
+    --card-border: #e5e7eb;
+    --success-green: #34d399;
+    --warning-yellow: #fbbf24;
+    --error-red: #ef4444;
 
-    /* Shadows - Refined for elegance */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 15px 25px rgba(0, 0, 0, 0.06), 0 5px 10px rgba(0, 0, 0, 0.04);
+    /* Shadows - Optimized */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 /* Base Styles */
@@ -94,19 +77,4 @@ body {
         animation: none !important;
         transition: none !important;
     }
-}
-
-/* Improved contrast for gradient text across the site */
-[class*="gradient-text"], 
-.js-gradient-text, 
-.text-gradient {
-    font-weight: 700 !important;
-    position: relative;
-}
-
-/* Ensure animated elements are visible when activated */
-.animate,
-.is-visible {
-    opacity: 1 !important;
-    transform: none !important;
 }

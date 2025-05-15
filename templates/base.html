@@ -12,6 +12,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Recoleta Font -->
+    <link href="https://fonts.cdnfonts.com/css/recoleta" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,18 +25,23 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/typography.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <!-- Global unified styling -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+
+
     <!-- landing-page css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/landing-page.css') }}">
+
     <!-- footer linking -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
     <!-- CTA styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cta.css') }}">
+    
+    <!-- Enhanced animations -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enhanced-animations.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
 
-<body class="has-navbar-fixed-top antialiased {% block body_class %}{% endblock %}">
+<body class="has-navbar-fixed-top antialiased">
     {% include 'components/navbar.html' %}
 
     <main class="main-content">
@@ -48,8 +55,7 @@
     <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
     <script src="{{ url_for('static', filename='js/modules.js') }}"></script>
     <script src="{{ url_for('static', filename='js/testimonial.js') }}"></script>
-    <!-- Global JavaScript for consistent styling -->
-    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
 
     {% block extra_js %}{% endblock %}
 </body>

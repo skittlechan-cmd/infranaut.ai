@@ -1,155 +1,142 @@
 document.addEventListener('DOMContentLoaded', function() {
-    window.addEventListener('scroll', function() {
-        const elements = document.querySelectorAll('.fade-in, .slide-in-up');
-        elements.forEach(element => {
-            if (isElementInViewport(element)) {
-                element.classList.add('visible');
-            }
-        });
-    });
+    // Animation classes that will be triggered on scroll
+    const animationClasses = [
+        '.fade-in', 
+        '.slide-in-up', 
+        '.rotate-in', 
+        '.card-3d-effect',
+        '.perspective-shadow',
+        '.depth-effect'
+    ];
 
+    // Function to check if element is in viewport
     function isElementInViewport(el) {
         const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // Element is considered in viewport when it's top is at 75% of window height
+        const threshold = windowHeight * 0.25;
+        
         return (
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.top <= windowHeight - threshold &&
             rect.bottom >= 0
         );
     }
 
-    // Initial check for elements in viewport
-    const elements = document.querySelectorAll('.fade-in, .slide-in-up');
-    elements.forEach(element => {
-        if (isElementInViewport(element)) {
-            element.classList.add('visible');
-        }
+    // Apply 3D tilt effect to cards
+    document.querySelectorAll('.card-3d-effect').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenterX = cardRect.left + cardRect.width / 2;
+            const cardCenterY = cardRect.top + cardRect.height / 2;
+            
+            // Calculate mouse position relative to card center
+            const mouseX = e.clientX - cardCenterX;
+            const mouseY = e.clientY - cardCenterY;
+            
+            // Convert to rotation degrees (max 10 degrees)
+            const rotateY = mouseX * 10 / (cardRect.width / 2);
+            const rotateX = -mouseY * 10 / (cardRect.height / 2);
+            
+            // Apply transformation
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        // Reset on mouse leave
+        card.addEventListener('mouseleave', function() {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
     });
 
-    // Reveal animations when elements enter viewport
-    const revealElements = document.querySelectorAll('.reveal-on-scroll');
-    const revealOnScrollHandler = function() {
-        revealElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.classList.add('animated');
-            }
+    // Apply parallax effect to elements with parallax class
+    const parallaxElements = document.querySelectorAll('.parallax');
+    
+    function updateParallax() {
+        const scrollTop = window.pageYOffset;
+        
+        parallaxElements.forEach(element => {
+            const speed = element.getAttribute('data-parallax-speed') || 0.5;
+            const yPos = -(scrollTop * speed);
+            element.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
-    };
-    
-    window.addEventListener('scroll', revealOnScrollHandler);
-    revealOnScrollHandler(); // Trigger on initial load
-    
-    // Service Card Interactions
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    // On mobile, add a pulsing effect to highlight cards are interactive
-    if (window.innerWidth <= 768) {
-        serviceCards.forEach(card => {
-            // Add a subtle animation to highlight cards are interactive
-            card.classList.add('mobile-card-highlight');
+    }
+
+    // Add flowing border effect to elements
+    document.querySelectorAll('.flowing-border').forEach(el => {
+        // Create an animated background gradient
+        const borderWidth = el.getAttribute('data-border-width') || '2px';
+        const borderStyle = el.getAttribute('data-border-style') || 'solid';
+        
+        el.style.borderWidth = borderWidth;
+        el.style.borderStyle = borderStyle;
+    });
+
+    // Apply interactive effects to mouse position sensitive elements
+    document.querySelectorAll('.mouse-position-effect').forEach(el => {
+        el.addEventListener('mousemove', function(e) {
+            const rect = el.getBoundingClientRect();
             
-            // Better tap handling for mobile
-            card.addEventListener('touchstart', function() {
-                this.classList.add('touch-active');
-            }, {passive: true});
+            // Calculate mouse position as percentage of element width/height
+            const xPos = (e.clientX - rect.left) / rect.width;
+            const yPos = (e.clientY - rect.top) / rect.height;
             
-            card.addEventListener('touchend', function() {
-                this.classList.remove('touch-active');
-            }, {passive: true});
+            // Apply effect (gradient shift, shadow movement, etc.)
+            el.style.setProperty('--mouse-x', xPos.toFixed(2));
+            el.style.setProperty('--mouse-y', yPos.toFixed(2));
         });
         
-        // Show a tooltip indicating cards are expandable on first visit
-        const cardContainer = document.querySelector('.service-cards-container');
-        if (cardContainer && !localStorage.getItem('cardTipShown')) {
-            const tooltip = document.createElement('div');
-            tooltip.className = 'mobile-card-tooltip';
-            tooltip.innerHTML = '<span>Swipe to see more and tap any card to expand</span>';
-            cardContainer.parentNode.insertBefore(tooltip, cardContainer);
-            
-            // Remove tooltip after 5 seconds or when a card is tapped
-            setTimeout(() => {
-                if (tooltip.parentNode) {
-                    tooltip.classList.add('fade-out');
-                    setTimeout(() => tooltip.remove(), 500);
-                }
-            }, 5000);
-            
-            serviceCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    if (tooltip.parentNode) {
-                        tooltip.classList.add('fade-out');
-                        setTimeout(() => tooltip.remove(), 500);
-                    }
-                    localStorage.setItem('cardTipShown', 'true');
-                }, {once: true});
-            });
-        }
-    }
-    
-    // Toggle card expanded state
-    serviceCards.forEach(card => {
-        card.addEventListener('click', function() {
-            // First close any open cards
-            if (!this.classList.contains('active')) {
-                serviceCards.forEach(openCard => {
-                    if (openCard !== this && openCard.classList.contains('active')) {
-                        openCard.classList.remove('active');
-                    }
-                });
-            }
-            
-            // Toggle this card
-            this.classList.toggle('active');
+        // Reset on mouse leave
+        el.addEventListener('mouseleave', function() {
+            el.style.setProperty('--mouse-x', '0.5');
+            el.style.setProperty('--mouse-y', '0.5');
         });
     });
-    
-    // Horizontal scrolling for service cards on mobile
-    const serviceCardContainer = document.querySelector('.service-cards-container');
-    const prevButton = document.querySelector('.scroll-prev');
-    const nextButton = document.querySelector('.scroll-next');
-    
-    if (serviceCardContainer && prevButton && nextButton) {
-        // Calculate the width to scroll (card width + gap)
-        const cardWidth = serviceCards.length > 0 ? serviceCards[0].offsetWidth + 16 : 286;
-        
-        // Update scroll buttons state
-        const updateScrollButtonsState = () => {
-            const scrollLeft = serviceCardContainer.scrollLeft;
-            const maxScrollLeft = serviceCardContainer.scrollWidth - serviceCardContainer.clientWidth;
-            
-            prevButton.classList.toggle('disabled', scrollLeft <= 0);
-            nextButton.classList.toggle('disabled', scrollLeft >= maxScrollLeft - 5);
-            
-            prevButton.setAttribute('aria-disabled', scrollLeft <= 0);
-            nextButton.setAttribute('aria-disabled', scrollLeft >= maxScrollLeft - 5);
-        };
-        
-        // Scroll to previous card
-        prevButton.addEventListener('click', () => {
-            serviceCardContainer.scrollBy({
-                left: -cardWidth,
-                behavior: 'smooth'
-            });
+
+    // Custom hover animations for enhanced cards
+    document.querySelectorAll('.enhanced-card').forEach(card => {
+        // Add shine effect on hover
+        card.addEventListener('mouseenter', function() {
+            setTimeout(() => {
+                card.classList.add('shine-active');
+            }, 200);
         });
         
-        // Scroll to next card
-        nextButton.addEventListener('click', () => {
-            serviceCardContainer.scrollBy({
-                left: cardWidth,
-                behavior: 'smooth'
+        card.addEventListener('mouseleave', function() {
+            card.classList.remove('shine-active');
+        });
+    });
+
+    // Function to check and apply animations to elements in viewport
+    function checkAnimations() {
+        animationClasses.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(element => {
+                if (isElementInViewport(element) && !element.classList.contains('is-visible')) {
+                    element.classList.add('is-visible');
+                    
+                    // For 3D effect cards, initialize their base state
+                    if (element.classList.contains('card-3d-effect')) {
+                        element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                    }
+                }
             });
         });
-        
-        // Update button states on scroll
-        serviceCardContainer.addEventListener('scroll', updateScrollButtonsState);
-        
-        // Initialize button states
-        updateScrollButtonsState();
-        
-        // Add scroll indicator to show there's more content
-        if (window.innerWidth <= 768 && serviceCardContainer.scrollWidth > serviceCardContainer.clientWidth) {
-            serviceCardContainer.classList.add('has-more-content');
-        }
+
+        // Update parallax effects
+        updateParallax();
     }
+
+    // Run on scroll
+    window.addEventListener('scroll', function() {
+        checkAnimations();
+        requestAnimationFrame(updateParallax);
+    });
+
+    // Run on resize
+    window.addEventListener('resize', function() {
+        checkAnimations();
+    });
+
+    // Initial check
+    checkAnimations();
 });

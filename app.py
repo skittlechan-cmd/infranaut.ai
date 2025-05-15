@@ -63,7 +63,7 @@ def code():
 def onboarding():
     return render_template('pages/onboarding.html')
 
-@app.route('/about-us')
+@app.route('/about')
 @cache_control()
 def about():
     return render_template('pages/about-us.html')
@@ -83,7 +83,7 @@ def contact():
 def workflow():
     return render_template('pages/workflow.html')
 
-@app.route('/addon')
+@app.route('/add-on')
 @cache_control()
 def addon():
     return render_template('pages/add-on.html')

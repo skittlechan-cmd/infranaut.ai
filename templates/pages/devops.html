@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}DevOps AI Solutions | Infranaut.ai{% endblock %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/devops.css') }}">
 {% endblock %}
@@ -12,136 +10,134 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero is-fullheight-with-navbar devops-hero standard-section">
-    <div class="devops-gradient-bg"></div>
+<section class="hero is-fullheight-with-navbar devops-hero">
     <div class="hero-body">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-                <div class="lg:col-span-6 flex flex-col justify-center">
-                    <div class="devops-hero-content reveal-on-scroll">
-                        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                            <span class="devops-text-gradient">DevOps Productivity</span>
-                        </h1>
-                        <p class="text-xl text-gray-600 mb-8">
-                            Transform your DevOps workflow with AI-driven insights and automated optimizations that accelerate your development lifecycle.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 buttons">
-                            <a href="#features" class="button is-primary infra-primary-btn">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6">
+                    <div class="devops-hero-content fade-in">
+                        <h1 class="devops-hero-title"><span class="gradient-text gradient-text-devops gradient-text-hover">DevOps Productivity</span></h1>
+                        <p class="devops-hero-subtitle">Transform your DevOps workflow with AI-driven insights and automated optimizations that accelerate your development lifecycle.</p>
+                        <div class="buttons mt-6">
+                            <a href="#features" class="infra-primary-btn">
                                 <span class="icon">
                                     <i class="fas fa-rocket"></i>
                                 </span>
                                 <span>Explore Features</span>
                             </a>
-                            <a href="#demo" class="button is-outlined infra-outlined-btn">
+                            <a href="#demo" class="infra-outlined-btn">
                                 <span class="icon">
                                     <i class="fas fa-play"></i>
                                 </span>
                                 <span>See Demo</span>
                             </a>
                         </div>
-                        <div class="trusted-by mt-6">
-                            <p>Trusted by 500+ DevOps teams worldwide</p>
-                            <div class="trusted-logos">
-                                <span class="trusted-logo">Amazon</span>
-                                <span class="trusted-logo">Microsoft</span>
-                                <span class="trusted-logo">Google Cloud</span>
-                                <span class="trusted-logo">IBM</span>
-                                <span class="trusted-logo">Oracle</span>
+                        <div class="mt-8 is-hidden-mobile">
+                            <div class="tags has-addons">
+                                <span class="tag is-dark">
+                                    <i class="fas fa-check-circle mr-2"></i>
+                                    Trusted by
+                                </span>
+                                <span class="tag is-primary">500+ DevOps teams</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mt-12 lg:mt-0 lg:col-span-6">
-                    <div class="devops-dashboard-frame reveal-on-scroll delay-200">
-                        <div class="browser-controls">
-                            <div class="browser-dots">
-                                <span class="browser-dot"></span>
-                                <span class="browser-dot"></span>
-                                <span class="browser-dot"></span>
+                <div class="column is-6">
+                    <div class="devops-hero-dashboard fade-in">
+                        <div class="devops-dashboard-frame">
+                            <div class="browser-controls">
+                                <div class="browser-dots">
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                    <span class="browser-dot"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="dashboard-content">
-                            <img src="{{ url_for('static', filename='css/images/devops_hero.jpeg') }}" alt="DevOps Pipeline Dashboard" class="dashboard-img">
+                            <div class="dashboard-content">
+                                <img src="{{ url_for('static', filename='css/images/devops_hero.jpeg') }}" alt="DevOps Pipeline Dashboard" class="dashboard-img">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="hero-foot">
+        <div class="container has-text-centered is-hidden-tablet">
+            <div class="tags has-addons is-centered mb-4">
+                <span class="tag is-dark">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Trusted by
+                </span>
+                <span class="tag is-primary">500+ DevOps teams</span>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Features Section -->
-<section id="features" class="section bg-light py-16">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="has-text-centered mb-16">
-            <h2 class="text-3xl font-bold mb-4 reveal-on-scroll">
-                Key DevOps Features
-            </h2>
-            <div class="gradient-line mx-auto reveal-on-scroll delay-100"></div>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6 reveal-on-scroll delay-200">
-                Our AI-powered tools streamline your development pipeline and enhance team productivity.
-            </p>
-        </div>
-
+<section id="features" class="section bg-gradient">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered mb-6 fade-in">Key Features</h2>
         <div class="columns is-multiline">
             <!-- Automation Recommendations -->
-            <div class="column is-4 mb-8">
-                <div class="devops-feature-card reveal-on-scroll delay-100">
+            <div class="column is-4 fade-in">
+                <div class="devops-feature-card">
                     <div class="devops-feature-icon">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <h3 class="title is-4 mb-4">Automation Recommendations</h3>
-                    <p class="subtitle is-6 mb-4">Identify redundant tasks and get AI-powered suggestions for CI/CD optimizations.</p>
-                    <div class="service-feature-list">
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Smart pipeline optimization</span>
+                    <h3 class="title is-4">Automation Recommendations</h3>
+                    <p class="subtitle is-6">Identify redundant tasks and get AI-powered suggestions for CI/CD optimizations.</p>
+                    <div class="infra-feature-list">
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Smart pipeline optimization</span>
                         </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Automated workflow suggestions</span>
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Automated workflow suggestions</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Bottleneck Detection -->
-            <div class="column is-4 mb-8">
-                <div class="devops-feature-card reveal-on-scroll delay-200">
+            <div class="column is-4 fade-in">
+                <div class="devops-feature-card">
                     <div class="devops-feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="title is-4 mb-4">Bottleneck Detection</h3>
-                    <p class="subtitle is-6 mb-4">Real-time identification of pipeline bottlenecks and performance issues.</p>
-                    <div class="service-feature-list">
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Performance monitoring</span>
+                    <h3 class="title is-4">Bottleneck Detection</h3>
+                    <p class="subtitle is-6">Real-time identification of pipeline bottlenecks and performance issues.</p>
+                    <div class="infra-feature-list">
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Performance monitoring</span>
                         </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Intelligent alerts</span>
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Intelligent alerts</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Team Insights -->
-            <div class="column is-4 mb-8">
-                <div class="devops-feature-card reveal-on-scroll delay-300">
+            <div class="column is-4 fade-in">
+                <div class="devops-feature-card">
                     <div class="devops-feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="title is-4 mb-4">Team Insights</h3>
-                    <p class="subtitle is-6 mb-4">Comprehensive metrics on deployment frequency and MTTR.</p>
-                    <div class="service-feature-list">
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Team performance analytics</span>
+                    <h3 class="title is-4">Team Insights</h3>
+                    <p class="subtitle is-6">Comprehensive metrics on deployment frequency and MTTR.</p>
+                    <div class="infra-feature-list">
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Team performance analytics</span>
                         </div>
-                        <div class="service-feature-item">
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Recovery time tracking</span>
+                        <div class="infra-feature-item">
+                            <span class="infra-check-icon">✓</span>
+                            <span class="infra-feature-text">Recovery time tracking</span>
                         </div>
                     </div>
                 </div>
@@ -151,97 +147,62 @@
 </section>
 
 <!-- Tools Integration Section -->
-<section class="section tools-section py-16">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="has-text-centered mb-16 reveal-on-scroll">
-            <h2 class="text-3xl font-bold mb-4">
-                Integrated Tools
-            </h2>
-            <div class="gradient-line mx-auto reveal-on-scroll delay-100"></div>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6 reveal-on-scroll delay-200">
-                Seamlessly connect with your existing DevOps tech stack
-            </p>
-        </div>
-        <div class="devops-tools-grid reveal-on-scroll delay-300">
-            <div class="devops-tool-item">
+<section class="section tools-section">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered mb-6 fade-in">Integrated Tools</h2>
+        <div class="devops-tools-grid">
+            <div class="devops-tool-item fade-in">
                 <i class="fab fa-jenkins"></i>
                 <span>Jenkins</span>
             </div>
-            <div class="devops-tool-item">
+            <div class="devops-tool-item fade-in">
                 <i class="fab fa-github"></i>
                 <span>GitHub</span>
             </div>
-            <div class="devops-tool-item">
+            <div class="devops-tool-item fade-in">
                 <i class="fab fa-docker"></i>
                 <span>Docker</span>
             </div>
-            <div class="devops-tool-item">
+            <div class="devops-tool-item fade-in">
                 <i class="fab fa-kubernetes"></i>
                 <span>Kubernetes</span>
             </div>
-            <div class="devops-tool-item">
+            <div class="devops-tool-item fade-in">
                 <i class="fab fa-gitlab"></i>
                 <span>GitLab</span>
             </div>
-            <div class="devops-tool-item">
+            <div class="devops-tool-item fade-in">
                 <i class="fas fa-code-branch"></i>
                 <span>Azure DevOps</span>
-            </div>
-            <div class="devops-tool-item">
-                <i class="fab fa-aws"></i>
-                <span>AWS CodePipeline</span>
-            </div>
-            <div class="devops-tool-item">
-                <i class="fab fa-google"></i>
-                <span>Google Cloud Build</span>
-            </div>
-            <div class="devops-tool-item">
-                <i class="fab fa-jira"></i>
-                <span>Jira</span>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Demo Section -->
-<section id="demo" class="section infra-monitoring-section py-16">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<section id="demo" class="section bg-gradient">
+    <div class="container">
         <div class="columns is-vcentered">
-            <div class="column is-5-desktop reveal-on-scroll">
-                <div class="monitoring-content">
-                    <h2 class="text-3xl font-bold mb-6">
-                        Interactive Demo
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-8">
-                        See how our AI can analyze your CI/CD pipeline in real-time, detect inefficiencies, and suggest performance improvements.
-                    </p>
-                    <ul class="feature-list">
-                        <li class="infra-feature-item reveal-on-scroll">
-                            <span class="infra-check-icon">✓</span>
-                            <span class="infra-feature-text">Automated CI/CD analysis</span>
-                        </li>
-                        <li class="infra-feature-item reveal-on-scroll delay-100">
-                            <span class="infra-check-icon">✓</span>
-                            <span class="infra-feature-text">Build time optimization</span>
-                        </li>
-                        <li class="infra-feature-item reveal-on-scroll delay-200">
-                            <span class="infra-check-icon">✓</span>
-                            <span class="infra-feature-text">Test efficiency improvement</span>
-                        </li>
-                        <li class="infra-feature-item reveal-on-scroll delay-300">
-                            <span class="infra-check-icon">✓</span>
-                            <span class="infra-feature-text">Deployment frequency metrics</span>
-                        </li>
-                    </ul>
-                    <div class="mt-8">
-                        <a href="#schedule-demo" class="button is-primary infra-primary-btn">
-                            Schedule Live Demo
-                        </a>
+            <div class="column is-6 fade-in">
+                <h2 class="title is-2">Interactive Demo</h2>
+                <p class="subtitle is-5 mb-5">Ask our AI about your DevOps pipeline performance</p>
+                <div class="devops-chat-container">
+                    <div class="devops-message">
+                        <strong>You:</strong> What slowed down last deployment?
+                    </div>
+                    <div class="devops-response">
+                        <strong>InfraGuardian AI:</strong> Analysis shows the test suite execution took 2.5x longer than usual. Recommendations:
+                        <ul>
+                            <li>Implement parallel test execution</li>
+                            <li>Cache dependencies</li>
+                            <li>Optimize test coverage</li>
+                        </ul>
                     </div>
                 </div>
+                <a href="#" class="infra-primary-btn mt-5">Try Live Demo</a>
             </div>
-            <div class="column is-7-desktop">
-                <div class="devops-dashboard-frame reveal-on-scroll delay-300">
+            <div class="column is-6 fade-in">
+                <div class="devops-dashboard-frame float-animation">
                     <div class="browser-controls">
                         <div class="browser-dots">
                             <span class="browser-dot"></span>
@@ -250,7 +211,7 @@
                         </div>
                     </div>
                     <div class="dashboard-content">
-                        <img src="{{ url_for('static', filename='css/images/devops_hero.jpeg') }}" alt="DevOps Pipeline Dashboard" class="dashboard-img">
+                        <img src="{{ url_for('static', filename='css/images/performance_devops.jpeg') }}" alt="Performance Dashboard" class="dashboard-img">
                     </div>
                 </div>
             </div>
@@ -260,28 +221,4 @@
 
 <!-- CTA Section -->
 {% include 'components/cta.html' %}
-{% endblock %}
-
-{% block extra_js %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        // Observe elements designated for scroll animation
-        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
-            observer.observe(el);
-        });
-    });
-</script>
 {% endblock %}

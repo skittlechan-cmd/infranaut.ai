@@ -172,10 +172,37 @@ function initializeServiceCarousel() {
       });
     }
     
+    // Add click event for the expand/collapse button
+    const expandCollapseBtn = card.querySelector('.expand-collapse-button');
+    if (expandCollapseBtn) {
+      expandCollapseBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent the card click event from firing
+        
+        // Toggle the card's active state
+        if (card.classList.contains('active')) {
+          closeCard(card);
+        } else {
+          // If we already have an active card and it's not this one, close it first
+          if (activeCard && activeCard !== card) {
+            closeCard(activeCard);
+          }
+          openCard(card);
+        }
+        
+        // Ensure the card is fully visible
+        if (card.classList.contains('active')) {
+          setTimeout(() => {
+            ensureCardVisible(card);
+          }, 100);
+        }
+      });
+    }
+    
     card.addEventListener('click', function(e) {
-      // Don't handle card clicks if we clicked on a link
+      // Don't handle card clicks if we clicked on a link or the expand/collapse button
       if (e.target.tagName === 'A' || e.target.parentElement.tagName === 'A' || 
-          (e.target.tagName === 'I' && e.target.parentElement.tagName === 'A')) {
+          (e.target.tagName === 'I' && e.target.parentElement.tagName === 'A') ||
+          e.target.closest('.expand-collapse-button')) {
         return;
       }
       

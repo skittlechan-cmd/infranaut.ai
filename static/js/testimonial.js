@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
   const dotsContainer = document.getElementById('pagination-dots');
-  const scrollIndicator = document.querySelector('.testimonial-scroll-indicator');
   
   let currentIndex = 0;
   let cardsPerView = 1;
@@ -62,11 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
       card.style.visibility = 'visible';
       card.style.opacity = '1';
     });
-    
-    // Add testimonial metrics badges if on mobile
-    if (window.innerWidth <= 640) {
-      addMetricBadges();
-    }
   }
   
   // Update dimensions used for calculations
@@ -76,23 +70,16 @@ document.addEventListener('DOMContentLoaded', function() {
       const cardRect = cards[0].getBoundingClientRect();
       cardWidth = cardRect.width;
       trackWidth = track.parentElement.clientWidth;
-      
-      // Try to determine gap from computed style
-      const trackStyle = window.getComputedStyle(track);
-      const gapValue = trackStyle.getPropertyValue('gap');
-      if (gapValue) {
-        cardGap = parseInt(gapValue, 10);
-      }
     }
   }
   
-  // Update card styles based on view size
+  // Update card styles based on view size - without fixed heights
   function updateCardStyles() {
     cards.forEach((card, index) => {
       // Give each card an index for easier reference
       card.dataset.index = index;
       
-      // Add hover effects for desktop, active effects for mobile
+      // Only add hover effects on non-mobile devices
       if (window.innerWidth > 768) {
         card.addEventListener('mouseenter', () => {
           card.style.transform = 'translateY(-5px)';
@@ -103,38 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
           card.style.transform = '';
           card.style.boxShadow = '';
         });
-      } else {
-        // Add touch feedback for mobile
-        card.addEventListener('touchstart', () => {
-          card.style.transform = 'scale(0.98)';
-          card.style.boxShadow = '0 8px 15px rgba(0, 0, 0, 0.15)';
-        }, { passive: true });
-        
-        card.addEventListener('touchend', () => {
-          card.style.transform = '';
-          card.style.boxShadow = '';
-        }, { passive: true });
-      }
-    });
-  }
-  
-  // Add metric badges to testimonial cards for mobile view
-  function addMetricBadges() {
-    const metrics = [
-      '40% Cost Savings', 
-      '87% Faster Response', 
-      '3 Months Saved', 
-      '95% Visibility'
-    ];
-    
-    cards.forEach((card, index) => {
-      // Only add if the card doesn't already have a metric badge
-      if (!card.querySelector('.testimonial-metric')) {
-        const metricIndex = index % metrics.length;
-        const metricDiv = document.createElement('div');
-        metricDiv.className = 'testimonial-metric';
-        metricDiv.textContent = metrics[metricIndex];
-        card.prepend(metricDiv);
       }
     });
   }
@@ -152,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
       
       dot.addEventListener('click', () => {
         goToSlide(i);
-        hideScrollIndicator();
       });
       
       dotsContainer.appendChild(dot);
@@ -192,25 +146,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update buttons
     if (prevBtn) prevBtn.classList.toggle('disabled', index === 0);
     if (nextBtn) nextBtn.classList.toggle('disabled', index === maxIndex);
-    
-    // Hide scroll indicator after user interaction
-    hideScrollIndicator();
   }
   
   // Smoothly animate the track to a position
   function animateTrack(targetPosition) {
     track.style.transition = `transform ${animationSpeed}ms cubic-bezier(0.25, 1, 0.5, 1)`;
     track.style.transform = `translateX(${targetPosition}px)`;
-  }
-  
-  // Hide scroll indicator after user interaction
-  function hideScrollIndicator() {
-    if (scrollIndicator) {
-      scrollIndicator.style.opacity = '0';
-      setTimeout(() => {
-        scrollIndicator.style.display = 'none';
-      }, 500);
-    }
   }
   
   // Touch handling for mobile swipe
@@ -225,11 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
       startScrollLeft = getTrackPosition();
       touchStartTime = Date.now();
       
-      // Provide immediate visual feedback
       track.style.transition = 'none';
-      
-      // Hide scroll indicator on first interaction
-      hideScrollIndicator();
     }, { passive: true });
     
     track.addEventListener('touchmove', (e) => {
@@ -318,13 +255,11 @@ document.addEventListener('DOMContentLoaded', function() {
     prevBtn.addEventListener('touchstart', (e) => {
       // Add visual feedback
       prevBtn.style.transform = 'scale(0.95)';
-      prevBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
     }, { passive: true });
     
     prevBtn.addEventListener('touchend', (e) => {
       // Remove visual feedback
       prevBtn.style.transform = '';
-      prevBtn.style.boxShadow = '';
       if (currentIndex > 0) goToSlide(currentIndex - 1);
     }, { passive: true });
   }
@@ -338,13 +273,11 @@ document.addEventListener('DOMContentLoaded', function() {
     nextBtn.addEventListener('touchstart', (e) => {
       // Add visual feedback
       nextBtn.style.transform = 'scale(0.95)';
-      nextBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
     }, { passive: true });
     
     nextBtn.addEventListener('touchend', (e) => {
       // Remove visual feedback
       nextBtn.style.transform = '';
-      nextBtn.style.boxShadow = '';
       if (currentIndex < maxIndex) goToSlide(currentIndex + 1);
     }, { passive: true });
   }
