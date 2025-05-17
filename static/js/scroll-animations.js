@@ -126,6 +126,9 @@ document.addEventListener('DOMContentLoaded', function() {
         updateParallax();
     }
 
+    // Initialize challenge carousel
+    initChallengeCarousel();
+
     // Run on scroll
     window.addEventListener('scroll', function() {
         checkAnimations();
@@ -140,3 +143,79 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial check
     checkAnimations();
 });
+
+// Handle Challenge Carousel scrolling
+function initChallengeCarousel() {
+    const carousel = document.querySelector('.challenge-carousel');
+    if (!carousel) return;
+
+    const container = carousel.querySelector('.challenge-cards-container');
+    const prevBtn = carousel.querySelector('.scroll-prev');
+    const nextBtn = carousel.querySelector('.scroll-next');
+    
+    if (!container || !prevBtn || !nextBtn) return;
+    
+    // Set initial button states
+    updateScrollButtons();
+    
+    // Scroll container when buttons are clicked
+    prevBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -300, behavior: 'smooth' });
+        updateScrollButtons();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        container.scrollBy({ left: 300, behavior: 'smooth' });
+        updateScrollButtons();
+    });
+    
+    // Update button states when scrolling ends
+    container.addEventListener('scroll', () => {
+        updateScrollButtons();
+    });
+    
+    // Function to update button states
+    function updateScrollButtons() {
+        // Check if we can scroll left
+        prevBtn.setAttribute('aria-disabled', container.scrollLeft <= 0);
+        
+        // Check if we can scroll right
+        const canScrollRight = container.scrollLeft < container.scrollWidth - container.clientWidth - 10;
+        nextBtn.setAttribute('aria-disabled', !canScrollRight);
+    }
+    
+    // Touch handling for mobile swipe 
+    let startX;
+    let startY;
+    let startScrollLeft;
+    let isDown = false;
+    
+    container.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX;
+        startY = e.touches[0].pageY;
+        startScrollLeft = container.scrollLeft;
+    }, { passive: true });
+    
+    container.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        
+        // Calculate horizontal movement
+        const x = e.touches[0].pageX;
+        const y = e.touches[0].pageY;
+        
+        // Only handle horizontal swipes (prevent page scrolling interference)
+        const walkX = (x - startX);
+        const walkY = (y - startY);
+        
+        if (Math.abs(walkX) > Math.abs(walkY)) {
+            e.preventDefault();
+            container.scrollLeft = startScrollLeft - walkX;
+        }
+    }, { passive: false });
+    
+    container.addEventListener('touchend', () => {
+        isDown = false;
+        updateScrollButtons();
+    }, { passive: true });
+}

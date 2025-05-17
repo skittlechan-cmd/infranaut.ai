@@ -232,7 +232,7 @@ Infranaut.ai{% endblock %} {% block extra_css %}
     /* Section title animations */
     .section h2 {
         transform: translateY(20px);
-        opacity: 0;
+        opacity: 1;
         transition: all 0.6s ease-out;
     }
 
@@ -386,7 +386,7 @@ content %}
         <div class="has-text-centered mb-16">
             <h2
                 class="text-3xl font-bold mb-4 text-gradient animate"
-                style="font-family: 'Recoleta', serif;"
+                style="font-family: 'Recoleta', serif"
             >
                 Complete Infrastructure Visibility
             </h2>
@@ -419,7 +419,7 @@ content %}
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3"
-                            style="font-family: 'Recoleta', serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             Docker & Kubernetes Monitoring
                         </h3>
@@ -454,7 +454,7 @@ content %}
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3"
-                            style="font-family: 'Recoleta', serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             Prometheus Metrics Integration
                         </h3>
@@ -489,7 +489,7 @@ content %}
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3"
-                            style="font-family: 'Recoleta', serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             Grafana Dashboard Optimization
                         </h3>
@@ -524,7 +524,7 @@ content %}
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3"
-                            style="font-family: 'Recoleta', serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             Intelligent Log Management
                         </h3>
@@ -559,7 +559,7 @@ content %}
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3"
-                            style="font-family: 'Recoleta', serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             Pod Health Diagnostics
                         </h3>
@@ -594,7 +594,7 @@ content %}
                         </div>
                         <h3
                             class="text-xl font-semibold mb-3"
-                            style="font-family: 'Recoleta', serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             AI Root Cause Analysis
                         </h3>
@@ -616,11 +616,15 @@ content %}
         <div class="columns is-vcentered">
             <!-- Left Column: Text Content -->
             <div class="column is-12-mobile is-5-desktop">
-                <h2 class="text-3xl font-bold mb-4 dashboard-title" style="font-family: 'Recoleta', serif;">
+                <h2
+                    class="text-3xl font-bold mb-4 dashboard-title"
+                    style="font-family: 'Recoleta', serif"
+                >
                     Proactive Infrastructure Management
                 </h2>
                 <p class="text-lg mb-6 dashboard-subtitle">
-                    Stop firefighting and start preventing problems before they impact your services.
+                    Stop firefighting and start preventing problems before they
+                    impact your services.
                 </p>
 
                 <!-- Simple Feature List -->
@@ -632,12 +636,17 @@ content %}
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <div>
-                                <h4 class="has-text-weight-bold mb-1">Predictive Planning</h4>
-                                <p>Forecast resource needs based on usage patterns</p>
+                                <h4 class="has-text-weight-bold mb-1">
+                                    Predictive Planning
+                                </h4>
+                                <p>
+                                    Forecast resource needs based on usage
+                                    patterns
+                                </p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Feature 2 -->
                     <div class="feature-item mb-4">
                         <div class="is-flex">
@@ -645,12 +654,17 @@ content %}
                                 <i class="fas fa-link"></i>
                             </div>
                             <div>
-                                <h4 class="has-text-weight-bold mb-1">Service Correlation</h4>
-                                <p>Map dependencies to identify cascade failures</p>
+                                <h4 class="has-text-weight-bold mb-1">
+                                    Service Correlation
+                                </h4>
+                                <p>
+                                    Map dependencies to identify cascade
+                                    failures
+                                </p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Feature 3 -->
                     <div class="feature-item">
                         <div class="is-flex">
@@ -658,8 +672,13 @@ content %}
                                 <i class="fas fa-wrench"></i>
                             </div>
                             <div>
-                                <h4 class="has-text-weight-bold mb-1">Automated Remediation</h4>
-                                <p>Configure automatic responses to common issues</p>
+                                <h4 class="has-text-weight-bold mb-1">
+                                    Automated Remediation
+                                </h4>
+                                <p>
+                                    Configure automatic responses to common
+                                    issues
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -669,9 +688,9 @@ content %}
             <!-- Right Column: Dashboard Image -->
             <div class="column is-12-mobile is-7-desktop">
                 <div class="dashboard-container">
-                    <img 
-                        src="{{ url_for('static', filename='css/images/k8_infra.png') }}" 
-                        alt="Infrastructure Dashboard" 
+                    <img
+                        src="{{ url_for('static', filename='css/images/k8_infra.png') }}"
+                        alt="Infrastructure Dashboard"
                         loading="lazy"
                     />
                 </div>
@@ -686,7 +705,7 @@ content %}
         <div class="has-text-centered mb-16">
             <h2
                 class="text-3xl font-bold mb-4 text-gradient animate"
-                style="font-family: 'Recoleta', serif;"
+                style="font-family: 'Recoleta', serif"
             >
                 Real-World Use Cases
             </h2>
@@ -703,7 +722,7 @@ content %}
                     <div class="card-content">
                         <h3
                             class="title is-4 mb-4"
-                            style="font-family: 'Recoleta', serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             E-Commerce Platform
                         </h3>
@@ -737,7 +756,7 @@ content %}
                     <div class="card-content">
                         <h3
                             class="title is-4 mb-4"
-                            style="font-family: 'Recoleta', serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             SaaS Provider
                         </h3>
@@ -772,7 +791,7 @@ content %}
                     <div class="card-content">
                         <h3
                             class="title is-4 mb-4"
-                            style="font-family:Recoleta,serif;"
+                            style="font-family: 'Recoleta', serif"
                         >
                             Financial Services
                         </h3>
@@ -806,7 +825,7 @@ content %}
         <div class="has-text-centered mb-16">
             <h2
                 class="text-3xl font-bold mb-4 text-gradient animate"
-                style="font-family: 'Recoleta', serif;"
+                style="font-family: 'Recoleta', serif"
             >
                 Seamless Integrations
             </h2>
@@ -871,7 +890,7 @@ content %}
 <section class="section infra-testimonial-section py-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="testimonial-header">
-            <h2 style="font-family: 'Recoleta', serif;">
+            <h2 style="font-family: 'Recoleta', serif">
                 What Our Clients Say
             </h2>
             <p>
@@ -1068,33 +1087,6 @@ content %}
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="section py-16">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="infra-cta-box">
-            <h2 class="text-3xl font-bold mb-6"style="font-family: 'Recoleta', serif;">
-                Start Monitoring Smarter Today
-            </h2>
-            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Deploy in minutes, not days. No agents required.
-            </p>
-            <div class="infra-cta-buttons">
-                <a href="#try-free" class="button is-primary infra-primary-btn">
-                    Start Free 14-Day Trial
-                </a>
-                <a
-                    href="#schedule-demo"
-                    class="button is-outlined infra-outlined-btn"
-                >
-                    Request Live Demo
-                </a>
-            </div>
-            <p class="mt-6 text-sm text-gray-500">
-                No credit card required. Full featured trial.
-            </p>
-        </div>
-    </div>
-</section>
 {% endblock %} {% block extra_js %}
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1133,7 +1125,7 @@ content %}
                 .querySelector(".hero-image-container")
                 .classList.add("animate");
         }, 300);
-        
+
         // Testimonials horizontal scroll functionality (only for mobile)
         if (window.innerWidth <= 768) {
             initMobileTestimonials();

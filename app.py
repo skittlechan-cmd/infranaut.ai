@@ -63,7 +63,7 @@ def code():
 def onboarding():
     return render_template('pages/onboarding.html')
 
-@app.route('/about')
+@app.route('/about-us')
 @cache_control()
 def about():
     return render_template('pages/about-us.html')

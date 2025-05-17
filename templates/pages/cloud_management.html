@@ -2,16 +2,20 @@
 
 {% block title %}Cloud Management & Optimization | Infranaut.ai{% endblock %}
 
+<link
+    href="https://fonts.googleapis.com/css2?family=Recoleta:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+/>
 {% block content %}
 <!-- Hero Section -->
 <section class="hero is-medium cloud-hero">
     <div class="cloud-gradient-bg"></div>
     <div class="hero-body pt-12 pb-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="columns is-vcentered">
+            <div class="columns is-vcentered is-variable is-8">
                 <div class="column is-6">
                     <div class="cloud-hero-content fade-in">
-                        <h1 class="cloud-hero-title"><span class="gradient-text gradient-text-cloud gradient-text-hover">Cloud Management & Optimization</span></h1>
+                        <h1 class="cloud-hero-title" style="font-family: &quot;Recoleta&quot;, serif"><span class="gradient-text-cloud gradient-text-hover">Cloud Management & Optimization</span></h1>
                         <p class="cloud-hero-subtitle">Maximize efficiency and control after cloud migration — across cost, performance, and governance.</p>
                         <div class="buttons mt-6">
                             <a href="#explore" class="button is-primary infra-primary-btn">
@@ -33,7 +37,9 @@
                     <div class="cloud-dashboard-container fade-in">
                         <img src="{{ url_for('static', filename='css/images/cloud_management_hero.png') }}" 
                              alt="Cloud Management Dashboard" 
-                             class="cloud-dashboard-img">
+                             class="cloud-dashboard-img"
+                             loading="eager">
+                        <div class="dashboard-overlay-effect"></div>
                     </div>
                 </div>
             </div>
@@ -46,7 +52,7 @@
     <div class="container mx-auto px-4">
         <div class="cloud-overview-content">
             <div class="has-text-centered mb-10 fade-in">
-                <h2 class="title is-2">Post-Migration Efficiency Focus</h2>
+                <h2 class="title is-2" style="font-family: &quot;Recoleta&quot;, serif">Post-Migration Efficiency Focus</h2>
                 <div class="cloud-divider"></div>
                 <p class="subtitle is-5 mt-4 max-w-3xl mx-auto">
                     After moving to the cloud, managing costs, performance, and governance becomes critical. Our Cloud Management & Optimization module provides AI-driven insights into how your resources are performing—and how to do more with less.
@@ -60,35 +66,65 @@
 <section id="explore" class="section py-16">
     <div class="container mx-auto px-4">
         <div class="has-text-centered mb-12 fade-in">
-            <h2 class="title is-2">Interactive Cloud Dashboard</h2>
+            <h2 class="title is-2" style="font-family: &quot;Recoleta&quot;, serif">Interactive Cloud Dashboard</h2>
             <div class="cloud-divider"></div>
+            <p class="subtitle is-5 mt-4 max-w-3xl mx-auto">
+                Visualize your cloud infrastructure with our interactive dashboards. Monitor costs, resource utilization, and topology in real-time.
+            </p>
         </div>
 
         <div class="cloud-dashboard-tabs">
             <div class="tabs-header fade-in">
-                <button class="tab-btn active" data-tab="cost">
+                <button class="tab-btn active" data-tab="cost" aria-selected="true" role="tab">
                     <span class="icon"><i class="fas fa-money-bill-wave"></i></span>
                     <span>Cost Distribution</span>
                 </button>
-                <button class="tab-btn" data-tab="usage">
+                <button class="tab-btn" data-tab="usage" aria-selected="false" role="tab">
                     <span class="icon"><i class="fas fa-server"></i></span>
                     <span>Resource Utilization</span>
                 </button>
-                <button class="tab-btn" data-tab="topology">
+                <button class="tab-btn" data-tab="topology" aria-selected="false" role="tab">
                     <span class="icon"><i class="fas fa-project-diagram"></i></span>
                     <span>Cloud Topology</span>
                 </button>
             </div>
 
             <div class="dashboard-content mt-8">
-                <div id="cost-tab" class="tab-content active">
-                    <div class="chart-container fade-in" id="costChart"></div>
+                <div id="cost-tab" class="tab-content active" role="tabpanel" aria-labelledby="cost-tab">
+                    <div class="chart-container fade-in" id="costChart">
+                        <div class="chart-placeholder">
+                            <div class="chart-placeholder-icon">
+                                <i class="fas fa-chart-pie fa-3x"></i>
+                            </div>
+                            <div class="chart-placeholder-text">
+                                Interactive cost distribution chart will appear here
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="usage-tab" class="tab-content">
-                    <div class="chart-container fade-in" id="usageChart"></div>
+                <div id="usage-tab" class="tab-content" role="tabpanel" aria-labelledby="usage-tab">
+                    <div class="chart-container fade-in" id="usageChart">
+                        <div class="chart-placeholder">
+                            <div class="chart-placeholder-icon">
+                                <i class="fas fa-chart-bar fa-3x"></i>
+                            </div>
+                            <div class="chart-placeholder-text">
+                                Interactive resource utilization chart will appear here
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="topology-tab" class="tab-content">
-                    <div class="chart-container fade-in" id="topologyChart"></div>
+                <div id="topology-tab" class="tab-content" role="tabpanel" aria-labelledby="topology-tab">
+                    <div class="chart-container fade-in" id="topologyChart">
+                        <div class="chart-placeholder">
+                            <div class="chart-placeholder-icon">
+                                <i class="fas fa-project-diagram fa-3x"></i>
+                            </div>
+                            <div class="chart-placeholder-text">
+                                Interactive cloud topology visualization will appear here
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,18 +135,21 @@
 <section class="section py-16 bg-light">
     <div class="container mx-auto px-4">
         <div class="has-text-centered mb-12 fade-in">
-            <h2 class="title is-2">Optimization Features</h2>
+            <h2 class="title is-2" style="font-family: &quot;Recoleta&quot;, serif">Optimization Features</h2>
             <div class="cloud-divider"></div>
+            <p class="subtitle is-5 mt-4 max-w-3xl mx-auto">
+                Our comprehensive suite of tools helps you optimize your cloud infrastructure across multiple dimensions.
+            </p>
         </div>
 
-        <div class="columns is-multiline">
+        <div class="columns is-multiline is-variable is-6">
             <!-- Cost Optimization -->
-            <div class="column is-4 fade-in">
+            <div class="column is-4-desktop is-6-tablet fade-in">
                 <div class="cloud-feature-card">
                     <div class="feature-icon-wrapper">
                         <i class="fas fa-coins"></i>
                     </div>
-                    <h3 class="title is-4">Cost Optimization</h3>
+                    <h3 class="title is-4" style="font-family: &quot;Recoleta&quot;, serif">Cost Optimization</h3>
                     <p class="subtitle is-6 mb-4">Identify savings opportunities and eliminate waste across your cloud infrastructure.</p>
                     
                     <div class="recommendations-box">
@@ -138,12 +177,12 @@
             </div>
 
             <!-- Performance Monitoring -->
-            <div class="column is-4 fade-in">
+            <div class="column is-4-desktop is-6-tablet fade-in">
                 <div class="cloud-feature-card">
                     <div class="feature-icon-wrapper">
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
-                    <h3 class="title is-4">Performance Monitoring</h3>
+                    <h3 class="title is-4" style="font-family: &quot;Recoleta&quot;, serif">Performance Monitoring</h3>
                     <p class="subtitle is-6 mb-4">Get full-stack visibility into your application and infrastructure performance.</p>
                     
                     <div class="monitor-metrics">
@@ -184,12 +223,12 @@
             </div>
 
             <!-- Security & Governance -->
-            <div class="column is-4 fade-in">
+            <div class="column is-4-desktop is-6-tablet fade-in">
                 <div class="cloud-feature-card">
                     <div class="feature-icon-wrapper">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="title is-4">Security & Governance</h3>
+                    <h3 class="title is-4" style="font-family: &quot;Recoleta&quot;, serif">Security & Governance</h3>
                     <p class="subtitle is-6 mb-4">Ensure compliance and identify security risks before they become problems.</p>
                     
                     <div class="compliance-status">
@@ -211,14 +250,16 @@
                     </div>
                     
                     <div class="security-alerts">
-                        <div class="alert-item warning">
-                            <div class="alert-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="alert-item medium">
+                            <div class="alert-icon medium"><i class="fas fa-exclamation-triangle"></i></div>
                             <div class="alert-text">3 Public S3 Buckets Detected</div>
+                            <div class="alert-severity medium">Medium</div>
                         </div>
                         
-                        <div class="alert-item">
-                            <div class="alert-icon"><i class="fas fa-history"></i></div>
+                        <div class="alert-item low">
+                            <div class="alert-icon low"><i class="fas fa-history"></i></div>
                             <div class="alert-text">Last Audit: 2 days ago</div>
+                            <div class="alert-severity low">Info</div>
                         </div>
                     </div>
                 </div>
@@ -230,89 +271,59 @@
 <!-- AI Prompt Section -->
 <section class="section py-16 cloud-prompt-section">
     <div class="container mx-auto px-4">
-        <div class="columns is-vcentered">
-            <div class="column is-6 fade-in">
-                <h2 class="title is-2 mb-6">Ask the AI</h2>
-                <p class="subtitle is-5 mb-6">Our AI assistant can analyze your cloud infrastructure and provide specific recommendations. Try asking a question:</p>
-                
-                <div class="cloud-prompt-box">
-                    <div class="prompt-question">
-                        "Which underutilized AWS instances can we downsize?"
+        <div class="cloud-prompt-bg"></div>
+        <div class="cloud-prompt-container">
+            <div class="prompt-header">
+                <div class="prompt-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="prompt-title" style="font-family: &quot;Recoleta&quot;, serif">Ask the AI Assistant</div>
+            </div>
+            
+            <div class="prompt-input-container">
+                <input type="text" class="prompt-input" placeholder="Ask about your cloud infrastructure..." aria-label="Ask AI assistant">
+                <button class="prompt-submit">Ask</button>
+            </div>
+            
+            <div class="prompt-examples">
+                <div class="prompt-example">How can I reduce my AWS costs?</div>
+                <div class="prompt-example">Which instances should I resize?</div>
+                <div class="prompt-example">What security risks do I have?</div>
+                <div class="prompt-example">How to improve performance?</div>
+            </div>
+        </div>
+        
+        <div class="columns is-multiline is-variable is-6 mt-12">
+            <div class="column is-4-desktop is-6-tablet fade-in">
+                <div class="cloud-feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lightbulb"></i>
                     </div>
-                    
-                    <div class="prompt-response">
-                        <div class="response-header">
-                            <div class="ai-avatar">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <div class="ai-name">InfraGuardian AI</div>
-                        </div>
-                        
-                        <div class="response-content">
-                            <p>I've analyzed your AWS infrastructure and found 5 underutilized EC2 instances that are candidates for downsizing, potentially saving $750/month:</p>
-                            
-                            <div class="instance-recommendations">
-                                <div class="instance-item">
-                                    <div class="instance-name">prod-app-server-03</div>
-                                    <div class="instance-details">
-                                        <div class="current-type">Current: c5.2xlarge</div>
-                                        <div class="recommend-type">Recommend: c5.xlarge</div>
-                                    </div>
-                                    <div class="instance-metrics">
-                                        <div class="metric">CPU: 22%</div>
-                                        <div class="metric">Memory: 35%</div>
-                                    </div>
-                                    <div class="instance-savings">$210/month</div>
-                                </div>
-                                
-                                <div class="instance-item">
-                                    <div class="instance-name">staging-db-replica-01</div>
-                                    <div class="instance-details">
-                                        <div class="current-type">Current: r5.xlarge</div>
-                                        <div class="recommend-type">Recommend: r5.large</div>
-                                    </div>
-                                    <div class="instance-metrics">
-                                        <div class="metric">CPU: 18%</div>
-                                        <div class="metric">Memory: 42%</div>
-                                    </div>
-                                    <div class="instance-savings">$140/month</div>
-                                </div>
-                            </div>
-                            
-                            <div class="expand-button">
-                                <span>Show all recommendations</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="title is-4" style="font-family: &quot;Recoleta&quot;, serif">Did You Know?</h3>
+                    <p class="subtitle is-6 mb-4">Unused cloud resources account for up to 35% of cloud bills.</p>
+                    <p>Our AI can identify these resources and help you eliminate unnecessary costs quickly.</p>
                 </div>
             </div>
             
-            <div class="column is-6 fade-in">
-                <div class="cloud-info-cards">
-                    <div class="info-card">
-                        <div class="info-icon">⚡</div>
-                        <div class="info-content">
-                            <h4>Did You Know?</h4>
-                            <p>Unused cloud resources account for up to 35% of cloud bills.</p>
-                        </div>
+            <div class="column is-4-desktop is-6-tablet fade-in">
+                <div class="cloud-feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-search-dollar"></i>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">🔍</div>
-                        <div class="info-content">
-                            <h4>Did You Know?</h4>
-                            <p>Rightsizing typically reduces costs by 20–30% within the first month.</p>
-                        </div>
+                    <h3 class="title is-4" style="font-family: &quot;Recoleta&quot;, serif">Did You Know?</h3>
+                    <p class="subtitle is-6 mb-4">Rightsizing typically reduces costs by 20–30% within the first month.</p>
+                    <p>Our platform automatically analyzes usage patterns to recommend optimal instance sizes.</p>
+                </div>
+            </div>
+            
+            <div class="column is-4-desktop is-6-tablet fade-in">
+                <div class="cloud-feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lock"></i>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">🔒</div>
-                        <div class="info-content">
-                            <h4>Did You Know?</h4>
-                            <p>Misconfigurations are responsible for 70% of cloud breaches.</p>
-                        </div>
-                    </div>
+                    <h3 class="title is-4" style="font-family: &quot;Recoleta&quot;, serif">Did You Know?</h3>
+                    <p class="subtitle is-6 mb-4">Misconfigurations are responsible for 70% of cloud breaches.</p>
+                    <p>Our security scanner continuously monitors for misconfigurations and compliance issues.</p>
                 </div>
             </div>
         </div>
@@ -320,21 +331,21 @@
 </section>
 
 <!-- CTA Section -->
-<section class="section py-16 bg-light">
+<section id="report" class="section py-16 bg-light">
     <div class="container mx-auto px-4">
         <div class="cloud-cta-box fade-in">
-            <h2 class="title is-2 mb-6">Ready to optimize your cloud infrastructure?</h2>
+            <h2 class="title is-2 mb-6" style="font-family: &quot;Recoleta&quot;, serif">Ready to optimize your cloud infrastructure?</h2>
             <p class="subtitle is-5 mb-8 max-w-3xl mx-auto">
                 Get started with a free optimization assessment and see how much you could save.
             </p>
-            <div class="buttons is-centered">
-                <a href="#report" class="button is-primary infra-primary-btn">
+            <div class="cloud-cta-buttons">
+                <a href="#" class="button is-primary infra-primary-btn">
                     <span class="icon">
                         <i class="fas fa-file-download"></i>
                     </span>
                     <span>Get Free Assessment</span>
                 </a>
-                <a href="#demo" class="button is-outlined infra-outlined-btn">
+                <a href="#" class="button is-outlined infra-outlined-btn">
                     <span class="icon">
                         <i class="fas fa-calendar-alt"></i>
                     </span>
@@ -351,5 +362,71 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{{ url_for('static', filename='js/cloud_management.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab functionality
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding content
+            button.classList.add('active');
+            button.setAttribute('aria-selected', 'true');
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Example prompt click handler
+    const promptExamples = document.querySelectorAll('.prompt-example');
+    const promptInput = document.querySelector('.prompt-input');
+    
+    promptExamples.forEach(example => {
+        example.addEventListener('click', () => {
+            promptInput.value = example.textContent;
+            promptInput.focus();
+        });
+    });
+    
+    // Fade-in animation for elements
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(element => {
+        observer.observe(element);
+    });
+});
+</script>
 {% endblock %}

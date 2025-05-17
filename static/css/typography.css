@@ -11,43 +11,55 @@
 }
 
 /* Headings */
-h1, .h1 {
+h1,
+.h1 {
     font-size: var(--h1-size);
     margin-bottom: 1.5rem;
 }
 
-h2, .h2 {
+h2,
+.h2 {
     font-size: var(--h2-size);
     margin-bottom: 1.25rem;
 }
 
-h3, .h3 {
+h3,
+.h3 {
     font-size: var(--h3-size);
     margin-bottom: 1rem;
 }
 
-h4, .h4 {
+h4,
+.h4 {
     font-size: var(--h4-size);
     margin-bottom: 0.75rem;
 }
 
-h5, .h5 {
+h5,
+.h5 {
     font-size: var(--h5-size);
     margin-bottom: 0.5rem;
 }
 
-h6, .h6 {
+h6,
+.h6 {
     font-size: var(--h6-size);
     margin-bottom: 0.5rem;
 }
 
 /* Enhanced Text Readability */
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -55,7 +67,8 @@ h6, .h6 {
     color: var(--text-dark);
 }
 
-p, .body-text {
+p,
+.body-text {
     font-family: "Source Sans Pro", sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
@@ -138,12 +151,18 @@ p {
         --h6-size: 1rem;
     }
 
-    h1, .h1,
-    h2, .h2,
-    h3, .h3,
-    h4, .h4,
-    h5, .h5,
-    h6, .h6 {
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
@@ -158,9 +177,20 @@ p {
         width: 100%;
         text-align: center;
         font-size: 3rem;
+        font-family: "Recoleta", serif;
+        background: linear-gradient(135deg, #ff6c37, #2563eb);
+        background-clip: border-box;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #ff6c37;
+        display: inline-block;
+        font-weight: 700;
+        text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
     }
 
-    p, .body-text {
+    p,
+    .body-text {
         text-align: center;
         margin-left: auto;
         margin-right: auto;

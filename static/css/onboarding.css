@@ -4,8 +4,21 @@
 .onboarding-hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background: linear-gradient(
+        135deg,
+        var(--bg-gradient-start) 0%,
+        var(--bg-gradient-end) 100%
+    );
     padding: 5rem 0 3rem;
+}
+
+.gradient-text.gradient-text-workflow.gradient-text-hover {
+    background: linear-gradient(
+        135deg,
+        var(--bg-gradient-start) 0%,
+        var(--bg-gradient-end) 100%,
+        color: #f59e0b
+    );
 }
 
 .knowledge-graph-bg {
@@ -14,10 +27,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+        135deg,
         rgba(255, 108, 55, 0.05) 0%,
         transparent 50%,
-        rgba(37, 99, 235, 0.03) 100%);
+        rgba(37, 99, 235, 0.03) 100%
+    );
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     z-index: 0;
 }
@@ -54,9 +69,11 @@
     bottom: 0;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+        135deg,
         rgba(255, 255, 255, 0.8) 0%,
-        rgba(255, 255, 255, 0.6) 100%);
+        rgba(255, 255, 255, 0.6) 100%
+    );
     z-index: 0;
 }
 
@@ -86,10 +103,12 @@
 .card-glow {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+        135deg,
         rgba(255, 108, 55, 0.1) 0%,
         transparent 50%,
-        rgba(37, 99, 235, 0.05) 100%);
+        rgba(37, 99, 235, 0.05) 100%
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -313,14 +332,14 @@
     .onboarding-hero {
         padding: 3rem 0 2rem;
     }
-    
+
     .knowledge-grid,
     .how-it-works-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 1.5rem;
     }
-    
+
     .dashboard-grid {
         grid-template-columns: 1fr;
     }
-} 
+}
