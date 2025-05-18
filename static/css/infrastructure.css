@@ -46,7 +46,7 @@
     display: inline-block; /* Ensures the gradient applies correctly */
     font-weight: 700;
     text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
-    margin-top: 0.9rem;
+    margin-top: 5rem;
 }
 
 .infrastructure-gradient-bg {
