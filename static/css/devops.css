@@ -1,23 +1,34 @@
 /* DevOps Page Specific Styles */
 
+body.has-navbar-fixed-top,
+html.has-navbar-fixed-top {
+    padding-top: 0rem;
+}
+
 /* Hero Section */
 .devops-hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background: linear-gradient(
+        135deg,
+        var(--bg-gradient-start) 0%,
+        var(--bg-gradient-end) 100%
+    );
 }
 
 .devops-hero::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
+    background: linear-gradient(
+        135deg,
         rgba(255, 108, 55, 0.1) 0%,
         transparent 50%,
-        rgba(59, 130, 246, 0.05) 100%);
+        rgba(59, 130, 246, 0.05) 100%
+    );
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
@@ -34,7 +45,11 @@
     line-height: 1.2;
     font-weight: 700;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -75,7 +90,6 @@
         transform: none;
         margin-top: 2rem;
     }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -120,7 +134,7 @@
     border: 1px solid var(--glass-border);
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 
+    box-shadow:
         var(--shadow-xl),
         0 0 0 1px rgba(255, 255, 255, 0.1),
         0 0 30px rgba(0, 0, 0, 0.1);
@@ -129,7 +143,9 @@
 
 .devops-dashboard-frame:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: var(--shadow-xl), 0 0 20px rgba(255, 108, 55, 0.2);
+    box-shadow:
+        var(--shadow-xl),
+        0 0 20px rgba(255, 108, 55, 0.2);
 }
 
 /* Tools Grid Section */
@@ -140,7 +156,7 @@
 
 .tools-section::before,
 .tools-section::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     right: 0;
@@ -151,16 +167,20 @@
 
 .tools-section::before {
     top: 0;
-    background: linear-gradient(to bottom, 
-        var(--bg-gradient-start) 0%, 
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+        to bottom,
+        var(--bg-gradient-start) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
 }
 
 .tools-section::after {
     bottom: 0;
-    background: linear-gradient(to top, 
-        var(--bg-gradient-start) 0%, 
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+        to top,
+        var(--bg-gradient-start) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
 }
 
 /* Tools Grid */
@@ -176,24 +196,29 @@
 .devops-tool-item {
     text-align: center;
     padding: 1.5rem;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95), 
-        rgba(255, 255, 255, 0.8));
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95),
+        rgba(255, 255, 255, 0.8)
+    );
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
 .devops-tool-item::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(45deg, 
+    background: linear-gradient(
+        45deg,
         transparent,
         rgba(255, 108, 55, 0.1),
         transparent
@@ -266,7 +291,7 @@
     .devops-tool-item {
         transition: transform 0.2s ease;
     }
-    
+
     .devops-tool-item:active {
         transform: scale(0.95);
     }
@@ -288,6 +313,95 @@
     .devops-tool-item i {
         font-size: 1.75rem;
         margin-bottom: 0.5rem;
+    }
+}
+
+/* Language Items Styling */
+.language-container {
+    margin: 3rem auto;
+    max-width: 1200px;
+    padding: 0 1.5rem;
+}
+
+.language-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95),
+        rgba(255, 255, 255, 0.8)
+    );
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 120px;
+}
+
+.language-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 108, 55, 0.1),
+        transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.language-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.language-item:hover::before {
+    opacity: 1;
+}
+
+.language-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.language-item:hover i {
+    transform: scale(1.1);
+}
+
+.language-item span {
+    display: block;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .language-item {
+        padding: 1.25rem;
+        min-height: 100px;
+    }
+    
+    .language-item i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .language-item span {
+        font-size: 0.9rem;
     }
 }
 
@@ -321,7 +435,11 @@
 }
 
 .devops-response {
-    background: linear-gradient(135deg, var(--light-orange), rgba(255, 108, 55, 0.1));
+    background: linear-gradient(
+        135deg,
+        var(--light-orange),
+        rgba(255, 108, 55, 0.1)
+    );
     border-top-right-radius: 0;
     margin-left: 2rem;
 }
@@ -338,7 +456,7 @@
 }
 
 .devops-response li::before {
-    content: '→';
+    content: "→";
     position: absolute;
     left: 0;
     color: var(--primary-color);
@@ -350,7 +468,9 @@
     border-radius: 1rem;
     padding: 2rem;
     height: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-md);
     position: relative;
@@ -358,7 +478,7 @@
 }
 
 .devops-feature-card::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(
@@ -386,7 +506,11 @@
     margin-bottom: 1.5rem;
     width: 3.5rem;
     height: 3.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
     border-radius: 1rem;
     display: flex;
     align-items: center;
@@ -409,24 +533,36 @@
 
 /* Section Backgrounds */
 .section.bg-gradient {
-    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    background: linear-gradient(
+        135deg,
+        var(--bg-gradient-start),
+        var(--bg-gradient-end)
+    );
     position: relative;
     overflow: hidden;
 }
 
 .section.bg-gradient::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: 
-        radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(20, 184, 166, 0.1) 0%, transparent 50%);
+    background: radial-gradient(
+            circle at 0% 0%,
+            rgba(139, 92, 246, 0.1) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(20, 184, 166, 0.1) 0%,
+            transparent 50%
+        );
     pointer-events: none;
 }
 
 /* Custom Animations */
 @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0);
     }
     50% {
@@ -442,7 +578,9 @@
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
 }
 
 .fade-in.visible {

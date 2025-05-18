@@ -732,9 +732,29 @@
         align-items: center;
     }
 
-    .case-study-logo img {
-        max-width: 100%;
-        height: auto;
+   
+/* bird image edit */
+    @media (min-width: 769px) {
+        .case-study-logo {
+            flex: 0 0 120px;
+            justify-content: flex-start;
+        }
+
+        .case-study-logo img {
+            max-width: 120px;
+        }
+    }
+
+
+    @media (max-width: 768px) {
+        .case-study-logo {
+            flex: 0 0 80px;
+            justify-content: center;
+        }
+
+        .case-study-logo img {
+            max-width: 80px;
+        }
     }
 
     .case-study-content {
@@ -825,13 +845,13 @@
     }
 
     .workflow-dashboard-container:hover .dashboard-img {
-        transform: scale(1.03);
-        box-shadow: 0 10px 25px rgba(255, 140, 0, 0.2);
+        transform: scale(1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     }
 
     /* Float Animation for Dashboard Container */
     .workflow-dashboard-container {
-        animation: floatAnimation 6s ease-in-out infinite;
+        animation: none;
     }
 
     @keyframes floatAnimation {
@@ -925,5 +945,13 @@
             font-size: 2.5rem;
         }
     }
+
+
+
+    /* extas */
+    body.has-navbar-fixed-top, html.has-navbar-fixed-top {
+        padding-top: 0rem;
+    }
+
 </style>
 {% endblock %}

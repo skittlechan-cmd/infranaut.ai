@@ -120,66 +120,71 @@
                                 fill="url(#contact-hero-gradient)"
                                 rx="16"
                             />
-
-                            {# Communication Lines #}
-                            <line
-                                class="line"
-                                x1="200"
-                                y1="250"
-                                x2="400"
-                                y2="300"
-                            />
-                            <line
-                                class="line"
-                                x1="600"
-                                y1="250"
-                                x2="400"
-                                y2="300"
-                            />
-                            <line
-                                class="line"
-                                x1="400"
-                                y1="300"
-                                x2="400"
-                                y2="450"
-                            />
-                            <line
-                                class="line"
-                                x1="400"
-                                y1="300"
-                                x2="200"
-                                y2="350"
-                            />
-                            <line
-                                class="line"
-                                x1="400"
-                                y1="300"
-                                x2="600"
-                                y2="350"
-                            />
-
-                            {# Message Bubbles/Nodes #}
+                            
+                            <!-- Base Communication Visual Elements -->
+                            <!-- Connection Lines -->
+                            <line class="line" x1="200" y1="250" x2="400" y2="300" />
+                            <line class="line" x1="600" y1="250" x2="400" y2="300" />
+                            <line class="line" x1="400" y1="300" x2="400" y2="450" />
+                            <line class="line" x1="400" y1="300" x2="200" y2="350" />
+                            <line class="line" x1="400" y1="300" x2="600" y2="350" />
+                            
+                            <!-- Message Nodes with Icons -->
+                            <!-- Email Node -->
                             <circle class="bubble" cx="200" cy="250" r="40" />
+                            <path class="icon-fill" d="M190 240h20v20h-20zm0 0l10 7 10-7m-20 0v20h20v-20" 
+                                  transform="translate(-10, -10)" stroke="white" stroke-width="1.5" fill="none" />
+                            
+                            <!-- Phone Node -->
                             <circle class="bubble" cx="600" cy="250" r="40" />
+                            <path class="icon-fill" d="M590 240c0 0 0 3 3 3s3-3 3-3v-6c0 0 0-3-3-3s-3 3-3 3zm0 10c-2-2-2-6 0-8l4-4c2-2 6-2 8 0l2 2c2 2 2 6 0 8l-4 4c-2 2-6 2-8 0z" 
+                                  transform="translate(0, 0)" stroke="white" stroke-width="1.5" fill="none" />
+                            
+                            <!-- Meeting Node -->
                             <circle class="bubble" cx="400" cy="450" r="40" />
+                            <path class="icon-fill" d="M390 450c-3-3-3-10 0-13 3-4 7-4 10 0m0 0c3-4 7-4 10 0 3 3 3 10 0 13m-15-3l5 5 5-5" 
+                                  stroke="white" stroke-width="1.5" fill="none" />
+                            
+                            <!-- Chat Node -->
                             <circle class="bubble" cx="200" cy="350" r="35" />
+                            <path class="icon-fill" d="M185 345h30v20h-15l-10 10v-10h-5z" 
+                                  stroke="white" stroke-width="1.5" fill="none" />
+                            
+                            <!-- Social Media Node -->
                             <circle class="bubble" cx="600" cy="350" r="35" />
-
-                            {# Central Node with Icon Placeholder #}
-                            <circle
-                                class="bubble bubble-center"
-                                cx="400"
-                                cy="300"
-                                r="50"
-                            />
-                            {# Example Icon (Envelope) - You might need to
-                            adjust paths or use an icon font layer #}
-                            <path
-                                class="icon-fill"
-                                d="M434 299.97l-33.3 24.97a12 12 0 01-13.4 0L366 299.97c-6.13-4.6-13.58-7.04-21.19-7.04a32 32 0 00-23.54 9.42L300 318.88a12 12 0 01-16 0L260.73 289c-6.13-4.6-13.58-7.04-21.19-7.04a32 32 0 00-23.54 9.42L180 318.88a12 12 0 01-16 0L140.73 289c-6.13-4.6-13.58-7.04-21.19-7.04a32 32 0 00-23.54 9.42L100 318.88a12 12 0 01-16 0l-33.3-24.97A32 32 0 000 278.81V92a32 32 0 0032-32h416a32 32 0 0032 32v186.81a32 32 0 00-14.6 21.16z"
-                                transform="translate(160, 150) scale(0.2)"
-                            />
-                            {# Placeholder Icon #}
+                            <path class="icon-fill" d="M595 345c0 2.5 2 4.5 4.5 4.5s4.5-2 4.5-4.5-2-4.5-4.5-4.5-4.5 2-4.5 4.5zm-10 10c5-5 12.5-5 17.5 0m-17.5 0c-2-8 7.5-15 17.5 0" 
+                                  stroke="white" stroke-width="1.5" fill="none" />
+                            
+                            <!-- Central Hub -->
+                            <circle class="bubble bubble-center" cx="400" cy="300" r="50" />
+                            
+                            <!-- Central Contact Icon -->
+                            <g transform="translate(370, 275)">
+                                <rect x="0" y="0" width="60" height="50" rx="5" stroke="white" stroke-width="2" fill="none" />
+                                <circle cx="30" cy="20" r="12" stroke="white" stroke-width="2" fill="none" />
+                                <path d="M15 45c0-8.3 6.7-15 15-15s15 6.7 15 15" stroke="white" stroke-width="2" fill="none" />
+                                <line x1="0" y1="0" x2="60" y2="0" stroke="white" stroke-width="2" />
+                            </g>
+                            
+                            <!-- Decorative Elements -->
+                            <circle cx="240" cy="200" r="5" fill="white" opacity="0.3" />
+                            <circle cx="560" cy="200" r="5" fill="white" opacity="0.3" />
+                            <circle cx="300" cy="400" r="5" fill="white" opacity="0.3" />
+                            <circle cx="500" cy="400" r="5" fill="white" opacity="0.3" />
+                            
+                            <!-- Animated Particles -->
+                            <circle cx="300" cy="270" r="3" fill="white" opacity="0.5">
+                                <animate attributeName="cy" from="270" to="300" dur="2s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.5" to="0" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            <circle cx="500" cy="270" r="3" fill="white" opacity="0.5">
+                                <animate attributeName="cy" from="270" to="300" dur="2.5s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.5" to="0" dur="2.5s" repeatCount="indefinite" />
+                            </circle>
+                            <circle cx="400" cy="370" r="3" fill="white" opacity="0.5">
+                                <animate attributeName="cy" from="370" to="400" dur="1.8s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.5" to="0" dur="1.8s" repeatCount="indefinite" />
+                            </circle>
                         </svg>
                     </div>
                 </div>

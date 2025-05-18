@@ -761,7 +761,13 @@ resource "aws_subnet" "private_subnet_a" {
         overflow: hidden;
     }
     .hero-body {
-        padding: 5rem 1rem md:padding: 6rem 1.5rem; /* Responsive padding */
+        padding: 5rem 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .hero-body {
+            padding: 6rem 1.5rem;
+        }
     }
 
     /* Text Gradient */
@@ -1097,5 +1103,19 @@ resource "aws_subnet" "private_subnet_a" {
 
         .code-snippet pre { max-height: 300px; }
     }
+
+
+    /* extra css */
+    body.has-navbar-fixed-top, html.has-navbar-fixed-top {
+        padding-top: 0rem;
+    }
+
+    @media (max-width: 768px) {
+        body.has-navbar-fixed-top, html.has-navbar-fixed-top {
+            padding-top: 0rem;
+        }
+    }
+    
+
 </style>
 {% endblock %}

@@ -46,7 +46,7 @@
     display: inline-block; /* Ensures the gradient applies correctly */
     font-weight: 700;
     text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
-    margin-top: 3rem;
+    margin-top: 0.9rem;
 }
 
 .infrastructure-gradient-bg {
@@ -283,8 +283,7 @@
 
     .hero-image-container.animate img {
         transform: scale(1.05);
-        margin-top:0rem;
-        
+        margin-top: 0rem;
     }
 
     .infrastructure-cards-container {
@@ -823,7 +822,7 @@
     align-items: center;
     transition: all 0.3s ease;
     border: 2px solid var(--primary-color);
-    margin-left: 1.5rem;
+    margin-left: -0.2rem;
 }
 
 .infra-outlined-btn:hover {
@@ -1381,7 +1380,14 @@ h2.text-3xl,
 }
 
 .text-white {
-    color: white;
+    
+    background: linear-gradient(95deg, var(--primary-color) 0%, #4F46E5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: var(--primary-color);
+    display: inline-block;
+    font-weight: 800;
+    text-shadow: none;
 }
 
 /* Spacing utilities */
@@ -1902,11 +1908,11 @@ h2.text-3xl,
     .challenge-carousel {
         padding: 0.5rem 0;
     }
-    
+
     .challenge-card {
         width: 260px; /* Slightly smaller for mobile */
     }
-    
+
     .scroll-indicator {
         width: 36px;
         height: 36px;
@@ -1937,7 +1943,7 @@ h2.text-3xl,
 }
 
 .perspective-shadow::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -20px;
     left: 5%;
@@ -1967,7 +1973,11 @@ h2.text-3xl,
 
 /* Newsletter section styles */
 .gradient-card {
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.85), rgba(255, 107, 53, 0.85));
+    background: linear-gradient(
+        135deg,
+        rgba(79, 70, 229, 0.85),
+        rgba(255, 107, 53, 0.85)
+    );
     color: white;
     position: relative;
     overflow: hidden;
@@ -1978,14 +1988,22 @@ h2.text-3xl,
 }
 
 .gradient-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.15), transparent 40%),
-                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.15), transparent 40%);
+    background: radial-gradient(
+            circle at 30% 70%,
+            rgba(255, 255, 255, 0.15),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(255, 255, 255, 0.15),
+            transparent 40%
+        );
     z-index: 0;
     opacity: 0.8;
     pointer-events: none;
@@ -1995,8 +2013,8 @@ h2.text-3xl,
     position: relative;
 }
 
-.newsletter-container h3, 
-.newsletter-container p, 
+.newsletter-container h3,
+.newsletter-container p,
 .newsletter-container form {
     position: relative;
     z-index: 1;
@@ -2009,7 +2027,7 @@ h2.text-3xl,
 }
 
 .shine-effect::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -50%;
     left: -50%;
@@ -2065,9 +2083,11 @@ h2.text-3xl,
     .scale-hover:hover {
         transform: scale(1.03); /* Slightly smaller scale on mobile */
     }
-    
+
     .enhanced-glass {
-        backdrop-filter: blur(8px); /* Less blur on mobile for better performance */
+        backdrop-filter: blur(
+            8px
+        ); /* Less blur on mobile for better performance */
         -webkit-backdrop-filter: blur(8px);
     }
 }
