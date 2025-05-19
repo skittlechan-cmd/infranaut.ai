@@ -90,7 +90,7 @@ def addon():
 
 if __name__ == '__main__':
     # Production configurations
-    app.config['TEMPLATES_AUTO_RELOAD'] = True # Make false in production
-    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 # Disable caching in production
+    app.config['TEMPLATES_AUTO_RELOAD'] = False # Make false in production
+    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1 # Disable caching in production
     #app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000
     app.run(debug=False, host='0.0.0.0', port=5001)
