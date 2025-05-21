@@ -1,3 +1,11 @@
+/* Add a fallback font declaration at the top */
+@font-face {
+    font-family: 'Recoleta';
+    src: local('Helvetica'), local('Arial');
+    font-weight: 400;
+    font-style: normal;
+}
+
 /* Base Variables */
 :root {
     /* Primary Colors */

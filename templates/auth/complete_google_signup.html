@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Complete Sign Up - Infranaut{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card fade-in">
+        <h1>Complete Your Sign Up</h1>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        
+        <div class="recovery-details">
+            <p>Your Google account <strong>{{ email }}</strong> has been verified.</p>
+            <p>Please create a username and password to complete your registration.</p>
+        </div>
+        
+        <form method="post" action="{{ url_for('complete_google_signup') }}" id="google-signup-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="password-requirements">
+                    <div class="password-requirement">At least 8 characters long</div>
+                    <div class="password-requirement">At least one uppercase letter</div>
+                    <div class="password-requirement">At least one lowercase letter</div>
+                    <div class="password-requirement">At least one number</div>
+                    <div class="password-requirement">At least one special character</div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Complete Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/static/js/auth-validation.js"></script>
+{% endblock %} 

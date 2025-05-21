@@ -1,1 +1,8 @@
 flask
+Flask-Compress
+Flask-Mail
+Flask-WTF
+supabase
+python-dotenv
+bcrypt
+requests

@@ -1,24 +1,33 @@
 // Enhanced Service Carousel Script with Improved Mobile Experience
 document.addEventListener("DOMContentLoaded", () => {
-  initializeServiceCarousel();
-  initializeScrollAnimations();
-  adjustCardWidthsForMobile();
+  // Make sure adjustAllCardsHeight is globally available
+  window.adjustAllCardsHeight = adjustAllCardsHeight;
   
-  // Run the card height adjustment after a short delay to ensure proper rendering
-  setTimeout(() => {
-    adjustAllCardsHeight();
-  }, 300);
-
-  // Re-adjust card widths when window is resized
-  window.addEventListener('resize', () => {
+  // Check if service carousel exists before initializing
+  const serviceCarousel = document.querySelector('.service-carousel');
+  if (serviceCarousel) {
+    initializeServiceCarousel();
     adjustCardWidthsForMobile();
     
-    // Run height adjustment after resize with a delay
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
+    // Run the card height adjustment after a short delay to ensure proper rendering
+    setTimeout(() => {
       adjustAllCardsHeight();
     }, 300);
-  });
+
+    // Re-adjust card widths when window is resized
+    window.addEventListener('resize', () => {
+      adjustCardWidthsForMobile();
+      
+      // Run height adjustment after resize with a delay
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        adjustAllCardsHeight();
+      }, 300);
+    });
+  }
+  
+  // Initialize scroll animations on all pages
+  initializeScrollAnimations();
 });
 
 // Timer variable for resize events
@@ -463,6 +472,17 @@ function initializeServiceCarousel() {
   
   // Ensure all cards have the same height
   function adjustAllCardsHeight() {
+    // Get the cards container first
+    const cardsContainer = document.querySelector('.service-cards-container');
+    if (!cardsContainer) return; // Exit if no container exists
+    
+    const cards = cardsContainer.querySelectorAll('.service-card');
+    if (!cards.length) return; // Exit if no cards exist
+    
+    // Check if we're currently scrolling
+    const isScrolling = cardsContainer.dataset.isScrolling === 'true';
+    if (isScrolling) return;
+    
     // Only run if not currently scrolling
     if (isScrolling) return;
     
