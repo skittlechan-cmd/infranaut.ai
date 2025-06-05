@@ -3,6 +3,10 @@
     href="https://fonts.googleapis.com/css2?family=Recoleta:wght@400;500;600;700&display=swap"
     rel="stylesheet"
 />
+{# Add IBM Plex Sans import #}
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+{# Inter is already here, but included for clarity #}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 Sharing | Infranaut.ai{% endblock %} {% block content %}
 <!-- Hero Section with Knowledge Graph Background -->
 <section class="hero is-medium onboarding-hero">
@@ -12,8 +16,8 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
             <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
                 {# Increased gap slightly #}
                 <div class="lg:col-span-6 slide-in-up">
+                    {# REMOVED inline style font-family: Recoleta #}
                     <h1
-                        style="font-family: Recoleta, serif"
                         class="text-4xl md:text-5xl font-bold leading-tight mb-6"
                     >
                         <span
@@ -101,7 +105,7 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
                     <div class="hero-image-container mt-8 lg:mt-0">
                         {# Add margin top on mobile #}
                         <img
-                            src="{{ url_for('static', filename='css/images/onboard.jpeg') }}"
+                            src="{{ url_for('static', filename='images/onboard.jpeg') }}"
                             alt="AI Knowledge Assistant visualizing connections"
                             class="hero-image rounded-lg shadow-xl"
                             {#
@@ -122,9 +126,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
     <div class="glass-blur-bg"></div>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="has-text-centered mb-16 slide-in-up">
+            {# REMOVED inline style font-family: Recoleta #}
             <h2
                 class="text-3xl md:text-4xl font-bold mb-4"
-                style="font-family: Recoleta, serif"
             >
                 Intelligent Knowledge Management
             </h2>
@@ -155,9 +159,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
                             ></path>
                         </svg>
                     </div>
+                    {# REMOVED inline style font-family: Recoleta #}
                     <h3
                         class="text-xl font-semibold mb-3"
-                        style="font-family: Recoleta, serif"
                     >
                         AI Knowledge Assistant
                     </h3>
@@ -187,9 +191,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
                             ></path>
                         </svg>
                     </div>
+                    {# REMOVED inline style font-family: Recoleta #}
                     <h3
                         class="text-xl font-semibold mb-3"
-                        style="font-family: Recoleta, serif"
                     >
                         Smart Documentation
                     </h3>
@@ -220,9 +224,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
                             ></path>
                         </svg>
                     </div>
+                    {# REMOVED inline style font-family: Recoleta #}
                     <h3
                         class="text-xl font-semibold mb-3"
-                        style="font-family: Recoleta, serif"
                     >
                         Personalized Onboarding
                     </h3>
@@ -245,9 +249,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
                 class="text-sm font-semibold uppercase tracking-wider text-primary mb-2 block"
                 >HOW IT WORKS</span
             >
+            {# REMOVED inline style font-family: Recoleta #}
             <h2
                 class="text-3xl md:text-4xl font-bold mb-4"
-                style="font-family: Recoleta, serif"
             >
                 Simple Steps to Intelligent Knowledge
             </h2>
@@ -276,9 +280,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
                         ></path>
                     </svg>
                 </div>
+                {# REMOVED inline style font-family: Recoleta #}
                 <h3
                     class="text-xl font-semibold mb-2"
-                    style="font-family: Recoleta, serif"
                 >
                     1. Ingest Data
                 </h3>
@@ -289,6 +293,7 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
             </div>
             <!-- Step 2 -->
             <div class="step-card slide-in-up" data-delay="0.1s">
+                <div class="step-glow"></div>
                 <div class="step-icon-wrapper">
                     <svg
                         class="step-icon"
@@ -304,9 +309,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
                         ></path>
                     </svg>
                 </div>
+                {# REMOVED inline style font-family: Recoleta #}
                 <h3
                     class="text-xl font-semibold mb-2"
-                    style="font-family: Recoleta, serif"
                 >
                     2. AI Analyzes
                 </h3>
@@ -317,6 +322,7 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
             </div>
             <!-- Step 3 -->
             <div class="step-card slide-in-up" data-delay="0.2s">
+                <div class="step-glow"></div>
                 <div class="step-icon-wrapper">
                     <svg
                         class="step-icon"
@@ -332,9 +338,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
                         ></path>
                     </svg>
                 </div>
+                {# REMOVED inline style font-family: Recoleta #}
                 <h3
                     class="text-xl font-semibold mb-2"
-                    style="font-family: Recoleta, serif"
                 >
                     3. Team Interacts
                 </h3>
@@ -356,9 +362,9 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="columns is-vcentered">
             <div class="column is-5 slide-in-up" data-delay="0s">
+                {# REMOVED inline style font-family: Recoleta #}
                 <h2
                     class="text-3xl md:text-4xl font-bold mb-6"
-                    style="font-family: Recoleta, serif"
                 >
                     Interactive Knowledge Portal
                 </h2>
@@ -496,7 +502,29 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
         --animation-duration: 0.6s;
         --animation-timing: ease-out;
         --slide-delay: 0s; /* Default delay for slide-in */
+
+        /* New Font Definitions */
+        --font-heading: 'IBM Plex Sans', sans-serif;
+        --font-body: 'Inter', sans-serif;
     }
+
+    /* Apply fonts to elements */
+    h1, h2, h3, h4 {
+        font-family: var(--font-heading);
+    }
+
+    p, li {
+        font-family: var(--font-body);
+    }
+
+    /* Ensure specific text classes also use the body font */
+    .text-gray-600,
+    .text-xl,
+    .text-lg,
+    .text-sm {
+         font-family: var(--font-body);
+    }
+
 
     /* Hero Section */
     .onboarding-hero {
@@ -794,6 +822,8 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
         font-weight: 600;
         color: var(--text-dark);
         margin-bottom: 0.75rem;
+        /* Ensure module titles use heading font */
+        font-family: var(--font-heading);
     }
     .module-list {
         list-style: none;
@@ -803,6 +833,7 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
         color: var(--text-muted);
         space-y: 0.5rem;
     }
+     /* list items already targeted by general li rule */
     .module-list li {
         display: flex;
         align-items: center;
@@ -827,7 +858,13 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
         justify-content: space-between;
         font-size: 0.85rem;
         color: #94a3b8;
+        /* Ensure AI ask box text uses body font */
+        font-family: var(--font-body);
     }
+     .ai-ask-box span {
+         /* Ensure span inside ai-ask-box uses body font */
+        font-family: var(--font-body);
+     }
     .ask-button {
         background-color: var(--primary-color);
         color: white;
@@ -838,6 +875,8 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
         font-weight: 500;
         cursor: pointer;
         transition: background-color 0.2s ease;
+        /* Ensure button text uses body font */
+        font-family: var(--font-body);
     }
     .ask-button:hover {
         background-color: #e85d2f;
@@ -865,6 +904,8 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
         border-radius: 0.75rem;
         max-width: 90%;
         line-height: 1.5;
+        /* Ensure chat messages use body font */
+        font-family: var(--font-body);
     }
     .user-message {
         background: rgba(255, 255, 255, 0.7);
@@ -889,6 +930,7 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
     .ai-response ol li::marker {
         color: var(--primary-color);
         font-weight: 500;
+        /* Markers don't inherit font-family, but the text does */
     }
 
     /* REMOVED Typing Indicator */
@@ -1047,6 +1089,270 @@ Sharing | Infranaut.ai{% endblock %} {% block content %}
             gap: 0.75rem;
         }
     }
+
+    /* Updated Styles from user's provided CSS */
+    /* Onboarding Page Specific Styles */
+
+    /* Hero Section */
+    .onboarding-hero {
+        padding: 5rem 0 3rem; /* Keep updated padding */
+    }
+
+    /* This rule seems incorrect or intended for a different element/purpose.
+       It's trying to set a background gradient on a class that likely applies to text.
+       I will comment it out as it doesn't align with standard text styling.
+    .gradient-text.gradient-text-workflow.gradient-text-hover {
+        background: linear-gradient(
+            135deg,
+            var(--bg-gradient-start) 0%,
+            var(--bg-gradient-end) 100%,
+            color #f59e0b
+        );
+         -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    */
+
+    .knowledge-graph-bg {
+        /* Adjusted background gradient and clip-path based on user's provided CSS */
+        background: linear-gradient(
+            135deg,
+            rgba(255, 108, 55, 0.05) 0%,
+            transparent 50%,
+            rgba(37, 99, 235, 0.03) 100%
+        );
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        top: 0; /* Ensure full height */
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .hero-image-container {
+        transition: all 0.5s ease; /* Keep transition */
+    }
+
+    .hero-image-container:hover {
+        transform: translateY(-5px); /* Keep hover effect */
+    }
+
+    .hero-image {
+        box-shadow: var(--shadow-xl); /* Use variable */
+        transition: all 0.5s ease; /* Keep transition */
+    }
+
+    /* Glass Section */
+    .glass-section {
+         /* Keep existing glass-section styles */
+    }
+
+    .glass-blur-bg {
+        /* Keep existing glass-blur-bg styles */
+    }
+
+    /* Knowledge Grid */
+    .knowledge-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Use 300px min */
+        gap: 2rem; /* Keep gap */
+        position: relative;
+        z-index: 1;
+        transform: translate(14%,1%);
+    }
+    
+    @media (max-width: 768px) {
+        .knowledge-grid {
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            position: relative;
+            z-index: 1;
+            transform: none;
+        }
+    }
+
+    .knowledge-card {
+        box-shadow: var(--shadow-md); /* Use variable */
+        transition: all 0.3s ease; /* Keep transition */
+    }
+
+    .knowledge-card:hover {
+        transform: translateY(-5px); /* Keep hover */
+        box-shadow: var(--shadow-lg); /* Use variable */
+    }
+
+    .card-glow {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 108, 55, 0.1) 0%,
+            transparent 50%,
+            rgba(37, 99, 235, 0.05) 100%
+        ); /* Use linear gradient from user's provided CSS */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .knowledge-card:hover .card-glow {
+        opacity: 1;
+    }
+
+    .card-content {
+        /* Keep content styles */
+    }
+
+    .feature-icon-wrapper {
+        background: var(--gradient-primary); /* Use variable */
+        transition: transform 0.3s ease; /* Keep transition */
+    }
+
+    .knowledge-card:hover .feature-icon-wrapper {
+        transform: scale(1.1); /* Keep hover */
+    }
+
+    .feature-icon {
+        color: white; /* Ensure icon color is white */
+    }
+
+    /* How It Works Grid */
+    .how-it-works-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Use 300px min */
+        gap: 2rem; /* Keep gap */
+        margin-top: 3rem;
+        transform: translate(14%,1%);
+    }
+
+    @media (max-width: 768px) {
+        .how-it-works-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem; /* Keep gap */
+            transform: none;
+        }
+    }
+    .step-card {
+        box-shadow: var(--shadow-md); /* Use variable */
+        transition: all 0.3s ease; /* Keep transition */
+    }
+
+    .step-card:hover {
+        transform: translateY(-5px); /* Keep hover */
+        box-shadow: var(--shadow-lg); /* Use variable */
+    }
+
+    .step-icon-wrapper {
+        background: var(--gradient-primary); /* Use variable */
+        transition: transform 0.3s ease; /* Keep transition */
+    }
+
+    .step-card:hover .step-icon-wrapper {
+        transform: scale(1.1); /* Keep hover */
+    }
+
+    .step-icon {
+        color: white; /* Ensure icon color is white */
+    }
+
+    /* Chat Demo */
+    .interactive-demo-section {
+        /* Keep section styles */
+    }
+
+    .chat-demo {
+        background: rgba(255, 255, 255, 0.9); /* Use slightly transparent white */
+        box-shadow: var(--shadow-lg); /* Use variable */
+        max-width: 30rem; /* Keep max width */
+        margin-top: 2rem; /* Keep margin */
+    }
+
+    .chat-message {
+        /* Keep chat message padding and border-radius */
+    }
+
+    .user-message {
+        background-color: var(--bg-light); /* Use variable */
+        color: var(--text-dark); /* Use variable */
+        margin-left: 2rem; /* Keep margin */
+    }
+
+    .ai-message {
+        background-color: coral;
+        color: white; /* Ensure text is white */
+        margin-right: 2rem; /* Keep margin */
+    }
+
+    /* Dashboard Frame */
+    .knowledge-portal-frame {
+        box-shadow: var(--shadow-xl); /* Use variable */
+        transition: all 0.4s ease; /* Keep transition */
+    }
+
+    .knowledge-portal-frame:hover {
+        transform: translateY(-5px); /* Keep hover */
+    }
+
+    .frame-header {
+        /* Keep header styles */
+    }
+
+    .frame-dots {
+        /* Keep dots styles */
+    }
+
+    .frame-dots span {
+        /* Keep dot size and border-radius */
+        background-color: #e2e8f0; /* Default color */
+    }
+
+    .frame-dots span:nth-child(1) {
+        background-color: #ef4444; /* Red */
+    }
+
+    .frame-dots span:nth-child(2) {
+        background-color: #f59e0b; /* Yellow */
+    }
+
+    .frame-dots span:nth-child(3) {
+        background-color: #10b981; /* Green */
+    }
+
+
+    .frame-title {
+        color: var(--text-muted); /* Use variable */
+    }
+
+    .frame-content {
+        /* Keep content padding */
+    }
+
+    /* Dashboard Grid */
+    .dashboard-grid {
+        gap: 1rem; /* Keep gap */
+    }
+
+    .dashboard-module {
+        background: var(--bg-light); /* Use variable */
+    }
+
+    .module-title {
+        color: var(--text-dark); /* Use variable */
+    }
+
+    .module-list li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Keep border style */
+    }
+
+    .gradient-line {
+        /* Keep gradient line styles */
+         background: var(--gradient-primary); /* Use gradient variable */
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .knowledge-grid,
+        .how-it-works-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Use 250px min */
+            gap: 1.5rem; /* Keep gap */
+        }
+    }
+
 </style>
 {% endblock %} {% block extra_js %}
 <script>

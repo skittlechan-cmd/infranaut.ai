@@ -38,76 +38,18 @@
     <main class="dashboard-content">
         <div class="dashboard-header">
             <h1>API Management</h1>
-            <button class="btn btn-primary" id="createApiBtn">Create New API Key</button>
         </div>
         
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category, message in messages %}
-              <div class="alert alert-{{ category }}" style="margin-bottom: 20px;">{{ message }}</div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
-        
-        <!-- API Key Creation Form (hidden by default) -->
-        <div id="apiCreateForm" style="display: none; margin-bottom: 20px;">
-            <div class="api-card">
-                <h3>Create New API Key</h3>
-                <form method="post" action="{{ url_for('api_generate_key') }}">
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-                    <div class="form-group">
-                        <label for="key_name">API Key Name</label>
-                        <input type="text" id="key_name" name="key_name" required placeholder="e.g. Production API, Development API">
-                    </div>
-                    <div class="form-group" style="display: flex; gap: 10px;">
-                        <button type="submit" class="btn btn-primary">Generate Key</button>
-                        <button type="button" class="btn btn-secondary" id="cancelApiBtn">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <div class="api-list">
-            {% if api_keys|length > 0 %}
-                {% for key in api_keys %}
-                <div class="api-card" data-key-id="{{ key.id }}">
-                    <div class="api-header">
-                        <h3>{{ key.name }}</h3>
-                        <span class="api-status {% if key.is_active %}active{% else %}inactive{% endif %}">
-                            {% if key.is_active %}Active{% else %}Inactive{% endif %}
-                        </span>
-                    </div>
-                    <div class="api-details">
-                        <p><strong>API Key:</strong> {{ key.api_key[:10] }}••••••••••••</p>
-                        <p><strong>Created:</strong> {{ key.created_at.split('T')[0] }}</p>
-                        <p><strong>Last Used:</strong> {% if key.last_used %}{{ key.last_used.split('T')[0] }}{% else %}Never{% endif %}</p>
-                    </div>
-                    <div class="api-actions">
-                        <button class="btn btn-small reveal-key" data-key="{{ key.api_key }}" aria-label="Show API Key">
-                            <i class="fas fa-eye"></i> Show Key
-                        </button>
-                        <button class="btn btn-small btn-secondary revoke-key" data-key-id="{{ key.id }}" aria-label="Revoke API Key">
-                            <i class="fas fa-ban"></i> Revoke
-                        </button>
-                    </div>
+        <div class="api-coming-soon">
+            <div class="coming-soon-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-tools"></i>
                 </div>
-                {% endfor %}
-            {% else %}
-                <div class="api-card empty-state" style="text-align: center; padding: 30px;">
-                    <p>You don't have any API keys yet. Create your first API key to get started.</p>
-                </div>
-            {% endif %}
-        </div>
-        
-        <div class="api-usage">
-            <h2>API Usage Statistics</h2>
-            <div class="usage-chart">
-                <!-- Placeholder for a chart -->
-                <div class="chart-placeholder" aria-label="API Usage Statistics Chart">
-                    <div class="chart-loading">
-                        <i class="fas fa-chart-line fa-3x"></i>
-                        <p>API usage statistics are being loaded...</p>
-                    </div>
+                <h2>Coming Soon</h2>
+                <p class="main-text">This section is currently under development.</p>
+                <p class="sub-text">We're building tools to help you manage, monitor, and secure your APIs more effectively.</p>
+                <div class="status-badge">
+                    <span>🚧 Under Design & Development</span>
                 </div>
             </div>
         </div>
@@ -116,44 +58,12 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const createBtn = document.getElementById('createApiBtn');
-        const cancelBtn = document.getElementById('cancelApiBtn');
-        const apiForm = document.getElementById('apiCreateForm');
         const profileUpload = document.getElementById('profileUpload');
         const profileImg = document.getElementById('profileImg');
-        
-        // Show/hide API creation form
-        createBtn.addEventListener('click', function() {
-            apiForm.style.display = 'block';
-            createBtn.style.display = 'none';
-        });
-        
-        cancelBtn.addEventListener('click', function() {
-            apiForm.style.display = 'none';
-            createBtn.style.display = 'block';
-        });
-        
-        // Reveal API key functionality
-        document.querySelectorAll('.reveal-key').forEach(button => {
-            button.addEventListener('click', function() {
-                const apiKey = this.getAttribute('data-key');
-                const detailsDiv = this.closest('.api-card').querySelector('.api-details');
-                const keyPara = detailsDiv.querySelector('p:first-child');
-                
-                if (this.textContent === 'Show Key') {
-                    keyPara.innerHTML = `<strong>API Key:</strong> <code>${apiKey}</code>`;
-                    this.textContent = 'Hide Key';
-                } else {
-                    keyPara.innerHTML = `<strong>API Key:</strong> ${apiKey.substr(0, 10)}••••••••••••`;
-                    this.textContent = 'Show Key';
-                }
-            });
-        });
-
-        // Profile image upload handling
         const profileContainer = document.getElementById('profileContainer');
         const uploadProgress = document.querySelector('.profile-upload-progress');
         
+        // Profile image upload handling
         profileUpload.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -209,41 +119,6 @@
                 });
             }
         });
-
-        // API key revocation
-        document.querySelectorAll('.revoke-key').forEach(button => {
-            button.addEventListener('click', function() {
-                if (confirm('Are you sure you want to revoke this API key? This action cannot be undone.')) {
-                    const keyId = this.getAttribute('data-key-id');
-                    fetch('/revoke_api_key', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRFToken': document.querySelector('input[name="csrf_token"]').value
-                        },
-                        body: JSON.stringify({ key_id: keyId })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            const card = this.closest('.api-card');
-                            const statusSpan = card.querySelector('.api-status');
-                            statusSpan.textContent = 'Inactive';
-                            statusSpan.classList.remove('active');
-                            statusSpan.classList.add('inactive');
-                            this.disabled = true;
-                            this.textContent = 'Revoked';
-                        } else {
-                            alert('Failed to revoke API key: ' + data.error);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Failed to revoke API key');
-                    });
-                }
-            });
-        });
     });
 </script>
-{% endblock %} 
+{% endblock %}

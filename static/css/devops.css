@@ -40,24 +40,17 @@ html.has-navbar-fixed-top {
 }
 
 .devops-hero-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Raleway", sans-serif; /* Changed from Roboto */
     font-size: 3.5rem;
     line-height: 1.2;
     font-weight: 700;
     letter-spacing: -0.02em;
-    background: linear-gradient(
-        135deg,
-        var(--primary-color),
-        var(--secondary-color)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color:#FF6B00;
     margin-bottom: 1.5rem;
 }
 
 .devops-hero-subtitle {
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: "Roboto", sans-serif; /* Changed from IBM Plex Sans to Roboto (related to Inter and already used) */
     font-size: 1.25rem;
     line-height: 1.6;
     color: #585d65;
@@ -65,6 +58,18 @@ html.has-navbar-fixed-top {
     font-weight: 400;
     margin-bottom: 2rem;
 }
+
+/* Headings and Subtexts */
+.section h2,
+.devops-feature-card h3 {
+    font-family: "IBM Plex Sans", sans-serif; /* Set font for headings */
+}
+
+.devops-feature-card .subtitle,
+.devops-chat-container .subtitle {
+     font-family: "Roboto", sans-serif; /* Set font for subtexts (using Roboto as related to Inter) */
+}
+
 
 .devops-hero-dashboard {
     position: relative;
@@ -84,6 +89,7 @@ html.has-navbar-fixed-top {
 
     .devops-hero-title {
         font-size: 2.5rem;
+         font-family: "Raleway", sans-serif; /* Ensure responsive title also uses Raleway */
     }
 
     .devops-hero-dashboard {
@@ -95,17 +101,19 @@ html.has-navbar-fixed-top {
 @media screen and (max-width: 768px) {
     .devops-hero-content {
         text-align: center;
-        padding: 3rem 1.5rem;
+        padding: -1rem 1.5rem;
     }
 
     .devops-hero-title {
         font-size: 2rem;
         text-align: center;
+         font-family: "Raleway", sans-serif; /* Ensure responsive title also uses Raleway */
     }
 
     .devops-hero-subtitle {
         text-align: center;
         margin: 0 auto 2rem;
+        font-family: "Roboto", sans-serif; /* Ensure responsive subtitle also uses Roboto */
     }
 
     .devops-hero .buttons {
@@ -394,12 +402,12 @@ html.has-navbar-fixed-top {
         padding: 1.25rem;
         min-height: 100px;
     }
-    
+
     .language-item i {
         font-size: 2rem;
         margin-bottom: 0.5rem;
     }
-    
+
     .language-item span {
         font-size: 0.9rem;
     }

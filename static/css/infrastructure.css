@@ -14,20 +14,40 @@
     padding-top: 2rem;
 }
 
+/* Apply Inter to most text */
+body {
+    font-family: 'Inter', sans-serif; /* Added */
+}
+
 .infra-hero-subtitle {
     font-size: 1.25rem;
     line-height: 1.6;
     color: var(--text-dark);
     margin-bottom: 2rem;
     max-width: 540px;
+    font-family: 'Inter', sans-serif; /* Ensured */
 }
 
 .infra-hero-content {
     animation: fadeIn 0.8s ease-out forwards;
 }
 
+/* Body headings (IBM Plex Sans) */
+h1, h2, h3, h4, h5, h6,
+.section h2, /* Specific section titles */
+.testimonial-header h2, /* Testimonial header */
+.dashboard-title, /* Dashboard title */
+.infra-feature-card h3, /* Feature card titles */
+.case-study-title, /* Case study titles */
+.infrastructure-card-inner h3 /* Infrastructure card titles */
+{
+    font-family: 'IBM Plex Sans', sans-serif; /* Changed */
+    /* Other styles inherited or defined below */
+}
+
+
 .devops-hero-title {
-    font-family: "Recoleta", serif;
+    font-family: "Space Mono", monospace; /* Keep as requested (original) */
     font-size: 3.5rem;
     line-height: 1.2;
     font-weight: 700;
@@ -37,16 +57,13 @@
 
 /* Explicit gradient text styling with improved visibility */
 .gradient-text-infra {
-    font-family: "Recoleta", serif;
-    background: linear-gradient(135deg, #ff6c37, #2563eb);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-family: "Raleway", monospace; /* Keep font family as it is */
     color: #ff6c37; /* Fallback color */
     display: inline-block; /* Ensures the gradient applies correctly */
     font-weight: 700;
     text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
     margin-top: 5rem;
+
 }
 
 .infrastructure-gradient-bg {
@@ -65,82 +82,6 @@
     z-index: 0;
 }
 
-/* Feature Cards */
-.infrastructure-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.infrastructure-card {
-    position: relative;
-    background: linear-gradient(to bottom, #ffffff, #f9fafb);
-    border-radius: 0.75rem;
-    overflow: hidden;
-    box-shadow:
-        var(--shadow-md),
-        0 0 0 1px rgba(17, 24, 39, 0.05);
-    transition: all 0.3s ease;
-    height: 100%;
-    border-bottom: 3px solid transparent;
-}
-
-.infrastructure-card:hover {
-    transform: translateY(-5px);
-    box-shadow:
-        var(--shadow-lg),
-        0 0 0 1px rgba(17, 24, 39, 0.08);
-    border-bottom: 3px solid var(--primary-color);
-}
-
-.infrastructure-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--gradient-primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-}
-
-.infrastructure-card:hover::before {
-    transform: scaleX(1);
-}
-
-.infrastructure-card-inner {
-    padding: 2rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.infrastructure-card-inner h3 {
-    color: #1e40af;
-    margin-bottom: 0.75rem;
-    font-weight: 700;
-}
-
-.card-icon {
-    width: 3.5rem;
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.5rem;
-    background: linear-gradient(135deg, #ff6c37, #e85d29);
-    color: white;
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 10px rgba(255, 108, 55, 0.25);
-}
-
-.infrastructure-card:hover .card-icon {
-    transform: scale(1.1);
-}
 
 /* Browser Mac-Style Controls */
 .browser-controls {
@@ -234,6 +175,7 @@
     margin-bottom: 0.75rem;
     color: #1e40af !important;
     font-size: 1.25rem;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 /* Gradient Line */
@@ -264,26 +206,37 @@
         font-size: 1.125rem;
     }
 
-    /* Enlarged hero image for mobile */
+    /* Target the column containing the hero image and remove padding on mobile */
+    /* This allows the image container to take up more horizontal space */
+    .columns.is-vcentered > .column.is-12-mobile:nth-child(2) {
+         padding-left: 0;
+         padding-right: 0;
+    }
+
+
+    /* Enlarged hero image container for mobile */
     .hero-image-container {
-        width: 100%;
-        max-width: 100%;
-        margin: 5rem auto 0;
-        padding: 0;
+        width: 100%; /* Ensure the container fills the now non-padded column */
+        max-width: none; /* Remove any conflicting max-width */
+        margin: 5rem auto 0; /* Keep the top margin and auto center if needed */
+        padding: 0; /* Remove any padding on the container itself */
     }
 
     .hero-image-container img {
-        width: 100%;
-        max-width: none;
-        height: auto;
-        object-fit: cover;
+        width: 100%; /* Image fills its container */
+        max-width: none; /* Remove any conflicting max-width on the image */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: cover; /* Ensure it covers the area without distortion */
         transform-origin: center;
         border-radius: 0.75rem;
+        margin: 0; /* Remove any extra margin on the image */
+        padding: 0; /* Remove any extra padding on the image */
     }
 
     .hero-image-container.animate img {
         transform: scale(1.05);
-        margin-top: 0rem;
+        /* Keep the existing animation scale effect if desired */
+        /* margin-top: 0rem; /* This might be redundant if margin is on the container */
     }
 
     .infrastructure-cards-container {
@@ -365,38 +318,6 @@
         align-items: center;
     }
 
-    /* Enhanced card styling for mobile */
-    .card.infra-feature-card {
-        margin-bottom: 1.5rem;
-        transform: none !important;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        transition: box-shadow 0.3s ease;
-    }
-
-    .card.infra-feature-card:active {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-        transform: translateY(2px) !important;
-    }
-
-    .card.infra-feature-card .card-content {
-        padding: 1.5rem;
-    }
-
-    .infra-feature-icon {
-        margin: 0 auto 1.25rem;
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-
-    .card.infra-feature-card h3 {
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-
-    .card.infra-feature-card p {
-        text-align: center;
-    }
 
     /* Better spacing for tool items */
     .devops-tool-item {
@@ -667,6 +588,7 @@
     color: rgba(255, 255, 255, 0.95) !important;
     flex: 1;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 .testimonial-quote .flex.items-center {
@@ -696,6 +618,7 @@
     transform: rotate(3deg);
     z-index: 5;
     transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 .testimonial-quote:hover .testimonial-metric {
@@ -768,6 +691,7 @@
     color: white;
     position: relative;
     display: inline-block;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 /* Add decorative underline to heading */
@@ -786,15 +710,11 @@
 .testimonial-header p {
     font-size: 1.25rem;
     opacity: 0.9;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 /* Hero Section Buttons */
 .infra-primary-btn {
-    background: linear-gradient(
-        135deg,
-        var(--primary-color),
-        var(--secondary-color)
-    );
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
@@ -804,6 +724,7 @@
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: none;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 .infra-primary-btn:hover {
@@ -823,6 +744,8 @@
     transition: all 0.3s ease;
     border: 2px solid var(--primary-color);
     margin-left: -0.2rem;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
+    margin-left: 0.5rem;
 }
 
 .infra-outlined-btn:hover {
@@ -957,6 +880,7 @@
     color: var(--primary-color);
     font-weight: 600;
     transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 .infra-link-arrow:hover {
@@ -982,6 +906,7 @@
     box-shadow: var(--shadow-lg);
     max-width: 800px;
     margin: 0 auto;
+    font-family: 'Inter', sans-serif; /* Ensured body font for paragraphs */
 }
 
 .infra-cta-buttons {
@@ -1003,20 +928,35 @@
 .case-study-title,
 .testimonial-quote p,
 .testimonial-quote blockquote,
-.infrastructure-card-inner p {
+.infrastructure-card-inner p,
+.infra-feature-card p, /* Feature card description */
+.dashboard-subtitle, /* Dashboard subtitle */
+.feature-item p, /* Simple feature item description */
+#use-cases .card-description, /* Use case card description */
+#use-cases .stat-label /* Use case stat label */
+{
     color: #374151 !important;
     font-weight: 500;
     letter-spacing: 0.01em;
     line-height: 1.7;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 /* Enhance section titles with more appealing colors */
 h2.text-3xl,
 .section-title,
-.testimonial-header h2 {
+.testimonial-header h2,
+.dashboard-title,
+.infra-feature-card h3,
+.case-study-title,
+.infrastructure-card-inner h3,
+#use-cases .card-title,
+#use-cases .stat-value
+{
     font-weight: 700;
     color: #1e3a8a;
     letter-spacing: -0.01em;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 /* Improved card styling with more visual interest */
@@ -1052,6 +992,7 @@ h2.text-3xl,
     color: #1e40af;
     margin-bottom: 0.75rem;
     font-weight: 700;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 .card-icon {
@@ -1073,7 +1014,7 @@ h2.text-3xl,
     background: linear-gradient(to bottom, #ffffff, #f9fafb);
     border-radius: 1rem;
     overflow: hidden;
-    border: 1px solid rgba(229, 231, 235, 0.8);
+    border: 1px solid rgba(226, 232, 240, 0.8);
     box-shadow:
         0 10px 25px rgba(0, 0, 0, 0.04),
         0 4px 10px rgba(0, 0, 0, 0.02);
@@ -1117,12 +1058,14 @@ h2.text-3xl,
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 .card.infra-feature-card p {
     color: #4a5568;
     line-height: 1.7;
     font-size: 1.1rem;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 /* Enhanced infra-feature-icon with gradient and shadow */
@@ -1169,6 +1112,7 @@ h2.text-3xl,
     color: rgba(255, 255, 255, 0.95) !important;
     flex: 1;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 /* Enhance case study card appearance */
@@ -1195,6 +1139,7 @@ h2.text-3xl,
     margin-bottom: 0.75rem;
     color: #1e40af !important;
     font-size: 1.25rem;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 /* Text styling and colors */
@@ -1203,6 +1148,7 @@ h2.text-3xl,
     line-height: 2.5rem;
     color: #2d3748; /* Dark gray for main headings */
     transition: color 0.3s ease;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 .text-3xl.font-bold.mb-6.animate {
@@ -1218,6 +1164,7 @@ h2.text-3xl,
     transform: translateY(20px);
     opacity: 0;
     animation: textFadeIn 0.8s ease-out forwards;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 @keyframes textFadeIn {
@@ -1231,6 +1178,7 @@ h2.text-3xl,
     font-size: 1.25rem;
     line-height: 1.75rem;
     color: #4a5568; /* Medium gray for body text */
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 .text-gradient {
@@ -1248,6 +1196,7 @@ h2.text-3xl,
     transition: all 0.6s ease-out;
     color: #2d3748;
     margin-bottom: 3rem;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 .section h2.animate {
@@ -1327,6 +1276,7 @@ h2.text-3xl,
     max-width: 48rem;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 /* Card spacing and responsive padding */
@@ -1364,10 +1314,12 @@ h2.text-3xl,
 
 .infra-cta-box h2 {
     color: white;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 .infra-cta-box p {
     color: rgba(255, 255, 255, 0.9);
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 /* Text color classes */
@@ -1380,7 +1332,7 @@ h2.text-3xl,
 }
 
 .text-white {
-    
+
     background: linear-gradient(95deg, var(--primary-color) 0%, #4F46E5 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -1518,6 +1470,7 @@ h2.text-3xl,
     transform: translateY(20px);
     opacity: 0;
     animation: tagSlideUp 0.6s ease-out forwards;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 #use-cases .card-title {
@@ -1529,6 +1482,7 @@ h2.text-3xl,
     transform: translateY(20px);
     opacity: 0;
     animation: titleSlideUp 0.6s ease-out 0.2s forwards;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 #use-cases .card-description {
@@ -1539,6 +1493,7 @@ h2.text-3xl,
     transform: translateY(20px);
     opacity: 0;
     animation: descriptionSlideUp 0.6s ease-out 0.3s forwards;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 #use-cases .card-stats {
@@ -1561,11 +1516,13 @@ h2.text-3xl,
     font-size: 1.5rem;
     font-weight: 700;
     color: #ff6b00;
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 #use-cases .stat-label {
     font-size: 0.875rem;
     color: #4a5568;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 @keyframes tagSlideUp {
@@ -1648,6 +1605,7 @@ h2.text-3xl,
     animation: featureItemIn 0.6s ease-out forwards;
     opacity: 0;
     transform: translateX(20px);
+    font-family: 'Inter', sans-serif; /* Ensured body font for paragraph */
 }
 
 .feature-item:hover {
@@ -1739,16 +1697,7 @@ h2.text-3xl,
     z-index: 2;
 }
 
-.dashboard-container {
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease;
-    border: 1px solid #eaeaea;
-    position: relative;
-    background: white;
-    padding: 0.75rem;
-}
+
 
 .dashboard-container::before {
     content: "";
@@ -1762,10 +1711,7 @@ h2.text-3xl,
     transition: opacity 0.3s ease;
 }
 
-.dashboard-container:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
-}
+
 
 .dashboard-container:hover::before {
     opacity: 1;
@@ -1776,11 +1722,11 @@ h2.text-3xl,
     height: auto;
     border-radius: 0.75rem;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease; /* Keep this transition for the initial load animation */
 }
 
 .dashboard-container:hover img {
-    transform: scale(1.02);
+    transform: scale(1.02); /* Keep this for mobile/tablet */
 }
 
 /* Responsive Adjustments */
@@ -1803,6 +1749,7 @@ h2.text-3xl,
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: #ff6b00; /* Fallback */
+    font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 .dashboard-title::after {
@@ -1822,6 +1769,7 @@ h2.text-3xl,
     line-height: 1.6;
     margin-bottom: 2rem;
     max-width: 540px;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
 }
 
 /* Challenge Cards Carousel Styles */
@@ -1870,15 +1818,18 @@ h2.text-3xl,
 }
 
 .scroll-indicator {
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--card-border);
+    border-radius: 50%;
+    width: 36px; /* Size */
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     z-index: 5;
     transition: all 0.3s ease;
@@ -2018,6 +1969,11 @@ h2.text-3xl,
 .newsletter-container form {
     position: relative;
     z-index: 1;
+    font-family: 'Inter', sans-serif; /* Ensured body font */
+}
+
+.newsletter-container h3 {
+     font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
 }
 
 /* Shine effect for buttons and elements */
@@ -2090,4 +2046,281 @@ h2.text-3xl,
         ); /* Less blur on mobile for better performance */
         -webkit-backdrop-filter: blur(8px);
     }
+}
+
+/* Styles needed for the Service Carousel controlled by module.js */
+
+/* CSS needed for the Service Carousel (Always Expanded) */
+
+.service-carousel {
+    scroll-behavior: smooth;
+    position: relative;
+    overflow: hidden;
+    padding: 0 4px; /* Add padding to avoid edge clipping */
+    display: flex; /* Use flexbox to align cards and buttons */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Push buttons to the ends */
+}
+
+.service-cards-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* For iOS devices */
+    scrollbar-width: none; /* Firefox */
+    padding: 1rem 0.5rem;
+    margin: 0 auto;
+    gap: 1rem;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    will-change: transform; /* Optimize for animations */
+    align-items: stretch; /* Ensure cards are of equal height */
+    flex-grow: 1; /* Allow container to take available width */
+    scroll-snap-type: x mandatory; /* ADDED for smooth snapping on mobile */
+}
+
+.service-cards-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome and Safari */
+}
+
+/* Service Card styles */
+/* These cards use .module-card for visual styling */
+/* We override or ensure certain properties for the carousel */
+.service-card {
+    flex: 0 0 auto; /* Prevent stretching and shrinking */
+    width: 270px; /* Base width, adjusted by JS */
+    margin: 0 0.25rem; /* Slight margin between cards */
+    /* height should be auto based on content, not fixed or transitioned by default */
+    height: auto !important; /* Ensure height is always auto */
+    min-height: auto !important; /* Prevent min-height conflicts */
+    transition: all 0.3s ease; /* Keep hover transition from .module-card */
+    overflow: hidden;
+    transform: translateZ(0); /* Force hardware acceleration */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    scroll-snap-align: center; /* ADDED for smooth snapping on mobile */
+    /* The visual styles (background, border, shadow, hover) come from .module-card */
+}
+
+/* Ensure no height transition on active state as expansion is removed */
+.service-card.active {
+    /* This rule might still be triggered by JS, but we ensure height is auto */
+    height: auto !important;
+    /* Other active styles might be present in the original CSS, ensure they don't conflict */
+}
+
+/* Service Card Content wrapper */
+.service-card-content {
+    padding: 18px; /* Inner padding */
+    flex: 1; /* Allow content to grow */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Service Title within the card */
+.service-title {
+    /* Inherits most styles from .module-title */
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: -0.01em;
+     font-family: 'IBM Plex Sans', sans-serif; /* Ensured heading font */
+    /* Ensure the icon placeholder is hidden */
+    .icon {
+        display: none;
+    }
+}
+
+/* Service Description within the card */
+.service-description {
+    /* Inherits most styles from .module-description */
+    margin-bottom: 14px;
+    line-height: 1.5;
+    /* Ensure description is always fully visible */
+    display: block !important; /* Override potential flex/box display */
+    -webkit-line-clamp: unset !important; /* Remove line clamping */
+    line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important; /* Ensure overflow is visible */
+    height: auto !important; /* Ensure height is auto */
+    transition: none !important; /* Remove transition on content */
+     font-family: 'Inter', sans-serif; /* Ensured body font */
+}
+
+/* Remove styles specific to expand/collapse elements */
+/* Ensure these selectors are targeted accurately if they exist elsewhere */
+.service-feature-list,
+.card-learn-more,
+.expand-collapse-button {
+    display: none !important; /* Hide these elements forcefully */
+    opacity: 0 !important; /* Ensure opacity is zero */
+    visibility: hidden !important; /* Ensure visibility is hidden */
+    height: 0 !important; /* Ensure no space is taken */
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+}
+
+
+/* Scroll Indicator Buttons */
+.scroll-indicator {
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--card-border);
+    border-radius: 50%;
+    width: 36px; /* Size */
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 10;
+    /* Position relative to .service-carousel */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scroll-prev {
+    left: 2px;
+}
+
+.scroll-next {
+    right: 2px;
+}
+
+.scroll-indicator:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-indicator.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
+/* Responsive adjustments for scroll indicator visibility and card width */
+@media (max-width: 640px) {
+     .service-carousel {
+         padding: 0.5rem 0;
+     }
+     .service-cards-container {
+         padding: 12px 8px;
+         gap: 20px;
+         /* Add background/blur as seen in the mobile-only-card example */
+         background: rgba(255, 255, 255, 0.3);
+         backdrop-filter: blur(8px);
+         -webkit-backdrop-filter: blur(8px);
+     }
+
+     .service-card {
+         width: 300px; /* Wider for mobile */
+         margin: 4px 5px; /* Adjusted margin */
+         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+         /* Use translucent white background from .module-card */
+     }
+
+    .scroll-indicator {
+        display: flex; /* Show buttons on mobile */
+        width: 40px; /* Larger size */
+        height: 40px;
+        border: 2px solid var(--primary-color);
+    }
+
+    .scroll-indicator i {
+        color: var(--primary-color);
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+    .service-card {
+      width: 280px; /* Adjust width for tablet */
+      min-width: 280px;
+      margin: 0;
+    }
+    .scroll-indicator {
+        display: flex; /* Show buttons on tablet */
+    }
+}
+
+@media (min-width: 1024px) {
+     .service-card {
+         width: 320px; /* Adjust width for desktop */
+         min-width: 320px;
+         margin: 0;
+     }
+     /* Hide scroll buttons on desktop if not explicitly desired */
+     /* Remove the display:none here if you want them visible on desktop */
+     .scroll-indicator {
+         display: none; /* Hide buttons on desktop */
+     }
+ }
+
+/* Ensure original animation delays are kept */
+.column:nth-child(1) .infra-feature-card {
+    transition-delay: 0.1s;
+}
+.column:nth-child(2) .infra-feature-card {
+    transition-delay: 0.2s;
+}
+.column:nth-child(3) .infra-feature-card {
+    transition-delay: 0.3s;
+}
+.column:nth-child(4) .infra-feature-card {
+    transition-delay: 0.4s;
+}
+.column:nth-child(5) .infra-feature-card {
+    transition-delay: 0.5s;
+}
+.column:nth-child(6) .infra-feature-card {
+    transition-delay: 0.6s;
+}
+
+/* Ensure the .animate class works correctly with the new card structure */
+.infra-feature-card.animate {
+     transform: translateY(0);
+     opacity: 1;
+ }
+
+
+/* Desktop specific styles for Dashboard Image */
+@media (min-width: 1024px) {
+    .dashboard-container img {
+        /* Remove hover transition for desktop */
+        transition: none;
+    }
+
+    .dashboard-container:hover img {
+        /* Remove hover transform for desktop */
+        transform: none;
+    }
+}
+
+.hero-image-container {
+    position: relative;
+    padding: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 95%;
+    margin: 0.5rem auto;
+    margin-top: 5rem;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    display: flex;
+    
+    background-color: #f8f9fa;
+    position: relative;
+    margin-bottom: 0;
+    overflow: visible;
 }

@@ -1,0 +1,108 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+// Get Supabase configuration from window object (set by Flask template)
+const supabaseUrl = window.SUPABASE_URL;
+const supabaseKey = window.SUPABASE_ANON_KEY;
+
+// Debug Supabase configuration
+console.log('Newsletter Debug - Supabase URL:', supabaseUrl ? 'Present' : 'Missing');
+console.log('Newsletter Debug - Supabase Key:', supabaseKey ? 'Present' : 'Missing');
+
+// Validate Supabase configuration
+if (!supabaseUrl || !supabaseKey) {
+    console.error('Supabase configuration is missing. Newsletter functionality will not work.');
+    console.error('Missing:', {
+        url: !supabaseUrl,
+        key: !supabaseKey
+    });
+}
+
+// Initialize Supabase client
+let supabase = null;
+try {
+    supabase = createClient(supabaseUrl, supabaseKey);
+    console.log('Newsletter Debug - Supabase client initialized successfully');
+} catch (err) {
+    console.error('Failed to initialize Supabase client:', err);
+}
+
+// Newsletter subscription handling
+const initNewsletterSubscription = () => {
+    const form = document.querySelector('.footer-subscribe-form');
+    const input = document.querySelector('.footer-form-input');
+    
+    if (!form || !input) {
+        console.error('Newsletter form elements not found');
+        return;
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitButton = form.querySelector('.footer-subscribe-button');
+        const originalButtonText = submitButton.innerHTML;
+        
+        const email = input.value.trim();
+        if (!email || !email.includes('@')) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        // Disable form while submitting
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        submitButton.disabled = true;
+        input.disabled = true;
+
+        try {
+            // First check if Supabase is properly initialized
+            if (!supabase) {
+                throw new Error('Supabase client not initialized');
+            }
+
+            console.log('Attempting to subscribe email:', email);
+            const { data, error } = await supabase
+                .from('newsletter_subscribers')
+                .insert([{ email }]);
+
+            if (error) {
+                console.error('Newsletter subscription error:', error);
+                
+                switch (error.code) {
+                    case '23505': // unique_violation
+                        alert('This email is already subscribed.');
+                        break;
+                    case '42501': // insufficient_privilege
+                        console.error('Permission denied. Check RLS policies.');
+                        alert('Unable to process subscription. Please try again later.');
+                        break;
+                    case '42P01': // undefined_table
+                        console.error('Table not found. Run setup SQL first.');
+                        alert('Service temporarily unavailable. Please try again later.');
+                        break;
+                    default:
+                        console.error('Unknown error:', error);
+                        alert('Unable to process subscription. Please try again later.');
+                }
+            } else {
+                console.log('Successfully subscribed:', email);
+                alert('Thanks for subscribing to our newsletter!');
+                form.reset();
+            }
+        } catch (err) {
+            console.error('Critical error:', err);
+            if (err.message?.includes('not initialized')) {
+                alert('Newsletter service is not properly configured. Please try again later.');
+            } else {
+                alert('Unable to process your subscription. Please try again later.');
+            }
+        } finally {
+            // Re-enable form
+            submitButton.innerHTML = originalButtonText;
+            submitButton.disabled = false;
+            input.disabled = false;
+        }
+    });
+};
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', initNewsletterSubscription);

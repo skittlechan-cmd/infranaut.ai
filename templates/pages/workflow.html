@@ -3,6 +3,10 @@
     href="https://fonts.googleapis.com/css2?family=Recoleta:wght@400;500;600;700&display=swap"
     rel="stylesheet"
 />
+{# Add IBM Plex Sans import #}
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+{# Add Inter import (assuming it's not already in base.html) #}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 {% block content %}
 <!-- Hero Section with Orange White Gradient -->
 <section class="hero is-medium workflow-hero">
@@ -10,9 +14,9 @@
     <div class="hero-body">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-4xl mx-auto">
+                {# Removed inline style font-family: Raleway #}
                 <h1
                     class="text-4xl md:text-5xl font-bold leading-tight mb-6"
-                    style="font-family: Recoleta, serif"
                 >
                     <span
                         class="gradient-text gradient-text-workflow gradient-text-hover"
@@ -47,9 +51,9 @@
 <section id="explore-features" class="section py-16 bg-light">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="has-text-centered mb-16">
+            {# Removed inline style font-family: Recoleta #}
             <h2
                 class="text-3xl font-bold mb-4"
-                style="font-family: Recoleta, serif"
             >
                 Intelligent Workflow Optimization
             </h2>
@@ -80,9 +84,9 @@
                             ></path>
                         </svg>
                     </div>
+                    {# Removed inline style font-family: Recoleta #}
                     <h3
                         class="text-2xl font-semibold mb-4"
-                        style="font-family: Recoleta, serif"
                     >
                         Bottleneck Detection
                     </h3>
@@ -119,9 +123,9 @@
                             ></path>
                         </svg>
                     </div>
+                    {# Removed inline style font-family: Recoleta #}
                     <h3
                         class="text-2xl font-semibold mb-4"
-                        style="font-family: Recoleta, serif"
                     >
                         Task-to-Owner Mapping
                     </h3>
@@ -157,9 +161,9 @@
                             ></path>
                         </svg>
                     </div>
+                    {# Removed inline style font-family: Recoleta #}
                     <h3
                         class="text-2xl font-semibold mb-4"
-                        style="font-family: Recoleta, serif"
                     >
                         Service Call Visualization
                     </h3>
@@ -196,9 +200,9 @@
                             ></path>
                         </svg>
                     </div>
+                    {# Removed inline style font-family: Recoleta #}
                     <h3
                         class="text-2xl font-semibold mb-4"
-                        style="font-family: Recoleta, serif"
                     >
                         Resource Allocation
                     </h3>
@@ -235,9 +239,9 @@
                             ></path>
                         </svg>
                     </div>
+                    {# Removed inline style font-family: Recoleta #}
                     <h3
                         class="text-2xl font-semibold mb-4"
-                        style="font-family: Recoleta, serif"
                     >
                         Smart Retry Policies
                     </h3>
@@ -264,9 +268,9 @@
         <div class="columns is-vcentered">
             <div class="column is-5">
                 <div class="workflow-content pr-8">
+                    {# Removed inline style font-family: Recoleta #}
                     <h2
                         class="text-3xl font-bold mb-6"
-                        style="font-family: Recoleta, serif"
                     >
                         Visualize Your Entire Pipeline
                     </h2>
@@ -313,7 +317,7 @@
                         </div>
                         <div class="dashboard-content">
                             <img
-                                src="{{ url_for('static', filename='css/images/workflow_dashboard.jpg') }}"
+                                src="{{ url_for('static', filename='images/workflow_dashboard.jpg') }}"
                                 alt="Infranaut Workflow Dashboard"
                                 class="dashboard-img"
                                 loading="lazy"
@@ -330,9 +334,9 @@
 <section class="section py-16 bg-light">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="has-text-centered mb-12">
+            {# Removed inline style font-family: Recoleta #}
             <h2
                 class="text-3xl font-bold mb-4"
-                style="font-family: Recoleta, serif"
             >
                 Success Stories
             </h2>
@@ -347,15 +351,15 @@
             <div class="case-study-card">
                 <div class="case-study-logo">
                     <img
-                        src="{{ url_for('static', filename='css/images/Subject.png') }}"
+                        src="{{ url_for('static', filename='images/Subject.png') }}"
                         alt="TechCorp Logo"
                         loading="lazy"
                     />
                 </div>
                 <div class="case-study-content">
+                    {# Removed inline style font-family: Recoleta #}
                     <h3
                         class="text-2xl font-semibold mb-3"
-                        style="font-family: Recoleta, serif"
                     >
                         TechCorp
                     </h3>
@@ -435,306 +439,539 @@
         --primary-dark: #e67e00;
         --primary-light: #ffa533;
         --secondary-color: #ffffff;
+
+        /* New Font Definitions */
+        --font-heading: 'IBM Plex Sans', sans-serif;
+        --font-body: 'Inter', sans-serif;
+
+        /* Added Shadow Variables (assuming these are defined elsewhere or needed) */
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+         /* Background gradients from user's provided CSS (using existing color variables) */
+        --bg-gradient-start: #f8fafc; /* Example start color */
+        --bg-gradient-end: #ffffff; /* Example end color */
+
+         /* Gradient variable for text/elements based on the first CSS block */
+        --gradient-primary: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
     }
 
-    /* Orange Gradient Background */
-    .orange-gradient-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            135deg,
-            rgba(255, 140, 0, 0.1),
-            rgba(255, 255, 255, 0.9)
-        );
-        z-index: -1;
+     /* Apply fonts to elements */
+    h1, h2, h3, h4 {
+        font-family: var(--font-heading);
     }
 
-    .orange-gradient-cta {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #ff8c00, #e67e00);
-        z-index: -1;
+    p, li {
+        font-family: var(--font-body);
     }
 
-    /* Workflow Hero Section */
-    .workflow-hero {
-        background-color: #f8fafc;
-        position: relative;
-        overflow: hidden;
+    /* Ensure specific text classes also use the body font */
+    .text-gray-600,
+    .text-xl,
+    .text-lg,
+    .text-sm,
+    .metric-label,
+    .case-metric-label,
+    .case-study-link,
+    .button /* Apply to button text */
+    {
+         font-family: var(--font-body);
     }
 
-    /* Orange Gradient Text */
-    .text-gradient-orange {
-        background: linear-gradient(
-            90deg,
-            var(--primary-color),
-            var(--primary-dark)
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        display: inline-block;
-    }
 
-    /* Background Colors */
-    .bg-light {
-        background-color: #f9fafb;
-    }
+/* Workflow Page Specific Styles */
 
-    .bg-white {
-        background-color: #ffffff;
-    }
+/* Hero Section */
+.workflow-hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        var(--bg-gradient-start) 0%,
+        var(--bg-gradient-end) 100%
+    );
+    padding: 5rem 0 3rem;
+}
 
-    /* Orange Underline */
-    .orange-underline {
-        height: 4px;
-        width: 100px;
-        background: linear-gradient(
-            90deg,
-            var(--primary-color),
-            var(--primary-dark)
-        );
-        margin: 0 auto;
-        border-radius: 2px;
-    }
+/* Orange Gradient Background */
+.orange-gradient-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 140, 0, 0.1),
+        rgba(255, 255, 255, 0.9)
+    );
+    z-index: -1;
+}
 
-    /* Workflow Cards Container */
-    .workflow-cards-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
+.orange-gradient-cta {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff8c00, #e67e00);
+    z-index: -1;
+}
 
-    /* Workflow Card */
-    .workflow-card {
-        background-color: white;
-        border-radius: 0.75rem;
-        box-shadow:
-            0 4px 6px rgba(0, 0, 0, 0.05),
-            0 1px 3px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
+/* Workflow Hero Section - keep background color */
+.workflow-hero {
+    background-color: #f8fafc;
+}
+
+
+/* Orange Gradient Text */
+.text-gradient-orange {
+    /* Updated gradient text styles based on the second CSS block */
+    font-family: "Space Mono", monospace; /* Keep Space Mono for this specific gradient text class */
+    background: linear-gradient(135deg, #ff6c37, #2563eb);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #ff6c37; /* Fallback color */
+    display: inline-block;
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(255, 108, 55, 0.3);
+}
+
+/* Background Colors */
+.bg-light {
+    background-color: #f9fafb;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+/* Orange Underline */
+.orange-underline {
+    height: 4px;
+    width: 100px;
+    background: var(--gradient-primary); /* Use gradient variable */
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* Workflow Cards Container */
+.workflow-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Workflow Card */
+.workflow-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-md); /* Use variable */
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    /* Initial state for animation (keep) */
+    transform: translateX(-50px);
+    opacity: 0;
+    position: relative;
+}
+
+.workflow-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-primary); /* Use gradient variable */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.workflow-card:hover::before {
+    transform: scaleX(1);
+}
+
+.workflow-card-inner {
+    padding: 2rem;
+}
+
+.workflow-card:hover {
+    transform: translateY(-5px) !important; /* Keep hover effect */
+    box-shadow: 0 10px 25px rgba(255, 140, 0, 0.2); /* Keep specific hover shadow */
+}
+
+/* Card Animation */
+.slide-in {
+    animation: slideIn 0.6s forwards;
+}
+
+@keyframes slideIn {
+    0% {
         transform: translateX(-50px);
         opacity: 0;
-        position: relative;
     }
-
-    .workflow-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(
-            90deg,
-            var(--primary-color),
-            var(--primary-dark)
-        );
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.5s ease;
+    100% {
+        transform: translateX(0);
+        opacity: 1;
     }
+}
 
-    .workflow-card:hover::before {
-        transform: scaleX(1);
+/* Card Icon */
+.card-icon {
+    background-color: rgba(255, 140, 0, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.text-orange {
+    color: var(--primary-color);
+}
+
+.workflow-card:hover .card-icon {
+    background-color: var(--primary-color);
+}
+
+.workflow-card:hover .card-icon svg {
+    color: white;
+}
+
+/* Workflow Features List */
+.workflow-features-list {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.workflow-features-list li {
+    position: relative;
+    padding-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+    /* font-family is applied by the general `li` rule */
+}
+
+.workflow-features-list li::before {
+    content: "•";
+    position: absolute;
+    left: -1rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Workflow Dashboard */
+.workflow-dashboard-container {
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* Float Animation */
+    animation: floatAnimation 6s ease-in-out infinite; /* Keep float animation */
+}
+
+.dashboard-browser-frame {
+    background-color: #f3f4f6;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.browser-controls {
+    background-color: #e5e7eb;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+     gap: 0.5rem; /* Add gap for dots alignment */
+}
+
+.browser-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.browser-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+}
+
+.browser-dot:nth-child(1) {
+    background-color: #ef4444;
+}
+
+.browser-dot:nth-child(2) {
+    background-color: #f59e0b;
+}
+
+.browser-dot:nth-child(3) {
+    background-color: #10b981;
+}
+
+.dashboard-content {
+    padding: 1rem;
+    background-color: white;
+}
+
+.dashboard-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    /* Dashboard Image Animations */
+    transition:
+        transform 0.6s ease-in-out,
+        box-shadow 0.6s ease;
+    transform-origin: center;
+}
+
+.workflow-dashboard-container:hover .dashboard-img {
+    transform: scale(1.03); /* Keep hover scale */
+    box-shadow: 0 10px 25px rgba(255, 140, 0, 0.2); /* Keep hover shadow */
+}
+
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0);
     }
-
-    .workflow-card-inner {
-        padding: 2rem;
+    50% {
+        transform: translateY(-10px);
     }
-
-    .workflow-card:hover {
-        transform: translateY(-5px) !important;
-        box-shadow: 0 10px 25px rgba(255, 140, 0, 0.2);
+    100% {
+        transform: translateY(0);
     }
+}
 
-    /* Card Animation */
-    .slide-in {
-        animation: slideIn 0.6s forwards;
-    }
+/* Workflow Metrics */
+.workflow-metrics {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
 
-    @keyframes slideIn {
-        0% {
-            transform: translateX(-50px);
+.metric-item {
+    flex: 1;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    /* Number Counter Animations */
+    display: inline-block;
+    position: relative;
+    counter-reset: num var(--num);
+    animation: countUp 2s forwards ease-out;
+}
+
+.metric-value::after {
+    content: "%";
+}
+ /* Apply --num variables directly or via JavaScript */
+    /* Keeping the CSS animation definition here */
+    @keyframes countUp {
+        from {
             opacity: 0;
+            transform: translateY(20px);
         }
-        100% {
-            transform: translateX(0);
+        to {
             opacity: 1;
+            transform: translateY(0);
         }
     }
 
-    /* Card Icon */
-    .card-icon {
-        background-color: rgba(255, 140, 0, 0.1);
-        width: 60px;
-        height: 60px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        transition: all 0.3s ease;
+
+.metric-label {
+    font-size: 0.875rem;
+    color: #4b5563;
+    font-weight: 500;
+    /* font-family is applied by the general rule */
+}
+
+/* Case Study */
+.case-study-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.case-study-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-md); /* Use variable */
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.case-study-logo {
+    flex: 0 0 120px;
+    display: flex;
+    align-items: center;
+}
+
+.case-study-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.case-study-content {
+    flex: 1;
+}
+
+.case-study-metrics {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.case-metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.case-metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+     /* Case Study Metric Values Animation */
+    display: inline-block;
+    animation: fadeInRight 1s forwards;
+    opacity: 0; /* Initial state */
+}
+ @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
-    .text-orange {
-        color: var(--primary-color);
+
+.case-metric-label {
+    font-size: 0.875rem;
+    color: #4b5563;
+    /* font-family is applied by the general rule */
+}
+
+.case-study-link {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+     /* font-family is applied by the general rule */
+}
+
+.case-study-link:hover {
+    transform: translateX(5px);
+}
+
+/* CTA Section */
+.workflow-cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.workflow-cta-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.workflow-cta-btn {
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: 500;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s ease;
+     /* font-family is applied by the general `.button` rule */
+}
+
+.workflow-cta-btn:hover {
+    background-color: #f9fafb;
+}
+
+.workflow-outline-btn {
+    background-color: transparent;
+    color: white;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+     /* font-family is applied by the general `.button` rule */
+}
+
+.workflow-outline-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .workflow-hero {
+        padding: 3rem 0 2rem;
     }
 
-    .workflow-card:hover .card-icon {
-        background-color: var(--primary-color);
-    }
-
-    .workflow-card:hover .card-icon svg {
-        color: white;
-    }
-
-    /* Workflow Features List */
-    .workflow-features-list {
-        margin-top: 1rem;
-        padding-left: 1.5rem;
-    }
-
-    .workflow-features-list li {
-        position: relative;
-        padding-left: 0.5rem;
-        margin-bottom: 0.5rem;
-        color: #4b5563;
-    }
-
-    .workflow-features-list li::before {
-        content: "•";
-        position: absolute;
-        left: -1rem;
-        color: var(--primary-color);
-        font-weight: bold;
-    }
-
-    /* Workflow Dashboard */
-    .workflow-dashboard-container {
-        border-radius: 0.75rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-    }
-
-    .dashboard-browser-frame {
-        background-color: #f3f4f6;
-        border-radius: 0.75rem;
-        overflow: hidden;
-    }
-
-    .browser-controls {
-        background-color: #e5e7eb;
-        padding: 0.75rem 1.25rem;
-        display: flex;
-        align-items: center;
-    }
-
-    .browser-dots {
-        display: flex;
-        gap: 0.5rem;
-    }
-
-    .browser-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: #d1d5db;
-    }
-
-    .browser-dot:nth-child(1) {
-        background-color: #ef4444;
-    }
-
-    .browser-dot:nth-child(2) {
-        background-color: #f59e0b;
-    }
-
-    .browser-dot:nth-child(3) {
-        background-color: #10b981;
-    }
-
-    .dashboard-content {
-        padding: 1rem;
-        background-color: white;
-    }
-
-    .dashboard-img {
-        width: 100%;
-        height: auto;
-        border-radius: 0.5rem;
-        display: block;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    }
-
-    /* Workflow Metrics */
-    .workflow-metrics {
-        display: flex;
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .metric-item {
-        flex: 1;
-    }
-
-    .metric-value {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        line-height: 1;
-        margin-bottom: 0.5rem;
-    }
-
-    .metric-value::after {
-        content: "%";
-    }
-
-    .metric-label {
-        font-size: 0.875rem;
-        color: #4b5563;
-        font-weight: 500;
-    }
-
-    /* Case Study */
-    .case-study-container {
-        max-width: 900px;
-        margin: 0 auto;
+    .workflow-cards-container {
+        grid-template-columns: 1fr;
     }
 
     .case-study-card {
-        background-color: white;
-        border-radius: 0.75rem;
-        box-shadow:
-            0 4px 6px rgba(0, 0, 0, 0.05),
-            0 1px 3px rgba(0, 0, 0, 0.1);
-        padding: 2rem;
-        display: flex;
-        gap: 2rem;
-        transition:
-            transform 0.5s ease,
-            box-shadow 0.5s ease;
-    }
-
-    .case-study-logo {
-        flex: 0 0 120px;
-        display: flex;
+        flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
-   
-/* bird image edit */
-    @media (min-width: 769px) {
+    .case-study-metrics {
+        justify-content: center;
+    }
+
+    .workflow-metrics {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .metric-value {
+        font-size: 2.5rem;
+    }
+
+    .orange-underline {
+        margin-left: auto;
+        margin-right: auto;
+    }
+     /* Specific adjustments from first CSS block */
+     body.has-navbar-fixed-top, html.has-navbar-fixed-top {
+        padding-top: 0rem;
+    }
+     @media (min-width: 769px) {
         .case-study-logo {
             flex: 0 0 120px;
             justify-content: flex-start;
@@ -757,201 +994,7 @@
         }
     }
 
-    .case-study-content {
-        flex: 1;
-    }
-
-    .case-study-metrics {
-        display: flex;
-        gap: 2rem;
-        margin-top: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .case-metric {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .case-metric-value {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--primary-color);
-    }
-
-    .case-metric-label {
-        font-size: 0.875rem;
-        color: #4b5563;
-    }
-
-    .case-study-link {
-        display: inline-block;
-        color: var(--primary-color);
-        font-weight: 500;
-        text-decoration: none;
-        transition: transform 0.3s ease;
-    }
-
-    .case-study-link:hover {
-        transform: translateX(5px);
-    }
-
-    /* CTA Section */
-    .workflow-cta-section {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .workflow-cta-container {
-        max-width: 900px;
-        margin: 0 auto;
-        text-align: center;
-        position: relative;
-        z-index: 10;
-    }
-
-    .workflow-cta-btn {
-        background-color: white;
-        color: var(--primary-color);
-        font-weight: 500;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.375rem;
-        transition: background-color 0.3s ease;
-    }
-
-    .workflow-cta-btn:hover {
-        background-color: #f9fafb;
-    }
-
-    .workflow-outline-btn {
-        background-color: transparent;
-        color: white;
-        font-weight: 500;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.375rem;
-        transition:
-            background-color 0.3s ease,
-            border-color 0.3s ease;
-    }
-
-    /* Dashboard Image Animations */
-    .dashboard-img {
-        transition:
-            transform 0.6s ease-in-out,
-            box-shadow 0.6s ease;
-        transform-origin: center;
-    }
-
-    .workflow-dashboard-container:hover .dashboard-img {
-        transform: scale(1);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    }
-
-    /* Float Animation for Dashboard Container */
-    .workflow-dashboard-container {
-        animation: none;
-    }
-
-    @keyframes floatAnimation {
-        0% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0);
-        }
-    }
-
-    /* Number Counter Animations */
-    .metric-value {
-        display: inline-block;
-        position: relative;
-        counter-reset: num var(--num);
-        animation: countUp 2s forwards ease-out;
-    }
-
-    .metric-value:nth-child(1) {
-        --num: 42;
-    }
-
-    .metric-value:nth-child(2) {
-        --num: 3.5;
-    }
-
-    .metric-value:nth-child(3) {
-        --num: 68;
-    }
-
-    @keyframes countUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Case Study Metric Values Animation */
-    .case-metric-value {
-        display: inline-block;
-        animation: fadeInRight 1s forwards;
-        opacity: 0;
-    }
-
-    @keyframes fadeInRight {
-        from {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    .workflow-outline-btn:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        border-color: white;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-        .workflow-cards-container {
-            grid-template-columns: 1fr;
-        }
-
-        .case-study-card {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .case-study-metrics {
-            justify-content: center;
-        }
-
-        .workflow-metrics {
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .metric-value {
-            font-size: 2.5rem;
-        }
-    }
-
-
-
-    /* extas */
-    body.has-navbar-fixed-top, html.has-navbar-fixed-top {
-        padding-top: 0rem;
-    }
+}
 
 </style>
 {% endblock %}

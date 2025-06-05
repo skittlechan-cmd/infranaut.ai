@@ -76,6 +76,8 @@ def send_contact_email(name, email, subject, message):
     <p>{message}</p>
     """
     
+    print(f"[DEBUG] Attempting to send email to {recipient}")
+
     try:
         mail.send(msg)
         return True, "Your message has been sent. Thank you!"
@@ -87,3 +89,5 @@ def send_contact_email(name, email, subject, message):
         print(f"MAIL_USE_TLS: {mail.state.use_tls}")
         print(f"MAIL_USERNAME: {mail.state.username}")
         return False, "There was an error sending your message. Please try again later." 
+    
+    print(f"[DEBUG] send_contact_email() called with:\nName: {name}, Email: {email}, Subject: {subject}, Message: {message}")

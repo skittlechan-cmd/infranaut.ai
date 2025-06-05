@@ -203,7 +203,7 @@
             >
             <h2
                 class="text-3xl md:text-4xl font-bold mb-4"
-                style="font-family: &quot;Recoleta&quot;, serif"
+                style="font-family: IBM Plex Mono, monospace"
             >
                 Our Contact Details
             </h2>
@@ -233,7 +233,7 @@
                 </div>
                 <h3
                     class="text-xl font-semibold mb-2"
-                    style="font-family: &quot;Recoleta&quot;, serif"
+                    style="font-family: IBM Plex Mono, monospace"
                 >
                     General Inquiries
                 </h3>
@@ -262,7 +262,7 @@
                 </div>
                 <h3
                     class="text-xl font-semibold mb-2"
-                    style="font-family: &quot;Recoleta&quot;, serif"
+                    style="font-family: IBM Plex Mono, monospace"
                 >
                     Sales
                 </h3>
@@ -291,7 +291,7 @@
                 </div>
                 <h3
                     class="text-xl font-semibold mb-2"
-                    style="font-family: &quot;Recoleta&quot;, serif"
+                    style="font-family: IBM Plex Mono, monospace"
                 >
                     Partnerships
                 </h3>
@@ -316,7 +316,7 @@
             >
             <h2
                 class="text-3xl md:text-4xl font-bold mb-4"
-                style="font-family: &quot;Recoleta&quot;, serif"
+                style="font-family: IBM Plex Mono, monospace"
             >
                 Let's Talk
             </h2>
@@ -327,11 +327,24 @@
             </p>
         </div>
 
-        {# Contact Form Structure (HTML only - requires backend for processing)
-        #}
+{# Contact Form Structure (HTML only - requires backend for processing)#}
+
+
         <div class="contact-form-wrapper slide-in-up">
-            <form action="#" method="POST" class="contact-form">
-                {# Add actual form action if needed #}
+            <form id="contactForm" action="{{ url_for('contact') }}" method="POST" class="contact-form">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} mt-6 text-center">
+                                <p class="{% if category == 'success' %}text-green-600{% else %}text-red-600{% endif %} font-semibold text-lg">
+                                    {{ message }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                 <div class="form-group">
                     <label for="name" class="form-label">Name</label>
                     <input
@@ -824,6 +837,19 @@
             padding: 0.6rem 0.8rem;
         } /* Reduce input padding */
     }
+
+
+
+    /* form confirmation */
+    #form-confirmation {
+    animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
 </style>
 {% endblock %} {% block extra_js %}
 <script>
@@ -859,6 +885,18 @@
         // Observe elements with the 'slide-in-up' class
         document.querySelectorAll(".slide-in-up").forEach((el) => {
             slideObserver.observe(el);
+        });
+    });
+
+
+
+       document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contactForm");
+        const confirmation = document.getElementById("form-confirmation");
+
+        form.addEventListener("submit", function (e) {
+            // Form will submit normally - no preventDefault
+            // Success message is handled by Flask's flash messages
         });
     });
 </script>

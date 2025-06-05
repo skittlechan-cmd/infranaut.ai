@@ -151,7 +151,7 @@
 .gradient-button {
   background-size: 200% auto;
   transition: all 0.5s ease;
-  background-image: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 51%, var(--primary-color) 100%);
+ 
 }
 
 .gradient-button:hover {
@@ -221,18 +221,7 @@
 }
 
 /* Text Gradient Flow */
-.text-gradient-flow {
-  background: linear-gradient(90deg, 
-    var(--primary-color), 
-    var(--secondary-color), 
-    var(--accent-color), 
-    var(--primary-color));
-  background-size: 300% 100%;
-  animation: morphGradient 6s linear infinite;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+
 
 /* Icon Pulse */
 .icon-pulse {

@@ -1,9 +1,5 @@
 {% extends 'base.html' %} {% block title %}Cloud Migration Services |
 Infranaut.ai{% endblock %} {# Added a specific title #}
-<link
-    href="https://fonts.googleapis.com/css2?family=Recoleta:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-/>
 {% block content %}
 <!-- Hero Section -->
 <section class="hero is-medium migration-hero">
@@ -16,7 +12,7 @@ Infranaut.ai{% endblock %} {# Added a specific title #}
                 >
                     {# Centered text on mobile #}
                     <h1
-                        class="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
+                        class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 hero-title" {# Added hero-title class #}
                     >
                         <span
                             class="gradient-text gradient-text-migration gradient-text-hover"
@@ -64,7 +60,7 @@ Infranaut.ai{% endblock %} {# Added a specific title #}
                             #}
                         ></div>
                         <img
-                            src="{{ url_for('static', filename='css/images/migration.jpeg') }}"
+                            src="{{ url_for('static', filename='images/migration.jpeg') }}"
                             alt="Cloud Migration illustration"
                             class="w-full rounded-2xl shadow-2xl relative z-10"
                         />
@@ -87,7 +83,7 @@ Infranaut.ai{% endblock %} {# Added a specific title #}
             >
             <h2
                 class="text-3xl md:text-4xl font-bold mb-4"
-                style="font-family: Recoleta, serif"
+                {# style="font-family: Recoleta, serif" #} {# Removed inline style #}
             >
                 Streamlined Migration Journey
             </h2>
@@ -120,7 +116,7 @@ Infranaut.ai{% endblock %} {# Added a specific title #}
                 </div>
                 <h3
                     class="text-xl md:text-2xl font-bold mb-3"
-                    style="font-family: Recoleta, serif"
+                    {# style="font-family: Recoleta, serif" #} {# Removed inline style #}
                 >
                     Assessment & Discovery
                 </h3>
@@ -174,7 +170,7 @@ Infranaut.ai{% endblock %} {# Added a specific title #}
                 </div>
                 <h3
                     class="text-xl md:text-2xl font-bold mb-3"
-                    style="font-family: Recoleta, serif"
+                    {# style="font-family: Recoleta, serif" #} {# Removed inline style #}
                 >
                     Planning & Design
                 </h3>
@@ -228,7 +224,7 @@ Infranaut.ai{% endblock %} {# Added a specific title #}
                 </div>
                 <h3
                     class="text-xl md:text-2xl font-bold mb-3"
-                    style="font-family: Recoleta, serif"
+                    {# style="font-family: Recoleta, serif" #} {# Removed inline style #}
                 >
                     Migration & Execution
                 </h3>
@@ -275,7 +271,7 @@ Infranaut.ai{% endblock %} {# Added a specific title #}
                 >
                 <h2
                     class="text-3xl md:text-4xl font-bold mb-6"
-                    style="font-family: Recoleta, serif"
+                    {# style="font-family: Recoleta, serif" #} {# Removed inline style #}
                 >
                     Automate & Accelerate
                 </h2>
@@ -417,7 +413,7 @@ resource "aws_subnet" "private_subnet_a" {
             >
             <h2
                 class="text-3xl md:text-4xl font-bold mb-4"
-                style="font-family: Recoleta, serif"
+                {# style="font-family: Recoleta, serif" #} {# Removed inline style #}
             >
                 Cloud Service Equivalents
             </h2>
@@ -603,7 +599,7 @@ resource "aws_subnet" "private_subnet_a" {
     <div class="container mx-auto px-4 text-center relative z-10">
         <h2
             class="text-3xl md:text-4xl font-bold mb-6 text-white"
-            style="font-family: Recoleta, serif"
+            {# style="font-family: Recoleta, serif" #} {# Removed inline style #}
         >
             Ready to Elevate Your Infrastructure?
         </h2>
@@ -697,6 +693,10 @@ resource "aws_subnet" "private_subnet_a" {
 </script>
 {% endblock %} {% block extra_css %}
 <style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+
     /* Base variables (using your existing orange theme) */
     :root {
         /* --- Orange Theme --- */
@@ -741,6 +741,17 @@ resource "aws_subnet" "private_subnet_a" {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+
+    /* Heading Styles */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    /* Specific Hero Title Font */
+    .migration-hero .hero-title {
+        font-family: 'Raleway', sans-serif;
+    }
+
 
     /* Utility for scroll animations */
     .feature-card, .code-snippet, .mapping-table, .mobile-mapping-card, .migration-cta {
@@ -935,7 +946,7 @@ resource "aws_subnet" "private_subnet_a" {
     /* Basic Syntax Highlighting (unchanged) */
     .code-snippet .token.comment { color: #718096; }
     .code-snippet .token.string { color: #9ae6b4; }
-    .code-snippet .token.keyword { color: #f6ad55; }
+    .code-snippet .token.keyword { color: #f6ad65; } /* Adjusted for better visibility */
     .code-snippet .token.function, .code-snippet .token.tag { color: #0bc5ea; }
     .code-snippet .token.number, .code-snippet .token.boolean { color: #f56565; }
     .code-snippet .token.punctuation, .code-snippet .token.operator { color: #a0aec0; }
@@ -1028,7 +1039,7 @@ resource "aws_subnet" "private_subnet_a" {
 
     /* CTA Section */
     .migration-cta {
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+        background-color: coral;
         position: relative;
         overflow: hidden;
          /* Inherits base transition */

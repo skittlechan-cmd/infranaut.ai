@@ -1,12 +1,5 @@
 /* Dashboard Styles */
-.dashboard-container {
-    display: flex;
-    min-height: calc(100vh - 60px); /* Adjust based on your header height */
-    background-color: #f8f9fa;
-    position: relative;
-    margin-bottom: 0;
-    overflow: visible;
-}
+/* .dashboard-container styles moved to infrastructure.css */
 
 .dashboard-sidebar {
     width: 280px;
@@ -137,7 +130,8 @@
     text-align: center;
 }
 
-.dashboard-content {
+/* Made selector more specific to avoid conflict with landing page */
+.dashboard-container .dashboard-content {
     flex: 1;
     padding: 2rem;
     margin-left: 280px;
@@ -180,7 +174,7 @@
 
 .api-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
     gap: 1.5rem;
     margin-bottom: 2rem;
     align-items: start;
@@ -455,42 +449,143 @@
     z-index: 20;
 }
 
+/* Coming Soon Styles */
+.api-coming-soon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    padding: 2rem;
+}
+
+.coming-soon-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px dashed #4a90e2;
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(74, 144, 226, 0.12);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.coming-soon-card .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+    background: #4a90e2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+}
+
+.coming-soon-card h2 {
+    color: #333;
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem;
+    font-weight: 600;
+}
+
+.coming-soon-card .main-text {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.coming-soon-card .sub-text {
+    color: #888;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.coming-soon-card .status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 30px;
+    color: #856404;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(74, 144, 226, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 992px) {
     .dashboard-sidebar {
         width: 70px;
-        padding: 1.5rem 0;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
     }
-    
+
     .user-profile {
-        padding: 0 0.75rem 1rem;
+        padding: 0.5rem;
         flex-direction: column;
     }
-    
+
     .profile-image {
+        width: 50px;
+        height: 50px;
         margin-right: 0;
         margin-bottom: 0.5rem;
     }
-    
+
     .user-info {
         display: none;
     }
-    
+
     .dashboard-nav a {
         padding: 0.75rem;
         justify-content: center;
+        border-radius: 8px;
+        margin: 0 0.5rem;
     }
-    
+
     .dashboard-nav i {
         margin-right: 0;
+        font-size: 1.25rem;
     }
-    
+
     .dashboard-nav a span {
         display: none;
     }
-    
-    .dashboard-content {
+
+    /* Made selector more specific for media query */
+    .dashboard-container .dashboard-content {
         margin-left: 70px;
+        padding: 1.5rem;
     }
 }
 
@@ -499,42 +594,79 @@
         flex-direction: column;
         min-height: auto;
     }
-    
+
     .dashboard-sidebar {
         width: 100%;
         height: auto;
         position: sticky;
         top: 0;
         overflow-x: auto;
-        padding: 1rem 0;
+        padding: 0.5rem;
         z-index: 1000;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-    
+
     .user-profile {
         display: none;
     }
-    
+
     .dashboard-nav ul {
         display: flex;
+        padding: 0.5rem;
+        gap: 0.5rem;
     }
-    
+
     .dashboard-nav li {
-        margin-bottom: 0;
+        margin: 0;
+        flex: 1;
+    }
+
+    .dashboard-nav a {
+        padding: 0.75rem;
+        justify-content: center;
+        border-radius: 8px;
+        white-space: nowrap;
+        min-width: max-content;
+    }
+
+    .dashboard-nav a i {
         margin-right: 0.5rem;
     }
-    
-    .dashboard-nav a {
-        padding: 0.5rem 1rem;
+
+    .dashboard-nav a span {
+        display: inline-block;
+        font-size: 0.9rem;
     }
-    
-    .dashboard-content {
+
+    /* Made selector more specific for media query */
+    .dashboard-container .dashboard-content {
         margin-left: 0;
-        padding: 1.5rem;
+        padding: 1rem;
         max-width: 100%;
     }
-    
+
+    .dashboard-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
     .api-list {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-} 
+
+    .api-card {
+        padding: 1rem;
+    }
+
+    .api-actions {
+        flex-direction: column;
+    }
+
+    .api-actions .btn {
+        width: 100%;
+    }
+}

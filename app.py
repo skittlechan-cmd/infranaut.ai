@@ -14,11 +14,17 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from dotenv import load_dotenv
 import secrets
 
+
 # Load environment variables
 load_dotenv()
 
+
 app = Flask(__name__)
 Compress(app)
+
+
+# Initialize mail
+mail = init_mail_app(app)
 
 # Secret key for flash messages and CSRF protection
 app.secret_key = os.environ.get('SECRET_KEY')
@@ -31,9 +37,6 @@ print(f"CSRF protection initialized with secret key: {'[SET]' if app.secret_key 
 # Configure CSRF settings
 app.config['WTF_CSRF_TIME_LIMIT'] = None  # Disable CSRF token expiration
 app.config['WTF_CSRF_SSL_STRICT'] = False  # Allow CSRF over HTTP
-
-# Initialize mail
-init_mail_app(app)
 
 # Initialize file upload handler
 init_upload_handler(app)
@@ -603,22 +606,31 @@ def careers():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
+        print("[DEBUG] Contact form submission received")
+        print(f"[DEBUG] Form data: {request.form}")
+        
         # Get form data
         name = request.form.get('name', '')
         email = request.form.get('email', '')
         subject = request.form.get('subject', '')
         message = request.form.get('message', '')
+        
+        print(f"[DEBUG] Parsed form data - Name: {name}, Email: {email}, Subject: {subject}")
 
         # Validate form data
         errors = validate_contact_form(name, email, subject, message)
-
+        
         if errors:
+            print(f"[DEBUG] Validation errors: {errors}")
             for error in errors:
                 flash(error, 'error')
             return render_template('pages/contact.html')
 
+        print("[DEBUG] Form validation successful, attempting to send email")
         # Send email
         success, msg = send_contact_email(name, email, subject, message)
+        
+        print(f"[DEBUG] Email send result - Success: {success}, Message: {msg}")
 
         if success:
             flash(msg, 'success')
@@ -639,6 +651,43 @@ def workflow():
 @cache_control()
 def addon():
     return render_template('pages/add-on.html')
+
+# Test route for email functionality (remove in production)
+@app.route('/test-email')
+def test_email():
+    try:
+        print("[DEBUG] Testing email configuration...")
+        name = "Test User"
+        email = "test@example.com"
+        subject = "Test Email"
+        message = "This is a test email from Infranaut.ai"
+        
+        # Print mail configuration
+        print(f"[DEBUG] Mail Configuration:")
+        print(f"MAIL_SERVER: {app.config.get('MAIL_SERVER')}")
+        print(f"MAIL_PORT: {app.config.get('MAIL_PORT')}")
+        print(f"MAIL_USE_TLS: {app.config.get('MAIL_USE_TLS')}")
+        print(f"MAIL_USERNAME: {app.config.get('MAIL_USERNAME')}")
+        print(f"MAIL_DEFAULT_SENDER: {app.config.get('MAIL_DEFAULT_SENDER')}")
+        print(f"MAIL_RECIPIENT: {app.config.get('MAIL_RECIPIENT')}")
+        
+        success, msg = send_contact_email(name, email, subject, message)
+        
+        return {
+            'success': success,
+            'message': msg,
+            'config': {
+                'server': app.config.get('MAIL_SERVER'),
+                'port': app.config.get('MAIL_PORT'),
+                'use_tls': app.config.get('MAIL_USE_TLS'),
+                'username': app.config.get('MAIL_USERNAME', '').replace('@', '[at]'),  # Partially redacted
+                'default_sender': app.config.get('MAIL_DEFAULT_SENDER', '').replace('@', '[at]'),  # Partially redacted
+                'recipient': app.config.get('MAIL_RECIPIENT', '').replace('@', '[at]')  # Partially redacted
+            }
+        }
+    except Exception as e:
+        print(f"[DEBUG] Error in test-email route: {str(e)}")
+        return {'success': False, 'error': str(e)}
 
 
 
@@ -730,6 +779,30 @@ def revoke_api_key():
 @app.context_processor
 def inject_csrf_token():
     return dict(csrf_token=generate_csrf())
+
+@app.context_processor
+def inject_supabase_config():
+    """Inject Supabase configuration for frontend use"""
+    supabase_url = os.environ.get('SUPABASE_URL')
+    supabase_key = os.environ.get('SUPABASE_KEY')  # Using the anon key for frontend
+    
+    # Debug logging
+    print('Debug - Supabase Config:')
+    print(f'URL configured: {"Yes" if supabase_url else "No"}')
+    print(f'Key configured: {"Yes" if supabase_key else "No"}')
+    
+    return {
+        'SUPABASE_URL': supabase_url,
+        'SUPABASE_ANON_KEY': supabase_key
+    }
+
+@app.context_processor
+def inject_supabase_config():
+    """Inject Supabase configuration for frontend use"""
+    return {
+        'SUPABASE_URL': os.environ.get('SUPABASE_URL'),
+        'SUPABASE_ANON_KEY': os.environ.get('SUPABASE_KEY')  # This is the anon key, not service key
+    }
 
 
 
@@ -828,9 +901,37 @@ def inject_csrf_token():
 
 #     return html_output
 
+@app.route('/test-newsletter-config')
+def test_newsletter_config():
+    """Test route to verify newsletter configuration"""
+    if request.remote_addr not in ['127.0.0.1', 'localhost', '::1']:
+        return "This endpoint is restricted to localhost for security reasons.", 403
+        
+    config = {
+        'supabase_url': os.environ.get('SUPABASE_URL', '').replace('https://', '***').replace('.supabase.co', '***'),
+        'supabase_key_configured': bool(os.environ.get('SUPABASE_KEY')),
+        'supabase_service_key_configured': bool(os.environ.get('SUPABASE_SERVICE_KEY'))
+    }
+    
+    return jsonify({
+        'config': config,
+        'env_vars_present': all([
+            os.environ.get('SUPABASE_URL'),
+            os.environ.get('SUPABASE_KEY')
+        ])
+    })
+
 if __name__ == '__main__':
     # Production configurations
     app.config['TEMPLATES_AUTO_RELOAD'] = True # Make false in production
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 # Disable caching in production
     #app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000
     app.run(debug=False, host='0.0.0.0', port=5001)
+
+
+
+
+
+
+
+

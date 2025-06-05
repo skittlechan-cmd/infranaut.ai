@@ -14,7 +14,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 20% 30%, rgba(255, 108, 55, 0.15), transparent 45%),
         radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15), transparent 45%);
     z-index: 0;
@@ -33,7 +33,7 @@
 }
 
 .cloud-hero-title {
-    font-family: "Recoleta", "Roboto", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif; /* Changed from Space Mono */
     font-size: 3.5rem;
     line-height: 1.2;
     font-weight: 700;
@@ -43,11 +43,7 @@
 }
 
 .gradient-text-cloud {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: inline-block;
+    color: var(--primary-dark) !important;
 }
 
 .gradient-text-hover:hover {
@@ -56,7 +52,7 @@
 }
 
 .cloud-hero-subtitle {
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: "Inter", sans-serif; /* Changed from IBM Plex Sans */
     font-size: 1.25rem;
     line-height: 1.6;
     color: var(--text-light);
@@ -98,8 +94,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.1) 0%, 
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
         rgba(255, 255, 255, 0) 100%);
     pointer-events: none;
     z-index: 2;
@@ -154,6 +150,7 @@
     transition: all 0.3s ease;
     white-space: nowrap;
     position: relative;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .tab-btn .icon {
@@ -231,6 +228,7 @@
     min-height: 400px;
     padding: 2rem;
     text-align: center;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .chart-placeholder-icon {
@@ -268,6 +266,7 @@
     font-weight: 500;
     color: var(--text-dark);
     z-index: 11;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 /* Chart Styling */
@@ -277,6 +276,7 @@
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--text-dark);
+    font-family: "IBM Plex Sans", sans-serif; /* Added font-family */
 }
 
 /* Cost Bar Chart */
@@ -310,6 +310,7 @@
     font-weight: 500;
     font-size: 0.875rem;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .cost-bar-value {
@@ -321,6 +322,7 @@
     font-weight: 600;
     font-size: 0.875rem;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 /* Feature Cards */
@@ -385,12 +387,22 @@
     transform: rotate(10deg);
 }
 
+.cloud-feature-card .title {
+    font-family: "IBM Plex Sans", sans-serif; /* Added font-family */
+}
+
+.cloud-feature-card .subtitle {
+     font-family: "Inter", sans-serif; /* Added font-family */
+}
+
+
 .recommendations-box {
     background: var(--bg-light);
     border-radius: 0.75rem;
     padding: 1rem;
     margin-top: 1rem;
     border: 1px solid var(--card-border);
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .recommendation-list {
@@ -422,6 +434,7 @@
     background: rgba(16, 185, 129, 0.1);
     padding: 0.75rem;
     border-radius: 0.5rem;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .savings-arrow {
@@ -455,6 +468,7 @@
     border-radius: 2rem;
     margin-top: 1rem;
     border: 1px dashed var(--card-border);
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .tooltip-box i {
@@ -470,6 +484,7 @@
 /* Performance Monitoring */
 .monitor-metrics {
     margin-top: 1rem;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .metric-box {
@@ -545,6 +560,7 @@
     color: var(--text-light);
     border: 1px solid var(--card-border);
     transition: all 0.3s ease;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .integration-tag:hover {
@@ -557,6 +573,7 @@
 /* Security & Governance */
 .compliance-status {
     margin-top: 1rem;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .compliance-item {
@@ -665,6 +682,7 @@
     flex: 1;
     font-size: 0.875rem;
     color: var(--text-light);
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .alert-severity {
@@ -673,6 +691,7 @@
     padding: 0.25rem 0.5rem;
     border-radius: 1rem;
     text-transform: uppercase;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .alert-severity.low {
@@ -703,7 +722,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05), transparent 30%),
         radial-gradient(circle at 90% 80%, rgba(255, 108, 55, 0.05), transparent 30%);
     z-index: 0;
@@ -720,6 +739,7 @@
     max-width: 900px;
     margin: 0 auto;
     margin-bottom: 2rem;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .prompt-header {
@@ -748,6 +768,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-dark);
+    font-family: "IBM Plex Sans", sans-serif; /* Added font-family */
 }
 
 .prompt-input-container {
@@ -764,6 +785,7 @@
     color: var(--text-dark);
     background: var(--bg-light);
     transition: all 0.3s ease;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .prompt-input:focus {
@@ -789,6 +811,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .prompt-submit:hover {
@@ -812,6 +835,7 @@
     border: 1px solid var(--card-border);
     cursor: pointer;
     transition: all 0.3s ease;
+    font-family: "Inter", sans-serif; /* Added font-family */
 }
 
 .prompt-example:hover {
@@ -842,6 +866,14 @@
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
 }
 
+.cloud-cta-box .title {
+    font-family: "IBM Plex Sans", sans-serif; /* Added font-family */
+}
+
+.cloud-cta-box .subtitle {
+    font-family: "Inter", sans-serif; /* Added font-family */
+}
+
 .cloud-cta-buttons {
     display: flex;
     justify-content: center;
@@ -866,84 +898,96 @@
     .cloud-hero-title {
         font-size: 2.5rem;
     }
-    
+
     .cloud-hero-subtitle {
         font-size: 1rem;
     }
-    
+
     .cloud-dashboard-container {
         transform: none;
         margin-top: 2rem;
+        padding: 0.5rem;
     }
-    
+
     .cloud-dashboard-container:hover {
         transform: translateY(-5px);
     }
-    
+
+    .cloud-dashboard-img {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        object-fit: cover;
+    }
+
     .tabs-header {
         justify-content: flex-start;
         padding-bottom: 0;
     }
-    
+
     .tab-btn {
         padding: 0.75rem 1rem;
         font-size: 0.875rem;
     }
-    
+
+    .tab-btn .icon {
+        margin-right: 0.25rem;
+    }
+
     .cloud-feature-card {
         padding: 1.5rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .feature-icon-wrapper {
         width: 50px;
         height: 50px;
         margin-bottom: 1rem;
     }
-    
+
     .feature-icon-wrapper i {
         font-size: 1.25rem;
     }
-    
+
     .cloud-prompt-container {
         padding: 1.5rem;
     }
-    
+
     .prompt-title {
         font-size: 1.25rem;
     }
-    
+
     .prompt-examples {
         flex-direction: column;
     }
-    
+
     .prompt-example {
         width: 100%;
         text-align: center;
     }
-    
+
     .cloud-cta-box {
         padding: 2rem 1.5rem;
     }
-    
+
     .cloud-cta-buttons {
         flex-direction: column;
         gap: 0.75rem;
     }
-    
+
     .cloud-cta-buttons .button {
         width: 100%;
     }
-    
+
     .metric-box, .compliance-item {
         flex-wrap: wrap;
     }
-    
+
     .metric-name, .compliance-name {
         width: 100%;
         margin-bottom: 0.5rem;
     }
-    
+
     .metric-bar, .compliance-bar {
         margin-left: 0;
     }
@@ -953,37 +997,47 @@
     .cloud-hero-title {
         font-size: 2rem;
     }
-    
+
+    .cloud-dashboard-container {
+        padding: 0.25rem;
+        margin-top: 1rem;
+    }
+
+    .cloud-dashboard-img {
+        max-height: 250px;
+        border-radius: 0.5rem;
+    }
+
     .chart-container {
         min-height: 300px;
     }
-    
+
     .chart-placeholder {
         min-height: 300px;
         padding: 1rem;
     }
-    
+
     .chart-placeholder-icon {
         margin-bottom: 1rem;
     }
-    
+
     .chart-placeholder-text {
         font-size: 0.875rem;
     }
-    
+
     .tab-btn {
         padding: 0.5rem 0.75rem;
         font-size: 0.75rem;
     }
-    
+
     .tab-btn .icon {
         margin-right: 0.25rem;
     }
-    
+
     .alert-item {
         flex-wrap: wrap;
     }
-    
+
     .alert-severity {
         margin-top: 0.5rem;
         width: 100%;
@@ -995,4 +1049,30 @@
 /* cloud management */
 .columns.is-vcentered.is-variable.is-8 {
     margin-top: -6rem;
+}
+
+@media (max-width: 1023px) {
+    .cloud-hero .column {
+        padding: 1.5rem;
+        margin: 0;
+    }
+
+    .cloud-hero .column.is-6 {
+        padding: 1.5rem;
+        width: 125%;
+        margin-left: -2.5rem;   
+    }
+
+    .cloud-dashboard-container {
+        width: 100%;
+        max-width: none;
+        transform: none;
+    }
+
+    .cloud-dashboard-img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+    }
 }

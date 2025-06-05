@@ -94,7 +94,7 @@
 }
 
 .footer-company-name {
-    font-family: 'Recoleta', serif;
+    font-family: 'DejaVu Sans', monospace;
     font-size: 1.75rem;
     font-weight: 600;
     color: var(--footer-text);

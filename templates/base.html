@@ -8,12 +8,12 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Recoleta Font -->
-    <link href="https://fonts.cdnfonts.com/css/recoleta" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,12 +44,31 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 
     {% block extra_css %}{% endblock %}
+
+    <!-- Supabase Configuration -->
+    <script>
+        window.SUPABASE_URL = "{{ SUPABASE_URL }}";
+        window.SUPABASE_ANON_KEY = "{{ SUPABASE_ANON_KEY }}";
+    </script>
 </head>
 
 <body class="has-navbar-fixed-top antialiased">
     {% include 'components/navbar.html' %}
 
     <main class="main-content">
+        <!-- Flash Messages -->
+        <div class="container mx-auto px-4 mt-4">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} p-4 mb-4 rounded-lg {% if category == 'success' %}bg-green-100 text-green-700{% else %}bg-red-100 text-red-700{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        
         {% block content %}{% endblock %}
     </main>
 
@@ -61,6 +80,12 @@
     <script src="{{ url_for('static', filename='js/modules.js') }}"></script>
     <script src="{{ url_for('static', filename='js/testimonial.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
+
+    <!-- Debug Supabase Config -->
+    <script>
+        console.log('Supabase URL:', window.SUPABASE_URL ? 'Configured' : 'Missing');
+        console.log('Supabase Key:', window.SUPABASE_ANON_KEY ? 'Configured' : 'Missing');
+    </script>
 
     {% block extra_js %}{% endblock %}
 </body>
