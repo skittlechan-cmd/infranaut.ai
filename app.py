@@ -32,11 +32,11 @@ app.secret_key = os.environ.get('SECRET_KEY')
 # Initialize CSRF protection
 csrf = CSRFProtect(app)
 # Debug CSRF setup
-print(f"CSRF protection initialized with secret key: {'[SET]' if app.secret_key else '[NOT SET]'}")
+# print(f"CSRF protection initialized with secret key: {'[SET]' if app.secret_key else '[NOT SET]'}")
 
 # Configure CSRF settings
-app.config['WTF_CSRF_TIME_LIMIT'] = None  # Disable CSRF token expiration
-app.config['WTF_CSRF_SSL_STRICT'] = False  # Allow CSRF over HTTP
+app.config['WTF_CSRF_TIME_LIMIT'] = 3600   # Disable CSRF token expiration
+app.config['WTF_CSRF_SSL_STRICT'] = True # Allow CSRF over HTTP
 
 # Initialize file upload handler
 init_upload_handler(app)
@@ -120,7 +120,7 @@ def login():
             session['profile_image'] = profile_image
 
             # Log successful login
-            print(f"User logged in: {username}")
+            #print(f"User logged in: {username}")
 
             # Redirect to the dashboard or a requested page
             next_page = request.args.get('next')
@@ -130,7 +130,7 @@ def login():
         else:
             # Log failed login attempt with remote IP (for security monitoring)
             remote_ip = request.remote_addr
-            print(f"Failed login attempt for user '{username}' from IP {remote_ip}: {result}")
+            #print(f"Failed login attempt for user '{username}' from IP {remote_ip}: {result}")
 
             # Don't reveal specific error to prevent user enumeration
             flash('Invalid username or password', 'error')
@@ -145,7 +145,7 @@ def signup():
         if request.method == 'POST':
             # Print all form data for debugging (excluding password)
             form_data = {k: v for k, v in request.form.items() if k != 'password'}
-            print(f"Signup form data received: {form_data}")
+            #print(f"Signup form data received: {form_data}")
 
             email = request.form.get('email')
             username = request.form.get('username')
@@ -243,7 +243,7 @@ def signup():
         return render_template('auth/signup.html', csrf_token=generate_csrf())
 
     except Exception as e:
-        print(f"Error in signup route: {str(e)}")
+        #print(f"Error in signup route: {str(e)}")
         flash('An unexpected error occurred. Please try again.', 'error')
         return render_template('auth/signup.html', csrf_token=generate_csrf())
 
@@ -274,7 +274,7 @@ def google_callback():
         state = request.args.get('state')
         session_state = session.pop('oauth_state', None)
 
-        print(f"Callback received - State: {state}, Session state: {session_state}")
+        #print(f"Callback received - State: {state}, Session state: {session_state}")
 
         if not state or state != session_state:
             flash('Authentication failed: Invalid state token. Please try again.', 'error')
@@ -320,7 +320,7 @@ def google_callback():
         return redirect(url_for('dashboard'))
     except Exception as e:
         # Log the exception for debugging
-        print(f"Error in Google callback: {str(e)}")
+        #print(f"Error in Google callback: {str(e)}")
         flash('An unexpected error occurred during authentication. Please try again.', 'error')
         return redirect(url_for('login'))
 
@@ -390,25 +390,25 @@ def complete_google_signup():
                     return redirect(url_for('login'))
             else:
                 # Log detailed error for debugging
-                print(f"Error in complete_google_signup: {message}")
+                #print(f"Error in complete_google_signup: {message}")
                 flash(f'Error creating account: {message}', 'error')
                 return render_template('auth/complete_google_signup.html', email=google_data['email'], csrf_token=generate_csrf())
 
         return render_template('auth/complete_google_signup.html', email=google_data['email'], csrf_token=generate_csrf())
     except Exception as e:
         # Log the exception for debugging
-        print(f"Error in complete Google signup: {str(e)}")
+        #print(f"Error in complete Google signup: {str(e)}")
         flash('An unexpected error occurred during signup. Please try again.', 'error')
         return redirect(url_for('login'))
 
 @app.route('/forgot-password', methods=['GET', 'POST'])
 def forgot_password():
     try:
-        print(f"CSRF Token in session: {session.get('csrf_token')}")
-        print(f"Request method: {request.method}")
-        print(f"Request form data: {request.form}")
+        #print(f"CSRF Token in session: {session.get('csrf_token')}")
+        #print(f"Request method: {request.method}")
+        #print(f"Request form data: {request.form}")
         if request.method == 'POST':
-            print("Forgot password POST request received")
+            #print("Forgot password POST request received")
             email = request.form.get('email')
             verification_code = request.form.get('verification_code')
             new_password = request.form.get('new_password')
@@ -435,7 +435,7 @@ def forgot_password():
                         flash('If an account with this email exists, a verification code has been sent', 'info')
                         return render_template('auth/forgot_password.html', csrf_token=generate_csrf())
                 except Exception as e:
-                    print(f"Error checking email existence: {str(e)}")
+                    #print(f"Error checking email existence: {str(e)}")
                     flash('An error occurred. Please try again.', 'error')
                     return render_template('auth/forgot_password.html', csrf_token=generate_csrf())
 
@@ -444,39 +444,39 @@ def forgot_password():
 
                 try:
                     code = generate_verification_code()
-                    print(f"Generated verification code for {email}")
+                    #print(f"Generated verification code for {email}")
 
                     store_verification_code(email, code)
-                    print(f"Stored verification code for {email}")
+                    #print(f"Stored verification code for {email}")
 
                     if send_verification_email(email, code, is_recovery=True):
-                        print(f"Recovery code sent to {email}: {code}")
+                        #print(f"Recovery code sent to {email}: {code}")
                         session['recovery_email'] = email
                         return render_template('auth/verify_recovery.html', email=email, csrf_token=generate_csrf())
                     else:
-                        print(f"Failed to send recovery code to {email}")
+                        #print(f"Failed to send recovery code to {email}")
                         flash('Failed to send verification email. Please try again.', 'error')
                         return render_template('auth/forgot_password.html', csrf_token=generate_csrf())
                 except Exception as e:
-                    print(f"Error in password recovery process: {str(e)}")
+                    #print(f"Error in password recovery process: {str(e)}")
                     flash('An error occurred during the recovery process. Please try again.', 'error')
                     return render_template('auth/forgot_password.html', csrf_token=generate_csrf())
 
             # Step 2: User entered verification code, let them set a new password
             elif verification_code and not new_password:
                 recovery_email = session.get('recovery_email')
-                print(f"Step 2 - Recovery email from session: {recovery_email}")
-                print(f"Verification code received: {verification_code}")
+                #print(f"Step 2 - Recovery email from session: {recovery_email}")
+                #print(f"Verification code received: {verification_code}")
 
                 if not recovery_email:
-                    print("No recovery email in session")
+                    #print("No recovery email in session")
                     flash('Session expired. Please try again.', 'error')
                     return redirect(url_for('forgot_password'))
 
                 from auth import verify_code
 
                 if verify_code(recovery_email, verification_code):
-                    print(f"Recovery code verified for {recovery_email}")
+                    #print(f"Recovery code verified for {recovery_email}")
                     session['recovery_verified'] = True
                     return render_template('auth/recovery_success.html', email=recovery_email, csrf_token=generate_csrf())
                 else:
@@ -507,11 +507,11 @@ def forgot_password():
                     session.pop('recovery_email', None)
                     session.pop('recovery_verified', None)
 
-                    print(f"Password successfully reset for {recovery_email}")
+                    #print(f"Password successfully reset for {recovery_email}")
                     flash('Password updated successfully! Please log in with your new password.', 'success')
                     return redirect(url_for('login'))
                 else:
-                    print(f"Error resetting password for {recovery_email}: {message}")
+                    #print(f"Error resetting password for {recovery_email}: {message}")
                     flash(f'Error updating password: {message}', 'error')
                     return render_template('auth/recovery_success.html', email=recovery_email, csrf_token=generate_csrf())
 
@@ -523,10 +523,10 @@ def forgot_password():
         return render_template('auth/forgot_password.html', csrf_token=generate_csrf())
 
     except Exception as e:
-        print(f"Error in forgot_password route: {str(e)}")
-        print(f"Full error details: {repr(e)}")
-        print(f"Request form data: {request.form}")
-        print(f"Session data: {session}")
+        #print(f"Error in forgot_password route: {str(e)}")
+        #print(f"Full error details: {repr(e)}")
+        #print(f"Request form data: {request.form}")
+        #print(f"Session data: {session}")
         flash('An unexpected error occurred. Please try again.', 'error')
         return render_template('auth/forgot_password.html', csrf_token=generate_csrf())
 
@@ -606,8 +606,8 @@ def careers():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        print("[DEBUG] Contact form submission received")
-        print(f"[DEBUG] Form data: {request.form}")
+        #print("[DEBUG] Contact form submission received")
+        #print(f"[DEBUG] Form data: {request.form}")
         
         # Get form data
         name = request.form.get('name', '')
@@ -615,22 +615,22 @@ def contact():
         subject = request.form.get('subject', '')
         message = request.form.get('message', '')
         
-        print(f"[DEBUG] Parsed form data - Name: {name}, Email: {email}, Subject: {subject}")
+        #print(f"[DEBUG] Parsed form data - Name: {name}, Email: {email}, Subject: {subject}")
 
         # Validate form data
         errors = validate_contact_form(name, email, subject, message)
         
         if errors:
-            print(f"[DEBUG] Validation errors: {errors}")
+            #print(f"[DEBUG] Validation errors: {errors}")
             for error in errors:
                 flash(error, 'error')
             return render_template('pages/contact.html')
 
-        print("[DEBUG] Form validation successful, attempting to send email")
+        #print("[DEBUG] Form validation successful, attempting to send email")
         # Send email
         success, msg = send_contact_email(name, email, subject, message)
         
-        print(f"[DEBUG] Email send result - Success: {success}, Message: {msg}")
+        #print(f"[DEBUG] Email send result - Success: {success}, Message: {msg}")
 
         if success:
             flash(msg, 'success')
@@ -656,20 +656,20 @@ def addon():
 @app.route('/test-email')
 def test_email():
     try:
-        print("[DEBUG] Testing email configuration...")
+        #print("[DEBUG] Testing email configuration...")
         name = "Test User"
         email = "test@example.com"
         subject = "Test Email"
         message = "This is a test email from Infranaut.ai"
         
         # Print mail configuration
-        print(f"[DEBUG] Mail Configuration:")
-        print(f"MAIL_SERVER: {app.config.get('MAIL_SERVER')}")
-        print(f"MAIL_PORT: {app.config.get('MAIL_PORT')}")
-        print(f"MAIL_USE_TLS: {app.config.get('MAIL_USE_TLS')}")
-        print(f"MAIL_USERNAME: {app.config.get('MAIL_USERNAME')}")
-        print(f"MAIL_DEFAULT_SENDER: {app.config.get('MAIL_DEFAULT_SENDER')}")
-        print(f"MAIL_RECIPIENT: {app.config.get('MAIL_RECIPIENT')}")
+       # print(f"[DEBUG] Mail Configuration:")
+        #print(f"MAIL_SERVER: {app.config.get('MAIL_SERVER')}")
+        #print(f"MAIL_PORT: {app.config.get('MAIL_PORT')}")
+        #print(f"MAIL_USE_TLS: {app.config.get('MAIL_USE_TLS')}")
+        #print(f"MAIL_USERNAME: {app.config.get('MAIL_USERNAME')}")
+        #print(f"MAIL_DEFAULT_SENDER: {app.config.get('MAIL_DEFAULT_SENDER')}")
+        #print(f"MAIL_RECIPIENT: {app.config.get('MAIL_RECIPIENT')}")
         
         success, msg = send_contact_email(name, email, subject, message)
         
@@ -686,7 +686,7 @@ def test_email():
             }
         }
     except Exception as e:
-        print(f"[DEBUG] Error in test-email route: {str(e)}")
+        #print(f"[DEBUG] Error in test-email route: {str(e)}")
         return {'success': False, 'error': str(e)}
 
 
@@ -787,9 +787,9 @@ def inject_supabase_config():
     supabase_key = os.environ.get('SUPABASE_KEY')  # Using the anon key for frontend
     
     # Debug logging
-    print('Debug - Supabase Config:')
-    print(f'URL configured: {"Yes" if supabase_url else "No"}')
-    print(f'Key configured: {"Yes" if supabase_key else "No"}')
+    #print('Debug - Supabase Config:')
+    #print(f'URL configured: {"Yes" if supabase_url else "No"}')
+    #print(f'Key configured: {"Yes" if supabase_key else "No"}')
     
     return {
         'SUPABASE_URL': supabase_url,
@@ -901,29 +901,39 @@ def inject_supabase_config():
 
 #     return html_output
 
-@app.route('/test-newsletter-config')
-def test_newsletter_config():
-    """Test route to verify newsletter configuration"""
-    if request.remote_addr not in ['127.0.0.1', 'localhost', '::1']:
-        return "This endpoint is restricted to localhost for security reasons.", 403
+# @app.route('/test-newsletter-config')
+# def test_newsletter_config():
+#     """Test route to verify newsletter configuration"""
+#     if request.remote_addr not in ['127.0.0.1', 'localhost', '::1']:
+#         return "This endpoint is restricted to localhost for security reasons.", 403
         
-    config = {
-        'supabase_url': os.environ.get('SUPABASE_URL', '').replace('https://', '***').replace('.supabase.co', '***'),
-        'supabase_key_configured': bool(os.environ.get('SUPABASE_KEY')),
-        'supabase_service_key_configured': bool(os.environ.get('SUPABASE_SERVICE_KEY'))
-    }
+#     config = {
+#         'supabase_url': os.environ.get('SUPABASE_URL', '').replace('https://', '***').replace('.supabase.co', '***'),
+#         'supabase_key_configured': bool(os.environ.get('SUPABASE_KEY')),
+#         'supabase_service_key_configured': bool(os.environ.get('SUPABASE_SERVICE_KEY'))
+#     }
     
-    return jsonify({
-        'config': config,
-        'env_vars_present': all([
-            os.environ.get('SUPABASE_URL'),
-            os.environ.get('SUPABASE_KEY')
-        ])
-    })
+#     return jsonify({
+#         'config': config,
+#         'env_vars_present': all([
+#             os.environ.get('SUPABASE_URL'),
+#             os.environ.get('SUPABASE_KEY')
+#         ])
+#     })
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('errors/404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    logging.exception("Internal Server Error")  # Log the error details
+    return render_template('errors/500.html'), 500
 
 if __name__ == '__main__':
     # Production configurations
-    app.config['TEMPLATES_AUTO_RELOAD'] = True # Make false in production
+    app.config['TEMPLATES_AUTO_RELOAD'] = False # Make false in production
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 # Disable caching in production
     #app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000
     app.run(debug=False, host='0.0.0.0', port=5001)
